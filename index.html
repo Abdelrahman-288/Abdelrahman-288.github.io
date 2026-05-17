@@ -8,333 +8,236 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#080c10;
-  --bg2:#0d1117;
-  --bg3:#111820;
-  --border:#1e2d3d;
-  --border2:#2a3f55;
-  --accent:#ff2233;
-  --accent2:#cc1a28;
-  --blue:#4fc3f7;
-  --amber:#f59e0b;
-  --purple:#a78bfa;
-  --text:#e2e8f0;
-  --muted:#64748b;
-  --muted2:#94a3b8;
-  --mono:'JetBrains Mono',monospace;
-  --sans:'Syne',sans-serif;
+  --bg:#080c10;--bg2:#0d1117;--bg3:#111820;
+  --border:#1e2d3d;--border2:#2a3f55;
+  --accent:#ff2233;--accent2:#cc1a28;
+  --blue:#4fc3f7;--amber:#f59e0b;--purple:#a78bfa;
+  --text:#e2e8f0;--muted:#64748b;--muted2:#94a3b8;
+  --mono:'JetBrains Mono',monospace;--sans:'Syne',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{
-  background:var(--bg);color:var(--text);
-  font-family:var(--mono);font-size:14px;
-  line-height:1.7;overflow-x:hidden;
-}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:14px;line-height:1.7;overflow-x:hidden;}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:999;opacity:.4;
-}
-body::after{
-  content:'';position:fixed;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,34,51,.012) 2px,rgba(255,34,51,.012) 4px);
-  pointer-events:none;z-index:998;
-}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.4;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,34,51,.012) 2px,rgba(255,34,51,.012) 4px);pointer-events:none;z-index:998;}
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;height:56px;
-  background:rgba(8,12,16,.88);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-}
-.nav-logo{
-  font-family:var(--sans);font-weight:800;font-size:15px;
-  color:var(--accent);letter-spacing:-.02em;text-decoration:none;
-}
+/* ── NAV ─────────────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:52px;background:rgba(8,12,16,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.4);}
+.nav-logo{font-family:var(--sans);font-weight:800;font-size:14px;color:var(--accent);letter-spacing:-.02em;text-decoration:none;}
 .nav-logo span{color:var(--muted)}
-.nav-links{display:flex;gap:1.8rem;list-style:none}
-.nav-links a{
-  color:var(--muted2);text-decoration:none;font-size:11px;
-  letter-spacing:.1em;text-transform:uppercase;transition:color .2s;
-}
-.nav-links a:hover{color:var(--accent)}
-.nav-status{
-  display:flex;align-items:center;gap:6px;
-  font-size:11px;color:var(--accent);
-}
-.nav-status::before{
-  content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--accent);box-shadow:0 0 6px var(--accent);
-  animation:pulse 2s infinite;
-}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--muted2);text-decoration:none;font-size:10px;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:3px;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .3s cubic-bezier(.4,0,.2,1);}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-status{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--accent);}
+.nav-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:ping 2s ease infinite;}
+@keyframes ping{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,34,51,.5)}60%{box-shadow:0 0 0 6px rgba(255,34,51,0)}}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:18px;height:1px;background:var(--text);display:block;transition:.2s}
 
-/* SECTIONS */
-section{padding:100px 0 80px;max-width:1100px;margin:0 auto;padding-left:2.5rem;padding-right:2.5rem}
-.section-label{
-  display:flex;align-items:center;gap:10px;
-  font-size:11px;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:2rem;
-}
+/* ── SECTIONS ────────────────────────────────────────────────────────── */
+section{padding:90px 0 70px;max-width:1080px;margin:0 auto;padding-left:2.5rem;padding-right:2.5rem}
+.section-label{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;}
 .section-label::before{content:'//';color:var(--muted)}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
-/* HERO */
-#hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  justify-content:center;padding-top:56px;position:relative;
-}
-.hero-pre{font-size:12px;color:var(--muted2);letter-spacing:.15em;margin-bottom:1rem}
-.hero-pre span{color:var(--accent)}
-.hero-name{
-  font-family:var(--sans);font-weight:800;
-  font-size:clamp(2.6rem,6vw,5.5rem);
-  line-height:.95;letter-spacing:-.03em;
-  color:#fff;margin-bottom:1.5rem;
-}
-.hero-name em{
-  display:block;font-style:normal;
-  -webkit-text-stroke:1px var(--accent);color:transparent;
-}
-.hero-tagline{
-  font-size:clamp(12px,1.3vw,15px);color:var(--muted2);
-  max-width:480px;margin-bottom:2.5rem;line-height:1.8;
-}
-.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:3rem}
-.tag{
-  font-size:11px;padding:4px 12px;border-radius:2px;
-  border:1px solid;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
-}
+/* ── HERO ────────────────────────────────────────────────────────────── */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:52px;position:relative;gap:3rem;}
+.hero-left{flex:1 1 0;min-width:0;}
+
+/* Hero entrance animations */
+.hero-pre{font-size:11px;color:var(--muted2);letter-spacing:.15em;margin-bottom:.9rem;opacity:0;animation:fadeUp .5s .15s ease forwards;}
+.hero-name{font-family:var(--sans);font-weight:800;font-size:clamp(2.8rem,4.8vw,4.8rem);line-height:.93;letter-spacing:-.03em;color:#fff;margin-bottom:1.4rem;opacity:0;animation:fadeUp .6s .3s ease forwards;}
+.hero-name em{display:block;font-style:normal;-webkit-text-stroke:1.5px var(--accent);color:transparent;}
+.hero-tagline{font-size:clamp(11px,1.1vw,13.5px);color:var(--muted2);max-width:430px;margin-bottom:2rem;line-height:1.9;opacity:0;animation:fadeUp .6s .45s ease forwards;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .6s .6s ease forwards;}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .75s ease forwards;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.tag{font-size:10px;padding:4px 11px;border-radius:2px;border:1px solid;letter-spacing:.08em;text-transform:uppercase;font-weight:500;cursor:default;transition:background .2s,box-shadow .2s;}
 .tag-accent{border-color:var(--accent);color:var(--accent);background:rgba(255,34,51,.06)}
+.tag-accent:hover{background:rgba(255,34,51,.14);box-shadow:0 0 12px rgba(255,34,51,.2)}
 .tag-blue{border-color:var(--blue);color:var(--blue);background:rgba(79,195,247,.06)}
+.tag-blue:hover{background:rgba(79,195,247,.14)}
 .tag-amber{border-color:var(--amber);color:var(--amber);background:rgba(245,158,11,.06)}
+.tag-amber:hover{background:rgba(245,158,11,.14)}
 .tag-purple{border-color:var(--purple);color:var(--purple);background:rgba(167,139,250,.06)}
+.tag-purple:hover{background:rgba(167,139,250,.14)}
 
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 22px;font-family:var(--mono);font-size:12px;
-  letter-spacing:.08em;text-transform:uppercase;
-  border-radius:2px;cursor:pointer;text-decoration:none;
-  transition:all .2s;font-weight:500;
-}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;cursor:pointer;text-decoration:none;transition:all .22s;font-weight:500;}
 .btn-primary{background:var(--accent);color:#080c10;border:1px solid var(--accent)}
-.btn-primary:hover{background:var(--accent2);box-shadow:0 0 20px rgba(255,34,51,.35)}
+.btn-primary:hover{background:var(--accent2);box-shadow:0 0 24px rgba(255,34,51,.45);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 
-/* TERMINAL — smaller */
+/* ── TERMINAL ─────────────────────────────────────────────────────────── */
 .hero-terminal{
-  position:absolute;right:0;top:50%;transform:translateY(-50%);
-  width:min(340px,33vw);background:var(--bg2);
-  border:1px solid var(--border);border-radius:4px;
+  flex:0 0 auto;width:min(290px,28vw);
+  background:var(--bg2);border:1px solid var(--border);border-radius:6px;
   overflow:hidden;display:none;
+  opacity:0;animation:slideRight .7s .95s ease forwards;
+  box-shadow:0 0 50px rgba(255,34,51,.06),0 20px 40px rgba(0,0,0,.4);
 }
-@media(min-width:960px){.hero-terminal{display:block}}
-.term-bar{
-  display:flex;align-items:center;gap:6px;
-  padding:8px 12px;background:var(--bg3);
-  border-bottom:1px solid var(--border);
-}
+@media(min-width:1020px){.hero-terminal{display:block}}
+@keyframes slideRight{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+
+.term-bar{display:flex;align-items:center;gap:5px;padding:8px 12px;background:var(--bg3);border-bottom:1px solid var(--border);}
 .term-dot{width:9px;height:9px;border-radius:50%}
-.term-title{margin-left:auto;font-size:10px;color:var(--muted);margin-right:auto}
-.term-body{padding:14px;font-size:11px;line-height:1.85}
-.term-line{display:flex;gap:8px}
+.term-title{margin:0 auto;font-size:10px;color:var(--muted)}
+.term-body{padding:14px;font-size:10.5px;line-height:1.95}
+.term-line{display:flex;gap:7px}
 .term-prompt{color:var(--accent)}
 .term-cmd{color:var(--text)}
-.term-out{color:var(--muted2);padding-left:14px}
+.term-out{color:var(--muted2);padding-left:12px;opacity:0;transform:translateX(-6px);transition:opacity .3s ease,transform .3s ease;}
+.term-out.show{opacity:1;transform:none}
 .term-key{color:var(--blue)}
 .term-val{color:var(--amber)}
-.term-cursor{
-  display:inline-block;width:7px;height:13px;
-  background:var(--accent);animation:blink 1s infinite;vertical-align:middle;
-}
+.term-cursor{display:inline-block;width:7px;height:13px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:middle;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-@media(max-width:700px){.about-grid{grid-template-columns:1fr}}
-.about-text p{color:var(--muted2);line-height:1.9;margin-bottom:1rem;font-size:13px}
-.about-text p strong{color:var(--text)}
-.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.2rem}
-.stat-num{font-family:var(--sans);font-weight:800;font-size:1.8rem;color:var(--accent);line-height:1;margin-bottom:4px}
-.stat-label{font-size:11px;color:var(--muted);letter-spacing:.05em}
+/* ── ABOUT ────────────────────────────────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start}
+@media(max-width:720px){.about-grid{grid-template-columns:1fr;gap:2.5rem}}
 
-/* ===== PROJECTS — all full-width with rich hover ===== */
-.projects-list{display:flex;flex-direction:column;gap:16px}
-.project-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:4px;padding:1.6rem 1.8rem;
-  position:relative;overflow:hidden;
-  transition:border-color .3s, transform .3s, box-shadow .3s;
-  cursor:default;
-}
-/* left accent bar — slides in on hover */
-.project-card::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:var(--accent);
-  transform:scaleY(0);transform-origin:bottom;
-  transition:transform .35s cubic-bezier(.4,0,.2,1);
-}
-/* glow layer */
-.project-card::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 0% 50%,rgba(255,34,51,.06) 0%,transparent 65%);
-  opacity:0;transition:opacity .35s;pointer-events:none;
-}
-.project-card:hover{
-  border-color:rgba(255,34,51,.5);
-  transform:translateX(6px);
-  box-shadow:-4px 0 24px rgba(255,34,51,.12);
-}
+.about-intro{font-size:11px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;}
+.about-headline{font-family:var(--sans);font-weight:700;font-size:clamp(1.3rem,2.2vw,1.7rem);color:#fff;line-height:1.25;margin-bottom:1.5rem;letter-spacing:-.02em;}
+.about-headline em{font-style:normal;color:var(--accent);}
+.about-body{display:flex;flex-direction:column;gap:.9rem;}
+.about-body p{color:var(--muted2);line-height:1.85;font-size:13px;}
+.about-body p strong{color:var(--text);font-weight:500;}
+.about-body p .highlight{color:var(--accent);font-weight:500;}
+.about-divider{width:40px;height:1px;background:var(--accent);margin:0.4rem 0;}
+
+.about-right{display:flex;flex-direction:column;gap:1.2rem;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1rem;transition:border-color .25s,transform .25s,box-shadow .25s;cursor:default;}
+.stat-card:hover{border-color:rgba(255,34,51,.4);transform:translateY(-3px);box-shadow:0 6px 20px rgba(255,34,51,.08);}
+.stat-num{font-family:var(--sans);font-weight:800;font-size:1.6rem;color:var(--accent);line-height:1;margin-bottom:5px}
+.stat-label{font-size:10px;color:var(--muted);letter-spacing:.04em;line-height:1.4;}
+
+.about-focus{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1.2rem;}
+.about-focus-title{font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;}
+.focus-items{display:flex;flex-direction:column;gap:.5rem;}
+.focus-item{display:flex;align-items:center;gap:.6rem;font-size:11.5px;color:var(--muted2);}
+.focus-item::before{content:'▸';color:var(--accent);font-size:10px;flex-shrink:0;}
+
+/* ── PROJECTS ─────────────────────────────────────────────────────────── */
+.projects-list{display:flex;flex-direction:column;gap:14px}
+.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.5rem 1.7rem;position:relative;overflow:hidden;transition:border-color .32s,transform .32s,box-shadow .32s;}
+.project-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:bottom;transition:transform .38s cubic-bezier(.4,0,.2,1);}
+.project-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 50%,rgba(255,34,51,.065) 0%,transparent 65%);opacity:0;transition:opacity .38s;pointer-events:none;}
+.project-card:hover{border-color:rgba(255,34,51,.5);transform:translateX(7px);box-shadow:-5px 0 28px rgba(255,34,51,.12);}
 .project-card:hover::before{transform:scaleY(1)}
 .project-card:hover::after{opacity:1}
-/* shift inner content slightly on hover */
 .project-card:hover .project-title{color:var(--accent)}
+.project-card:hover .tech-tag{background:rgba(79,195,247,.15);border-color:rgba(79,195,247,.4);}
 
 .project-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.6rem;flex-wrap:wrap}
-.project-badge{
-  font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);background:rgba(255,34,51,.1);
-  border:1px solid rgba(255,34,51,.3);
-  padding:2px 10px;border-radius:2px;display:inline-flex;align-items:center;gap:5px;
-  transition:background .3s;
-}
-.project-card:hover .project-badge{background:rgba(255,34,51,.18)}
-.project-links{display:flex;gap:8px;flex-shrink:0}
-.project-link{
-  font-size:11px;color:var(--muted);text-decoration:none;
-  border:1px solid var(--border);padding:3px 10px;border-radius:2px;
-  transition:all .2s;white-space:nowrap;
-}
-.project-link:hover{color:var(--accent);border-color:var(--accent)}
-.project-title{
-  font-family:var(--sans);font-weight:600;font-size:1.05rem;
-  color:#fff;margin-bottom:.5rem;
-  transition:color .3s;
-}
-.project-desc{font-size:12.5px;color:var(--muted2);line-height:1.75;margin-bottom:1rem}
-.project-tech{display:flex;flex-wrap:wrap;gap:6px}
-.tech-tag{
-  font-size:10px;color:var(--blue);
-  background:rgba(79,195,247,.08);border:1px solid rgba(79,195,247,.2);
-  padding:2px 8px;border-radius:2px;
-  transition:background .2s,color .2s;
-}
-.project-card:hover .tech-tag{background:rgba(79,195,247,.13)}
+.project-badge{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(255,34,51,.1);border:1px solid rgba(255,34,51,.3);padding:2px 10px;border-radius:2px;display:inline-flex;align-items:center;gap:5px;transition:background .3s;}
+.project-card:hover .project-badge{background:rgba(255,34,51,.2)}
+.project-links{display:flex;gap:7px;flex-shrink:0}
+.project-link{font-size:10px;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:3px 9px;border-radius:2px;transition:all .2s;white-space:nowrap;}
+.project-link:hover{color:var(--accent);border-color:var(--accent);background:rgba(255,34,51,.06)}
+.project-title{font-family:var(--sans);font-weight:600;font-size:1rem;color:#fff;margin-bottom:.45rem;transition:color .32s;}
+.project-desc{font-size:12px;color:var(--muted2);line-height:1.78;margin-bottom:.9rem}
+.project-tech{display:flex;flex-wrap:wrap;gap:5px}
+.tech-tag{font-size:10px;color:var(--blue);background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.18);padding:2px 7px;border-radius:2px;transition:all .25s;}
 
-/* PROFESSIONAL TRAINING */
-.training-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.training-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:4px;padding:1.2rem 1.4rem;
-  position:relative;overflow:hidden;
-  transition:border-color .25s,transform .25s;
-}
-.training-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--accent),transparent);
-  opacity:0;transition:opacity .25s;
-}
-.training-card:hover{border-color:rgba(255,34,51,.4);transform:translateY(-3px)}
-.training-card:hover::before{opacity:1}
-.training-icon{font-size:1.4rem;margin-bottom:.6rem}
-.training-name{font-family:var(--sans);font-weight:600;font-size:.9rem;color:#fff;margin-bottom:3px}
-.training-org{font-size:11px;color:var(--accent);margin-bottom:3px}
-.training-detail{font-size:11px;color:var(--muted);line-height:1.5}
+/* ── TRAINING ─────────────────────────────────────────────────────────── */
+.training-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.training-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.2rem 1.3rem;position:relative;overflow:hidden;transition:border-color .28s,transform .28s,box-shadow .28s;}
+.training-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .28s;}
+.training-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,34,51,.05),transparent 70%);opacity:0;transition:opacity .28s;pointer-events:none;}
+.training-card:hover{border-color:rgba(255,34,51,.4);transform:translateY(-4px);box-shadow:0 8px 28px rgba(255,34,51,.09);}
+.training-card:hover::before,.training-card:hover::after{opacity:1}
+.training-card:hover .training-name{color:var(--accent)}
+.training-icon{font-size:1.3rem;margin-bottom:.55rem}
+.training-name{font-family:var(--sans);font-weight:600;font-size:.88rem;color:#fff;margin-bottom:3px;transition:color .25s;}
+.training-org{font-size:10px;color:var(--accent);margin-bottom:5px}
+.training-detail{font-size:10.5px;color:var(--muted);line-height:1.55}
 
-/* EXPERIENCE */
+/* ── TIMELINE ─────────────────────────────────────────────────────────── */
 .timeline{position:relative;padding-left:2rem}
-.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
-.timeline-item{position:relative;margin-bottom:2rem}
-.timeline-item::before{
-  content:'';position:absolute;left:-2rem;top:6px;
-  width:8px;height:8px;border-radius:50%;
-  background:var(--bg);border:1px solid var(--accent);
-  box-shadow:0 0 6px rgba(255,34,51,.3);transform:translateX(-3.5px);
-}
-.timeline-header{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem;margin-bottom:.5rem}
-.timeline-role{font-family:var(--sans);font-weight:600;font-size:.95rem;color:#fff}
-.timeline-company{font-size:12px;color:var(--accent)}
-.timeline-date{font-size:11px;color:var(--muted);margin-left:auto}
-.timeline-desc{font-size:12px;color:var(--muted2);line-height:1.7;margin-bottom:.75rem}
-.timeline-skills{display:flex;flex-wrap:wrap;gap:6px}
-.skill-pill{font-size:10px;color:var(--muted2);background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:2px}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border) 5%,var(--border) 95%,transparent);}
+.timeline-item{position:relative;margin-bottom:1.8rem;transition:transform .22s;}
+.timeline-item:hover{transform:translateX(5px)}
+.timeline-item::before{content:'';position:absolute;left:-2rem;top:7px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1.5px solid var(--accent);box-shadow:0 0 6px rgba(255,34,51,.3);transform:translateX(-3.5px);transition:box-shadow .25s;}
+.timeline-item:hover::before{box-shadow:0 0 14px rgba(255,34,51,.6);}
+.timeline-header{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem;margin-bottom:.4rem}
+.timeline-role{font-family:var(--sans);font-weight:600;font-size:.93rem;color:#fff}
+.timeline-company{font-size:11px;color:var(--accent)}
+.timeline-date{font-size:10px;color:var(--muted);margin-left:auto}
+.timeline-desc{font-size:11.5px;color:var(--muted2);line-height:1.72;margin-bottom:.6rem}
+.timeline-skills{display:flex;flex-wrap:wrap;gap:5px}
+.skill-pill{font-size:9.5px;color:var(--muted2);background:var(--bg3);border:1px solid var(--border);padding:2px 7px;border-radius:2px;transition:all .2s;}
+.timeline-item:hover .skill-pill{border-color:var(--border2);color:var(--text)}
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.skill-group{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.25rem}
-.skill-group-title{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:1rem;
-  display:flex;align-items:center;gap:8px;
-}
+/* ── SKILLS ──────────────────────────────────────────────────────────── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.skill-group{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.2rem;transition:border-color .25s;}
+.skill-group:hover{border-color:var(--border2)}
+.skill-group-title{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
 .skill-group-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.skill-item{margin-bottom:.75rem}
+.skill-item{margin-bottom:.7rem}
 .skill-row{display:flex;justify-content:space-between;margin-bottom:4px}
-.skill-name{font-size:12px;color:var(--text)}
-.skill-pct{font-size:11px;color:var(--muted)}
+.skill-name{font-size:11.5px;color:var(--text)}
+.skill-pct{font-size:10px;color:var(--muted)}
 .skill-bar{height:2px;background:var(--border);border-radius:1px;overflow:hidden}
-.skill-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--accent),var(--blue));transition:width 1s ease}
+.skill-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--accent),var(--blue));transition:width 1.1s cubic-bezier(.4,0,.2,1);}
 
-/* CERTIFICATIONS */
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.cert-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:4px;padding:1.1rem;
-  display:flex;gap:12px;align-items:flex-start;transition:border-color .2s;
-}
-.cert-card:hover{border-color:var(--border2)}
-.cert-icon{width:36px;height:36px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.cert-title{font-size:13px;color:#fff;font-weight:500;margin-bottom:2px}
-.cert-issuer{font-size:11px;color:var(--accent)}
-.cert-date{font-size:11px;color:var(--muted);margin-top:2px}
+/* ── CERTS ───────────────────────────────────────────────────────────── */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.cert-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1rem;display:flex;gap:11px;align-items:flex-start;transition:all .25s;}
+.cert-card:hover{border-color:rgba(255,34,51,.35);transform:translateY(-2px);box-shadow:0 4px 18px rgba(255,34,51,.08);}
+.cert-icon{width:34px;height:34px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.cert-title{font-size:12px;color:#fff;font-weight:500;margin-bottom:2px}
+.cert-issuer{font-size:10px;color:var(--accent)}
+.cert-date{font-size:10px;color:var(--muted);margin-top:2px}
 
-/* CONTACT */
+/* ── CONTACT ─────────────────────────────────────────────────────────── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
 @media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
 .contact-text p{color:var(--muted2);font-size:13px;line-height:1.9;margin-bottom:1rem}
-.contact-links{display:flex;flex-direction:column;gap:10px}
-.contact-link{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 16px;background:var(--bg2);
-  border:1px solid var(--border);border-radius:4px;
-  text-decoration:none;color:var(--text);
-  transition:all .2s;font-size:13px;
-}
-.contact-link:hover{border-color:var(--accent);color:var(--accent);transform:translateX(4px)}
-.contact-link-icon{font-size:1.1rem;width:20px;text-align:center}
-.contact-link-label{font-size:11px;color:var(--muted);margin-left:auto}
+.contact-links{display:flex;flex-direction:column;gap:9px}
+.contact-link{display:flex;align-items:center;gap:11px;padding:11px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;text-decoration:none;color:var(--text);transition:all .22s;font-size:12.5px;}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);transform:translateX(6px);box-shadow:-3px 0 18px rgba(255,34,51,.1);}
+.contact-link-icon{font-size:1rem;width:18px;text-align:center;flex-shrink:0;}
+.contact-link-label{font-size:10px;color:var(--muted);margin-left:auto}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2rem 2.5rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:.05em}
+/* ── FOOTER ──────────────────────────────────────────────────────────── */
+footer{border-top:1px solid var(--border);padding:1.8rem 2.5rem;text-align:center;font-size:10px;color:var(--muted);letter-spacing:.05em}
 footer span{color:var(--accent)}
 
-/* FADE IN */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+/* ── SCROLL ANIMATIONS ───────────────────────────────────────────────── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
 .fade-in.visible{opacity:1;transform:none}
+.stagger > *{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.stagger.visible > *:nth-child(1){transition-delay:.04s}
+.stagger.visible > *:nth-child(2){transition-delay:.11s}
+.stagger.visible > *:nth-child(3){transition-delay:.18s}
+.stagger.visible > *:nth-child(4){transition-delay:.25s}
+.stagger.visible > *:nth-child(5){transition-delay:.32s}
+.stagger.visible > *:nth-child(6){transition-delay:.39s}
+.stagger.visible > *{opacity:1;transform:none}
 
-/* MOBILE */
-.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
-.hamburger span{width:20px;height:1px;background:var(--text);display:block;transition:.2s}
+/* ── MOBILE ──────────────────────────────────────────────────────────── */
 @media(max-width:768px){
-  .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);flex-direction:column;padding:1rem 2.5rem;gap:1rem}
+  .nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);flex-direction:column;padding:1rem 2rem;gap:.9rem}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
-  .hero-name{font-size:2.6rem}
+  #hero{flex-direction:column;justify-content:center;gap:2rem}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="navbar">
   <a class="nav-logo" href="#hero">AI<span>/</span></a>
   <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
@@ -345,7 +248,7 @@ footer span{color:var(--accent)}
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:1.5rem">
+  <div style="display:flex;align-items:center;gap:1.2rem">
     <div class="nav-status">Available for internships</div>
     <button class="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="menu">
       <span></span><span></span><span></span>
@@ -355,29 +258,32 @@ footer span{color:var(--accent)}
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-pre">$ whoami &gt; <span>abdelrahman_ihab.json</span></div>
-  <h1 class="hero-name">
-    Abdelrahman<br>
-    <em>Ihab</em>
-  </h1>
-  <p class="hero-tagline">
-    Computer Engineering student building systems that <strong>see</strong>, <strong>think</strong>, <strong>act</strong> — and stay <strong>secure</strong>.<br>
-    AI · Computer Vision · Cybersecurity · Robotics @ E-JUST
-  </p>
-  <div class="hero-tags">
-    <span class="tag tag-accent">AI Engineer</span>
-    <span class="tag tag-blue">Computer Vision</span>
-    <span class="tag tag-accent">Cybersecurity</span>
-    <span class="tag tag-amber">Robotics</span>
-    <span class="tag tag-purple">Deep Learning</span>
-  </div>
-  <div class="hero-cta">
-    <a href="#projects" class="btn btn-primary">▶ View Projects</a>
-    <a href="#contact" class="btn btn-outline">Get in Touch</a>
-    <a href="https://www.linkedin.com/in/abdelrahmanihab288" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+  <!-- LEFT — name + content -->
+  <div class="hero-left">
+    <div class="hero-pre">$ whoami &gt; <span>abdelrahman_ihab.json</span></div>
+    <h1 class="hero-name">
+      Abdelrahman<br>
+      <em>Ihab</em>
+    </h1>
+    <p class="hero-tagline">
+      Computer Engineering student building systems that <strong>see</strong>, <strong>think</strong>, <strong>act</strong> — and stay <strong>secure</strong>.<br>
+      AI · Computer Vision · Cybersecurity · Robotics @ E-JUST
+    </p>
+    <div class="hero-tags">
+      <span class="tag tag-accent">AI Engineer</span>
+      <span class="tag tag-blue">Computer Vision</span>
+      <span class="tag tag-accent">Cybersecurity</span>
+      <span class="tag tag-amber">Robotics</span>
+      <span class="tag tag-purple">Deep Learning</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">▶ View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      <a href="https://www.linkedin.com/in/abdelrahmanihab288" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
   </div>
 
-  <!-- Terminal — smaller -->
+  <!-- RIGHT — terminal, compact, no overlap -->
   <div class="hero-terminal">
     <div class="term-bar">
       <div class="term-dot" style="background:#ff5f57"></div>
@@ -386,62 +292,78 @@ footer span{color:var(--accent)}
       <span class="term-title">profile.json</span>
     </div>
     <div class="term-body">
-      <div class="term-line"><span class="term-prompt">$</span><span class="term-cmd">cat profile.json</span></div>
-      <div class="term-out" style="color:var(--border2)">{</div>
-      <div class="term-out">&nbsp;&nbsp;<span class="term-key">"name"</span>: <span class="term-val">"Abdelrahman Ihab"</span>,</div>
-      <div class="term-out">&nbsp;&nbsp;<span class="term-key">"uni"</span>: <span class="term-val">"E-JUST"</span>,</div>
-      <div class="term-out">&nbsp;&nbsp;<span class="term-key">"year"</span>: <span class="term-val">"3rd (2022–2027)"</span>,</div>
-      <div class="term-out">&nbsp;&nbsp;<span class="term-key">"domains"</span>: [</div>
-      <div class="term-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-val">"AI"</span>, <span class="term-val">"CV"</span>, <span class="term-val">"Cyber"</span>, <span class="term-val">"Robotics"</span></div>
-      <div class="term-out">&nbsp;&nbsp;],</div>
-      <div class="term-out">&nbsp;&nbsp;<span class="term-key">"award"</span>: <span class="term-val">"MATE ROV 2026 🏆 1st"</span>,</div>
-      <div class="term-out">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-val">"open_to_internships"</span></div>
-      <div class="term-out" style="color:var(--border2)">}</div>
-      <div class="term-line" style="margin-top:6px"><span class="term-prompt">$</span><span class="term-cursor"></span></div>
+      <div class="term-line"><span class="term-prompt">$</span><span class="term-cmd" id="typed-cmd"></span><span class="term-cursor" id="cmd-cursor"></span></div>
+      <div class="term-out" id="tl0" style="color:var(--border2)">{</div>
+      <div class="term-out" id="tl1">&nbsp;&nbsp;<span class="term-key">"name"</span>: <span class="term-val">"Abdelrahman Ihab"</span>,</div>
+      <div class="term-out" id="tl2">&nbsp;&nbsp;<span class="term-key">"uni"</span>: <span class="term-val">"E-JUST"</span>,</div>
+      <div class="term-out" id="tl3">&nbsp;&nbsp;<span class="term-key">"year"</span>: <span class="term-val">"3rd (2022–2027)"</span>,</div>
+      <div class="term-out" id="tl4">&nbsp;&nbsp;<span class="term-key">"domains"</span>: [</div>
+      <div class="term-out" id="tl5">&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-val">"AI"</span>, <span class="term-val">"CV"</span>, <span class="term-val">"Cyber"</span>, <span class="term-val">"Robotics"</span></div>
+      <div class="term-out" id="tl6">&nbsp;&nbsp;],</div>
+      <div class="term-out" id="tl7">&nbsp;&nbsp;<span class="term-key">"award"</span>: <span class="term-val">"MATE ROV 2026 🏆 1st"</span>,</div>
+      <div class="term-out" id="tl8">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-val">"open_to_internships"</span></div>
+      <div class="term-out" id="tl9" style="color:var(--border2)">}</div>
+      <div class="term-line" style="margin-top:6px;opacity:0" id="tl10"><span class="term-prompt">$</span><span class="term-cursor"></span></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT — professional redesign -->
 <section id="about">
   <div class="section-label">About me</div>
   <div class="about-grid fade-in">
-    <div class="about-text">
-      <p>I'm a <strong>Computer Engineering student at E-JUST</strong> (2022–2027) working at the intersection of AI, Computer Vision, Robotics, and Cybersecurity — not as separate interests, but as one engineering philosophy: intelligent systems need to be both capable and resilient.</p>
-      <p>I contributed as the <strong>Computer Vision engineer</strong> on an ROV project at Vortex Academy, where our team achieved <strong>1st Place at MATE ROV 2026</strong> Pioneer Level — along with Best Design and Best Presentation awards. My work included building a crab detection system for biodiversity analysis and a 3D coral reconstruction model.</p>
-      <p>In parallel, I've built AI-powered malware detection systems, real-time tennis analytics pipelines, and face detection platforms. On the security side, I hold training from <strong>IBM SkillsBuild</strong> and <strong>Fortinet via NTI</strong> (120 hrs, 93% score), with hands-on exposure to network administration and SOC operations.</p>
-      <p>Currently seeking <strong>internships and research opportunities</strong> in AI systems, computer vision, or cybersecurity.</p>
-    </div>
+    <!-- Left: narrative -->
     <div>
-      <div class="about-stats">
+      <p class="about-intro">Computer Engineering Student · E-JUST · Alexandria, Egypt</p>
+      <h2 class="about-headline">Building intelligent systems that are as <em>secure</em> as they are capable.</h2>
+      <div class="about-divider"></div>
+      <div class="about-body">
+        <p>I'm a third-year Computer Engineering student at <strong>Egypt-Japan University of Science and Technology (E-JUST)</strong>, specializing at the convergence of AI, Computer Vision, Cybersecurity, and Robotics. My approach treats these not as separate disciplines but as a unified engineering philosophy — every intelligent system I build is designed to be both powerful and resilient.</p>
+        <p>As Computer Vision engineer on <strong>Team Nautix</strong> at Vortex Academy, I led the full CV pipeline that contributed to our team securing <span class="highlight">1st Place at MATE ROV 2026 Pioneer Level</span>, alongside Best Design and Best Presentation awards — and a qualification for the international competition in Canada.</p>
+        <p>Beyond robotics, I've built an <strong>AI-powered malware detection system</strong> using CNN + BiLSTM + Grad-CAM, a <strong>real-time tennis analytics platform</strong> achieving 93.31% rally metric accuracy with YOLOv8, and a <strong>face detection system</strong> deployed as a live web application — each project bridging research-grade techniques with production deployment.</p>
+        <p>On the security side, I hold <strong>120 hours of Fortinet Cybersecurity training (93% score)</strong>, IBM SkillsBuild, and Google Cybersecurity credentials, supported by 5 industry internships spanning network administration, SOC operations, and enterprise IT.</p>
+      </div>
+    </div>
+    <!-- Right: stats + focus -->
+    <div class="about-right">
+      <div class="about-stats stagger">
         <div class="stat-card">
           <div class="stat-num">🏆 1st</div>
-          <div class="stat-label">MATE ROV 2026 Pioneer Level</div>
+          <div class="stat-label">MATE ROV 2026 Pioneer Level Regional</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">5+</div>
-          <div class="stat-label">Internships & industry roles</div>
+          <div class="stat-label">Industry internships across cyber & IT</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">99.5%</div>
-          <div class="stat-label">IGCSE · Alexandria Int'l School</div>
+          <div class="stat-label">IGCSE · Alexandria International School</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">93%</div>
-          <div class="stat-label">Fortinet Cybersecurity score</div>
+          <div class="stat-label">Fortinet Cybersecurity Program score</div>
+        </div>
+      </div>
+      <div class="about-focus">
+        <div class="about-focus-title">Current Focus Areas</div>
+        <div class="focus-items">
+          <div class="focus-item">AI-powered threat detection & malware classification</div>
+          <div class="focus-item">Real-time computer vision systems & object detection</div>
+          <div class="focus-item">Underwater robotics & autonomous perception</div>
+          <div class="focus-item">Network security, FortiGate & penetration testing</div>
+          <div class="focus-item">Embedded systems & hardware security (RFID)</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS — all full-width -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="section-label">Projects</div>
-  <div class="projects-list">
+  <div class="projects-list stagger">
 
-    <!-- ROV -->
-    <div class="project-card fade-in">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-badge">🏆 MATE ROV 2026 — 1st Place · Best Design · Best Presentation</div>
         <div class="project-links">
@@ -451,15 +373,11 @@ footer span{color:var(--accent)}
       <div class="project-title">Nautix — Underwater ROV · Computer Vision System</div>
       <div class="project-desc">Led Computer Vision for a competition ROV at Vortex Academy. Built a YOLOv8-based European Green Crab detection pipeline for biodiversity analysis with synthetic data augmentation to overcome small dataset constraints. Developed a 3D coral garden reconstruction model with real-world spatial calibration. System achieved &gt;95% trajectory continuity using linear interpolation for occluded frames.</div>
       <div class="project-tech">
-        <span class="tech-tag">YOLOv8</span><span class="tech-tag">Python</span>
-        <span class="tech-tag">OpenCV</span><span class="tech-tag">NumPy</span>
-        <span class="tech-tag">3D Reconstruction</span><span class="tech-tag">Synthetic Data</span>
-        <span class="tech-tag">Homography</span>
+        <span class="tech-tag">YOLOv8</span><span class="tech-tag">Python</span><span class="tech-tag">OpenCV</span><span class="tech-tag">NumPy</span><span class="tech-tag">3D Reconstruction</span><span class="tech-tag">Synthetic Data</span><span class="tech-tag">Homography</span>
       </div>
     </div>
 
-    <!-- Malware -->
-    <div class="project-card fade-in">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-badge">🛡️ AI · Cybersecurity · Deep Learning</div>
         <div class="project-links">
@@ -467,17 +385,13 @@ footer span{color:var(--accent)}
         </div>
       </div>
       <div class="project-title">Hybrid AI Malware Classification & Detection System</div>
-      <div class="project-desc">Multi-stage architecture for malware detection on the Microsoft BIG 2015 dataset (9 families, 10,868 EXE samples). Pipeline: binary visualization + CNN → opcode extraction + BiLSTM → hybrid fusion → Grad-CAM explainability. Built real-time Streamlit dashboard for scanning, prediction, and visualization with automated feature engineering and PE header inspection.</div>
+      <div class="project-desc">Multi-stage architecture on the Microsoft BIG 2015 dataset (9 families, 10,868 EXE samples). Pipeline: binary visualization + CNN → opcode extraction + BiLSTM → hybrid fusion → Grad-CAM explainability. Real-time Streamlit dashboard for scanning, prediction, and visualization with automated feature engineering and PE header inspection.</div>
       <div class="project-tech">
-        <span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span>
-        <span class="tech-tag">TensorFlow</span><span class="tech-tag">pefile</span>
-        <span class="tech-tag">Ghidra</span><span class="tech-tag">Streamlit</span>
-        <span class="tech-tag">Grad-CAM</span><span class="tech-tag">Python</span>
+        <span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">pefile</span><span class="tech-tag">Ghidra</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Grad-CAM</span><span class="tech-tag">Python</span>
       </div>
     </div>
 
-    <!-- Tennis -->
-    <div class="project-card fade-in">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-badge">🎾 Computer Vision · Sports Analytics</div>
         <div class="project-links">
@@ -485,98 +399,82 @@ footer span{color:var(--accent)}
         </div>
       </div>
       <div class="project-title">Tennis Match Analytics — End-to-End YOLOv8 Pipeline</div>
-      <div class="project-desc">Real-time tennis analytics system from a single fixed-camera video. YOLOv8 for player and ball detection, homography mapping for court-plane projection, and a custom CNN with keypoint regression for accurate court detection. Computes shot direction, player displacement, speed, and visual result overlays — a fine-tuned alternative to commercial systems.</div>
+      <div class="project-desc">Real-time tennis analytics from a single fixed-camera video. YOLOv8 for player and ball detection (+18% AP improvement), homography court mapping, and custom CNN with keypoint regression. Computes shot direction, player speed, displacement, and rally metrics at 93.31% accuracy — a cost-effective alternative to commercial tracking systems.</div>
       <div class="project-tech">
-        <span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span>
-        <span class="tech-tag">Homography</span><span class="tech-tag">CNN</span>
-        <span class="tech-tag">PyTorch</span><span class="tech-tag">Python</span>
+        <span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Homography</span><span class="tech-tag">CNN</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Python</span>
       </div>
     </div>
 
-    <!-- Face Detection -->
-    <div class="project-card fade-in">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-badge">👁️ Deep Learning · Computer Vision</div>
         <div class="project-links">
-          <a href="https://github.com/Abdelrahman-288/Tennis-Analysis" class="project-link" target="_blank">GitHub ↗</a>
+          <a href="https://github.com/Abdelrahman-288/Deep_Face_Detection_Project" class="project-link" target="_blank">GitHub ↗</a>
         </div>
       </div>
       <div class="project-title">Face Detection System — VGG16 + Gradio</div>
-      <div class="project-desc">Deep learning face detection system using a pretrained VGG16 backbone with custom bounding-box regression and classification heads. Full pipeline from dataset generation with OpenCV to model training, evaluation, and live Gradio web deployment. Trained with LabelMe-annotated data and extensive augmentation to improve robustness.</div>
+      <div class="project-desc">Deep learning face detection using pretrained VGG16 with custom bounding-box regression and classification heads. Full pipeline from dataset generation and LabelMe annotation to training, evaluation, and live Gradio web deployment supporting real-time webcam and image inference.</div>
       <div class="project-tech">
-        <span class="tech-tag">VGG16</span><span class="tech-tag">TensorFlow</span>
-        <span class="tech-tag">OpenCV</span><span class="tech-tag">LabelMe</span>
-        <span class="tech-tag">Gradio</span><span class="tech-tag">Python</span>
+        <span class="tech-tag">VGG16</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">OpenCV</span><span class="tech-tag">LabelMe</span><span class="tech-tag">Gradio</span><span class="tech-tag">Python</span>
       </div>
     </div>
 
-    <!-- Heart Disease -->
-    <div class="project-card fade-in">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-badge">🫀 Machine Learning · Healthcare AI</div>
         <div class="project-links">
           <a href="https://github.com/Abdelrahman-288/Heart_Disease_Prediction" class="project-link" target="_blank">GitHub ↗</a>
         </div>
       </div>
-      <div class="project-title">Heart Disease Prediction — ML Pipeline</div>
-      <div class="project-desc">Full ML pipeline on the UCI Heart Disease dataset. Data preprocessing, PCA-based feature selection, supervised models (Logistic Regression, Decision Trees, Random Forest, SVM) with hyperparameter tuning via GridSearchCV and RandomizedSearchCV. Includes unsupervised clustering analysis and an optional Streamlit UI for real-time prediction.</div>
+      <div class="project-title">Heart Disease Prediction — End-to-End ML Pipeline</div>
+      <div class="project-desc">Complete ML pipeline on the UCI Heart Disease dataset: preprocessing, PCA-based dimensionality reduction, feature selection, and benchmarking of Logistic Regression, Decision Trees, Random Forest, and SVM with GridSearchCV / RandomizedSearchCV tuning. Includes unsupervised clustering and Streamlit deployment.</div>
       <div class="project-tech">
-        <span class="tech-tag">Scikit-learn</span><span class="tech-tag">PCA</span>
-        <span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span>
-        <span class="tech-tag">Streamlit</span><span class="tech-tag">Python</span>
+        <span class="tech-tag">Scikit-learn</span><span class="tech-tag">PCA</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Python</span>
       </div>
     </div>
 
-    <!-- RFID -->
-    <div class="project-card fade-in">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-badge">🔐 Hardware Security · Embedded Systems</div>
       </div>
       <div class="project-title">Dual-Frequency RFID Defense Architecture</div>
-      <div class="project-desc">Graduation project: physical anti-cloning RFID system using dual HF (13.56 MHz) + UHF (860–960 MHz) chips on a single card with a dual-antenna reader and central collision-detection server. Features rolling session tokens, dynamic Δt fraud detection, distance bounding protocol, antenna separation, and graceful degradation. Demonstrated with Proxmark3.</div>
+      <div class="project-desc">Graduation project: physical anti-cloning RFID system using dual HF (13.56 MHz) + UHF (860–960 MHz) chips on a single card. Features rolling session tokens, dynamic Δt fraud detection, distance bounding protocol, and graceful degradation. Full attack and defense demonstration with Proxmark3.</div>
       <div class="project-tech">
-        <span class="tech-tag">RFID Security</span><span class="tech-tag">Proxmark3</span>
-        <span class="tech-tag">HF/UHF</span><span class="tech-tag">Embedded Systems</span>
-        <span class="tech-tag">Protocol Design</span>
+        <span class="tech-tag">RFID Security</span><span class="tech-tag">Proxmark3</span><span class="tech-tag">HF/UHF</span><span class="tech-tag">Embedded C</span><span class="tech-tag">Protocol Design</span>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- PROFESSIONAL TRAINING & PROGRAMS -->
+<!-- PROFESSIONAL TRAINING -->
 <section id="training">
   <div class="section-label">Professional Training & Programs</div>
-  <div class="training-grid fade-in">
-
+  <div class="training-grid stagger">
     <div class="training-card">
       <div class="training-icon">🟢</div>
       <div class="training-name">NVIDIA AI Program</div>
       <div class="training-org">ITI · NVIDIA</div>
       <div class="training-detail">Building LLM Applications with Prompt Engineering · AI for All: From Basics to Generative AI</div>
     </div>
-
     <div class="training-card">
       <div class="training-icon">💻</div>
       <div class="training-name">Embedded Linux</div>
       <div class="training-org">IEEE</div>
-      <div class="training-detail">Linux fundamentals, bash scripting, device drivers, Yocto Project, device trees, debugging tools for embedded systems development</div>
+      <div class="training-detail">Linux fundamentals, bash scripting, device drivers (GPIO/IOCTL), Yocto Project, Docker, GDB, Valgrind — Raspberry Pi hardware</div>
     </div>
-
     <div class="training-card">
       <div class="training-icon">🤖</div>
       <div class="training-name">AI & Machine Learning Foundations</div>
-      <div class="training-org">Sprints</div>
-      <div class="training-detail">40-hour program covering Python, NumPy, Pandas, Matplotlib, supervised & unsupervised ML. Capstone: Heart Disease Prediction pipeline</div>
+      <div class="training-org">Sprints · 40 hrs</div>
+      <div class="training-detail">Python, NumPy, Pandas, Matplotlib, supervised & unsupervised ML. Capstone: Heart Disease Prediction pipeline</div>
     </div>
-
     <div class="training-card">
       <div class="training-icon">🔶</div>
       <div class="training-name">Fortinet Cybersecurity Program</div>
-      <div class="training-org">NTI · ITIDA</div>
-      <div class="training-detail">120 hrs · 93% score. FortiGate, SD-WAN, SSL/IPSec VPN, IPS, NAT, cryptography, high availability, firewall policies</div>
+      <div class="training-org">NTI · ITIDA · 120 hrs · 93%</div>
+      <div class="training-detail">FortiGate, SD-WAN, SSL/IPSec VPN, IPS, NAT, cryptography, PKI, high availability, firewall policies</div>
     </div>
-
   </div>
 </section>
 
@@ -584,252 +482,114 @@ footer span{color:var(--accent)}
 <section id="experience">
   <div class="section-label">Experience</div>
   <div class="timeline fade-in">
-
     <div class="timeline-item">
       <div class="timeline-header">
         <span class="timeline-role">CV / ML Engineer</span>
         <span class="timeline-company">· Vortex Robotics</span>
         <span class="timeline-date">Jan 2026 – Present</span>
       </div>
-      <div class="timeline-desc">Computer Vision lead on MATE ROV 2026 team. Developed crab detection (YOLOv8) and 3D coral reconstruction for underwater biodiversity analysis. Team achieved 1st Place, Best Design, and Best Presentation at Pioneer Level regional competition.</div>
-      <div class="timeline-skills">
-        <span class="skill-pill">YOLOv8</span><span class="skill-pill">Computer Vision</span>
-        <span class="skill-pill">3D Reconstruction</span><span class="skill-pill">Python</span>
-      </div>
+      <div class="timeline-desc">Computer Vision lead on MATE ROV 2026 team (Team Nautix). Engineered YOLOv8 crab detection pipeline and 3D coral reconstruction for real underwater deployment. Team secured 1st Place, Best Design, and Best Presentation at Pioneer Level regional — qualified for Internationals in Canada.</div>
+      <div class="timeline-skills"><span class="skill-pill">YOLOv8</span><span class="skill-pill">Computer Vision</span><span class="skill-pill">3D Reconstruction</span><span class="skill-pill">Python</span></div>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-header">
-        <span class="timeline-role">Fortinet Cyber Security Trainer</span>
-        <span class="timeline-company">· NTI (National Telecom Institute)</span>
-        <span class="timeline-date">Aug 2025 – Sep 2025</span>
+        <span class="timeline-role">Fortinet Cyber Security Trainee</span>
+        <span class="timeline-company">· NTI · ITIDA</span>
+        <span class="timeline-date">Aug–Sep 2025</span>
       </div>
-      <div class="timeline-desc">120-hour intensive program. 30 hrs soft skills + 90 hrs technical: FortiGate setup, firewall policies, NAT, routing, VPN (SSL & IPSec), SD-WAN, cryptography, IPS, antivirus, web filtering, high availability. Achieved 93% overall score.</div>
-      <div class="timeline-skills">
-        <span class="skill-pill">FortiGate</span><span class="skill-pill">SD-WAN</span>
-        <span class="skill-pill">VPN</span><span class="skill-pill">Cryptography</span><span class="skill-pill">IPS/IDS</span>
-      </div>
+      <div class="timeline-desc">120-hour dual-track program (30 hrs soft skills + 90 hrs technical). Configured FortiGate firewalls, SD-WAN, SSL/IPSec VPN, IPS, High Availability clusters, and cryptography in simulated production environments. Achieved 93% overall score.</div>
+      <div class="timeline-skills"><span class="skill-pill">FortiGate</span><span class="skill-pill">SD-WAN</span><span class="skill-pill">VPN</span><span class="skill-pill">Cryptography</span><span class="skill-pill">IPS/IDS</span></div>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-header">
-        <span class="timeline-role">IT Internship Trainer</span>
+        <span class="timeline-role">IT Internship Trainee</span>
         <span class="timeline-company">· Ezz Dekheila Steel (EZDK)</span>
-        <span class="timeline-date">Jul 2025 – Aug 2025</span>
+        <span class="timeline-date">Jul–Aug 2025</span>
       </div>
-      <div class="timeline-desc">Two-week internship in the IT department. Enhanced skills in problem solving, networking, cybersecurity, and web development. Gained insights into IT operations within a leading industrial organization.</div>
-      <div class="timeline-skills">
-        <span class="skill-pill">Networking</span><span class="skill-pill">Cybersecurity</span>
-        <span class="skill-pill">Cloud Computing</span><span class="skill-pill">JavaScript</span>
-      </div>
+      <div class="timeline-desc">Enterprise IT exposure within one of Egypt's largest industrial organizations. Applied networking, cybersecurity, and web development skills to real production infrastructure.</div>
+      <div class="timeline-skills"><span class="skill-pill">Networking</span><span class="skill-pill">Cybersecurity</span><span class="skill-pill">Cloud Computing</span></div>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-header">
-        <span class="timeline-role">Internship Trainer</span>
+        <span class="timeline-role">Computer Engineer Intern</span>
         <span class="timeline-company">· PETROJET</span>
         <span class="timeline-date">Aug 2025</span>
       </div>
-      <div class="timeline-desc">Configured and troubleshot network devices in an enterprise environment. Gained hands-on exposure to SAP systems and team-based IT operations, building a foundation for professional readiness.</div>
-      <div class="timeline-skills">
-        <span class="skill-pill">SAP</span><span class="skill-pill">Networking</span><span class="skill-pill">Cybersecurity</span>
-      </div>
+      <div class="timeline-desc">Diagnosed and resolved network device failures; maintained enterprise system uptime. Gained hands-on SAP experience and collaborated with cross-functional IT teams.</div>
+      <div class="timeline-skills"><span class="skill-pill">SAP</span><span class="skill-pill">Networking</span><span class="skill-pill">Troubleshooting</span></div>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-header">
-        <span class="timeline-role">Network Administrator</span>
+        <span class="timeline-role">Network Administrator Intern</span>
         <span class="timeline-company">· DIECO (Dhanab Integrated Engineering)</span>
-        <span class="timeline-date">Jul 2024 – Sep 2024</span>
+        <span class="timeline-date">Jul–Sep 2024</span>
       </div>
-      <div class="timeline-desc">Setup, configuration, and troubleshooting of network infrastructure. Supported installation of network devices and maintained network performance to ensure stable and efficient operations.</div>
-      <div class="timeline-skills">
-        <span class="skill-pill">Network Administration</span><span class="skill-pill">VPN</span>
-        <span class="skill-pill">WAN</span><span class="skill-pill">Network Switches</span>
-      </div>
+      <div class="timeline-desc">Configured and maintained routers, switches, and VPN endpoints across multiple sites. Monitored WAN performance and ensured reliable network operations.</div>
+      <div class="timeline-skills"><span class="skill-pill">Network Admin</span><span class="skill-pill">VPN</span><span class="skill-pill">WAN</span><span class="skill-pill">Switches</span></div>
     </div>
-
     <div class="timeline-item">
       <div class="timeline-header">
-        <span class="timeline-role">Cyber Security Specialist</span>
+        <span class="timeline-role">Cybersecurity Intern</span>
         <span class="timeline-company">· Egyptian Ethylene & Derivatives (ETHYDCO)</span>
-        <span class="timeline-date">Jul 2024 – Aug 2024</span>
+        <span class="timeline-date">Jul 2024</span>
       </div>
-      <div class="timeline-desc">Identified and mitigated security vulnerabilities across industrial systems. Configured firewalls and access controls, contributed to incident monitoring and response, and supported compliance with cybersecurity best practices.</div>
-      <div class="timeline-skills">
-        <span class="skill-pill">Cybersecurity</span><span class="skill-pill">Firewall</span>
-        <span class="skill-pill">Incident Response</span><span class="skill-pill">Network Security</span>
-      </div>
+      <div class="timeline-desc">Identified and mitigated vulnerabilities in industrial systems. Implemented firewall rules, access controls, and vulnerability scanning procedures. Contributed to incident monitoring and response workflows.</div>
+      <div class="timeline-skills"><span class="skill-pill">Cybersecurity</span><span class="skill-pill">Firewall</span><span class="skill-pill">Incident Response</span><span class="skill-pill">Vuln Scanning</span></div>
     </div>
-
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-label">Skills</div>
-  <div class="skills-grid fade-in">
-
+  <div class="skills-grid stagger">
     <div class="skill-group">
       <div class="skill-group-title">AI / Machine Learning</div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Deep Learning (CNN, BiLSTM, VGG16)</span><span class="skill-pct">88%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="88%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Classical ML (Scikit-learn)</span><span class="skill-pct">85%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">TensorFlow / PyTorch</span><span class="skill-pct">82%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="82%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">LLM Prompt Engineering</span><span class="skill-pct">78%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="78%"></div></div>
-      </div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Deep Learning (CNN, BiLSTM, VGG16)</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="88%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Classical ML (Scikit-learn)</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">TensorFlow / PyTorch</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="82%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">LLM Prompt Engineering</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="78%"></div></div></div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Computer Vision</div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">YOLOv8 Detection & Tracking</span><span class="skill-pct">90%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="90%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">OpenCV & Image Processing</span><span class="skill-pct">88%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="88%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Homography & 3D Reconstruction</span><span class="skill-pct">80%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="80%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Seam Carving & Morphology</span><span class="skill-pct">75%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="75%"></div></div>
-      </div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">YOLOv8 Detection & Tracking</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="90%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">OpenCV & Image Processing</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="88%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Homography & 3D Reconstruction</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="80%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Seam Carving & Morphology</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="75%"></div></div></div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Cybersecurity</div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Network Security & FortiGate</span><span class="skill-pct">85%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Malware Analysis (Static/Dynamic)</span><span class="skill-pct">82%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="82%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Incident Response & SOC</span><span class="skill-pct">75%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="75%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Penetration Testing (in progress)</span><span class="skill-pct">60%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="60%"></div></div>
-      </div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Network Security & FortiGate</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Malware Analysis (Static/Dynamic)</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="82%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Incident Response & SOC</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="75%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Penetration Testing (in progress)</span><span class="skill-pct">60%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="60%"></div></div></div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Programming & Tools</div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">92%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="92%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">C / C++</span><span class="skill-pct">80%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="80%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Git / GitHub</span><span class="skill-pct">85%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Linux / Embedded Linux</span><span class="skill-pct">78%</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="78%"></div></div>
-      </div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="92%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">C / C++</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="80%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Git / GitHub</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Linux / Embedded Linux</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:0" data-w="78%"></div></div></div>
     </div>
-
   </div>
 </section>
 
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="section-label">Licenses & Certifications</div>
-  <div class="certs-grid fade-in">
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(255,71,87,.1)">🏆</div>
-      <div>
-        <div class="cert-title">MATE ROV 2026 — Pioneer Level Champion</div>
-        <div class="cert-issuer">MATE ROV Competition</div>
-        <div class="cert-date">Issued Apr 2026</div>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(79,195,247,.1)">🔵</div>
-      <div>
-        <div class="cert-title">IBM SkillsBuild Cybersecurity Certificate</div>
-        <div class="cert-issuer">IBM SkillsBuild</div>
-        <div class="cert-date">Issued Aug 2025 · 60+ hours</div>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(245,158,11,.1)">🔶</div>
-      <div>
-        <div class="cert-title">Fortinet Cybersecurity Program — 93%</div>
-        <div class="cert-issuer">NTI · ITIDA</div>
-        <div class="cert-date">Aug–Sep 2025 · 120 hours</div>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(255,34,51,.1)">🔴</div>
-      <div>
-        <div class="cert-title">Building LLM Apps with Prompt Engineering</div>
-        <div class="cert-issuer">NVIDIA</div>
-        <div class="cert-date">Issued Jul 2025</div>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(255,34,51,.1)">🔴</div>
-      <div>
-        <div class="cert-title">AI for All: From Basics to GenAI</div>
-        <div class="cert-issuer">NVIDIA</div>
-        <div class="cert-date">Issued Jul 2025</div>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(167,139,250,.1)">🟣</div>
-      <div>
-        <div class="cert-title">AI & Machine Learning Foundations</div>
-        <div class="cert-issuer">Sprints</div>
-        <div class="cert-date">Issued Aug 2025 · 40 hours</div>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(79,195,247,.1)">💻</div>
-      <div>
-        <div class="cert-title">Embedded Linux Course</div>
-        <div class="cert-issuer">IEEE</div>
-        <div class="cert-date">Issued Dec 2025</div>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon" style="background:rgba(255,71,87,.1)">🎓</div>
-      <div>
-        <div class="cert-title">Stanford CS229 — Machine Learning</div>
-        <div class="cert-issuer">Coursera · Stanford University</div>
-        <div class="cert-date">Completed</div>
-      </div>
-    </div>
-
+  <div class="certs-grid stagger">
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(255,71,87,.1)">🏆</div><div><div class="cert-title">MATE ROV 2026 — Pioneer Level Champion</div><div class="cert-issuer">MATE ROV Competition</div><div class="cert-date">Apr 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(255,34,51,.1)">🤖</div><div><div class="cert-title">Universal Robots UR20/30 eLearning</div><div class="cert-issuer">Universal Robots Academy</div><div class="cert-date">Apr 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(255,34,51,.1)">🔴</div><div><div class="cert-title">Play It Safe: Manage Security Risks</div><div class="cert-issuer">Google · Coursera</div><div class="cert-date">May 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(255,34,51,.1)">🔴</div><div><div class="cert-title">Foundations of Cybersecurity</div><div class="cert-issuer">Google · Coursera</div><div class="cert-date">Mar 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(79,195,247,.1)">💻</div><div><div class="cert-title">Linux Commands & Shell Scripting</div><div class="cert-issuer">IBM · Coursera</div><div class="cert-date">Feb 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(79,195,247,.1)">🔵</div><div><div class="cert-title">IBM SkillsBuild Cybersecurity Certificate</div><div class="cert-issuer">IBM SkillsBuild · 60+ hours</div><div class="cert-date">Aug 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(245,158,11,.1)">🔶</div><div><div class="cert-title">Fortinet Cybersecurity Program — 93%</div><div class="cert-issuer">NTI · ITIDA · 120 hours</div><div class="cert-date">Sep 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(255,34,51,.1)">🟢</div><div><div class="cert-title">Building LLM Apps with Prompt Engineering</div><div class="cert-issuer">NVIDIA</div><div class="cert-date">Jul 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(255,34,51,.1)">🟢</div><div><div class="cert-title">AI for All: From Basics to GenAI</div><div class="cert-issuer">NVIDIA</div><div class="cert-date">Jul 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(167,139,250,.1)">🟣</div><div><div class="cert-title">AI & Machine Learning Foundations</div><div class="cert-issuer">Sprints · 40 hours</div><div class="cert-date">Aug 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(79,195,247,.1)">💻</div><div><div class="cert-title">Embedded Linux Course</div><div class="cert-issuer">IEEE</div><div class="cert-date">Dec 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon" style="background:rgba(255,71,87,.1)">🎓</div><div><div class="cert-title">Stanford CS229 — Machine Learning</div><div class="cert-issuer">Coursera · Stanford University</div><div class="cert-date">Completed</div></div></div>
   </div>
 </section>
 
@@ -840,66 +600,88 @@ footer span{color:var(--accent)}
     <div class="contact-text">
       <p>I'm actively seeking <strong>internships and research opportunities</strong> in AI, Computer Vision, and Cybersecurity. If you're building something interesting — or hiring someone who can — let's talk.</p>
       <p>Based in <strong>Alexandria, Egypt</strong>. Open to remote and on-site roles across Egypt and internationally.</p>
-      <div style="margin-top:1.5rem">
-        <div class="hero-tags">
-          <span class="tag tag-accent">Open to internships</span>
-          <span class="tag tag-blue">Research roles</span>
-          <span class="tag tag-amber">Remote friendly</span>
-        </div>
+      <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:7px">
+        <span class="tag tag-accent">Open to internships</span>
+        <span class="tag tag-blue">Research roles</span>
+        <span class="tag tag-amber">Remote friendly</span>
       </div>
     </div>
     <div class="contact-links">
       <a href="mailto:abdelrahmanihab2882004@gmail.com" class="contact-link">
-        <span class="contact-link-icon">✉</span>
-        <span>abdelrahmanihab2882004@gmail.com</span>
-        <span class="contact-link-label">Email ↗</span>
+        <span class="contact-link-icon">✉</span><span>abdelrahmanihab2882004@gmail.com</span><span class="contact-link-label">Email ↗</span>
       </a>
       <a href="https://www.linkedin.com/in/abdelrahmanihab288" class="contact-link" target="_blank">
-        <span class="contact-link-icon">in</span>
-        <span>linkedin.com/in/abdelrahmanihab288</span>
-        <span class="contact-link-label">LinkedIn ↗</span>
+        <span class="contact-link-icon">in</span><span>linkedin.com/in/abdelrahmanihab288</span><span class="contact-link-label">LinkedIn ↗</span>
       </a>
       <a href="https://github.com/Abdelrahman-288" class="contact-link" target="_blank">
-        <span class="contact-link-icon">⌥</span>
-        <span>github.com/Abdelrahman-288</span>
-        <span class="contact-link-label">GitHub ↗</span>
+        <span class="contact-link-icon">⌥</span><span>github.com/Abdelrahman-288</span><span class="contact-link-label">GitHub ↗</span>
       </a>
       <a href="https://www.ejust.edu.eg" class="contact-link" target="_blank">
-        <span class="contact-link-icon">🎓</span>
-        <span>Egypt-Japan University of Science & Technology</span>
-        <span class="contact-link-label">E-JUST ↗</span>
+        <span class="contact-link-icon">🎓</span><span>Egypt-Japan University of Science & Technology</span><span class="contact-link-label">E-JUST ↗</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>Built by <span>Abdelrahman Ihab</span> · AI · CV · Cybersecurity · Robotics · Alexandria, EG · 2026</p>
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      e.target.querySelectorAll('.skill-fill').forEach(bar => {
-        bar.style.width = bar.dataset.w;
-      });
+// ── TYPING ANIMATION ────────────────────────────────────────────────────
+const cmdEl = document.getElementById('typed-cmd');
+const cmdCursor = document.getElementById('cmd-cursor');
+const fullCmd = 'cat profile.json';
+let i = 0;
+function typeCmd() {
+  if (i <= fullCmd.length) {
+    cmdEl.textContent = fullCmd.slice(0, i++);
+    setTimeout(typeCmd, 60);
+  } else {
+    cmdCursor.style.display = 'none';
+    // reveal lines one by one
+    for (let n = 0; n <= 10; n++) {
+      const el = document.getElementById('tl' + n);
+      if (el) setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }, n * 110);
     }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  }
+}
+// start typing after terminal slides in
+setTimeout(typeCmd, 1300);
 
+// ── INTERSECTION OBSERVER ───────────────────────────────────────────────
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    // animate skill bars
+    e.target.querySelectorAll('.skill-fill').forEach(bar => {
+      setTimeout(() => { bar.style.width = bar.dataset.w; }, 120);
+    });
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.fade-in, .stagger').forEach(el => io.observe(el));
+
+// ── ACTIVE NAV LINK ─────────────────────────────────────────────────────
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
+const navbar   = document.getElementById('navbar');
+
 window.addEventListener('scroll', () => {
+  // scrolled class for shadow
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  // active link
   let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
-  });
-});
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 70) current = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+}, { passive: true });
+
+// ── MOBILE NAV ──────────────────────────────────────────────────────────
 navLinks.forEach(a => a.addEventListener('click', () => {
   document.getElementById('nav-links').classList.remove('open');
 }));
