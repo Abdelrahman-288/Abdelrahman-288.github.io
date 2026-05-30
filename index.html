@@ -125,13 +125,15 @@ section{
 .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
 
 /* ══════════════════════════════════════════════════════
-   HERO — FIX: use visibility + transform instead of
-   opacity-0 initial state so content always shows
+   HERO — content visible immediately at the top
    ══════════════════════════════════════════════════════ */
 #hero{
   min-height:100vh;
-  display:flex;flex-direction:column;justify-content:center;
-  padding-top:54px;position:relative;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  /* 54px nav + 5vh breathing room so name is immediately visible */
+  padding-top:calc(54px + 7vh);
+  padding-bottom:5vh;
+  position:relative;
 }
 
 /* Key fix: start visible, animate from below */
@@ -503,15 +505,38 @@ section{
   width:100%;aspect-ratio:3/2;
   display:flex;align-items:center;justify-content:center;
   font-size:2.2rem;border-bottom:1px solid var(--border);
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;cursor:pointer;
 }
-.cert-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+/* PDF/image rendered inside the mini thumbnail */
+.cert-thumb object,
+.cert-thumb img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  border:none;pointer-events:none;
+}
+/* scale-up click hint */
+.cert-thumb-expand{
+  position:absolute;top:6px;right:8px;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(5,8,12,.75);color:var(--muted2);
+  padding:2px 7px;border-radius:2px;font-family:var(--mono);
+  z-index:3;border:1px solid var(--border);
+  pointer-events:none;
+}
+.cert-thumb:hover .cert-overlay{opacity:1;}
+/* fallback emoji shown when no file loaded yet */
+.cert-thumb-icon{
+  font-size:2.4rem;z-index:1;position:relative;
+  transition:opacity .25s;
+}
+.cert-thumb.has-file .cert-thumb-icon{display:none;}
 .cert-overlay{
-  position:absolute;inset:0;background:rgba(5,8,12,.78);
+  position:absolute;inset:0;background:rgba(5,8,12,.72);
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .28s;
   font-size:11px;color:#fff;letter-spacing:.12em;text-transform:uppercase;
-  gap:6px;
+  gap:6px;z-index:4;
 }
 .cert-img-info{padding:.85rem 1rem;}
 .cert-img-title{font-size:clamp(11px,1.2vw,12.5px);color:#fff;font-weight:500;margin-bottom:3px;line-height:1.35;}
@@ -521,8 +546,12 @@ section{
   position:absolute;bottom:6px;right:8px;
   font-size:8px;letter-spacing:.12em;text-transform:uppercase;
   background:rgba(255,34,51,.85);color:#fff;
-  padding:2px 7px;border-radius:2px;font-family:var(--mono);font-weight:500;z-index:2;
+  padding:2px 7px;border-radius:2px;font-family:var(--mono);font-weight:500;z-index:5;
 }
+
+/* Awards folder slideshow image display */
+.slide img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.slide .slide-pdf-preview{width:100%;height:100%;border:none;pointer-events:none;}
 
 /* ── CERT MODAL (PDF embed) ────────────────────────── */
 .cert-modal-backdrop{
@@ -1001,261 +1030,7 @@ footer span{color:var(--accent)}
 <section id="certifications">
   <div class="section-label">Licenses &amp; Certifications</div>
 
-  <!-- ▸ 3 filters only -->
-  <div class="cert-filters">
-    <button class="cert-filter-btn active" data-filter="all">All</button>
-    <button class="cert-filter-btn" data-filter="robotics">Robotics</button>
-    <button class="cert-filter-btn" data-filter="aiml">AI / ML</button>
-    <button class="cert-filter-btn" data-filter="cybersecurity">Cybersecurity</button>
-  </div>
 
-  <!-- ── Robotics ──────────────────────────────────── -->
-  <div class="cert-group" data-category="robotics">
-    <div class="cert-group-header">
-      <div class="cert-group-label">MATE ROV Competition</div>
-      <div class="cert-group-title">MATE ROV 2026 — Pioneer Level Champion</div>
-      <div class="cert-group-sub">1st Place · Best Design · Best Presentation · International Qualifier</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/MATE_ROV_2026_Champion.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('MATE ROV 2026 — 1st Place Champion','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_Champion.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.12),var(--bg3));">
-          🏆<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">MATE ROV 2026 — Pioneer Level Champion</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-      <!-- FILE NAME → Certifications/MATE_ROV_2026_BestDesign.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Best Design Award — MATE ROV 2026','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_BestDesign.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.12),var(--bg3));">
-          🎨<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Best Design Award — MATE ROV 2026</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-      <!-- FILE NAME → Certifications/MATE_ROV_2026_BestPresentation.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Best Presentation Award — MATE ROV 2026','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_BestPresentation.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.12),var(--bg3));">
-          🎤<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Best Presentation Award — MATE ROV 2026</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="robotics">
-    <div class="cert-group-header">
-      <div class="cert-group-label">Universal Robots Academy</div>
-      <div class="cert-group-title">UR20/30 eLearning Certification</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/Universal_Robots_UR20_30.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Universal Robots UR20/30 eLearning','Universal Robots Academy','Apr 2026','Certifications/Universal_Robots_UR20_30.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.08),var(--bg3));">
-          🤖<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Universal Robots UR20/30 eLearning</div>
-          <div class="cert-img-issuer">Universal Robots Academy</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Cybersecurity ─────────────────────────────── -->
-  <div class="cert-group" data-category="cybersecurity">
-    <div class="cert-group-header">
-      <div class="cert-group-label">Google · Coursera</div>
-      <div class="cert-group-title">Google Cybersecurity Program</div>
-      <div class="cert-group-sub">Two course completions in 2026</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/Google_PlayItSafe_Security.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Play It Safe: Manage Security Risks','Google · Coursera','May 2026','Certifications/Google_PlayItSafe_Security.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.1),var(--bg3));">
-          🔴<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Play It Safe: Manage Security Risks</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">May 2026</div>
-        </div>
-      </div>
-      <!-- FILE NAME → Certifications/Google_Foundations_Cybersecurity.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Foundations of Cybersecurity','Google · Coursera','Mar 2026','Certifications/Google_Foundations_Cybersecurity.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.1),var(--bg3));">
-          🔴<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Foundations of Cybersecurity</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">Mar 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="cybersecurity">
-    <div class="cert-group-header">
-      <div class="cert-group-label">IBM · Coursera</div>
-      <div class="cert-group-title">IBM Linux &amp; Cybersecurity</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/IBM_Linux_Shell_Scripting.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Linux Commands & Shell Scripting','IBM · Coursera','Feb 2026','Certifications/IBM_Linux_Shell_Scripting.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.1),var(--bg3));">
-          💻<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Linux Commands &amp; Shell Scripting</div>
-          <div class="cert-img-issuer">IBM · Coursera</div>
-          <div class="cert-img-date">Feb 2026</div>
-        </div>
-      </div>
-      <!-- FILE NAME → Certifications/IBM_SkillsBuild_Cybersecurity.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('IBM SkillsBuild Cybersecurity Certificate','IBM SkillsBuild · 60+ hours','Aug 2025','Certifications/IBM_SkillsBuild_Cybersecurity.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.1),var(--bg3));">
-          🔵<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">IBM SkillsBuild Cybersecurity Certificate</div>
-          <div class="cert-img-issuer">IBM SkillsBuild · 60+ hours</div>
-          <div class="cert-img-date">Aug 2025</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="cybersecurity">
-    <div class="cert-group-header">
-      <div class="cert-group-label">NTI · ITIDA</div>
-      <div class="cert-group-title">Fortinet Cybersecurity Program — 93%</div>
-      <div class="cert-group-sub">120 hours · FortiGate, SD-WAN, VPN, IPS, Cryptography</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/Fortinet_Cybersecurity_Program.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Fortinet Cybersecurity Program — 93%','NTI · ITIDA · 120 hours','Sep 2025','Certifications/Fortinet_Cybersecurity_Program.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,.1),var(--bg3));">
-          🔶<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Fortinet Cybersecurity Program — 93%</div>
-          <div class="cert-img-issuer">NTI · ITIDA · 120 hours</div>
-          <div class="cert-img-date">Sep 2025</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── AI / ML ───────────────────────────────────── -->
-  <div class="cert-group" data-category="aiml">
-    <div class="cert-group-header">
-      <div class="cert-group-label">NVIDIA · ITI</div>
-      <div class="cert-group-title">NVIDIA AI Program</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/NVIDIA_LLM_PromptEngineering.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Building LLM Apps with Prompt Engineering','NVIDIA','Jul 2025','Certifications/NVIDIA_LLM_PromptEngineering.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.1),var(--bg3));">
-          🟢<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Building LLM Apps with Prompt Engineering</div>
-          <div class="cert-img-issuer">NVIDIA</div>
-          <div class="cert-img-date">Jul 2025</div>
-        </div>
-      </div>
-      <!-- FILE NAME → Certifications/NVIDIA_AI_For_All.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('AI for All: From Basics to GenAI','NVIDIA','Jul 2025','Certifications/NVIDIA_AI_For_All.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.1),var(--bg3));">
-          🟢<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">AI for All: From Basics to GenAI</div>
-          <div class="cert-img-issuer">NVIDIA</div>
-          <div class="cert-img-date">Jul 2025</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="aiml">
-    <div class="cert-group-header">
-      <div class="cert-group-label">Sprints · Coursera · Stanford</div>
-      <div class="cert-group-title">Machine Learning &amp; AI Foundations</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/Sprints_AI_ML_Foundations.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('AI & Machine Learning Foundations','Sprints · 40 hours','Aug 2025','Certifications/Sprints_AI_ML_Foundations.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(167,139,250,.1),var(--bg3));">
-          🟣<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">AI &amp; Machine Learning Foundations</div>
-          <div class="cert-img-issuer">Sprints · 40 hours</div>
-          <div class="cert-img-date">Aug 2025</div>
-        </div>
-      </div>
-      <!-- FILE NAME → Certifications/Stanford_CS229_ML.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Stanford CS229 — Machine Learning','Coursera · Stanford University','Completed','Certifications/Stanford_CS229_ML.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,71,87,.1),var(--bg3));">
-          🎓<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Stanford CS229 — Machine Learning</div>
-          <div class="cert-img-issuer">Coursera · Stanford University</div>
-          <div class="cert-img-date">Completed</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="aiml">
-    <div class="cert-group-header">
-      <div class="cert-group-label">IEEE</div>
-      <div class="cert-group-title">Embedded Linux Course</div>
-    </div>
-    <div class="cert-img-grid">
-      <!-- FILE NAME → Certifications/IEEE_Embedded_Linux.pdf -->
-      <div class="cert-img-card" onclick="openCertModal('Embedded Linux Course','IEEE','Dec 2025','Certifications/IEEE_Embedded_Linux.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.1),var(--bg3));">
-          💻<span class="pdf-chip">PDF</span>
-          <div class="cert-overlay">📄 View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Embedded Linux Course</div>
-          <div class="cert-img-issuer">IEEE</div>
-          <div class="cert-img-date">Dec 2025</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
 
 <!-- ══ CERT MODAL (PDF embed) ════════════════════════ -->
 <div class="cert-modal-backdrop" id="certModal" onclick="closeCertModal(event)">
