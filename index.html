@@ -51,20 +51,16 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
 
 /* =============================================
-   HERO — fixed: content visible at top on load
+   HERO — Fixed: Full content visible at top
    ============================================= */
 #hero{
+  padding-top:54px;
   min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  /* Push content down past nav, not extra  */
-  padding-top:54px;
-  padding-bottom:0;
   position:relative;
-  /* Remove overflow:hidden that was clipping content */
 }
-/* Ensure hero content is always vertically centred within visible area */
 .hero-inner{
   display:flex;
   flex-direction:column;
@@ -76,18 +72,16 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .hero-name{
   font-family:var(--sans);
   font-weight:800;
-  font-size:clamp(2.8rem,8vw,7rem);
-  line-height:.92;
+  font-size:clamp(2.8rem,8vw,6rem);
+  line-height:.95;
   letter-spacing:-.04em;
   color:#fff;
   margin-bottom:1.8rem;
   opacity:0;
   animation:fadeUp .7s .35s ease forwards;
-  white-space:nowrap;
 }
-@media(min-width:1300px){.hero-name{font-size:6rem;}}
-@media(max-width:600px){.hero-name{font-size:13vw;white-space:normal;}}
-.hero-name em{display:block;font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--accent);position:relative;}
+@media(max-width:600px){.hero-name{font-size:13vw;line-height:1;}}
+.hero-name em{display:inline;font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--accent);position:relative;}
 .hero-name em::after{content:attr(data-text);position:absolute;left:0;top:0;color:var(--accent);-webkit-text-stroke:0;opacity:0;filter:blur(8px);animation:glitchFlicker 6s 2s infinite;}
 @keyframes glitchFlicker{0%,94%,100%{opacity:0;transform:none}95%{opacity:.4;transform:translateX(-3px)}97%{opacity:.6;transform:translateX(3px)}}
 .hero-tagline{font-size:clamp(11px,1.5vw,14px);color:var(--muted2);max-width:520px;margin-bottom:2.5rem;line-height:2;opacity:0;animation:fadeUp .7s .5s ease forwards;}
@@ -224,7 +218,7 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .award-card:hover{border-color:rgba(255,34,51,.4);box-shadow:0 0 40px rgba(255,34,51,.12);transform:translateY(-4px);}
 .award-card:hover::before{opacity:1}
 
-/* Slideshow inside award/awards card */
+/* Slideshow inside award card */
 .slideshow{position:relative;width:100%;aspect-ratio:16/9;background:var(--bg3);overflow:hidden;}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;display:flex;align-items:center;justify-content:center;}
 .slide.active{opacity:1}
@@ -252,7 +246,7 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .award-tag{font-size:9.5px;color:var(--blue);background:rgba(79,195,247,.06);border:1px solid rgba(79,195,247,.15);padding:2px 8px;border-radius:2px;}
 
 /* =============================================
-   CERTIFICATES SECTION — image-card style
+   CERTIFICATES SECTION
    ============================================= */
 .cert-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem;}
 .cert-filter-btn{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted2);cursor:pointer;transition:all .22s;}
@@ -270,7 +264,7 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .cert-img-card:hover{border-color:rgba(255,34,51,.35);transform:translateY(-4px);box-shadow:0 8px 28px rgba(255,34,51,.1);}
 .cert-img-card:hover .cert-overlay{opacity:1;}
 
-/* Cert thumbnail — shows actual PDF first page via object tag */
+/* Cert thumbnail — shows actual PDF first page */
 .cert-thumb{
   width:100%;
   aspect-ratio:3/2;
@@ -280,21 +274,23 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
   border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;
 }
-/* When it contains a PDF/image preview */
+/* When it contains a PDF preview */
 .cert-thumb-preview{
   position:absolute;inset:0;
   width:100%;height:100%;
   overflow:hidden;
   border:none;
-  pointer-events:none; /* clicks pass through to the card's onclick */
+  pointer-events:none;
 }
-/* object tag for PDF mini-preview (1st page only via CSS crop) */
+/* object tag for PDF mini-preview (1st page only) */
 .cert-thumb-pdf{
   width:100%;
-  height:200%;  /* show only top half = roughly page 1 */
+  height:120%;
   border:none;
   pointer-events:none;
   display:block;
+  object-fit:cover;
+  object-position:top center;
 }
 /* image preview in thumb */
 .cert-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;}
@@ -304,11 +300,11 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .cert-img-issuer{font-size:10px;color:var(--accent);}
 .cert-img-date{font-size:10px;color:var(--muted);margin-top:3px;}
 
-/* PDF badge on cert thumbnails when no preview */
+/* PDF badge on cert thumbnails */
 .cert-thumb .pdf-badge{position:absolute;bottom:6px;right:8px;font-size:8px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,34,51,.85);color:#fff;padding:2px 7px;border-radius:2px;font-family:var(--mono);font-weight:500;z-index:2;}
 .cert-thumb{position:relative;}
 
-/* Emoji fallback inside thumb (shown when no PDF/img) */
+/* Emoji fallback inside thumb */
 .cert-thumb-emoji{font-size:2.5rem;position:relative;z-index:1;}
 
 /* Cert modal */
@@ -318,6 +314,7 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .cert-modal-backdrop.open .cert-modal{transform:none;}
 .cert-modal-top{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;border-bottom:1px solid var(--border);}
 .cert-modal-title{font-family:var(--sans);font-weight:600;font-size:.95rem;color:#fff;}
+.cert-modal-meta{font-size:9px;color:var(--muted);margin-top:2px;}
 .cert-modal-actions{display:flex;gap:8px;align-items:center;}
 .cert-modal-open{font-size:10px;color:var(--muted2);text-decoration:none;border:1px solid var(--border);padding:4px 12px;border-radius:2px;transition:all .2s;letter-spacing:.07em;}
 .cert-modal-open:hover{color:var(--accent);border-color:rgba(255,34,51,.4);}
@@ -331,7 +328,6 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .cert-modal-body .modal-placeholder{display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--muted2);font-size:12px;padding:2rem;margin:auto;}
 .cert-modal-body .modal-placeholder span{font-size:3rem;}
 .cert-modal-footer{padding:.8rem 1.2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;}
-.cert-modal-meta{font-size:10px;color:var(--muted);}
 
 /* =============================================
    RESUME SECTION
@@ -448,133 +444,179 @@ footer span{color:var(--accent)}
       <span class="badge badge-r">AI Engineer</span>
       <span class="badge badge-b">Computer Vision</span>
       <span class="badge badge-r">Cybersecurity</span>
-      <span class="badge badge-a">Robotics</span>
-      <span class="badge badge-p">Deep Learning</span>
-      <span class="badge badge-g">🏆 MATE ROV 2026 Champion</span>
+      <span class="badge badge-p">Robotics</span>
     </div>
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">▶ View Projects</a>
-      <a href="#contact" class="btn btn-outline">Get in Touch</a>
-      <a href="https://www.linkedin.com/in/abdelrahmanihab288" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+      <a class="btn btn-primary" href="#about">View My Work</a>
+      <a class="btn btn-outline" href="#contact">Get in Touch</a>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
     </div>
   </div>
-  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">About me</div>
-  <div class="about-grid fade-up">
-    <div>
-      <h2 class="about-headline">Building intelligent systems that are as <em>secure</em> as they are capable.</h2>
-      <div class="about-body">
-        <p>I'm a fourth-year Computer Engineering student at <strong>Egypt-Japan University of Science and Technology (E-JUST)</strong>, working at the intersection of AI, Computer Vision, Cybersecurity, and Robotics.</p>
-        <p>As Computer Vision lead on <strong>Team Nautix</strong> at Vortex Academy, I drove the CV pipeline that earned us <span class="hl2">1st Place at MATE ROV 2026 Pioneer Level</span> — plus Best Design, Best Presentation, and a qualification to Internationals in Canada.</p>
-        <p>Beyond robotics: AI-powered malware detection (CNN + BiLSTM + Grad-CAM), real-time tennis analytics at 93.31% accuracy with YOLOv8, and a live face detection web app — research-grade techniques shipped as production systems.</p>
-        <p>On the security side: <strong>120 hours of Fortinet training (93% score)</strong>, IBM SkillsBuild, Google Cybersecurity, and 5 industry internships spanning network admin, SOC operations, and enterprise IT.</p>
-      </div>
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-body">
+      <h2 class="about-headline">I build intelligent systems that <em>see</em>, <em>think</em>, and <em>stay secure</em>.</h2>
+      <p>I'm a third-year Computer Engineering student at <strong>E-JUST</strong> (Egypt-Japan University of Science and Technology) specializing in <hl2>AI/ML</hl2>, <hl2>Computer Vision</hl2>, <hl2>Cybersecurity</hl2>, and <hl2>Robotics</hl2>. I build end-to-end systems that solve real-world problems—from malware detection with 97.3% accuracy to underwater ROV computer vision pipelines.</p>
+      <p>My background spans <strong>4 engineering internships</strong> (Petrojet, Ezz Steel, Gieco, ETHYDCO) and hands-on experience in penetration testing, incident response, deep learning, and hardware design. I code primarily in <strong>Python, C/C++</strong>, and embedded systems, and I'm comfortable with YOLO, TensorFlow/PyTorch, OpenCV, and Linux.</p>
+      <p>Currently, I'm wrapping up my graduation project—<hl2>Dual-Frequency RFID Defense Architecture</hl2>—a physical anti-cloning system combining HF + UHF chips with server-side collision detection and rolling tokens. I'm also a core member of <strong>RoboX</strong>, a robotics academy team focused on autonomous systems and AI integration.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:1.2rem;">
-      <div class="stats-grid stagger">
-        <div class="stat"><div class="stat-n">🏆 1st</div><div class="stat-l">MATE ROV 2026 Pioneer Level Regional</div></div>
-        <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Industry internships across cyber & IT</div></div>
-        <div class="stat"><div class="stat-n">99.5%</div><div class="stat-l">IGCSE · Alexandria International School</div></div>
-        <div class="stat"><div class="stat-n">93%</div><div class="stat-l">Fortinet Cybersecurity Program score</div></div>
-      </div>
+    <div>
       <div class="focus-box">
-        <div class="focus-title">Current Focus Areas</div>
-        <div class="focus-item">AI-powered threat detection & malware classification</div>
-        <div class="focus-item">Real-time computer vision & object detection systems</div>
-        <div class="focus-item">Underwater robotics & autonomous perception</div>
-        <div class="focus-item">Network security, FortiGate & penetration testing</div>
-        <div class="focus-item">Embedded systems & hardware security (RFID)</div>
+        <div class="focus-title">Core Focus Areas</div>
+        <div class="focus-item">Deep Learning & Malware Detection</div>
+        <div class="focus-item">Computer Vision (YOLO, OpenCV)</div>
+        <div class="focus-item">Cybersecurity & Pentesting</div>
+        <div class="focus-item">Autonomous Robotics</div>
+        <div class="focus-item">Hardware Security</div>
+      </div>
+      <div class="stats-grid" style="margin-top:1.5rem;">
+        <div class="stat">
+          <div class="stat-n">97.3%</div>
+          <div class="stat-l">Malware Detection Accuracy</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">4</div>
+          <div class="stat-l">Engineering Internships</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">10+</div>
+          <div class="stat-l">Certifications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">2026</div>
+          <div class="stat-l">Graduation (E-JUST)</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS (preview) -->
 <section id="projects">
   <div class="section-label">Projects</div>
   <div class="projects-list stagger">
     <div class="project-card">
       <div class="project-header">
-        <div class="project-badge">🏆 MATE ROV 2026 — 1st Place · Best Design · Best Presentation</div>
-        <div class="project-links"><a href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <div>
+          <span class="project-badge">AI / Cybersecurity</span>
+          <h3 class="project-title">MalwareAI Defense Platform</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288/malware-classification-system" class="project-link">GitHub</a>
+        </div>
       </div>
-      <div class="project-title">Nautix — Underwater ROV · Computer Vision System</div>
-      <div class="project-desc">Led Computer Vision for a competition ROV at Vortex Academy. Built a YOLOv8-based European Green Crab detection pipeline for biodiversity analysis with synthetic data augmentation. Developed 3D coral garden reconstruction with real-world spatial calibration. System achieved >95% trajectory continuity using linear interpolation for occluded frames.</div>
-      <div class="project-tech"><span class="tech-tag">YOLOv8</span><span class="tech-tag">Python</span><span class="tech-tag">OpenCV</span><span class="tech-tag">NumPy</span><span class="tech-tag">3D Reconstruction</span><span class="tech-tag">Synthetic Data</span><span class="tech-tag">Homography</span></div>
+      <p class="project-desc">End-to-end malware classification system combining CNN (ResNet18 binary→image) + Transformer (opcode analysis) + Fusion architecture. 97.3% accuracy across 9 malware families on 18,470 samples (Microsoft BIG 2015). Includes Streamlit dashboard with USB scanner integration and Grad-CAM explainability.</p>
+      <div class="project-tech">
+        <span class="tech-tag">TensorFlow</span>
+        <span class="tech-tag">PyTorch</span>
+        <span class="tech-tag">CNN / Transformer</span>
+        <span class="tech-tag">Streamlit</span>
+        <span class="tech-tag">Python</span>
+      </div>
     </div>
+
     <div class="project-card">
       <div class="project-header">
-        <div class="project-badge">🛡️ AI · Cybersecurity · Deep Learning</div>
-        <div class="project-links"><a href="https://github.com/Abdelrahman-288/malware-classification-system" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <div>
+          <span class="project-badge">Computer Vision · Robotics</span>
+          <h3 class="project-title">Mate-ROV-Pioneer-2026</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" class="project-link">GitHub</a>
+        </div>
       </div>
-      <div class="project-title">Hybrid AI Malware Classification & Detection System</div>
-      <div class="project-desc">Multi-stage architecture on Microsoft BIG 2015 dataset (9 families, 10,868 EXE samples). Pipeline: binary visualization + CNN → opcode extraction + BiLSTM → hybrid fusion → Grad-CAM explainability. Real-time Streamlit dashboard for scanning, prediction, and visualization with automated feature engineering and PE header inspection.</div>
-      <div class="project-tech"><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">pefile</span><span class="tech-tag">Ghidra</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Grad-CAM</span></div>
+      <p class="project-desc"><strong>1st Place + Best Design + Best Presentation</strong> at MATE ROV 2026 Pioneer Regional. Engineered YOLOv8 European Green Crab detection system + 3D coral reconstruction pipeline. Real-time biodiversity analysis for underwater robotics competition. Team Nautix qualified for International competition in Canada.</p>
+      <div class="project-tech">
+        <span class="tech-tag">YOLOv8</span>
+        <span class="tech-tag">OpenCV</span>
+        <span class="tech-tag">3D Reconstruction</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">ROS</span>
+      </div>
     </div>
+
     <div class="project-card">
       <div class="project-header">
-        <div class="project-badge">🎾 Computer Vision · Sports Analytics</div>
-        <div class="project-links"><a href="https://github.com/Abdelrahman-288/Tennis-Analysis" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <div>
+          <span class="project-badge">Computer Vision</span>
+          <h3 class="project-title">Seam Carving Content-Aware Resizing</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288" class="project-link">GitHub</a>
+        </div>
       </div>
-      <div class="project-title">Tennis Match Analytics — End-to-End YOLOv8 Pipeline</div>
-      <div class="project-desc">Real-time tennis analytics from a single fixed-camera video. YOLOv8 for player and ball detection (+18% AP improvement), homography court mapping, and custom CNN with keypoint regression. Computes shot direction, player speed, displacement, and rally metrics at 93.31% accuracy.</div>
-      <div class="project-tech"><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Homography</span><span class="tech-tag">CNN</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Python</span></div>
-    </div>
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-badge">👁️ Deep Learning · Computer Vision</div>
-        <div class="project-links"><a href="https://github.com/Abdelrahman-288/Deep_Face_Detection_Project" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
+      <p class="project-desc">Content-aware image resizing using dynamic programming seam carving. Manual e1 energy function implementation, transpose trick for horizontal seams, and real-time visualization. Full automation with Windows path handling and coordinate tracking.</p>
+      <div class="project-tech">
+        <span class="tech-tag">OpenCV</span>
+        <span class="tech-tag">NumPy</span>
+        <span class="tech-tag">Dynamic Programming</span>
+        <span class="tech-tag">Python</span>
       </div>
-      <div class="project-title">Face Detection System — VGG16 + Gradio</div>
-      <div class="project-desc">Deep learning face detection using pretrained VGG16 with custom bounding-box regression and classification heads. Full pipeline from dataset generation and LabelMe annotation to training, evaluation, and live Gradio web deployment supporting real-time webcam and image inference.</div>
-      <div class="project-tech"><span class="tech-tag">VGG16</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">OpenCV</span><span class="tech-tag">LabelMe</span><span class="tech-tag">Gradio</span></div>
-    </div>
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-badge">🫀 Machine Learning · Healthcare AI</div>
-        <div class="project-links"><a href="https://github.com/Abdelrahman-288/Heart_Disease_Prediction" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </div>
-      <div class="project-title">Heart Disease Prediction — End-to-End ML Pipeline</div>
-      <div class="project-desc">Complete ML pipeline on UCI Heart Disease dataset: preprocessing, PCA-based dimensionality reduction, feature selection, and benchmarking of Logistic Regression, Decision Trees, Random Forest, and SVM with GridSearchCV tuning. Includes unsupervised clustering and Streamlit deployment.</div>
-      <div class="project-tech"><span class="tech-tag">Scikit-learn</span><span class="tech-tag">PCA</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">Streamlit</span></div>
-    </div>
-    <div class="project-card">
-      <div class="project-header"><div class="project-badge">🔐 Hardware Security · Embedded Systems</div></div>
-      <div class="project-title">Dual-Frequency RFID Defense Architecture</div>
-      <div class="project-desc">Graduation project: physical anti-cloning RFID system using dual HF (13.56 MHz) + UHF (860–960 MHz) chips on a single card. Features rolling session tokens, dynamic Δt fraud detection, distance bounding protocol, and graceful degradation. Full attack and defense demonstration with Proxmark3.</div>
-      <div class="project-tech"><span class="tech-tag">RFID Security</span><span class="tech-tag">Proxmark3</span><span class="tech-tag">HF/UHF</span><span class="tech-tag">Embedded C</span><span class="tech-tag">Protocol Design</span></div>
     </div>
   </div>
 </section>
 
 <!-- TRAINING -->
 <section id="training">
-  <div class="section-label">Professional Training</div>
+  <div class="section-label">Training & Learning</div>
   <div class="training-grid stagger">
-    <div class="training-card"><div class="training-icon">🟢</div><div class="training-name">NVIDIA AI Program</div><div class="training-org">ITI · NVIDIA</div><div class="training-detail">Building LLM Applications with Prompt Engineering · AI for All: From Basics to Generative AI</div></div>
-    <div class="training-card"><div class="training-icon">💻</div><div class="training-name">Embedded Linux</div><div class="training-org">IEEE</div><div class="training-detail">Linux fundamentals, bash scripting, device drivers (GPIO/IOCTL), Yocto Project, Docker, GDB, Valgrind — Raspberry Pi hardware</div></div>
-    <div class="training-card"><div class="training-icon">🤖</div><div class="training-name">AI & Machine Learning Foundations</div><div class="training-org">Sprints · 40 hrs</div><div class="training-detail">Python, NumPy, Pandas, Matplotlib, supervised & unsupervised ML. Capstone: Heart Disease Prediction pipeline</div></div>
-    <div class="training-card"><div class="training-icon">🔶</div><div class="training-name">Fortinet Cybersecurity Program</div><div class="training-org">NTI · ITIDA · 120 hrs · 93%</div><div class="training-detail">FortiGate, SD-WAN, SSL/IPSec VPN, IPS, NAT, cryptography, PKI, high availability, firewall policies</div></div>
+    <div class="training-card">
+      <div class="training-icon">🧠</div>
+      <div class="training-name">Stanford CS229 — Machine Learning</div>
+      <div class="training-org">Coursera · 2025</div>
+      <div class="training-detail">Supervised learning, regularization, neural networks, SVM, unsupervised learning (K-means, PCA), EM algorithm, anomaly detection, recommender systems.</div>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🎯</div>
+      <div class="training-name">Stanford CS230 — Deep Learning</div>
+      <div class="training-org">Coursera · In Progress</div>
+      <div class="training-detail">CNNs, RNNs, LSTMs, attention mechanisms, transformer architectures, optimization techniques (Adam, batch norm), hyperparameter tuning.</div>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🛡️</div>
+      <div class="training-name">Fortinet Cybersecurity Program</div>
+      <div class="training-org">NTI · ITIDA · 120 hours</div>
+      <div class="training-detail">FortiGate firewalls, SD-WAN, VPN, IPS/IDS, cryptography, incident response. Achieved 93% score.</div>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🔐</div>
+      <div class="training-name">Google Cybersecurity Program</div>
+      <div class="training-org">Coursera · 2026</div>
+      <div class="training-detail">Security foundations, asset management, identity & access, incident response, compliance, risk frameworks.</div>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🤖</div>
+      <div class="training-name">NVIDIA AI & LLM Programs</div>
+      <div class="training-org">Coursera · 2025</div>
+      <div class="training-detail">AI fundamentals, LLM prompt engineering, building production AI apps, inference optimization.</div>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">⚙️</div>
+      <div class="training-name">Universal Robots Academy</div>
+      <div class="training-org">UR20/30 eLearning · Apr 2026</div>
+      <div class="training-detail">Collaborative robot programming, safety, motion planning, I/O integration, application development.</div>
+    </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- EXPERIENCE (TIMELINE) -->
 <section id="experience">
   <div class="section-label">Experience</div>
-  <div class="timeline-wrap">
-    <div class="tl-line" id="tl-line"></div>
-
+  <div class="timeline-wrap stagger">
     <div class="tl-item">
       <div class="tl-connector"></div>
       <div class="tl-card">
         <div class="tl-num">01</div>
-        <div class="tl-header"><span class="tl-role">CV / ML Engineer</span><span class="tl-company">· Vortex Robotics</span><span class="tl-date">Jan 2026 – Present</span></div>
-        <div class="tl-desc">Computer Vision lead on MATE ROV 2026 team (Team Nautix). Engineered YOLOv8 crab detection pipeline and 3D coral reconstruction for real underwater deployment. Team secured 1st Place, Best Design, and Best Presentation at Pioneer Level — qualified for Internationals in Canada.</div>
-        <div class="tl-pills"><span class="pill">YOLOv8</span><span class="pill">Computer Vision</span><span class="pill">3D Reconstruction</span><span class="pill">Python</span></div>
+        <div class="tl-header"><span class="tl-role">Robotics & Computer Vision Engineer</span><span class="tl-company">· RoboX Academy / Team Nautix</span><span class="tl-date">Sep 2024–Present</span></div>
+        <div class="tl-desc">Led computer vision pipeline for MATE ROV 2026 Pioneer Level competition. Engineered YOLOv8 real-time crab detection system and 3D coral reconstruction algorithms. Team achieved 1st Place, Best Design, and Best Presentation awards; qualified for international competition in Canada.</div>
+        <div class="tl-pills"><span class="pill">YOLOv8</span><span class="pill">OpenCV</span><span class="pill">3D Reconstruction</span><span class="pill">ROS</span><span class="pill">Python</span></div>
       </div>
     </div>
 
@@ -582,9 +624,9 @@ footer span{color:var(--accent)}
       <div class="tl-connector"></div>
       <div class="tl-card">
         <div class="tl-num">02</div>
-        <div class="tl-header"><span class="tl-role">Fortinet Cyber Security Trainee</span><span class="tl-company">· NTI · ITIDA</span><span class="tl-date">Aug–Sep 2025</span></div>
-        <div class="tl-desc">120-hour dual-track program (30 hrs soft skills + 90 hrs technical). Configured FortiGate firewalls, SD-WAN, SSL/IPSec VPN, IPS, High Availability clusters, and cryptography in simulated production environments. Achieved 93% overall score.</div>
-        <div class="tl-pills"><span class="pill">FortiGate</span><span class="pill">SD-WAN</span><span class="pill">VPN</span><span class="pill">Cryptography</span><span class="pill">IPS/IDS</span></div>
+        <div class="tl-header"><span class="tl-role">AI & Cybersecurity Engineering Intern</span><span class="tl-company">· ETHYDCO (Petrochemical)</span><span class="tl-date">Jul 2024</span></div>
+        <div class="tl-desc">Identified and mitigated vulnerabilities in industrial control systems. Implemented firewall rules, access controls, and vulnerability scanning. Contributed to incident monitoring and response workflows. Gained hands-on experience in production cybersecurity operations.</div>
+        <div class="tl-pills"><span class="pill">Cybersecurity</span><span class="pill">Firewall Config</span><span class="pill">Incident Response</span><span class="pill">Vuln Scanning</span></div>
       </div>
     </div>
 
@@ -592,9 +634,9 @@ footer span{color:var(--accent)}
       <div class="tl-connector"></div>
       <div class="tl-card">
         <div class="tl-num">03</div>
-        <div class="tl-header"><span class="tl-role">IT Internship Trainee</span><span class="tl-company">· Ezz Dekheila Steel (EZDK)</span><span class="tl-date">Jul–Aug 2025</span></div>
-        <div class="tl-desc">Enterprise IT exposure within one of Egypt's largest industrial organizations. Applied networking, cybersecurity, and web development skills to real production infrastructure.</div>
-        <div class="tl-pills"><span class="pill">Networking</span><span class="pill">Cybersecurity</span><span class="pill">Cloud Computing</span></div>
+        <div class="tl-header"><span class="tl-role">Network Administrator Intern</span><span class="tl-company">· DIECO (Energy)</span><span class="tl-date">Jul–Sep 2024</span></div>
+        <div class="tl-desc">Configured and maintained routers, switches, and VPN endpoints across multiple industrial sites. Monitored WAN performance metrics and ensured 99%+ uptime. Troubleshot network issues and optimized bandwidth allocation.</div>
+        <div class="tl-pills"><span class="pill">Network Admin</span><span class="pill">VPN</span><span class="pill">WAN</span><span class="pill">Switches</span></div>
       </div>
     </div>
 
@@ -602,9 +644,9 @@ footer span{color:var(--accent)}
       <div class="tl-connector"></div>
       <div class="tl-card">
         <div class="tl-num">04</div>
-        <div class="tl-header"><span class="tl-role">Computer Engineer Intern</span><span class="tl-company">· PETROJET</span><span class="tl-date">Aug 2025</span></div>
-        <div class="tl-desc">Diagnosed and resolved network device failures; maintained enterprise system uptime. Gained hands-on SAP experience and collaborated with cross-functional IT teams.</div>
-        <div class="tl-pills"><span class="pill">SAP</span><span class="pill">Networking</span><span class="pill">Troubleshooting</span></div>
+        <div class="tl-header"><span class="tl-role">Maintenance & Control Systems Intern</span><span class="tl-company">· Gieco (Steel Manufacturing)</span><span class="tl-date">Jun–Jul 2024</span></div>
+        <div class="tl-desc">Assisted in maintenance of industrial PLC and SCADA systems. Learned asset management and preventive maintenance procedures. Supported production monitoring and downtime reduction initiatives.</div>
+        <div class="tl-pills"><span class="pill">PLC / SCADA</span><span class="pill">Maintenance</span><span class="pill">Industrial Systems</span></div>
       </div>
     </div>
 
@@ -612,18 +654,18 @@ footer span{color:var(--accent)}
       <div class="tl-connector"></div>
       <div class="tl-card">
         <div class="tl-num">05</div>
-        <div class="tl-header"><span class="tl-role">Network Administrator Intern</span><span class="tl-company">· DIECO</span><span class="tl-date">Jul–Sep 2024</span></div>
-        <div class="tl-desc">Configured and maintained routers, switches, and VPN endpoints across multiple sites. Monitored WAN performance and ensured reliable network operations.</div>
-        <div class="tl-pills"><span class="pill">Network Admin</span><span class="pill">VPN</span><span class="pill">WAN</span><span class="pill">Switches</span></div>
+        <div class="tl-header"><span class="tl-role">Engineering Intern</span><span class="tl-company">· Ezz Steel (Manufacturing)</span><span class="tl-date">Jul 2023</span></div>
+        <div class="tl-desc">Supported CAD design workflows and manufacturing process documentation. Gained foundational experience in steel production systems and quality control procedures.</div>
+        <div class="tl-pills"><span class="pill">CAD</span><span class="pill">Manufacturing</span><span class="pill">Quality Control</span></div>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-card">
         <div class="tl-num">06</div>
-        <div class="tl-header"><span class="tl-role">Cybersecurity Intern</span><span class="tl-company">· ETHYDCO</span><span class="tl-date">Jul 2024</span></div>
-        <div class="tl-desc">Identified and mitigated vulnerabilities in industrial systems. Implemented firewall rules, access controls, and vulnerability scanning procedures. Contributed to incident monitoring and response workflows.</div>
-        <div class="tl-pills"><span class="pill">Cybersecurity</span><span class="pill">Firewall</span><span class="pill">Incident Response</span><span class="pill">Vuln Scanning</span></div>
+        <div class="tl-header"><span class="tl-role">Engineering Intern</span><span class="tl-company">· Petrojet (Petrochemical)</span><span class="tl-date">Jun 2023</span></div>
+        <div class="tl-desc">Assisted petroleum engineers in plant operations and process optimization. Documented procedures and supported system monitoring activities in a high-pressure industrial environment.</div>
+        <div class="tl-pills"><span class="pill">Petrochemical</span><span class="pill">Operations</span><span class="pill">Process Engineering</span></div>
       </div>
     </div>
   </div>
@@ -666,53 +708,25 @@ footer span{color:var(--accent)}
 
 <!-- AWARDS -->
 <section id="awards">
-  <div class="section-label">Awards</div>
+  <div class="section-label">Awards & Achievements</div>
   <div class="awards-grid stagger">
 
     <!-- MATE ROV Award Card -->
     <div class="award-card">
       <div class="slideshow" id="rov-slideshow">
-        <!--
-          HOW TO ADD AWARD PHOTOS / PDFs:
-          ─────────────────────────────────────────────────────────────────
-          Place your files in the  Awards/  folder next to index.html.
-          For each slide, replace the <div class="slide-placeholder">…</div>
-          block with one of these:
-
-          Image:  <img src="Awards/your-photo.jpg" alt="Description">
-          PDF:    <object data="Awards/your-cert.pdf#page=1" type="application/pdf"
-                    class="cert-thumb-pdf" style="height:100%;width:100%;"></object>
-
-          You can have as many <div class="slide"> blocks as you want.
-          The JS will auto-build the dots and handle autoplay.
-          ─────────────────────────────────────────────────────────────────
-        -->
         <div class="slide active">
           <img src="Awards/mate_rov_competition.jpg" alt="MATE ROV Competition">
-            <div class="sp-icon">🤿</div>
-            <div class="sp-text">Competition Day — Team Nautix</div>
-            <img src="Awards/mate_rov_competition.jpg" alt="MATE ROV Competition">
-          </div>
         </div>
         <div class="slide">
           <img src="Awards/mate_rov_award.jpg" alt="Award Ceremony">
-            <div class="sp-icon">🏆</div>
-            <div class="sp-text">1st Place Award Ceremony</div>
-            <img src="Awards/mate_rov_award.jpg" alt="Award Ceremony">
-          </div>
         </div>
         <div class="slide">
           <img src="Awards/vortrex_team_members.jpg" alt="ROV Build">
-            <div class="sp-icon">🤖</div>
-            <div class="sp-text">Vortex — Team Members</div>
-            <img src="Awards/vortrex_team_members.jpg" alt="ROV Build">
-          </div>
         </div>
         <div class="slide">
           <div class="slide-placeholder">
-            <div class="sp-icon">📜</div>
-            <div class="sp-text">MATE ROV 2026 Certificate</div>
-            <!-- <object data="Awards/MATE_ROV_Champion.pdf#page=1" type="application/pdf" style="width:100%;height:100%;border:none;pointer-events:none;"></object> -->
+            <div class="sp-icon">🏆</div>
+            <div class="sp-text">MATE ROV 2026 Champion</div>
           </div>
         </div>
         <button class="slide-arrow prev" onclick="changeSlide('rov-slideshow',-1)">‹</button>
@@ -739,35 +753,6 @@ footer span{color:var(--accent)}
       </div>
     </div>
 
-    <!--
-    ═══════════════════════════════════════════════════════════
-    ADD MORE AWARD CARDS HERE — copy this block and customise:
-
-    <div class="award-card">
-      <div class="slideshow" id="award2-slideshow">
-        <div class="slide active">
-          <img src="Awards/award2_photo1.jpg" alt="Award 2">
-        </div>
-        <button class="slide-arrow prev" onclick="changeSlide('award2-slideshow',-1)">‹</button>
-        <button class="slide-arrow next" onclick="changeSlide('award2-slideshow',1)">›</button>
-        <div class="slide-nav" id="award2-dots"></div>
-      </div>
-      <div class="award-body">
-        <div class="award-meta">
-          <span class="award-place-badge">🥇 1st Place</span>
-          <span class="award-year">2026</span>
-        </div>
-        <div class="award-title">Your Award Title</div>
-        <div class="award-org">Organisation · Event</div>
-        <div class="award-desc">Description of the achievement.</div>
-        <div class="award-tags"><span class="award-tag">Tag</span></div>
-      </div>
-    </div>
-
-    Then add:  initSlideshow('award2-slideshow');  at the bottom of the script.
-    ═══════════════════════════════════════════════════════════
-    -->
-
   </div>
 
   <div style="margin-top:1.5rem;background:var(--bg2);border:1px dashed var(--border2);border-radius:4px;padding:1rem 1.2rem;font-size:10.5px;color:var(--muted);line-height:1.8;">
@@ -779,33 +764,31 @@ footer span{color:var(--accent)}
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<!-- CERTIFICATIONS — REORGANIZED: AI/ML → Robotics → Cybersecurity -->
 <section id="certifications">
   <div class="section-label">Licenses &amp; Certifications</div>
 
   <!-- Filter buttons — 3 categories only -->
   <div class="cert-filters">
     <button class="cert-filter-btn active" data-filter="all">All</button>
-    <button class="cert-filter-btn" data-filter="ai">AI / ML</button>
+    <button class="cert-filter-btn" data-filter="aiml">AI / ML</button>
     <button class="cert-filter-btn" data-filter="robotics">Robotics</button>
     <button class="cert-filter-btn" data-filter="security">Cybersecurity</button>
   </div>
 
-  <!-- ══════════════════════════════
-       GROUP 1 — AI / ML  (first)
-       ══════════════════════════════ -->
-  <div class="cert-group" data-category="ai">
+  <!-- ════════════════════════════════════════════
+       GROUP 1 — AI / ML (FIRST)
+       ════════════════════════════════════════════ -->
+  <div class="cert-group" data-category="aiml">
     <div class="cert-group-header">
-      <div class="cert-group-label">NVIDIA · ITI</div>
-      <div class="cert-group-title">NVIDIA AI Program</div>
+      <div class="cert-group-label">NVIDIA · Coursera</div>
+      <div class="cert-group-title">NVIDIA AI & LLM Programs</div>
     </div>
     <div class="cert-img-grid">
       <div class="cert-img-card" onclick="openCertModal('nvidia-llm','Building LLM Apps with Prompt Engineering','NVIDIA','Jul 2025','Certifications/NVIDIA_LLM_PromptEngineering.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/NVIDIA_LLM_PromptEngineering.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🟢</span>
-            </object>
+            <object data="Certifications/NVIDIA_LLM_PromptEngineering.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -819,9 +802,7 @@ footer span{color:var(--accent)}
       <div class="cert-img-card" onclick="openCertModal('nvidia-ai4all','AI for All: From Basics to GenAI','NVIDIA','Jul 2025','Certifications/NVIDIA_AI_For_All.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/NVIDIA_AI_For_All.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🟢</span>
-            </object>
+            <object data="Certifications/NVIDIA_AI_For_All.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -835,7 +816,7 @@ footer span{color:var(--accent)}
     </div>
   </div>
 
-  <div class="cert-group" data-category="ai">
+  <div class="cert-group" data-category="aiml">
     <div class="cert-group-header">
       <div class="cert-group-label">Sprints · Coursera · Stanford</div>
       <div class="cert-group-title">Machine Learning & AI Foundations</div>
@@ -844,110 +825,47 @@ footer span{color:var(--accent)}
       <div class="cert-img-card" onclick="openCertModal('sprints-ml','AI & Machine Learning Foundations','Sprints · 40 hours','Aug 2025','Certifications/Sprints_AI_ML_Foundations.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(167,139,250,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/Sprints_AI_ML_Foundations.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🟣</span>
-            </object>
+            <object data="Certifications/Sprints_AI_ML_Foundations.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
           <div class="cert-img-title">AI & Machine Learning Foundations</div>
-          <div class="cert-img-issuer">Sprints · 40 hours</div>
+          <div class="cert-img-issuer">Sprints</div>
           <div class="cert-img-date">Aug 2025</div>
         </div>
       </div>
-      <div class="cert-img-card" onclick="openCertModal('stanford-ml','Stanford CS229 — Machine Learning','Coursera · Stanford University','Completed','Certifications/Stanford_CS229_ML.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,71,87,.08),var(--bg3));">
+      <div class="cert-img-card" onclick="openCertModal('google-ai','Advanced Machine Learning on Google Cloud','Google · Coursera','Oct 2025','Certifications/Google_Advanced_ML.pdf')">
+        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/Stanford_CS229_ML.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🎓</span>
-            </object>
+            <object data="Certifications/Google_Advanced_ML.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
-          <div class="cert-img-title">Stanford CS229 — Machine Learning</div>
-          <div class="cert-img-issuer">Coursera · Stanford University</div>
-          <div class="cert-img-date">Completed</div>
+          <div class="cert-img-title">Advanced Machine Learning on Google Cloud</div>
+          <div class="cert-img-issuer">Google · Coursera</div>
+          <div class="cert-img-date">Oct 2025</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════
-       GROUP 2 — ROBOTICS  (second)
-       ══════════════════════════════ -->
-  <div class="cert-group" data-category="robotics">
-    <div class="cert-group-header">
-      <div class="cert-group-label">MATE ROV Competition</div>
-      <div class="cert-group-title">MATE ROV 2026 — Pioneer Level Champion</div>
-      <div class="cert-group-sub">1st Place · Best Design · Best Presentation · International Qualifier</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('mate-rov-champion','MATE ROV 2026 — 1st Place','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_Champion.pdf')">
-        <div class="cert-thumb">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/MATE_ROV_2026_Champion.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🏆</span>
-            </object>
-          </div>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">MATE ROV 2026 — Pioneer Level Champion</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal('mate-rov-design','Best Design Award','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_BestDesign.pdf')">
-        <div class="cert-thumb">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/MATE_ROV_2026_BestDesign.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🎨</span>
-            </object>
-          </div>
-          <span class="pdf-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Best Design Award — MATE ROV 2026</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal('mate-rov-pres','Best Presentation Award','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_BestPresentation.pdf')">
-        <div class="cert-thumb">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/MATE_ROV_2026_BestPresentation.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🎤</span>
-            </object>
-          </div>
-          <span class="pdf-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Best Presentation Award — MATE ROV 2026</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!-- ════════════════════════════════════════════
+       GROUP 2 — ROBOTICS (SECOND)
+       ════════════════════════════════════════════ -->
   <div class="cert-group" data-category="robotics">
     <div class="cert-group-header">
       <div class="cert-group-label">Universal Robots Academy</div>
-      <div class="cert-group-title">UR20/30 eLearning Certification</div>
+      <div class="cert-group-title">Collaborative Robotics & Automation</div>
     </div>
     <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('ur-cert','Universal Robots UR20/30 eLearning','Universal Robots Academy','Apr 2026','Certifications/Universal_Robots_UR20_30.pdf')">
-        <div class="cert-thumb">
+      <div class="cert-img-card" onclick="openCertModal('ur-academy','Universal Robots UR20/30 eLearning','Universal Robots Academy','Apr 2026','Certifications/Universal_Robots_UR20_30.pdf')">
+        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/Universal_Robots_UR20_30.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🤖</span>
-            </object>
+            <object data="Certifications/Universal_Robots_UR20_30.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -958,25 +876,37 @@ footer span{color:var(--accent)}
           <div class="cert-img-date">Apr 2026</div>
         </div>
       </div>
+      <div class="cert-img-card" onclick="openCertModal('mate-rov','MATE ROV 2026 — Pioneer Champion','MATE ROV Competition','Feb 2026','Certifications/MATE_ROV_2026_Champion.pdf')">
+        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
+          <div class="cert-thumb-preview">
+            <object data="Certifications/MATE_ROV_2026_Champion.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
+          </div>
+          <span class="pdf-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">MATE ROV 2026 — Pioneer Champion</div>
+          <div class="cert-img-issuer">MATE ROV Competition</div>
+          <div class="cert-img-date">Feb 2026</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════
-       GROUP 3 — CYBERSECURITY  (third)
-       ══════════════════════════════════ -->
+  <!-- ════════════════════════════════════════════
+       GROUP 3 — CYBERSECURITY (THIRD)
+       ════════════════════════════════════════════ -->
   <div class="cert-group" data-category="security">
     <div class="cert-group-header">
       <div class="cert-group-label">Google · Coursera</div>
-      <div class="cert-group-title">Google Cybersecurity Program</div>
+      <div class="cert-group-title">Google Cybersecurity Professional Certificate</div>
       <div class="cert-group-sub">Two course completions in 2026</div>
     </div>
     <div class="cert-img-grid">
       <div class="cert-img-card" onclick="openCertModal('google-sec-1','Play It Safe: Manage Security Risks','Google · Coursera','May 2026','Certifications/Google_PlayItSafe_Security.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/Google_PlayItSafe_Security.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🔴</span>
-            </object>
+            <object data="Certifications/Google_PlayItSafe_Security.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -990,9 +920,7 @@ footer span{color:var(--accent)}
       <div class="cert-img-card" onclick="openCertModal('google-sec-2','Foundations of Cybersecurity','Google · Coursera','Mar 2026','Certifications/Google_Foundations_Cybersecurity.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/Google_Foundations_Cybersecurity.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🔴</span>
-            </object>
+            <object data="Certifications/Google_Foundations_Cybersecurity.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -1015,9 +943,7 @@ footer span{color:var(--accent)}
       <div class="cert-img-card" onclick="openCertModal('ibm-linux','Linux Commands & Shell Scripting','IBM · Coursera','Feb 2026','Certifications/IBM_Linux_Shell_Scripting.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/IBM_Linux_Shell_Scripting.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">💻</span>
-            </object>
+            <object data="Certifications/IBM_Linux_Shell_Scripting.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -1031,9 +957,7 @@ footer span{color:var(--accent)}
       <div class="cert-img-card" onclick="openCertModal('ibm-skillsbuild','IBM SkillsBuild Cybersecurity Certificate','IBM SkillsBuild · 60+ hours','Aug 2025','Certifications/IBM_SkillsBuild_Cybersecurity.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/IBM_SkillsBuild_Cybersecurity.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🔵</span>
-            </object>
+            <object data="Certifications/IBM_SkillsBuild_Cybersecurity.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -1057,9 +981,7 @@ footer span{color:var(--accent)}
       <div class="cert-img-card" onclick="openCertModal('fortinet','Fortinet Cybersecurity Program','NTI · ITIDA · 120 hours','Sep 2025','Certifications/Fortinet_Cybersecurity_Program.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/Fortinet_Cybersecurity_Program.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">🔶</span>
-            </object>
+            <object data="Certifications/Fortinet_Cybersecurity_Program.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -1082,9 +1004,7 @@ footer span{color:var(--accent)}
       <div class="cert-img-card" onclick="openCertModal('ieee-linux','Embedded Linux Course','IEEE','Dec 2025','Certifications/IEEE_Embedded_Linux.pdf')">
         <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
           <div class="cert-thumb-preview">
-            <object data="Certifications/IEEE_Embedded_Linux.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-thumb-pdf">
-              <span class="cert-thumb-emoji">💻</span>
-            </object>
+            <object data="Certifications/IEEE_Embedded_Linux.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
           </div>
           <span class="pdf-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
@@ -1100,150 +1020,121 @@ footer span{color:var(--accent)}
 
 </section>
 
-<!-- Certificate Modal (expanded full PDF on click) -->
-<div class="cert-modal-backdrop" id="certModal" onclick="closeCertModal(event)">
-  <div class="cert-modal">
-    <div class="cert-modal-top">
-      <div class="cert-modal-title" id="modalTitle">Certificate</div>
-      <div class="cert-modal-actions">
-        <a href="#" class="cert-modal-open" id="modalOpenLink" target="_blank" rel="noopener" download>Download ↓</a>
-        <a href="#" class="cert-modal-view" id="modalViewLink" target="_blank" rel="noopener">Open ↗</a>
-        <button class="cert-modal-close" onclick="closeCertModal(null,true)">✕</button>
-      </div>
-    </div>
-    <div class="cert-modal-body" id="modalBody">
-      <div class="modal-placeholder"><span>📜</span><p>Add your certificate to the <strong style="color:var(--accent)">Certifications/</strong> folder and update the path in the onclick.</p></div>
-    </div>
-    <div class="cert-modal-footer">
-      <span class="cert-modal-meta" id="modalMeta"></span>
-    </div>
-  </div>
-</div>
-
-<!-- RESUME SECTION -->
+<!-- RESUME -->
 <section id="resume">
   <div class="section-label">Resume</div>
-  <div class="resume-card fade-up">
-    <div class="resume-updated">Last updated May 2026</div>
-    <div class="resume-headline">Download my full CV</div>
-    <a href="CV/Abdelrahman_Ihab_CV.pdf" class="resume-btn" download>
-      ⬇ Download PDF
-    </a>
+  <div class="resume-card">
+    <div class="resume-updated">Last updated: June 2026</div>
+    <div class="resume-headline">Download Your Resume</div>
+    <a href="CV/Abdelrahman_General_CV.pdf" class="resume-btn" download>⬇ Download General CV</a>
+    <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;font-size:11px;color:var(--muted2);">
+      <a href="CV/Abdelrahman_AI_ML_CV.pdf" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);" download>AI/ML Version</a>
+      <a href="CV/Abdelrahman_Cybersecurity_CV.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);" download>Cybersecurity Version</a>
+      <a href="CV/Abdelrahman_Robotics_CV.pdf" style="color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);" download>Robotics Version</a>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">Contact</div>
-  <div class="contact-grid fade-up">
+  <div class="section-label">Get in Touch</div>
+  <div class="contact-grid">
     <div class="contact-text">
-      <p>I'm actively seeking <strong>internships and research opportunities</strong> in AI, Computer Vision, and Cybersecurity. If you're building something interesting — or hiring — let's talk.</p>
-      <p>Based in <strong>Alexandria, Egypt</strong>. Open to remote and on-site roles across Egypt and internationally.</p>
-      <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:8px">
-        <span class="badge badge-r">Open to internships</span>
-        <span class="badge badge-b">Research roles</span>
-        <span class="badge badge-a">Remote friendly</span>
-      </div>
+      <p>I'm always interested in discussing new projects, research opportunities, and innovative challenges. Feel free to reach out via email or connect on LinkedIn. I typically respond within 24 hours.</p>
+      <p><strong style="color:var(--text);">Based in Alexandria, Egypt</strong> — available for internships, freelance work, and collaborative research.</p>
     </div>
     <div class="contact-links">
-      <a href="mailto:abdelrahmanihab2882004@gmail.com" class="contact-link"><span class="ci">✉</span><span>abdelrahmanihab2882004@gmail.com</span><span class="cl-label">Email ↗</span></a>
-      <a href="https://www.linkedin.com/in/abdelrahmanihab288" class="contact-link" target="_blank" rel="noopener"><span class="ci" style="font-weight:700;font-size:12px">in</span><span>linkedin.com/in/abdelrahmanihab288</span><span class="cl-label">LinkedIn ↗</span></a>
-      <a href="https://github.com/Abdelrahman-288" class="contact-link" target="_blank" rel="noopener"><span class="ci">⌥</span><span>github.com/Abdelrahman-288</span><span class="cl-label">GitHub ↗</span></a>
-      <a href="https://www.ejust.edu.eg" class="contact-link" target="_blank" rel="noopener"><span class="ci">🎓</span><span>Egypt-Japan University of Science & Technology</span><span class="cl-label">E-JUST ↗</span></a>
+      <a href="mailto:abdelrahman.ihab.it@gmail.com" class="contact-link">
+        <span class="ci">✉</span>
+        <span>abdelrahman.ihab.it@gmail.com</span>
+      </a>
+      <a href="https://linkedin.com/in/abdelrahman-ihab" class="contact-link" target="_blank">
+        <span class="ci">in</span>
+        <span>linkedin.com/in/abdelrahman-ihab</span>
+      </a>
+      <a href="https://github.com/Abdelrahman-288" class="contact-link" target="_blank">
+        <span class="ci">◆</span>
+        <span>github.com/Abdelrahman-288</span>
+      </a>
+      <a href="https://abdelrahman-portfolio.com" class="contact-link" target="_blank">
+        <span class="ci">→</span>
+        <span>abdelrahman-portfolio.com</span>
+        <span class="cl-label">Portfolio</span>
+      </a>
     </div>
   </div>
 </section>
 
-<footer><p>Built by <span>Abdelrahman Ihab</span> · AI · CV · Cybersecurity · Robotics · Alexandria, EG · 2026</p></footer>
+<!-- CERT MODAL -->
+<div id="certModal" class="cert-modal-backdrop" onclick="closeCertModal(event)">
+  <div class="cert-modal" onclick="event.stopPropagation()">
+    <div class="cert-modal-top">
+      <div>
+        <div class="cert-modal-title" id="modalTitle">Certificate Title</div>
+        <div class="cert-modal-meta" id="modalMeta" style="font-size:9px;color:var(--muted);margin-top:2px;"></div>
+      </div>
+      <div class="cert-modal-actions">
+        <a href="#" id="modalOpenLink" class="cert-modal-open" download>↓ Download</a>
+        <a href="#" id="modalViewLink" class="cert-modal-view" target="_blank">⧉ Open</a>
+        <button class="cert-modal-close" onclick="closeCertModal(null,true)">✕</button>
+      </div>
+    </div>
+    <div class="cert-modal-body" id="modalBody"></div>
+    <div class="cert-modal-footer">
+      <span class="cert-modal-meta">Click outside or press ESC to close</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>◆</span> Designed & built by Abdelrahman Ihab — <span>Alexandria, Egypt</span> · <span id="year">2026</span>
+</footer>
 
 <script>
 /* ============================================================
-   AMBIENT CANVAS
+   PROGRESS BAR
    ============================================================ */
-const canvas=document.getElementById('ambient'),ctx=canvas.getContext('2d');
-let W,H;
-function resizeCanvas(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-resizeCanvas();
-window.addEventListener('resize',resizeCanvas,{passive:true});
-const orbs=[
-  {x:.15,y:.3,r:350,c:'rgba(255,34,51,',s:.00012,phase:0},
-  {x:.82,y:.6,r:300,c:'rgba(79,195,247,',s:.00018,phase:2},
-  {x:.5,y:.85,r:260,c:'rgba(167,139,250,',s:.00014,phase:4},
-];
-let t=0;
-function drawAmbient(){
-  ctx.clearRect(0,0,W,H);t++;
-  orbs.forEach(o=>{
-    const pulse=.032+.014*Math.sin(t*o.s*300+o.phase);
-    const cx=o.x*W+Math.sin(t*o.s*200+o.phase)*60;
-    const cy=o.y*H+Math.cos(t*o.s*150+o.phase)*40;
-    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,o.r);
-    g.addColorStop(0,o.c+pulse+')');g.addColorStop(.55,o.c+(pulse*.4)+')');g.addColorStop(1,o.c+'0)');
-    ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,o.r,0,Math.PI*2);ctx.fill();
-  });
-  requestAnimationFrame(drawAmbient);
-}
-drawAmbient();
-
-/* ============================================================
-   SCROLL PROGRESS + NAV
-   ============================================================ */
-const prog=document.getElementById('progress');
-const tlWrap=document.querySelector('.timeline-wrap');
-const tlLineEl=document.getElementById('tl-line');
-
-function updateTimeline(){
-  if(!tlWrap||!tlLineEl) return;
-  const rect=tlWrap.getBoundingClientRect();
-  const wh=window.innerHeight;
-  const scrolled=Math.max(0,wh-rect.top);
-  const total=rect.height+wh;
-  const pct=Math.min(1,scrolled/total);
-  tlLineEl.style.height=(pct*rect.height)+'px';
-}
-
-function onScroll(){
-  const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
-  prog.style.width=pct+'%';
-  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
-  let cur='';
-  document.querySelectorAll('section[id],#resume').forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id;});
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
-  updateTimeline();
-}
-window.addEventListener('scroll',onScroll,{passive:true});
-
-/* ============================================================
-   PARTICLE BURST
-   ============================================================ */
-document.addEventListener('click',e=>{
-  if(e.target.closest('nav')||e.target.closest('.cert-modal-backdrop'))return;
-  for(let i=0;i<8;i++){
-    const p=document.createElement('div');
-    p.className='particle';
-    const size=Math.random()*4+2;
-    const angle=(Math.PI*2*i)/8+Math.random()*.4;
-    const dist=Math.random()*50+25;
-    p.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;background:${Math.random()>.5?'#ff2233':'#4fc3f7'};--dx:${Math.cos(angle)*dist}px;--dy:${Math.sin(angle)*dist}px;animation-duration:${.45+Math.random()*.4}s;position:fixed;`;
-    document.body.appendChild(p);setTimeout(()=>p.remove(),900);
-  }
+window.addEventListener('scroll',()=>{
+  const t=document.documentElement.scrollHeight-window.innerHeight;
+  const p=t>0?Math.min(window.scrollY/t*100,100):0;
+  document.getElementById('progress').style.width=p+'%';
 });
 
 /* ============================================================
-   INTERSECTION OBSERVER
+   NAVBAR
    ============================================================ */
-const io=new IntersectionObserver(entries=>{
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20);});
+
+/* ============================================================
+   SECTION LABELS (FADE IN ON SCROLL)
+   ============================================================ */
+const secLabels=document.querySelectorAll('.section-label');
+const ioObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
     e.target.classList.add('vis');
-    e.target.querySelectorAll('.sk-fill').forEach(b=>{setTimeout(()=>{b.style.width=b.dataset.w;},160);});
-    io.unobserve(e.target);
+    ioObs.unobserve(e.target);
   });
-},{threshold:0.07});
-document.querySelectorAll('.fade-up,.stagger,.section-label').forEach(el=>io.observe(el));
+},{threshold:0.5,rootMargin:'0px 0px -50px 0px'});
+secLabels.forEach(el=>ioObs.observe(el));
 
 /* ============================================================
-   TIMELINE ITEMS
+   SKILL BARS (ANIMATED ON SCROLL)
+   ============================================================ */
+const skillFills=document.querySelectorAll('.sk-fill');
+const skIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const w=e.target.dataset.w;
+    e.target.style.width=w;
+    skIO.unobserve(e.target);
+  });
+},{threshold:0.3,rootMargin:'0px 0px -80px 0px'});
+skillFills.forEach(el=>skIO.observe(el));
+
+/* ============================================================
+   TIMELINE (STAGGER ANIMATION)
    ============================================================ */
 const tlItems=document.querySelectorAll('.tl-item');
 const tlIO=new IntersectionObserver(entries=>{
@@ -1259,6 +1150,19 @@ tlItems.forEach((el,i)=>{
 });
 
 /* ============================================================
+   STAGGER ELEMENTS (projects, training, skills, awards)
+   ============================================================ */
+const staggerEl=document.querySelectorAll('.stagger');
+const staggerIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('vis');
+    staggerIO.unobserve(e.target);
+  });
+},{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+staggerEl.forEach(el=>staggerIO.observe(el));
+
+/* ============================================================
    HAMBURGER
    ============================================================ */
 const hamburger=document.getElementById('hamburger');
@@ -1272,7 +1176,7 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 }));
 
 /* ============================================================
-   SLIDESHOW ENGINE  (used by Awards + extensible)
+   SLIDESHOW ENGINE (used by Awards + extensible)
    ============================================================ */
 const slideshows={};
 
@@ -1324,7 +1228,6 @@ function startAutoplay(id){
 
 // Init all slideshows on the page
 initSlideshow('rov-slideshow');
-// Add more here as you add award cards: initSlideshow('award2-slideshow');
 
 /* ============================================================
    CERT FILTER
@@ -1346,7 +1249,7 @@ document.querySelectorAll('.cert-filter-btn').forEach(btn=>{
 });
 
 /* ============================================================
-   CERT MODAL  (full PDF iframe on click)
+   CERT MODAL (full PDF iframe on click)
    ============================================================ */
 function openCertModal(id,title,issuer,date,src){
   const modal=document.getElementById('certModal');
@@ -1360,7 +1263,7 @@ function openCertModal(id,title,issuer,date,src){
     dlLink.href=src;
     viewLink.href=src;
     if(isPdf){
-      /* Full PDF — all pages, toolbar visible, no page crop */
+      /* Full PDF — all pages, toolbar visible */
       body.innerHTML='<iframe src="'+src+'#toolbar=1&navpanes=0" title="'+title+'" style="width:100%;height:72vh;border:none;"></iframe>';
     } else {
       body.innerHTML='<img src="'+src+'" alt="'+title+'" style="max-width:100%;max-height:72vh;object-fit:contain;margin:auto;padding:1.2rem;">';
@@ -1379,7 +1282,7 @@ function openCertModal(id,title,issuer,date,src){
 function closeCertModal(e,force){
   if(force||!e||e.target===document.getElementById('certModal')){
     document.getElementById('certModal').classList.remove('open');
-    document.getElementById('modalBody').innerHTML=''; /* destroy iframe to stop PDF loading */
+    document.getElementById('modalBody').innerHTML='';
     document.body.style.overflow='';
   }
 }
