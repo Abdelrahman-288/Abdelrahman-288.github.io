@@ -754,14 +754,6 @@ footer span{color:var(--accent)}
     </div>
 
   </div>
-
-  <div style="margin-top:1.5rem;background:var(--bg2);border:1px dashed var(--border2);border-radius:4px;padding:1rem 1.2rem;font-size:10.5px;color:var(--muted);line-height:1.8;">
-    <span style="color:var(--accent);letter-spacing:.1em;font-size:9px;text-transform:uppercase;">// How to add award photos & PDFs</span><br>
-    Create an <code style="color:var(--blue)">Awards/</code> folder next to <code style="color:var(--blue)">index.html</code>. Inside each <code style="color:var(--blue)">.slide</code> block, replace the placeholder div with:
-    <code style="color:var(--blue)">&lt;img src="Awards/photo.jpg"&gt;</code> for photos, or
-    <code style="color:var(--blue)">&lt;object data="Awards/cert.pdf#page=1" type="application/pdf" style="width:100%;height:100%;border:none;"&gt;&lt;/object&gt;</code> for PDFs.
-    For more award cards, duplicate the <code style="color:var(--blue)">.award-card</code> block and call <code style="color:var(--blue)">initSlideshow('new-id')</code> at the bottom of the script.
-  </div>
 </section>
 
 <!-- CERTIFICATIONS — REORGANIZED: AI/ML → Robotics → Cybersecurity -->
@@ -929,6 +921,20 @@ footer span{color:var(--accent)}
           <div class="cert-img-title">Foundations of Cybersecurity</div>
           <div class="cert-img-issuer">Google · Coursera</div>
           <div class="cert-img-date">Mar 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('google-sec-3','Assets, Threats, and Vulnerabilities','Google · Coursera','Jun 2026','Certifications/Google_Assets_Threats_and_Vulnerabilities.pdf')">
+        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.08),var(--bg3));">
+          <div class="cert-thumb-preview">
+            <object data="Certifications/Google_Assets_Threats_and_Vulnerabilities.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
+          </div>
+          <span class="pdf-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Assets, Threats, and Vulnerabilities</div>
+          <div class="cert-img-issuer">Google · Coursera</div>
+          <div class="cert-img-date">Jun 2026</div>
         </div>
       </div>
     </div>
