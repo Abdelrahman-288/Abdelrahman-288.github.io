@@ -498,61 +498,108 @@ footer span{color:var(--accent)}
   </div>
 </section>
 
-<!-- PROJECTS (preview) -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="section-label">Projects</div>
-  <div class="projects-list stagger">
-    <div class="project-card">
-      <div class="project-header">
-        <div>
-          <span class="project-badge">AI / Cybersecurity</span>
-          <h3 class="project-title">MalwareAI Defense Platform</h3>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/Abdelrahman-288/malware-classification-system" class="project-link">GitHub</a>
-        </div>
-      </div>
-      <p class="project-desc">End-to-end malware classification system combining CNN (ResNet18 binary→image) + Transformer (opcode analysis) + Fusion architecture. 97.3% accuracy across 9 malware families on 18,470 samples (Microsoft BIG 2015). Includes Streamlit dashboard with USB scanner integration and Grad-CAM explainability.</p>
-      <div class="project-tech">
-        <span class="tech-tag">TensorFlow</span>
-        <span class="tech-tag">PyTorch</span>
-        <span class="tech-tag">CNN / Transformer</span>
-        <span class="tech-tag">Streamlit</span>
-        <span class="tech-tag">Python</span>
-      </div>
-    </div>
 
+  <div class="projects-list stagger">
+
+    <!-- MATE ROV -->
     <div class="project-card">
       <div class="project-header">
         <div>
-          <span class="project-badge">Computer Vision · Robotics</span>
-          <h3 class="project-title">Mate-ROV-Pioneer-2026</h3>
+          <span class="project-badge">🏆 Computer Vision · Robotics</span>
+          <h3 class="project-title">Mate-ROV-Pioneer-2026 (Nautix)</h3>
         </div>
         <div class="project-links">
-          <a href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" class="project-link">GitHub</a>
+          <a href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
-      <p class="project-desc"><strong>1st Place + Best Design + Best Presentation</strong> at MATE ROV 2026 Pioneer Regional. Engineered YOLOv8 European Green Crab detection system + 3D coral reconstruction pipeline. Real-time biodiversity analysis for underwater robotics competition. Team Nautix qualified for International competition in Canada.</p>
+
+      <p class="project-desc">
+        <strong>1st Place + Best Design + Best Presentation</strong> at MATE ROV 2026 Pioneer Regional. Led Computer Vision development for Team Nautix and qualified for the International Competition in Canada. Built a YOLOv8-based European Green Crab detection system for biodiversity analysis using synthetic data augmentation and developed a 3D coral garden reconstruction pipeline with real-world spatial calibration. Achieved >95% trajectory continuity through occlusion handling and interpolation techniques.
+      </p>
+
       <div class="project-tech">
         <span class="tech-tag">YOLOv8</span>
         <span class="tech-tag">OpenCV</span>
-        <span class="tech-tag">3D Reconstruction</span>
         <span class="tech-tag">Python</span>
         <span class="tech-tag">ROS</span>
+        <span class="tech-tag">3D Reconstruction</span>
+        <span class="tech-tag">Synthetic Data</span>
+        <span class="tech-tag">Homography</span>
       </div>
     </div>
 
+    <!-- Malware -->
     <div class="project-card">
       <div class="project-header">
         <div>
-          <span class="project-badge">Computer Vision</span>
-          <h3 class="project-title">Seam Carving Content-Aware Resizing</h3>
+          <span class="project-badge">🛡️ AI · Cybersecurity · Deep Learning</span>
+          <h3 class="project-title">Hybrid AI Malware Classification & Detection System</h3>
         </div>
         <div class="project-links">
-          <a href="https://github.com/Abdelrahman-288" class="project-link">GitHub</a>
+          <a href="https://github.com/Abdelrahman-288/malware-classification-system" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
-      <p class="project-desc">Content-aware image resizing using dynamic programming seam carving. Manual e1 energy function implementation, transpose trick for horizontal seams, and real-time visualization. Full automation with Windows path handling and coordinate tracking.</p>
+
+      <p class="project-desc">
+        Developed an end-to-end malware detection platform combining binary visualization and deep learning. Built a hybrid CNN (ResNet18 binary-to-image) + opcode analysis network with fusion architecture trained on the Microsoft BIG 2015 malware dataset. Achieved <strong>97.3% classification accuracy</strong> across malware families and integrated Grad-CAM explainability, PE header analysis, USB scanning, and a real-time Streamlit dashboard for threat detection and visualization.
+      </p>
+
+      <div class="project-tech">
+        <span class="tech-tag">TensorFlow</span>
+        <span class="tech-tag">PyTorch</span>
+        <span class="tech-tag">CNN</span>
+        <span class="tech-tag">Transformer</span>
+        <span class="tech-tag">Ghidra</span>
+        <span class="tech-tag">Streamlit</span>
+        <span class="tech-tag">Grad-CAM</span>
+      </div>
+    </div>
+
+    <!-- Tennis -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge">🎾 Computer Vision · Sports Analytics</span>
+          <h3 class="project-title">Tennis Match Analytics System</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288/Tennis-Analysis" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <p class="project-desc">
+        Built an end-to-end computer vision pipeline for real-time tennis analytics from a single fixed-camera video. Utilized YOLOv8 for player and ball detection, homography-based court mapping, and a custom CNN for court keypoint regression. Generated advanced match statistics including player speed, shot direction, movement tracking, rally metrics, and court coverage with <strong>93.31% accuracy</strong>.
+      </p>
+
+      <div class="project-tech">
+        <span class="tech-tag">YOLOv8</span>
+        <span class="tech-tag">PyTorch</span>
+        <span class="tech-tag">OpenCV</span>
+        <span class="tech-tag">CNN</span>
+        <span class="tech-tag">Homography</span>
+        <span class="tech-tag">Python</span>
+      </div>
+    </div>
+
+    <!-- Seam Carving -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge">🖼️ Computer Vision · Image Processing</span>
+          <h3 class="project-title">Seam Carving Content-Aware Image Resizing</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <p class="project-desc">
+        Implemented content-aware image resizing using the seam carving algorithm and dynamic programming. Developed a custom energy function, vertical and horizontal seam removal using transpose optimization, and real-time visualization of seam selection. Automated image processing workflow with coordinate tracking and efficient path computation.
+      </p>
+
       <div class="project-tech">
         <span class="tech-tag">OpenCV</span>
         <span class="tech-tag">NumPy</span>
@@ -560,9 +607,81 @@ footer span{color:var(--accent)}
         <span class="tech-tag">Python</span>
       </div>
     </div>
+
+    <!-- Face Detection -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge">👁️ Deep Learning · Computer Vision</span>
+          <h3 class="project-title">Face Detection System — VGG16 + Gradio</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288/Deep_Face_Detection_Project" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <p class="project-desc">
+        Developed a deep learning face detection system using a pretrained VGG16 backbone with custom classification and bounding-box regression heads. Built the complete pipeline from dataset annotation using LabelMe through training, evaluation, and deployment with Gradio, supporting both image and live webcam inference.
+      </p>
+
+      <div class="project-tech">
+        <span class="tech-tag">VGG16</span>
+        <span class="tech-tag">TensorFlow</span>
+        <span class="tech-tag">OpenCV</span>
+        <span class="tech-tag">LabelMe</span>
+        <span class="tech-tag">Gradio</span>
+      </div>
+    </div>
+
+    <!-- Heart Disease -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge">🫀 Machine Learning · Healthcare AI</span>
+          <h3 class="project-title">Heart Disease Prediction System</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288/Heart_Disease_Prediction" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <p class="project-desc">
+        Designed an end-to-end machine learning pipeline for heart disease prediction using the UCI Heart Disease dataset. Implemented preprocessing, PCA-based dimensionality reduction, feature engineering, model benchmarking, hyperparameter optimization with GridSearchCV, clustering analysis, and Streamlit deployment.
+      </p>
+
+      <div class="project-tech">
+        <span class="tech-tag">Scikit-learn</span>
+        <span class="tech-tag">PCA</span>
+        <span class="tech-tag">Pandas</span>
+        <span class="tech-tag">Matplotlib</span>
+        <span class="tech-tag">Streamlit</span>
+      </div>
+    </div>
+
+    <!-- RFID -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge">🔐 Hardware Security · Embedded Systems</span>
+          <h3 class="project-title">Dual-Frequency RFID Defense Architecture</h3>
+        </div>
+      </div>
+
+      <p class="project-desc">
+        Graduation project focused on RFID anti-cloning security. Designed a dual-frequency architecture combining HF (13.56 MHz) and UHF (860–960 MHz) chips on a single card with rolling session tokens, distance-bounding verification, dynamic fraud detection, and graceful degradation mechanisms. Demonstrated attack and defense scenarios using Proxmark3.
+      </p>
+
+      <div class="project-tech">
+        <span class="tech-tag">RFID Security</span>
+        <span class="tech-tag">HF/UHF</span>
+        <span class="tech-tag">Proxmark3</span>
+        <span class="tech-tag">Embedded C</span>
+        <span class="tech-tag">Protocol Design</span>
+      </div>
+    </div>
+
   </div>
 </section>
-
 <!-- TRAINING -->
 <section id="training">
   <div class="section-label">Training & Learning</div>
