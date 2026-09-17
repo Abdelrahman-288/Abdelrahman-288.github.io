@@ -163,25 +163,13 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 
 
 /* Rich bullet lists used for full CV content */
-.project-bullets,.tl-bullets,.training-bullets{list-style:none;margin:.75rem 0 1rem;padding:0;display:flex;flex-direction:column;gap:.48rem;}
-.project-bullets li,.tl-bullets li,.training-bullets li{position:relative;padding-left:1rem;color:var(--muted2);font-size:clamp(10.8px,1.25vw,12px);line-height:1.72;}
-.project-bullets li::before,.tl-bullets li::before,.training-bullets li::before{content:'▸';position:absolute;left:0;top:.05rem;color:var(--accent);font-size:9px;}
+.project-bullets,.tl-bullets{list-style:none;margin:.75rem 0 1rem;padding:0;display:flex;flex-direction:column;gap:.48rem;}
+.project-bullets li,.tl-bullets li{position:relative;padding-left:1rem;color:var(--muted2);font-size:clamp(10.8px,1.25vw,12px);line-height:1.72;}
+.project-bullets li::before,.tl-bullets li::before{content:'▸';position:absolute;left:0;top:.05rem;color:var(--accent);font-size:9px;}
 .project-metric{color:var(--text);font-weight:600;}
 .project-subnote{font-size:10px;color:var(--muted);margin-top:-.45rem;margin-bottom:.85rem;letter-spacing:.02em;}
-.training-card .training-bullets{margin-bottom:0;}
 .tl-card .tl-bullets{margin:.65rem 0 .8rem;}
 
-/* TRAINING */
-.training-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.training-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.3rem;position:relative;overflow:hidden;transition:all .3s;}
-.training-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s;}
-.training-card:hover{border-color:rgba(255,34,51,.35);transform:translateY(-5px);box-shadow:0 12px 35px rgba(255,34,51,.1);}
-.training-card:hover::before{opacity:1}
-.training-icon{font-size:1.4rem;margin-bottom:.7rem}
-.training-name{font-family:var(--sans);font-weight:600;font-size:.88rem;color:#fff;margin-bottom:4px;transition:color .25s;}
-.training-card:hover .training-name{color:var(--accent)}
-.training-org{font-size:10px;color:var(--accent);margin-bottom:6px}
-.training-detail{font-size:10.5px;color:var(--muted);line-height:1.6}
 
 /* TIMELINE */
 .timeline-wrap{position:relative;padding-left:clamp(1.6rem,4vw,2.6rem);}
@@ -209,18 +197,31 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .tl-num{position:absolute;right:clamp(.9rem,2.5vw,1.4rem);top:clamp(.9rem,2.5vw,1.3rem);font-family:var(--sans);font-weight:800;font-size:2rem;color:rgba(255,34,51,.06);line-height:1;user-select:none;transition:color .35s;}
 .tl-item:hover .tl-num{color:rgba(255,34,51,.13)}
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.skill-group{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.3rem;transition:border-color .3s;}
-.skill-group:hover{border-color:var(--border2)}
-.sg-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;}
-.sg-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.sk-item{margin-bottom:.85rem}
-.sk-row{display:flex;justify-content:space-between;margin-bottom:5px}
-.sk-name{font-size:clamp(10px,1.2vw,11.5px);color:var(--text)}
-.sk-pct{font-size:10px;color:var(--muted)}
-.sk-bar{height:2px;background:var(--border);border-radius:1px;overflow:hidden;}
-.sk-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--accent),var(--blue));width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1);}
+/* SKILLS — capability cards */
+.skills-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:1.6rem}
+.skills-kicker{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.45rem}
+.skills-headline{font-family:var(--sans);font-size:clamp(1.25rem,2.5vw,1.8rem);font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.2}
+.skills-copy{max-width:440px;font-size:11.5px;color:var(--muted2);line-height:1.75;text-align:right}
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.skill-card{position:relative;background:linear-gradient(180deg,rgba(15,21,32,.96),rgba(10,15,22,.98));border:1px solid var(--border);border-radius:7px;padding:1.25rem;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.skill-card::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--blue));transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.skill-card::after{content:'';position:absolute;width:150px;height:150px;right:-75px;top:-75px;border-radius:50%;background:radial-gradient(circle,rgba(255,34,51,.10),transparent 68%);pointer-events:none;opacity:.55}
+.skill-card:hover{transform:translateY(-5px);border-color:rgba(255,34,51,.38);box-shadow:0 14px 34px rgba(0,0,0,.28),0 0 30px rgba(255,34,51,.06)}
+.skill-card:hover::before{transform:scaleX(1)}
+.skill-card-head{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1rem;position:relative;z-index:1}
+.skill-icon{width:42px;height:42px;border:1px solid rgba(255,34,51,.28);background:rgba(255,34,51,.07);border-radius:5px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;font-family:var(--sans);font-weight:800;font-size:10px;letter-spacing:.08em;color:var(--accent);box-shadow:inset 0 0 18px rgba(255,34,51,.035)}
+.skill-title-wrap{min-width:0}
+.skill-title{font-family:var(--sans);font-weight:700;font-size:clamp(.9rem,1.5vw,1.02rem);color:#fff;line-height:1.25;margin-bottom:.3rem}
+.skill-desc{font-size:10.5px;color:var(--muted);line-height:1.55}
+.skill-label{font-size:8.5px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.55rem;position:relative;z-index:1}
+.skill-chips{display:flex;flex-wrap:wrap;gap:6px;position:relative;z-index:1}
+.skill-chip{font-size:9.5px;line-height:1.2;color:var(--muted2);background:rgba(255,255,255,.018);border:1px solid var(--border);padding:5px 8px;border-radius:3px;transition:border-color .22s,color .22s,background .22s,transform .22s}
+.skill-chip.core{color:#fff;border-color:rgba(79,195,247,.27);background:rgba(79,195,247,.055)}
+.skill-card:hover .skill-chip{border-color:var(--border2);color:var(--text)}
+.skill-card:hover .skill-chip.core{border-color:rgba(79,195,247,.45);background:rgba(79,195,247,.09)}
+.skill-chip:hover{transform:translateY(-1px)}
+.skill-proof{margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--border);font-size:9.5px;color:var(--muted);line-height:1.55;position:relative;z-index:1}
+.skill-proof strong{color:var(--muted2);font-weight:500}
 
 /* =============================================
    AWARDS SECTION
@@ -461,7 +462,6 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 @media(min-width:1400px){
   section,#resume{max-width:1240px}
   .projects-list{gap:18px}
-  .training-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .cert-img-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 
@@ -484,6 +484,8 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
   .about-grid{grid-template-columns:1fr;gap:2.5rem}
   .contact-grid{grid-template-columns:1fr;gap:2rem}
   .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skills-intro{align-items:flex-start}
+  .skills-copy{text-align:left}
   .cert-img-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .awards-grid{grid-template-columns:minmax(0,1fr)}
   .stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -500,7 +502,6 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
   .hero-badges{margin-bottom:2rem}
   .about-grid{gap:1.8rem}
   .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .training-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .project-card{padding:1.2rem}
   .project-header{gap:.7rem}
@@ -533,7 +534,11 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
   .scroll-hint{bottom:max(1rem,env(safe-area-inset-bottom))}
   .section-label{margin-bottom:1.65rem}
   .about-headline{font-size:clamp(1.25rem,6vw,1.7rem)}
-  .training-grid,.skills-grid,.cert-img-grid{grid-template-columns:minmax(0,1fr)}
+  .skills-grid,.cert-img-grid{grid-template-columns:minmax(0,1fr)}
+  .skills-intro{display:block;margin-bottom:1.25rem}
+  .skills-copy{margin-top:.7rem;max-width:none;text-align:left}
+  .skill-card{padding:1.05rem}
+  .skill-card:hover{transform:none}
   .project-card:hover,.tl-item:hover .tl-card,.contact-link:hover{transform:none}
   .project-desc,.tl-desc,.about-body p{font-size:12px}
   .project-tech,.tl-pills,.award-tags{gap:6px}
@@ -592,7 +597,7 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
   nav,#progress,#ambient,.scroll-hint,.hero-cta,.cert-filters,.slide-arrow,.slide-nav{display:none!important}
   body{background:#fff!important;color:#111!important}
   section,#resume{max-width:none;padding:24px 0;break-inside:avoid}
-  .project-card,.training-card,.tl-card,.skill-group,.award-card,.cert-img-card,.resume-card,.contact-link{box-shadow:none!important;transform:none!important;break-inside:avoid}
+  .project-card,.tl-card,.skill-group,.award-card,.cert-img-card,.resume-card,.contact-link{box-shadow:none!important;transform:none!important;break-inside:avoid}
 }
 
 
@@ -617,7 +622,6 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 <li><a href="#experience">Experience</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
-<li><a href="#training">Training</a></li>
 <li><a href="#awards">Awards</a></li>
 <li><a href="#certifications">Certs</a></li>
 <li><a href="#resume">Resume</a></li>
@@ -776,13 +780,87 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 <!-- SKILLS -->
 <section id="skills">
 <div class="section-label">Skills</div>
+<div class="skills-intro fade-up">
+  <div>
+    <div class="skills-kicker">Technical toolkit</div>
+    <h2 class="skills-headline">Capabilities I use to build end-to-end systems.</h2>
+  </div>
+  <p class="skills-copy">Grouped by the work I actually do — from model development and computer vision to security, deployment, robotics, and edge AI.</p>
+</div>
 <div class="skills-grid stagger">
-<div class="skill-group"><div class="sg-title">AI / ML / NLP</div><div class="project-tech"><span class="tech-tag">PyTorch</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">Transformers</span><span class="tech-tag">DistilBERT</span><span class="tech-tag">Hugging Face</span></div></div>
-<div class="skill-group"><div class="sg-title">Computer Vision</div><div class="project-tech"><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Object Detection</span><span class="tech-tag">Tracking</span><span class="tech-tag">Homography</span><span class="tech-tag">Keypoint Regression</span><span class="tech-tag">3D Reconstruction</span><span class="tech-tag">Synthetic Data</span></div></div>
-<div class="skill-group"><div class="sg-title">LLM / RAG / GenAI</div><div class="project-tech"><span class="tech-tag">RAG</span><span class="tech-tag">FAISS</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">Groq API</span><span class="tech-tag">Prompt Engineering</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Pytest</span></div></div>
-<div class="skill-group"><div class="sg-title">Cybersecurity &amp; Networking</div><div class="project-tech"><span class="tech-tag">FortiGate</span><span class="tech-tag">VPN</span><span class="tech-tag">SD-WAN</span><span class="tech-tag">IPS</span><span class="tech-tag">PKI</span><span class="tech-tag">Vulnerability Assessment</span><span class="tech-tag">Malware Analysis</span><span class="tech-tag">Ghidra</span></div></div>
-<div class="skill-group"><div class="sg-title">Programming &amp; Systems</div><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">C / C++</span><span class="tech-tag">Linux</span><span class="tech-tag">Git / GitHub</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span><span class="tech-tag">Embedded Systems</span><span class="tech-tag">Arduino Portenta H7</span></div></div>
-<div class="skill-group"><div class="sg-title">Robotics &amp; Edge AI</div><div class="project-tech"><span class="tech-tag">TinyML</span><span class="tech-tag">FOMO</span><span class="tech-tag">Vision-Language Models</span><span class="tech-tag">Edge-Cloud Inference</span><span class="tech-tag">Universal Robots</span><span class="tech-tag">ROS</span></div></div>
+
+  <article class="skill-card">
+    <div class="skill-card-head">
+      <div class="skill-icon">AI</div>
+      <div class="skill-title-wrap"><h3 class="skill-title">AI / Machine Learning / NLP</h3><p class="skill-desc">Training, evaluation, classical ML, deep learning, and NLP pipelines.</p></div>
+    </div>
+    <div class="skill-label">Core stack</div>
+    <div class="skill-chips">
+      <span class="skill-chip core">PyTorch</span><span class="skill-chip core">TensorFlow</span><span class="skill-chip core">Scikit-learn</span><span class="skill-chip">Transformers</span><span class="skill-chip">DistilBERT</span><span class="skill-chip">CNN</span><span class="skill-chip">BiLSTM</span><span class="skill-chip">Hugging Face</span>
+    </div>
+    <div class="skill-proof"><strong>Applied in:</strong> sentiment &amp; intent classification, malware classification, healthcare ML.</div>
+  </article>
+
+  <article class="skill-card">
+    <div class="skill-card-head">
+      <div class="skill-icon">CV</div>
+      <div class="skill-title-wrap"><h3 class="skill-title">Computer Vision</h3><p class="skill-desc">Detection, tracking, calibration, reconstruction, and real-time visual analytics.</p></div>
+    </div>
+    <div class="skill-label">Core stack</div>
+    <div class="skill-chips">
+      <span class="skill-chip core">YOLOv8</span><span class="skill-chip core">OpenCV</span><span class="skill-chip">Object Detection</span><span class="skill-chip">Tracking</span><span class="skill-chip">Homography</span><span class="skill-chip">Keypoint Regression</span><span class="skill-chip">3D Reconstruction</span><span class="skill-chip">Synthetic Data</span>
+    </div>
+    <div class="skill-proof"><strong>Applied in:</strong> MATE ROV, tennis analytics, face detection, edge surveillance.</div>
+  </article>
+
+  <article class="skill-card">
+    <div class="skill-card-head">
+      <div class="skill-icon">RAG</div>
+      <div class="skill-title-wrap"><h3 class="skill-title">LLM / RAG / Generative AI</h3><p class="skill-desc">Grounded generation, retrieval, reranking, prompt design, and AI application APIs.</p></div>
+    </div>
+    <div class="skill-label">Core stack</div>
+    <div class="skill-chips">
+      <span class="skill-chip core">RAG</span><span class="skill-chip core">FAISS</span><span class="skill-chip core">Sentence-Transformers</span><span class="skill-chip">ChromaDB</span><span class="skill-chip">Groq API</span><span class="skill-chip">Ollama</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">FastAPI</span>
+    </div>
+    <div class="skill-proof"><strong>Applied in:</strong> e-commerce support RAG and local document-assistant systems.</div>
+  </article>
+
+  <article class="skill-card">
+    <div class="skill-card-head">
+      <div class="skill-icon">SEC</div>
+      <div class="skill-title-wrap"><h3 class="skill-title">Cybersecurity &amp; Networking</h3><p class="skill-desc">Network defense, enterprise firewalls, secure connectivity, and malware analysis.</p></div>
+    </div>
+    <div class="skill-label">Core stack</div>
+    <div class="skill-chips">
+      <span class="skill-chip core">FortiGate</span><span class="skill-chip core">Network Security</span><span class="skill-chip">VPN</span><span class="skill-chip">SD-WAN</span><span class="skill-chip">IPS</span><span class="skill-chip">PKI</span><span class="skill-chip">Vulnerability Assessment</span><span class="skill-chip">Ghidra</span>
+    </div>
+    <div class="skill-proof"><strong>Applied in:</strong> Fortinet training, ETHYDCO security work, hybrid malware analysis.</div>
+  </article>
+
+  <article class="skill-card">
+    <div class="skill-card-head">
+      <div class="skill-icon">DEV</div>
+      <div class="skill-title-wrap"><h3 class="skill-title">Programming &amp; Systems</h3><p class="skill-desc">Software foundations, Linux workflows, data tooling, APIs, and version control.</p></div>
+    </div>
+    <div class="skill-label">Core stack</div>
+    <div class="skill-chips">
+      <span class="skill-chip core">Python</span><span class="skill-chip core">C / C++</span><span class="skill-chip core">Linux</span><span class="skill-chip">Git / GitHub</span><span class="skill-chip">NumPy</span><span class="skill-chip">Pandas</span><span class="skill-chip">FastAPI</span><span class="skill-chip">Pytest</span>
+    </div>
+    <div class="skill-proof"><strong>Applied in:</strong> production-style AI pipelines, APIs, automation, and embedded development.</div>
+  </article>
+
+  <article class="skill-card">
+    <div class="skill-card-head">
+      <div class="skill-icon">ROB</div>
+      <div class="skill-title-wrap"><h3 class="skill-title">Robotics &amp; Edge AI</h3><p class="skill-desc">On-device inference, robotics integration, embedded vision, and edge-cloud AI.</p></div>
+    </div>
+    <div class="skill-label">Core stack</div>
+    <div class="skill-chips">
+      <span class="skill-chip core">ROS 2</span><span class="skill-chip core">TinyML</span><span class="skill-chip">FOMO</span><span class="skill-chip">Vision-Language Models</span><span class="skill-chip">Edge-Cloud Inference</span><span class="skill-chip">Arduino Portenta H7</span><span class="skill-chip">Universal Robots</span>
+    </div>
+    <div class="skill-proof"><strong>Applied in:</strong> autonomous security patrol, ROV systems, and robotics research preparation.</div>
+  </article>
+
 </div>
 </section>
 <!-- PROJECTS -->
@@ -902,63 +980,6 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 <li>Applied unsupervised clustering to identify patient subgroups and deployed the solution through an interactive Streamlit application.</li>
 </ul>
 <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Streamlit</span></div>
-</div>
-</div>
-</section>
-<!-- TRAINING -->
-<section id="training">
-<div class="section-label">Training &amp; Learning</div>
-<div class="training-grid stagger">
-<div class="training-card">
-<div class="training-icon">🧠</div>
-<div class="training-name">Applied AI Program Trainee — Level 2</div>
-<div class="training-org">Information Technology Institute (ITI) · Aug–Sep 2026</div>
-<ul class="training-bullets">
-<li>Python for AI, Computer Vision, YOLO object detection, and pretrained models.</li>
-<li>NLP, LLMs, Generative AI, Retrieval-Augmented Generation (RAG), practical applications, and model deployment.</li>
-<li>End-to-end capstone project covering the complete AI development pipeline.</li>
-</ul>
-</div>
-<div class="training-card">
-<div class="training-icon">🔐</div>
-<div class="training-name">Network &amp; Cybersecurity Trainee</div>
-<div class="training-org">Information Technology Institute (ITI) · Jul–Aug 2026</div>
-<ul class="training-bullets">
-<li>Advanced Networking and Network Fundamentals.</li>
-<li>Cybersecurity Essentials and Ethical Hacking.</li>
-<li>Huawei Cloud HCCDA — Tech Essentials and modern cloud infrastructure concepts.</li>
-</ul>
-</div>
-<div class="training-card">
-<div class="training-icon">🛡️</div>
-<div class="training-name">Fortinet Cybersecurity Trainee</div>
-<div class="training-org">NTI · ITIDA · Aug–Sep 2025 · 120 hours · 93%</div>
-<ul class="training-bullets">
-<li>FortiGate policies, NAT, FSSO, routing protocols, and FortiManager.</li>
-<li>SSL VPN, IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, and High Availability.</li>
-<li>Cryptography, PKI, certificate lifecycle management, and intrusion prevention.</li>
-</ul>
-</div>
-<div class="training-card">
-<div class="training-icon">🤖</div>
-<div class="training-name">Artificial Intelligence Trainee — NVIDIA AI Program</div>
-<div class="training-org">Information Technology Institute (ITI) · Sep–Oct 2025</div>
-<ul class="training-bullets">
-<li>Building LLM Applications with Prompt Engineering: prompt engineering, LLM optimization, and API integration.</li>
-<li>AI for All: AI fundamentals, model training, deep learning concepts, and Generative AI applications.</li>
-</ul>
-</div>
-<div class="training-card">
-<div class="training-icon">⚙️</div>
-<div class="training-name">Universal Robots Academy</div>
-<div class="training-org">UR20/30 eLearning · Apr 2026</div>
-<div class="training-detail">Collaborative-robot programming, safety, motion planning, I/O integration, and application development.</div>
-</div>
-<div class="training-card">
-<div class="training-icon">🐧</div>
-<div class="training-name">Linux &amp; Cybersecurity Foundations</div>
-<div class="training-org">IBM · Google · 2025–2026</div>
-<div class="training-detail">Linux commands and shell scripting, cybersecurity fundamentals, security risks, networks, threats, vulnerabilities, detection, response, and job-readiness training.</div>
 </div>
 </div>
 </section>
@@ -1220,6 +1241,7 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 <div class="cert-img-title">Accelerate Your Job Search with AI</div>
 <div class="cert-img-issuer">Google · Coursera</div>
 <div class="cert-img-date">May 3, 2026</div>
+</div>
 </div>
 </div>
 </div>
