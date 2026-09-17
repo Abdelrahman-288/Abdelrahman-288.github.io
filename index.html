@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#05080c">
+<meta name="color-scheme" content="dark">
 <title>Abdelrahman Ihab — AI · CV · Cybersecurity · Robotics</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -158,6 +160,16 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 .tech-tag{font-size:9.5px;color:var(--blue);background:rgba(79,195,247,.06);border:1px solid rgba(79,195,247,.15);padding:2px 8px;border-radius:2px;transition:all .25s;}
 .project-card:hover .tech-tag{background:rgba(79,195,247,.13);border-color:rgba(79,195,247,.35);}
 
+
+/* Rich bullet lists used for full CV content */
+.project-bullets,.tl-bullets,.training-bullets{list-style:none;margin:.75rem 0 1rem;padding:0;display:flex;flex-direction:column;gap:.48rem;}
+.project-bullets li,.tl-bullets li,.training-bullets li{position:relative;padding-left:1rem;color:var(--muted2);font-size:clamp(10.8px,1.25vw,12px);line-height:1.72;}
+.project-bullets li::before,.tl-bullets li::before,.training-bullets li::before{content:'▸';position:absolute;left:0;top:.05rem;color:var(--accent);font-size:9px;}
+.project-metric{color:var(--text);font-weight:600;}
+.project-subnote{font-size:10px;color:var(--muted);margin-top:-.45rem;margin-bottom:.85rem;letter-spacing:.02em;}
+.training-card .training-bullets{margin-bottom:0;}
+.tl-card .tl-bullets{margin:.65rem 0 .8rem;}
+
 /* TRAINING */
 .training-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .training-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.3rem;position:relative;overflow:hidden;transition:all .3s;}
@@ -294,6 +306,14 @@ section{position:relative;z-index:10;padding:100px 0 80px;max-width:1100px;margi
 }
 /* image preview in thumb */
 .cert-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.cert-preview-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;background:#fff;}
+.cert-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:1rem;text-align:center;background:linear-gradient(135deg,var(--bg3),#0c1722);z-index:0;}
+.cert-fallback-mark{font-family:var(--sans);font-size:1.35rem;font-weight:800;color:var(--accent);letter-spacing:.04em;}
+.cert-fallback-label{font-size:9px;color:var(--muted2);letter-spacing:.08em;text-transform:uppercase;line-height:1.5;}
+.cert-type-badge{position:absolute;bottom:6px;right:8px;font-size:8px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,34,51,.9);color:#fff;padding:2px 7px;border-radius:2px;font-family:var(--mono);font-weight:500;z-index:4;}
+.cert-featured{border-color:rgba(79,195,247,.42);box-shadow:0 0 24px rgba(79,195,247,.06);}
+.cert-featured::before{content:'FEATURED';position:absolute;top:9px;right:9px;z-index:6;font-size:8px;letter-spacing:.12em;color:#05080c;background:var(--blue);padding:2px 7px;border-radius:2px;font-weight:700;}
+
 .cert-overlay{position:absolute;inset:0;background:rgba(5,8,12,.75);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .28s;font-size:11px;color:#fff;letter-spacing:.1em;text-transform:uppercase;}
 .cert-img-info{padding:.85rem 1rem;}
 .cert-img-title{font-size:clamp(11px,1.2vw,12.5px);color:#fff;font-weight:500;margin-bottom:3px;line-height:1.35;}
@@ -402,6 +422,178 @@ footer span{color:var(--accent)}
   .skills-grid{grid-template-columns:1fr 1fr;}
   .cert-img-grid{grid-template-columns:1fr 1fr 1fr;}
 }
+
+
+/* ============================================================
+   RESPONSIVE / DEVICE COMPATIBILITY — 2026 UPDATE
+   Phones, tablets, laptops, desktops, ultrawide, touch & landscape
+   ============================================================ */
+:root{--nav-h:54px;--page-gutter:clamp(1rem,4vw,3rem)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{min-width:280px;min-height:100%;overflow-x:hidden}
+section,#resume{width:min(100%,1180px);max-width:1180px;padding-left:var(--page-gutter);padding-right:var(--page-gutter);scroll-margin-top:calc(var(--nav-h) + 12px)}
+*,*::before,*::after{min-width:0}
+img,svg,video,canvas,iframe,object{max-width:100%}
+img{height:auto}
+p,a,span,div,h1,h2,h3{overflow-wrap:anywhere}
+.project-header>*,.tl-header>*,.contact-link>*,.cert-modal-top>*{min-width:0}
+.project-links{flex-wrap:wrap}
+
+/* More reliable full-height hero on mobile browser chrome */
+#hero{min-height:100vh;min-height:100svh;min-height:100dvh}
+.hero-inner{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));min-height:calc(100dvh - var(--nav-h))}
+.hero-name{font-size:clamp(2.55rem,8vw,6rem);max-width:100%}
+.hero-tagline{max-width:min(100%,620px)}
+
+/* Touch targets and keyboard usability */
+.btn,.resume-btn,.project-link,.cert-filter-btn,.contact-link,.hamburger,.slide-arrow,.cert-modal-close,.cert-modal-open,.cert-modal-view{touch-action:manipulation}
+.hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center}
+.btn,.resume-btn{min-height:44px}
+.project-link,.cert-filter-btn,.cert-modal-open,.cert-modal-view{min-height:36px;display:inline-flex;align-items:center;justify-content:center}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* Prevent fixed navigation from colliding with notches / rounded screens */
+nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-right:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-right));padding-top:env(safe-area-inset-top);height:calc(var(--nav-h) + env(safe-area-inset-top))}
+#hero{padding-top:calc(var(--nav-h) + env(safe-area-inset-top))}
+
+/* Wide screens */
+@media(min-width:1400px){
+  section,#resume{max-width:1240px}
+  .projects-list{gap:18px}
+  .training-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cert-img-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+/* Switch to hamburger before the desktop navigation gets cramped */
+@media(max-width:1050px){
+  nav{padding-left:max(1.1rem,env(safe-area-inset-left));padding-right:max(1.1rem,env(safe-area-inset-right))}
+  .nav-links{
+    display:none;position:fixed;
+    top:calc(var(--nav-h) + env(safe-area-inset-top));left:0;right:0;
+    max-height:calc(100dvh - var(--nav-h) - env(safe-area-inset-top));
+    overflow-y:auto;overscroll-behavior:contain;
+    background:rgba(5,8,12,.98);border-bottom:1px solid var(--border);
+    flex-direction:column;padding:1rem max(1.25rem,env(safe-area-inset-left)) max(1.25rem,env(safe-area-inset-bottom));
+    gap:.2rem;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:99;
+  }
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:flex;align-items:center;min-height:44px;width:100%;font-size:12px;letter-spacing:.12em;padding:.55rem 0}
+  .hamburger{display:flex}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .contact-grid{grid-template-columns:1fr;gap:2rem}
+  .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cert-img-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .awards-grid{grid-template-columns:minmax(0,1fr)}
+  .stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+/* Tablets and larger phones */
+@media(max-width:768px){
+  :root{--page-gutter:clamp(1rem,4.5vw,1.5rem)}
+  section,#resume{padding-top:72px;padding-bottom:54px}
+  .nav-status .ns-text{display:none}
+  .hero-inner{padding:1.5rem 0 4.25rem}
+  .hero-name{font-size:clamp(2.6rem,12vw,5rem);line-height:.96}
+  .hero-tagline{font-size:clamp(11px,2.7vw,13px);line-height:1.85}
+  .hero-badges{margin-bottom:2rem}
+  .about-grid{gap:1.8rem}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .training-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .project-card{padding:1.2rem}
+  .project-header{gap:.7rem}
+  .project-links{width:100%}
+  .project-link{flex:1 1 auto}
+  .timeline-wrap{padding-left:1.35rem}
+  .tl-item::before{left:calc(-1.35rem - 4px)}
+  .tl-connector{left:-1.35rem}
+  .tl-header{gap:.35rem .55rem}
+  .tl-date{margin-left:0;width:100%}
+  .cert-filters{gap:6px}
+  .cert-filter-btn{flex:1 1 auto;white-space:nowrap}
+  .cert-modal-backdrop{padding:.5rem;align-items:center}
+  .cert-modal{max-height:calc(100dvh - 1rem);overflow:auto}
+  .cert-modal-top{position:sticky;top:0;z-index:2;background:var(--bg2);gap:.6rem;align-items:flex-start}
+  .cert-modal-actions{flex-wrap:wrap;justify-content:flex-end}
+  .cert-modal-body{min-height:0;height:min(68dvh,620px)}
+  .cert-modal-body iframe{height:100%}
+  .contact-link{align-items:flex-start}
+  .cl-label{display:none}
+}
+
+/* Phones */
+@media(max-width:600px){
+  body{font-size:13px}
+  .hero-inner{justify-content:center;padding-top:1rem}
+  .hero-name{font-size:clamp(2.45rem,14vw,4.1rem)}
+  .hero-cta{display:grid;grid-template-columns:1fr;width:100%}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .scroll-hint{bottom:max(1rem,env(safe-area-inset-bottom))}
+  .section-label{margin-bottom:1.65rem}
+  .about-headline{font-size:clamp(1.25rem,6vw,1.7rem)}
+  .training-grid,.skills-grid,.cert-img-grid{grid-template-columns:minmax(0,1fr)}
+  .project-card:hover,.tl-item:hover .tl-card,.contact-link:hover{transform:none}
+  .project-desc,.tl-desc,.about-body p{font-size:12px}
+  .project-tech,.tl-pills,.award-tags{gap:6px}
+  .tech-tag,.pill,.award-tag{font-size:9px}
+  .timeline-wrap{padding-left:1.15rem}
+  .timeline-wrap::before{left:0}
+  .tl-item::before{left:calc(-1.15rem - 4px)}
+  .tl-connector{left:-1.15rem}
+  .tl-card{padding:1rem}
+  .tl-num{display:none}
+  .award-body{padding:1rem}
+  .cert-group{margin-bottom:2rem}
+  .cert-img-info{padding:.8rem .9rem}
+  .resume-card{padding:2rem 1rem}
+  .resume-btn{width:100%;justify-content:center;padding-left:1rem;padding-right:1rem}
+  .contact-link{padding:12px;gap:9px}
+  footer{padding-bottom:max(2rem,calc(1rem + env(safe-area-inset-bottom)))}
+}
+
+/* Small phones / narrow split-screen windows */
+@media(max-width:390px){
+  :root{--page-gutter:.9rem}
+  .nav-logo{font-size:13px}
+  .hero-name{font-size:clamp(2.2rem,14vw,3.25rem)}
+  .hero-badges{gap:6px}
+  .badge{padding:4px 8px;font-size:8.5px}
+  .stats-grid{grid-template-columns:minmax(0,1fr)}
+  .cert-filters{display:grid;grid-template-columns:1fr 1fr}
+  .cert-filter-btn{width:100%;padding:6px 8px;font-size:9px}
+  .cert-modal-top{flex-direction:column}
+  .cert-modal-actions{width:100%;justify-content:flex-start}
+  .cert-modal-body{height:62dvh}
+}
+
+/* Very short landscape phone screens */
+@media(max-height:520px) and (orientation:landscape){
+  #hero,.hero-inner{min-height:auto}
+  .hero-inner{padding:2rem 0 3rem}
+  .scroll-hint{display:none}
+  section,#resume{padding-top:62px;padding-bottom:42px}
+  .nav-links{max-height:calc(100dvh - var(--nav-h));padding-top:.6rem;padding-bottom:.6rem}
+  .nav-links a{min-height:38px}
+  .cert-modal-body{height:58dvh}
+}
+
+/* Respect accessibility settings and reduce work on low-motion devices */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .stagger>*{opacity:1;transform:none}
+  .section-label,.tl-item{opacity:1;transform:none}
+}
+
+/* Print-friendly fallback */
+@media print{
+  nav,#progress,#ambient,.scroll-hint,.hero-cta,.cert-filters,.slide-arrow,.slide-nav{display:none!important}
+  body{background:#fff!important;color:#111!important}
+  section,#resume{max-width:none;padding:24px 0;break-inside:avoid}
+  .project-card,.training-card,.tl-card,.skill-group,.award-card,.cert-img-card,.resume-card,.contact-link{box-shadow:none!important;transform:none!important;break-inside:avoid}
+}
+
 </style>
 </head>
 <body>
@@ -424,7 +616,7 @@ footer span{color:var(--accent)}
   </ul>
   <div style="display:flex;align-items:center;gap:1rem">
     <div class="nav-status"><span class="nav-status-dot"></span><span class="ns-text">Available for internships</span></div>
-    <button class="hamburger" id="hamburger" aria-label="menu"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -492,59 +684,186 @@ footer span{color:var(--accent)}
   <div class="section-label">Projects</div>
   <div class="projects-list stagger">
 
+    <!-- RAG E-COMMERCE -->
     <div class="project-card">
-      <div class="project-header"><div><span class="project-badge">🤖 NLP · RAG · LLM</span><h3 class="project-title">RAG-Based E-commerce Customer Support Chatbot</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Rag-Ecommerce-Customer-Support-Chatbot" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <p class="project-desc">Designed an end-to-end retrieval-augmented customer-support system combining language detection, sentiment analysis, intent classification, confidence-aware routing, and grounded LLM generation. Fine-tuned DistilBERT for sentiment classification (<strong>97.7%</strong> test accuracy), trained language and intent classifiers reaching <strong>99.5%</strong> and <strong>99.8%</strong>, and built a FAISS-backed RAG layer over <strong>24K+ knowledge-base entries</strong>.</p>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Transformers</span><span class="tech-tag">FAISS</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">Groq API</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Streamlit</span></div>
+      <div class="project-header">
+        <div>
+          <span class="project-badge">🤖 NLP · RAG · LLM</span>
+          <h3 class="project-title">RAG-Based E-commerce Customer Support Chatbot</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288/Rag-Ecommerce-Customer-Support-Chatbot" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <ul class="project-bullets">
+        <li>Designed and developed an end-to-end retrieval-augmented chatbot combining language detection, sentiment analysis, intent classification, and grounded LLM generation for e-commerce customer support.</li>
+        <li>Built a confidence- and sentiment-aware routing layer that escalates ambiguous but frustrated messages to human agents while safely refusing low-confidence noise, discovered and fixed through live adversarial testing rather than benchmark metrics alone.</li>
+        <li>Fine-tuned DistilBERT for sentiment classification (<span class="project-metric">97.7% test accuracy</span>) and trained TF-IDF + Logistic Regression classifiers for language detection (<span class="project-metric">99.5%</span>) and intent classification (<span class="project-metric">99.8%</span>), backed by a FAISS-indexed RAG pipeline over <span class="project-metric">24K+ knowledge-base entries</span> with Groq-hosted LLM generation.</li>
+      </ul>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Hugging Face Transformers</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">FAISS</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Groq API</span><span class="tech-tag">Streamlit</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Pytest</span>
+      </div>
     </div>
 
+    <!-- RAG DOCUMENT ASSISTANT -->
     <div class="project-card">
-      <div class="project-header"><div><span class="project-badge">🏆 Computer Vision · Robotics</span><h3 class="project-title">Nautix — MATE ROV 2026</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <p class="project-desc"><strong>1st Place + Best Design + Best Presentation</strong> at the MATE ROV 2026 Pioneer Regional Competition. Engineered a YOLOv8 European Green Crab detection pipeline using synthetic data augmentation, implemented occlusion recovery with &gt;95% trajectory continuity, and developed calibrated 3D coral-garden reconstruction for biodiversity reporting.</p>
-      <div class="project-tech"><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Python</span><span class="tech-tag">3D Reconstruction</span><span class="tech-tag">Synthetic Data</span><span class="tech-tag">Homography</span></div>
+      <div class="project-header">
+        <div>
+          <span class="project-badge">📚 Local AI · RAG · Knowledge Systems</span>
+          <h3 class="project-title">RAG-Powered Document Assistant</h3>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Abdelrahman-288/RAG-Powered-Document-Assistant" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <ul class="project-bullets">
+        <li>Built a local-first technical-document RAG assistant that ingests PDFs page-by-page, cleans and chunks content, generates embeddings, stores them in persistent ChromaDB, and answers questions using retrieved document evidence.</li>
+        <li>Implemented two-stage retrieval using cosine vector search plus a cross-encoder reranker, with page/document citations, category-aware routing, unsupported-answer blocking, and citation validation/retry for grounded responses.</li>
+        <li>Created an incremental ingestion pipeline with deterministic SHA-256 chunk IDs and indexed <span class="project-metric">12,382 pages / 27,029 chunks</span>, using GPU-accelerated Sentence-Transformer embeddings and local Ollama inference.</li>
+        <li>Developed a FastAPI backend with a Next.js/TypeScript/React frontend for an end-to-end local document-learning and question-answering workflow.</li>
+      </ul>
+      <div class="project-tech">
+        <span class="tech-tag">Python 3.11</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Next.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">React</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">Cross-Encoder Reranking</span><span class="tech-tag">Ollama</span><span class="tech-tag">Gemma 3</span><span class="tech-tag">CUDA</span>
+      </div>
     </div>
 
+    <!-- MATE ROV -->
     <div class="project-card">
-      <div class="project-header"><div><span class="project-badge">🛰️ Graduation Project · Edge AI · VLM</span><h3 class="project-title">VLM-Enhanced Autonomous AI Security Patrol</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/VLM-Enhanced-Autonomous-AI-Security-Patrol" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <p class="project-desc">Designed an autonomous AI security-patrol architecture combining TinyML and Vision-Language Models for intelligent edge surveillance. Implemented hierarchical edge-cloud inference on Arduino Portenta H7 using FOMO object detection with Groq vision-language reasoning, including an INT8-quantized TinyML model reaching <strong>86.9% detection accuracy</strong>.</p>
-      <div class="project-tech"><span class="tech-tag">Arduino Portenta H7</span><span class="tech-tag">TinyML</span><span class="tech-tag">FOMO</span><span class="tech-tag">VLM</span><span class="tech-tag">Groq API</span><span class="tech-tag">Edge AI</span></div>
+      <div class="project-header">
+        <div>
+          <span class="project-badge">🏆 Computer Vision · Robotics</span>
+          <h3 class="project-title">Nautix — MATE ROV 2026</h3>
+        </div>
+        <div class="project-links"><a href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <ul class="project-bullets">
+        <li>Engineered a YOLOv8 object detection pipeline for European Green Crab identification using synthetic data augmentation and custom training to maximize accuracy on limited real-world data.</li>
+        <li>Implemented trajectory interpolation for occluded frame recovery, achieving <span class="project-metric">over 95% trajectory continuity</span> across underwater test dives.</li>
+        <li>Developed a 3D coral garden reconstruction system with calibrated real-world metric scaling for scientific biodiversity reporting.</li>
+        <li>Team secured <span class="project-metric">1st Place, Best Design, and Best Presentation</span> at MATE ROV 2026 Pioneer Regional Competition.</li>
+      </ul>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">NumPy</span><span class="tech-tag">Synthetic Data Generation</span><span class="tech-tag">Homography</span><span class="tech-tag">3D Reconstruction</span></div>
     </div>
 
+    <!-- VLM SECURITY PATROL -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge">🛰️ Graduation Project · Edge AI · VLM</span>
+          <h3 class="project-title">VLM-Enhanced Autonomous AI Security Patrol</h3>
+        </div>
+        <div class="project-links"><a href="https://github.com/Abdelrahman-288/VLM-Enhanced-Autonomous-AI-Security-Patrol" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <ul class="project-bullets">
+        <li>Designed and developed an autonomous AI-powered security patrol system combining TinyML and Vision-Language Models (VLMs) for intelligent edge surveillance.</li>
+        <li>Implemented a hierarchical AI pipeline on Arduino Portenta H7 using FOMO object detection with the Groq Vision-Language API for efficient edge-cloud inference.</li>
+        <li>Optimized an INT8-quantized TinyML model achieving <span class="project-metric">86.9% detection accuracy</span> while significantly reducing memory usage and cloud inference costs.</li>
+      </ul>
+      <div class="project-tech"><span class="tech-tag">Arduino Portenta H7</span><span class="tech-tag">Portenta Vision Shield</span><span class="tech-tag">TinyML</span><span class="tech-tag">FOMO</span><span class="tech-tag">Groq Vision-Language API</span></div>
+    </div>
+
+    <!-- MALWARE -->
     <div class="project-card">
       <div class="project-header"><div><span class="project-badge">🛡️ AI · Cybersecurity · Deep Learning</span><h3 class="project-title">Hybrid AI Malware Classification &amp; Detection System</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/malware-classification-system" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <p class="project-desc">Architected a four-stage malware-classification pipeline using binary visualization, CNN feature extraction, opcode analysis with BiLSTM, and ensemble fusion on the Microsoft BIG 2015 dataset. Added PE-header inspection, entropy analysis, Ghidra-based static analysis, Grad-CAM explainability, and an interactive Streamlit threat-reporting dashboard.</p>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">Ghidra</span><span class="tech-tag">pefile</span><span class="tech-tag">Grad-CAM</span><span class="tech-tag">Streamlit</span></div>
+      <ul class="project-bullets">
+        <li>Architected a four-stage malware classification pipeline using binary visualization, CNN feature extraction, opcode analysis with BiLSTM, and ensemble fusion on the Microsoft BIG 2015 dataset (<span class="project-metric">10,868 malware samples across 9 families</span>).</li>
+        <li>Performed static malware analysis using PE header inspection, opcode extraction, entropy analysis, and behavioral feature engineering with pefile and Ghidra.</li>
+        <li>Integrated Grad-CAM explainability and deployed an interactive Streamlit dashboard for real-time malware prediction, visualization, and automated threat reporting.</li>
+      </ul>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">Ghidra</span><span class="tech-tag">pefile</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Grad-CAM</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span></div>
     </div>
 
+    <!-- TENNIS -->
     <div class="project-card">
       <div class="project-header"><div><span class="project-badge">🎾 Computer Vision · Sports Analytics</span><h3 class="project-title">Tennis Match Analytics</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Tennis-Analysis" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <p class="project-desc">Fine-tuned YOLOv8 for player and ball detection, improving ball-detection AP by <strong>18%</strong> over baseline. Applied homography-based court mapping and trajectory interpolation to generate player movement, shot direction, rally, and speed analytics with <strong>93.31%</strong> accuracy on computed match statistics.</p>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv8</span><span class="tech-tag">PyTorch</span><span class="tech-tag">OpenCV</span><span class="tech-tag">CNN</span><span class="tech-tag">Homography</span></div>
+      <ul class="project-bullets">
+        <li>Fine-tuned YOLOv8 for player and ball detection on fixed-camera video, improving ball detection Average Precision (AP) by <span class="project-metric">18% over baseline</span>.</li>
+        <li>Applied homography-based court mapping and trajectory interpolation, achieving <span class="project-metric">93.31% accuracy</span> on computed match statistics.</li>
+        <li>Developed a custom CNN for court keypoint regression, eliminating manual calibration while generating player movement, shot direction, and rally analytics.</li>
+      </ul>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv8</span><span class="tech-tag">PyTorch</span><span class="tech-tag">OpenCV</span><span class="tech-tag">CNN</span><span class="tech-tag">Homography</span><span class="tech-tag">Keypoint Regression</span></div>
     </div>
 
+    <!-- FACE DETECTION -->
     <div class="project-card">
       <div class="project-header"><div><span class="project-badge">👁️ Transfer Learning · Computer Vision</span><h3 class="project-title">Deep Face Detection System</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Deep_Face_Detection_Project" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <p class="project-desc">Built a custom face detector by fine-tuning a pretrained VGG16 backbone with bounding-box regression and binary-classification heads. Created and annotated a custom dataset with LabelMe and deployed real-time image and webcam inference through Gradio.</p>
-      <div class="project-tech"><span class="tech-tag">TensorFlow</span><span class="tech-tag">VGG16</span><span class="tech-tag">OpenCV</span><span class="tech-tag">LabelMe</span><span class="tech-tag">Gradio</span></div>
+      <ul class="project-bullets">
+        <li>Built a custom face detector by fine-tuning a pretrained VGG16 backbone with bounding-box regression and binary classification heads for face localization.</li>
+        <li>Created and annotated a custom dataset using OpenCV and LabelMe with VOC and COCO export pipelines.</li>
+        <li>Deployed the trained model as an interactive Gradio web application supporting real-time image and webcam inference.</li>
+      </ul>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">VGG16</span><span class="tech-tag">OpenCV</span><span class="tech-tag">LabelMe</span><span class="tech-tag">Gradio</span></div>
     </div>
 
+    <!-- HEART DISEASE -->
     <div class="project-card">
       <div class="project-header"><div><span class="project-badge">🫀 Machine Learning</span><h3 class="project-title">Heart Disease Prediction</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Heart_Disease_Prediction" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <p class="project-desc">Developed a complete ML pipeline for the UCI Heart Disease dataset covering preprocessing, exploratory analysis, PCA, feature selection, model benchmarking, hyperparameter optimization, unsupervised clustering, and Streamlit deployment.</p>
-      <div class="project-tech"><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">PCA</span><span class="tech-tag">Streamlit</span></div>
+      <ul class="project-bullets">
+        <li>Developed a complete machine learning pipeline including preprocessing, exploratory data analysis, PCA, and feature selection using the UCI Heart Disease dataset.</li>
+        <li>Trained and optimized Logistic Regression, Decision Trees, Random Forest, and Support Vector Machine models using GridSearchCV and RandomizedSearchCV.</li>
+        <li>Applied unsupervised clustering to identify patient subgroups and deployed the solution through an interactive Streamlit application.</li>
+      </ul>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Streamlit</span></div>
     </div>
+
   </div>
 </section>
+
 <!-- TRAINING -->
 <section id="training">
   <div class="section-label">Training &amp; Learning</div>
   <div class="training-grid stagger">
-    <div class="training-card"><div class="training-icon">🧠</div><div class="training-name">Applied AI Program — Level 2</div><div class="training-org">ITI · Aug–Sep 2026</div><div class="training-detail">Python for AI, Computer Vision, YOLO, pretrained models, NLP, LLMs, Generative AI, RAG, and practical model deployment through an end-to-end capstone.</div></div>
-    <div class="training-card"><div class="training-icon">🔐</div><div class="training-name">Network &amp; Cybersecurity Training</div><div class="training-org">ITI · Jul–Aug 2026</div><div class="training-detail">Advanced Networking, Network Fundamentals, Cybersecurity Essentials, Ethical Hacking, and Huawei Cloud HCCDA — Tech Essentials.</div></div>
-    <div class="training-card"><div class="training-icon">🛡️</div><div class="training-name">Fortinet Cybersecurity Program</div><div class="training-org">NTI · ITIDA · 120 hours · 2025</div><div class="training-detail">FortiGate policy, NAT, FSSO, routing, FortiManager, SSL/IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, HA, cryptography, and PKI. Overall score: 93%.</div></div>
-    <div class="training-card"><div class="training-icon">🤖</div><div class="training-name">NVIDIA AI Program</div><div class="training-org">ITI · Sep–Oct 2025</div><div class="training-detail">Building LLM Applications with Prompt Engineering and AI for All: From Basics to Generative AI.</div></div>
-    <div class="training-card"><div class="training-icon">⚙️</div><div class="training-name">Universal Robots Academy</div><div class="training-org">UR20/30 eLearning · Apr 2026</div><div class="training-detail">Collaborative-robot programming, safety, motion planning, I/O integration, and application development.</div></div>
-    <div class="training-card"><div class="training-icon">🐧</div><div class="training-name">Linux &amp; Cybersecurity Foundations</div><div class="training-org">IBM · Google · 2025–2026</div><div class="training-detail">Linux commands and shell scripting, cybersecurity fundamentals, risk, assets, threats, vulnerabilities, identity/access, and incident-response concepts.</div></div>
+    <div class="training-card">
+      <div class="training-icon">🧠</div>
+      <div class="training-name">Applied AI Program Trainee — Level 2</div>
+      <div class="training-org">Information Technology Institute (ITI) · Aug–Sep 2026</div>
+      <ul class="training-bullets">
+        <li>Python for AI, Computer Vision, YOLO object detection, and pretrained models.</li>
+        <li>NLP, LLMs, Generative AI, Retrieval-Augmented Generation (RAG), practical applications, and model deployment.</li>
+        <li>End-to-end capstone project covering the complete AI development pipeline.</li>
+      </ul>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🔐</div>
+      <div class="training-name">Network &amp; Cybersecurity Trainee</div>
+      <div class="training-org">Information Technology Institute (ITI) · Jul–Aug 2026</div>
+      <ul class="training-bullets">
+        <li>Advanced Networking and Network Fundamentals.</li>
+        <li>Cybersecurity Essentials and Ethical Hacking.</li>
+        <li>Huawei Cloud HCCDA — Tech Essentials and modern cloud infrastructure concepts.</li>
+      </ul>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🛡️</div>
+      <div class="training-name">Fortinet Cybersecurity Trainee</div>
+      <div class="training-org">NTI · ITIDA · Aug–Sep 2025 · 120 hours · 93%</div>
+      <ul class="training-bullets">
+        <li>FortiGate policies, NAT, FSSO, routing protocols, and FortiManager.</li>
+        <li>SSL VPN, IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, and High Availability.</li>
+        <li>Cryptography, PKI, certificate lifecycle management, and intrusion prevention.</li>
+      </ul>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🤖</div>
+      <div class="training-name">Artificial Intelligence Trainee — NVIDIA AI Program</div>
+      <div class="training-org">Information Technology Institute (ITI) · Sep–Oct 2025</div>
+      <ul class="training-bullets">
+        <li>Building LLM Applications with Prompt Engineering: prompt engineering, LLM optimization, and API integration.</li>
+        <li>AI for All: AI fundamentals, model training, deep learning concepts, and Generative AI applications.</li>
+      </ul>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">⚙️</div>
+      <div class="training-name">Universal Robots Academy</div>
+      <div class="training-org">UR20/30 eLearning · Apr 2026</div>
+      <div class="training-detail">Collaborative-robot programming, safety, motion planning, I/O integration, and application development.</div>
+    </div>
+    <div class="training-card">
+      <div class="training-icon">🐧</div>
+      <div class="training-name">Linux &amp; Cybersecurity Foundations</div>
+      <div class="training-org">IBM · Google · 2025–2026</div>
+      <div class="training-detail">Linux commands and shell scripting, cybersecurity fundamentals, security risks, networks, threats, vulnerabilities, detection, response, and job-readiness training.</div>
+    </div>
   </div>
 </section>
 
@@ -552,14 +871,98 @@ footer span{color:var(--accent)}
 <section id="experience">
   <div class="section-label">Experience</div>
   <div class="timeline-wrap stagger">
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">01</div><div class="tl-header"><span class="tl-role">Computer Vision / ML Engineer</span><span class="tl-company">· Vortex Robotics</span><span class="tl-date">Jan 2026–Present</span></div><div class="tl-desc">Designed and deployed the YOLOv8 vision pipeline for an underwater ROV, built European Green Crab detection with synthetic augmentation, and developed calibrated 3D coral-garden reconstruction. The team secured 1st Place, Best Design, and Best Presentation at MATE ROV 2026 Pioneer Regional.</div><div class="tl-pills"><span class="pill">YOLOv8</span><span class="pill">OpenCV</span><span class="pill">Synthetic Data</span><span class="pill">3D Reconstruction</span></div></div></div>
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">02</div><div class="tl-header"><span class="tl-role">Applied AI + Network &amp; Cybersecurity Trainee</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Jul–Sep 2026</span></div><div class="tl-desc">Completed two consecutive summer tracks: Network &amp; Cybersecurity followed by Applied AI Level 2. Covered advanced networking, ethical hacking, Huawei Cloud, computer vision, YOLO, NLP, LLMs, Generative AI, RAG, and deployment.</div><div class="tl-pills"><span class="pill">Networking</span><span class="pill">Cybersecurity</span><span class="pill">YOLO</span><span class="pill">NLP</span><span class="pill">RAG</span><span class="pill">LLMs</span></div></div></div>
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">03</div><div class="tl-header"><span class="tl-role">Fortinet Cybersecurity Trainee</span><span class="tl-company">· NTI / ITIDA</span><span class="tl-date">Aug–Sep 2025</span></div><div class="tl-desc">Completed a 120-hour cybersecurity program with a 93% overall score, configuring FortiGate security policies, NAT, FSSO, routing, VPNs, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, HA, cryptography, and PKI.</div><div class="tl-pills"><span class="pill">FortiGate</span><span class="pill">VPN</span><span class="pill">SD-WAN</span><span class="pill">IPS</span><span class="pill">PKI</span></div></div></div>
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">04</div><div class="tl-header"><span class="tl-role">Artificial Intelligence Trainee — NVIDIA AI Program</span><span class="tl-company">· ITI</span><span class="tl-date">Sep–Oct 2025</span></div><div class="tl-desc">Completed NVIDIA training in prompt engineering, LLM application development, AI fundamentals, deep learning concepts, and Generative AI applications.</div><div class="tl-pills"><span class="pill">NVIDIA</span><span class="pill">Prompt Engineering</span><span class="pill">LLMs</span><span class="pill">GenAI</span></div></div></div>
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">05</div><div class="tl-header"><span class="tl-role">IT Internship Trainee</span><span class="tl-company">· Ezz Dekheila Steel Company (EZDK)</span><span class="tl-date">Jul–Aug 2025</span></div><div class="tl-desc">Worked with enterprise IT operations, networking, cybersecurity, web-development workflows, cloud-computing practices, and project coordination in a large industrial environment.</div><div class="tl-pills"><span class="pill">Enterprise IT</span><span class="pill">Networking</span><span class="pill">Cybersecurity</span><span class="pill">Cloud</span></div></div></div>
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">06</div><div class="tl-header"><span class="tl-role">Computer Engineer Intern</span><span class="tl-company">· PETROJET</span><span class="tl-date">Aug 2025</span></div><div class="tl-desc">Diagnosed network-device failures, gained hands-on exposure to SAP enterprise systems, collaborated with cross-functional IT teams, and documented troubleshooting and network configurations.</div><div class="tl-pills"><span class="pill">Networking</span><span class="pill">Troubleshooting</span><span class="pill">SAP</span><span class="pill">Documentation</span></div></div></div>
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">07</div><div class="tl-header"><span class="tl-role">Network Administrator Intern</span><span class="tl-company">· GIECO</span><span class="tl-date">Jul–Sep 2024</span></div><div class="tl-desc">Assisted in planning, configuring, installing, and maintaining enterprise network infrastructure, including routers, switches, VPN endpoints, WAN, and LAN connectivity across multiple office locations.</div><div class="tl-pills"><span class="pill">Routers</span><span class="pill">Switches</span><span class="pill">VPN</span><span class="pill">WAN/LAN</span></div></div></div>
-    <div class="tl-item"><div class="tl-card"><div class="tl-num">08</div><div class="tl-header"><span class="tl-role">Cybersecurity Intern</span><span class="tl-company">· ETHYDCO</span><span class="tl-date">Jul 2024</span></div><div class="tl-desc">Identified and documented vulnerabilities in industrial control systems, supported vulnerability assessments, incident monitoring, threat detection, response activities, and authentication/access-management controls.</div><div class="tl-pills"><span class="pill">Vulnerability Assessment</span><span class="pill">Incident Monitoring</span><span class="pill">Threat Detection</span><span class="pill">Access Control</span></div></div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">01</div>
+      <div class="tl-header"><span class="tl-role">Computer Vision / ML Engineer</span><span class="tl-company">· Vortex Robotics</span><span class="tl-date">Jan 2026–Present</span></div>
+      <ul class="tl-bullets">
+        <li>Designed and deployed a full YOLOv8 computer vision pipeline for an underwater ROV competition, achieving over 95% trajectory continuity.</li>
+        <li>Built a European Green Crab detection system using synthetic data augmentation to overcome limited real-world data, enabling reliable biodiversity analysis in underwater environments.</li>
+        <li>Developed a 3D coral garden reconstruction model with real-world spatial calibration and accurate metric scaling for scientific reporting.</li>
+        <li>Team secured 1st Place, the Best Design Award, and the Best Presentation Award at the MATE ROV 2026 Pioneer Regional Competition, qualifying for the international competition in Canada.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">YOLOv8</span><span class="pill">OpenCV</span><span class="pill">Synthetic Data</span><span class="pill">3D Reconstruction</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">02</div>
+      <div class="tl-header"><span class="tl-role">Applied AI Program Trainee (Level 2)</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Aug–Sep 2026</span></div>
+      <ul class="tl-bullets">
+        <li>Completed an intensive Applied AI training program covering Python for AI, Computer Vision, YOLO object detection, and pretrained models.</li>
+        <li>Studied NLP, Large Language Models (LLMs), Generative AI, and Retrieval-Augmented Generation (RAG), with practical applications and model deployment.</li>
+        <li>Developed an end-to-end capstone project applying modern AI techniques across the complete development pipeline.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">Python for AI</span><span class="pill">YOLO</span><span class="pill">NLP</span><span class="pill">LLMs</span><span class="pill">RAG</span><span class="pill">GenAI</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">03</div>
+      <div class="tl-header"><span class="tl-role">Network &amp; Cybersecurity Trainee</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Jul–Aug 2026</span></div>
+      <ul class="tl-bullets">
+        <li>Completed technical training in Advanced Networking and Network Fundamentals, covering core networking concepts, technologies, and infrastructure.</li>
+        <li>Completed training in Cybersecurity Essentials and Ethical Hacking, developing practical knowledge of cybersecurity principles and security techniques.</li>
+        <li>Completed Huawei Cloud HCCDA — Tech Essentials, gaining exposure to cloud computing concepts and modern IT infrastructure.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">Advanced Networking</span><span class="pill">Cybersecurity</span><span class="pill">Ethical Hacking</span><span class="pill">Huawei Cloud</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">04</div>
+      <div class="tl-header"><span class="tl-role">Fortinet Cybersecurity Trainee</span><span class="tl-company">· National Telecom Institute (NTI) / ITIDA</span><span class="tl-date">Aug–Sep 2025</span></div>
+      <ul class="tl-bullets">
+        <li>Completed a 120-hour intensive training program (30 hours soft skills, 90 hours technical) with an overall score of 93%.</li>
+        <li>Configured FortiGate firewalls including security policies, NAT, FSSO authentication, routing protocols, and FortiManager integration.</li>
+        <li>Implemented SSL VPN, IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, and High Availability solutions.</li>
+        <li>Studied cryptography, PKI, certificate lifecycle management, and intrusion prevention in production-simulated environments.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">FortiGate</span><span class="pill">VPN</span><span class="pill">SD-WAN</span><span class="pill">IPS</span><span class="pill">PKI</span><span class="pill">FortiManager</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">05</div>
+      <div class="tl-header"><span class="tl-role">Artificial Intelligence Trainee — NVIDIA AI Program</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Sep–Oct 2025</span></div>
+      <ul class="tl-bullets">
+        <li>Completed Building LLM Applications with Prompt Engineering, covering prompt engineering, LLM optimization, and API integration for Large Language Model applications.</li>
+        <li>Completed AI for All: From Basics to Generative AI, covering AI fundamentals, model training, deep learning concepts, and Generative AI applications.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">NVIDIA</span><span class="pill">Prompt Engineering</span><span class="pill">LLM Apps</span><span class="pill">GenAI</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">06</div>
+      <div class="tl-header"><span class="tl-role">IT Internship Trainee</span><span class="tl-company">· Ezz Dekheila Steel Company (EZDK)</span><span class="tl-date">Jul–Aug 2025</span></div>
+      <ul class="tl-bullets">
+        <li>Gained enterprise IT operations experience within one of Egypt’s largest industrial organizations.</li>
+        <li>Applied networking, cybersecurity, and web development skills to real production infrastructure and IT workflows.</li>
+        <li>Observed and assisted with corporate network management, cloud computing practices, and project coordination.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">Enterprise IT</span><span class="pill">Networking</span><span class="pill">Cybersecurity</span><span class="pill">Cloud</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">07</div>
+      <div class="tl-header"><span class="tl-role">Computer Engineer Intern</span><span class="tl-company">· PETROJET</span><span class="tl-date">Aug 2025</span></div>
+      <ul class="tl-bullets">
+        <li>Diagnosed and resolved network device failures across enterprise infrastructure, maintaining system uptime and reliability.</li>
+        <li>Gained hands-on experience with SAP enterprise systems and collaborated with cross-functional IT teams.</li>
+        <li>Documented network configurations and troubleshooting procedures to support operational knowledge transfer.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">Networking</span><span class="pill">Troubleshooting</span><span class="pill">SAP</span><span class="pill">Documentation</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">08</div>
+      <div class="tl-header"><span class="tl-role">Network Administrator Intern</span><span class="tl-company">· GIECO — Gharably Integrated Engineering Company</span><span class="tl-date">Jul–Sep 2024</span></div>
+      <ul class="tl-bullets">
+        <li>Assisted in planning, configuring, installing, and maintaining enterprise network infrastructure.</li>
+        <li>Configured and maintained routers, switches, and VPN endpoints while monitoring network performance.</li>
+        <li>Supported WAN and LAN deployment across multiple office locations.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">Routers</span><span class="pill">Switches</span><span class="pill">VPN</span><span class="pill">WAN/LAN</span></div>
+    </div></div>
+
+    <div class="tl-item"><div class="tl-card"><div class="tl-num">09</div>
+      <div class="tl-header"><span class="tl-role">Cybersecurity Intern</span><span class="tl-company">· ETHYDCO</span><span class="tl-date">Jul 2024</span></div>
+      <ul class="tl-bullets">
+        <li>Identified and documented security vulnerabilities across industrial control systems and proposed mitigation measures.</li>
+        <li>Conducted vulnerability assessments and contributed to incident monitoring, threat detection, and response activities.</li>
+        <li>Assisted in implementing authentication controls and access management policies aligned with cybersecurity best practices.</li>
+      </ul>
+      <div class="tl-pills"><span class="pill">Vulnerability Assessment</span><span class="pill">Incident Monitoring</span><span class="pill">Threat Detection</span><span class="pill">Access Control</span></div>
+    </div></div>
+
   </div>
 </section>
 
@@ -623,84 +1026,129 @@ footer span{color:var(--accent)}
   </div>
 </section>
 
-<!-- CERTIFICATIONS — REORGANIZED: AI/ML → Robotics → Cybersecurity -->
+<!-- CERTIFICATIONS — robust image thumbnails for GitHub Pages -->
 <section id="certifications">
   <div class="section-label">Licenses &amp; Certifications</div>
-
-  <!-- Filter buttons — 3 categories only -->
   <div class="cert-filters">
     <button class="cert-filter-btn active" data-filter="all">All</button>
-    <button class="cert-filter-btn" data-filter="aiml">AI / ML</button>
-    <button class="cert-filter-btn" data-filter="robotics">Robotics</button>
+    <button class="cert-filter-btn" data-filter="aiml">AI / LLM</button>
     <button class="cert-filter-btn" data-filter="security">Cybersecurity</button>
+    <button class="cert-filter-btn" data-filter="cloud">Cloud / Linux</button>
+    <button class="cert-filter-btn" data-filter="robotics">Robotics</button>
   </div>
 
-  <!-- ════════════════════════════════════════════
-       GROUP 1 — AI / ML (FIRST)
-       ════════════════════════════════════════════ -->
   <div class="cert-group" data-category="aiml">
     <div class="cert-group-header">
-      <div class="cert-group-label">NVIDIA · Coursera</div>
-      <div class="cert-group-title">NVIDIA AI & LLM Programs</div>
+      <div class="cert-group-label">Packt · Coursera</div>
+      <div class="cert-group-title">DeepSeek in Practice Specialization</div>
+      <div class="cert-group-sub">Architecture &amp; prompting · intelligent systems · fine-tuning, optimization &amp; deployment</div>
     </div>
     <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('nvidia-llm','Building LLM Apps with Prompt Engineering','NVIDIA','Jul 2025','Certifications/Building LLM.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/NVIDIA_LLM_PromptEngineering.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card cert-featured" onclick="openCertModal('deepseek-spec','DeepSeek in Practice','Packt · Coursera Specialization','Sep 2026','Certifications/DeepSeek_in_Practice_Specialization.pdf','Certifications/thumbnails/DeepSeek_in_Practice_Specialization.png','https://coursera.org/verify/specialization/2FGO2HWGZU9G')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/DeepSeek_in_Practice_Specialization.png" alt="DeepSeek in Practice certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">DeepSeek in Practice</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">DeepSeek in Practice</div>
+          <div class="cert-img-issuer">Packt · Coursera Specialization</div>
+          <div class="cert-img-date">Sep 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('deepseek-found','Foundations of DeepSeek: Architecture, Reasoning & Prompting','Packt · Coursera','Aug 2026','Certifications/DeepSeek_Foundations.pdf','Certifications/thumbnails/DeepSeek_Foundations.png','https://coursera.org/verify/FI1C0UGT2T91')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/DeepSeek_Foundations.png" alt="Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting</div>
+          <div class="cert-img-issuer">Packt · Coursera</div>
+          <div class="cert-img-date">Aug 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('deepseek-applied','Applied DeepSeek: Building Intelligent Systems','Packt · Coursera','Sep 2026','Certifications/DeepSeek_Applied.pdf','Certifications/thumbnails/DeepSeek_Applied.png','https://coursera.org/verify/MIFTL5VV77ND')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/DeepSeek_Applied.png" alt="Applied DeepSeek: Building Intelligent Systems certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Applied DeepSeek: Building Intelligent Systems</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Applied DeepSeek: Building Intelligent Systems</div>
+          <div class="cert-img-issuer">Packt · Coursera</div>
+          <div class="cert-img-date">Sep 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('deepseek-advanced','Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment','Packt · Coursera','Sep 2026','Certifications/DeepSeek_Advanced.pdf','Certifications/thumbnails/DeepSeek_Advanced.png','https://coursera.org/verify/2IBLDCVZXHGA')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/DeepSeek_Advanced.png" alt="Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment</div>
+          <div class="cert-img-issuer">Packt · Coursera</div>
+          <div class="cert-img-date">Sep 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cert-group" data-category="aiml">
+    <div class="cert-group-header">
+      <div class="cert-group-label">NVIDIA · Sprints · Google</div>
+      <div class="cert-group-title">AI &amp; Machine Learning</div>
+    </div>
+    <div class="cert-img-grid">
+      <div class="cert-img-card" onclick="openCertModal('nvidia-llm','Building LLM Apps with Prompt Engineering','NVIDIA','2025','Certifications/NVIDIA_LLM_PromptEngineering.pdf','Certifications/thumbnails/NVIDIA_LLM_PromptEngineering.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/NVIDIA_LLM_PromptEngineering.png" alt="Building LLM Apps with Prompt Engineering certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">NVIDIA</div><div class="cert-fallback-label">Building LLM Apps with Prompt Engineering</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
           <div class="cert-img-title">Building LLM Apps with Prompt Engineering</div>
           <div class="cert-img-issuer">NVIDIA</div>
-          <div class="cert-img-date">Jul 2025</div>
+          <div class="cert-img-date">2025</div>
         </div>
       </div>
-      <div class="cert-img-card" onclick="openCertModal('nvidia-ai4all','AI for All: From Basics to GenAI','NVIDIA','Jul 2025','Certifications/AI for ALL.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/NVIDIA_AI_For_All.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('nvidia-ai4all','AI for All: From Basics to GenAI','NVIDIA','2025','Certifications/NVIDIA_AI_For_All.pdf','Certifications/thumbnails/NVIDIA_AI_For_All.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/NVIDIA_AI_For_All.png" alt="AI for All: From Basics to GenAI certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">NVIDIA</div><div class="cert-fallback-label">AI for All: From Basics to GenAI</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
           <div class="cert-img-title">AI for All: From Basics to GenAI</div>
           <div class="cert-img-issuer">NVIDIA</div>
-          <div class="cert-img-date">Jul 2025</div>
+          <div class="cert-img-date">2025</div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="aiml">
-    <div class="cert-group-header">
-      <div class="cert-group-label">Sprints · Coursera · Stanford</div>
-      <div class="cert-group-title">Machine Learning & AI Foundations</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('sprints-ml','AI & Machine Learning Foundations','Sprints · 40 hours','Aug 2025','Certifications/Sprints_AI_ML_Foundations.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(167,139,250,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/Sprints_AI_ML_Foundations.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('sprints-ml','AI & Machine Learning Foundations','Sprints · 40 hours','Aug 2025','Certifications/Sprints_AI_ML_Foundations.pdf','Certifications/thumbnails/Sprints_AI_ML_Foundations.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Sprints_AI_ML_Foundations.png" alt="AI &amp; Machine Learning Foundations certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">SPRINTS</div><div class="cert-fallback-label">AI &amp; Machine Learning Foundations</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
-          <div class="cert-img-title">AI & Machine Learning Foundations</div>
-          <div class="cert-img-issuer">Sprints</div>
+          <div class="cert-img-title">AI &amp; Machine Learning Foundations</div>
+          <div class="cert-img-issuer">Sprints · 40 hours</div>
           <div class="cert-img-date">Aug 2025</div>
         </div>
       </div>
-      <div class="cert-img-card" onclick="openCertModal('google-ai','Advanced Machine Learning on Google Cloud','Google · Coursera','Oct 2025','Certifications/Google_Advanced_ML.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/Google_Advanced_ML.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('google-ai','Advanced Machine Learning on Google Cloud','Google · Coursera','Oct 2025','Certifications/Google_Advanced_ML.pdf','Certifications/thumbnails/Google_Advanced_ML.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Advanced_ML.png" alt="Advanced Machine Learning on Google Cloud certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Advanced Machine Learning on Google Cloud</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
@@ -709,79 +1157,34 @@ footer span{color:var(--accent)}
           <div class="cert-img-date">Oct 2025</div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════
-       GROUP 2 — ROBOTICS (SECOND)
-       ════════════════════════════════════════════ -->
-  <div class="cert-group" data-category="robotics">
-    <div class="cert-group-header">
-      <div class="cert-group-label">Universal Robots Academy</div>
-      <div class="cert-group-title">Collaborative Robotics & Automation</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('ur-academy','Universal Robots UR20/30 eLearning','Universal Robots Academy','Apr 2026','Certifications/Universal_Robots_UR20_30.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/Universal_Robots_UR20_30.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('google-job-ai','Accelerate Your Job Search with AI','Google · Coursera','May 2026','Certifications/Google_Accelerate_Your_Job_Search_with_AI.pdf','Certifications/thumbnails/Google_Accelerate_Your_Job_Search_with_AI.png','https://coursera.org/verify/F4QC36OWS316')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Accelerate_Your_Job_Search_with_AI.png" alt="Accelerate Your Job Search with AI certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Accelerate Your Job Search with AI</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
-          <div class="cert-img-title">Universal Robots UR20/30 eLearning</div>
-          <div class="cert-img-issuer">Universal Robots Academy</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal('mate-rov','MATE ROV 2026 — Pioneer Champion','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_Champion.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/MATE_ROV_2026_Champion.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">MATE ROV 2026 — Pioneer Champion</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════
-       GROUP 3 — CYBERSECURITY (THIRD)
-       ════════════════════════════════════════════ -->
-  <div class="cert-group" data-category="security">
-    <div class="cert-group-header">
-      <div class="cert-group-label">Google · Coursera</div>
-      <div class="cert-group-title">Google Cybersecurity Professional Certificate</div>
-      <div class="cert-group-sub">Two course completions in 2026</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('google-sec-1','Play It Safe: Manage Security Risks','Google · Coursera','May 2026','Certifications/Google_PlayItSafe_Security.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/Google_PlayItSafe_Security.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Play It Safe: Manage Security Risks</div>
+          <div class="cert-img-title">Accelerate Your Job Search with AI</div>
           <div class="cert-img-issuer">Google · Coursera</div>
           <div class="cert-img-date">May 2026</div>
         </div>
       </div>
-      <div class="cert-img-card" onclick="openCertModal('google-sec-2','Foundations of Cybersecurity','Google · Coursera','Mar 2026','Certifications/Google_Foundations_Cybersecurity.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/Google_Foundations_Cybersecurity.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+    </div>
+  </div>
+
+  <div class="cert-group" data-category="security">
+    <div class="cert-group-header">
+      <div class="cert-group-label">Google · Coursera</div>
+      <div class="cert-group-title">Google Cybersecurity Courses</div>
+      <div class="cert-group-sub">Six verified course completions currently provided</div>
+    </div>
+    <div class="cert-img-grid">
+      <div class="cert-img-card" onclick="openCertModal('google-sec-found','Foundations of Cybersecurity','Google · Coursera','Mar 2026','Certifications/Google_Foundations_of_Cybersecurity.pdf','Certifications/thumbnails/Google_Foundations_of_Cybersecurity.png','https://coursera.org/verify/GFZSM63NS4JW')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Foundations_of_Cybersecurity.png" alt="Foundations of Cybersecurity certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Foundations of Cybersecurity</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
@@ -790,12 +1193,24 @@ footer span{color:var(--accent)}
           <div class="cert-img-date">Mar 2026</div>
         </div>
       </div>
-      <div class="cert-img-card" onclick="openCertModal('google-sec-3','Assets, Threats, and Vulnerabilities','Google · Coursera','Jun 2026','Certifications/Google_Assets, Threats, and Vulnerabilities.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(255,34,51,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/Google_Assets_Threats_and_Vulnerabilities.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('google-sec-play','Play It Safe: Manage Security Risks','Google · Coursera','May 2026','Certifications/Google_Play_It_Safe.pdf','Certifications/thumbnails/Google_Play_It_Safe.png','https://coursera.org/verify/GAYFE3PS19GB')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Play_It_Safe.png" alt="Play It Safe: Manage Security Risks certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Play It Safe: Manage Security Risks</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Play It Safe: Manage Security Risks</div>
+          <div class="cert-img-issuer">Google · Coursera</div>
+          <div class="cert-img-date">May 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('google-sec-assets','Assets, Threats, and Vulnerabilities','Google · Coursera','Jun 2026','Certifications/Google_Assets_Threats_and_Vulnerabilities.pdf','Certifications/thumbnails/Google_Assets_Threats_and_Vulnerabilities.png','https://coursera.org/verify/JD3GL7Y350I1')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Assets_Threats_and_Vulnerabilities.png" alt="Assets, Threats, and Vulnerabilities certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Assets, Threats, and Vulnerabilities</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
@@ -804,35 +1219,59 @@ footer span{color:var(--accent)}
           <div class="cert-img-date">Jun 2026</div>
         </div>
       </div>
+      <div class="cert-img-card" onclick="openCertModal('google-sec-connect','Connect and Protect: Networks and Network Security','Google · Coursera','Aug 2026','Certifications/Google_Connect_and_Protect.pdf','Certifications/thumbnails/Google_Connect_and_Protect.png','https://coursera.org/verify/BM572E48LLOS')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Connect_and_Protect.png" alt="Connect and Protect: Networks and Network Security certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Connect and Protect: Networks and Network Security</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Connect and Protect: Networks and Network Security</div>
+          <div class="cert-img-issuer">Google · Coursera</div>
+          <div class="cert-img-date">Aug 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('google-sec-alarm','Sound the Alarm: Detection and Response','Google · Coursera','Aug 2026','Certifications/Google_Sound_the_Alarm.pdf','Certifications/thumbnails/Google_Sound_the_Alarm.png','https://coursera.org/verify/530U2O7DLVLX')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Sound_the_Alarm.png" alt="Sound the Alarm: Detection and Response certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Sound the Alarm: Detection and Response</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Sound the Alarm: Detection and Response</div>
+          <div class="cert-img-issuer">Google · Coursera</div>
+          <div class="cert-img-date">Aug 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('google-sec-work','Put It to Work: Prepare for Cybersecurity Jobs','Google · Coursera','Aug 2026','Certifications/Google_Put_It_to_Work.pdf','Certifications/thumbnails/Google_Put_It_to_Work.png','https://coursera.org/verify/PL3UOT6ZQLAD')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Google_Put_It_to_Work.png" alt="Put It to Work: Prepare for Cybersecurity Jobs certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Put It to Work: Prepare for Cybersecurity Jobs</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Put It to Work: Prepare for Cybersecurity Jobs</div>
+          <div class="cert-img-issuer">Google · Coursera</div>
+          <div class="cert-img-date">Aug 2026</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="cert-group" data-category="security">
     <div class="cert-group-header">
-      <div class="cert-group-label">IBM · Coursera</div>
-      <div class="cert-group-title">IBM Linux & Cybersecurity</div>
+      <div class="cert-group-label">IBM SkillsBuild · NTI / ITIDA</div>
+      <div class="cert-group-title">Cybersecurity Programs</div>
     </div>
     <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('ibm-linux','Linux Commands & Shell Scripting','IBM · Coursera','Feb 2026','Certifications/IBM_Linux_Shell_Scripting.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/IBM_Linux_Shell_Scripting.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Linux Commands & Shell Scripting</div>
-          <div class="cert-img-issuer">IBM · Coursera</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal('ibm-skillsbuild','IBM SkillsBuild Cybersecurity Certificate','IBM SkillsBuild · 60+ hours','Aug 2025','Certifications/IBM_SkillsBuild_Cybersecurity.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/IBM_SkillsBuild_Cybersecurity.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('ibm-skillsbuild','IBM SkillsBuild Cybersecurity Certificate','IBM SkillsBuild · 60+ hours','Aug 2025','Certifications/IBM_SkillsBuild_Cybersecurity.pdf','Certifications/thumbnails/IBM_SkillsBuild_Cybersecurity.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/IBM_SkillsBuild_Cybersecurity.png" alt="IBM SkillsBuild Cybersecurity Certificate certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">IBM</div><div class="cert-fallback-label">IBM SkillsBuild Cybersecurity Certificate</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
@@ -841,22 +1280,11 @@ footer span{color:var(--accent)}
           <div class="cert-img-date">Aug 2025</div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="security">
-    <div class="cert-group-header">
-      <div class="cert-group-label">NTI · ITIDA</div>
-      <div class="cert-group-title">Fortinet Cybersecurity Program — 93%</div>
-      <div class="cert-group-sub">120 hours · FortiGate, SD-WAN, VPN, IPS, Cryptography</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('fortinet','Fortinet Cybersecurity Program','NTI · ITIDA · 120 hours','Sep 2025','Certifications/Fortinet_Cybersecurity_Program.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/Fortinet_Cybersecurity_Program.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('fortinet','Fortinet Cybersecurity Program — 93%','NTI · ITIDA · 120 hours','Sep 2025','Certifications/Fortinet_Cybersecurity_Program.pdf','Certifications/thumbnails/Fortinet_Cybersecurity_Program.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Fortinet_Cybersecurity_Program.png" alt="Fortinet Cybersecurity Program — 93% certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">FORTINET</div><div class="cert-fallback-label">Fortinet Cybersecurity Program — 93%</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
@@ -868,18 +1296,43 @@ footer span{color:var(--accent)}
     </div>
   </div>
 
-  <div class="cert-group" data-category="security">
+  <div class="cert-group" data-category="cloud">
     <div class="cert-group-header">
-      <div class="cert-group-label">IEEE</div>
-      <div class="cert-group-title">Embedded Linux Course</div>
+      <div class="cert-group-label">Huawei · IBM · IEEE</div>
+      <div class="cert-group-title">Cloud, Linux &amp; Infrastructure</div>
     </div>
     <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal('ieee-linux','Embedded Linux Course','IEEE','Dec 2025','Certifications/IEEE_Embedded_Linux.pdf')">
-        <div class="cert-thumb" style="background:linear-gradient(135deg,rgba(79,195,247,.08),var(--bg3));">
-          <div class="cert-thumb-preview">
-            <object data="Certifications/IEEE_Embedded_Linux.pdf#page=1" type="application/pdf" class="cert-thumb-pdf"></object>
-          </div>
-          <span class="pdf-badge">PDF</span>
+      <div class="cert-img-card" onclick="openCertModal('huawei-hccda','HCCDA - Tech Essentials Course','Huawei ICT Academy','Aug 2026','Certifications/Huawei_HCCDA_Tech_Essentials.png','Certifications/thumbnails/Huawei_HCCDA_Tech_Essentials.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Huawei_HCCDA_Tech_Essentials.png" alt="HCCDA - Tech Essentials Course certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">HUAWEI</div><div class="cert-fallback-label">HCCDA - Tech Essentials Course</div></div>
+          <span class="cert-type-badge">IMG</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">HCCDA - Tech Essentials Course</div>
+          <div class="cert-img-issuer">Huawei ICT Academy</div>
+          <div class="cert-img-date">Aug 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('ibm-linux','Hands-on Introduction to Linux Commands and Shell Scripting','IBM · Coursera','Feb 2026','Certifications/IBM_Linux_Commands_Shell_Scripting.pdf','Certifications/thumbnails/IBM_Linux_Commands_Shell_Scripting.png','https://coursera.org/verify/WQL2VYX5IW1V')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/IBM_Linux_Commands_Shell_Scripting.png" alt="Hands-on Introduction to Linux Commands and Shell Scripting certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">IBM</div><div class="cert-fallback-label">Hands-on Introduction to Linux Commands and Shell Scripting</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Hands-on Introduction to Linux Commands and Shell Scripting</div>
+          <div class="cert-img-issuer">IBM · Coursera</div>
+          <div class="cert-img-date">Feb 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('ieee-linux','Embedded Linux Course','IEEE','Dec 2025','Certifications/IEEE_Embedded_Linux.pdf','Certifications/thumbnails/IEEE_Embedded_Linux.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/IEEE_Embedded_Linux.png" alt="Embedded Linux Course certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">IEEE</div><div class="cert-fallback-label">Embedded Linux Course</div></div>
+          <span class="cert-type-badge">PDF</span>
           <div class="cert-overlay">View Certificate</div>
         </div>
         <div class="cert-img-info">
@@ -891,6 +1344,40 @@ footer span{color:var(--accent)}
     </div>
   </div>
 
+  <div class="cert-group" data-category="robotics">
+    <div class="cert-group-header">
+      <div class="cert-group-label">Universal Robots Academy · MATE ROV</div>
+      <div class="cert-group-title">Robotics &amp; Competition Credentials</div>
+    </div>
+    <div class="cert-img-grid">
+      <div class="cert-img-card" onclick="openCertModal('ur-academy','Universal Robots UR20/30 eLearning','Universal Robots Academy','Apr 2026','Certifications/Universal_Robots_UR20_30.pdf','Certifications/thumbnails/Universal_Robots_UR20_30.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/Universal_Robots_UR20_30.png" alt="Universal Robots UR20/30 eLearning certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">UR</div><div class="cert-fallback-label">Universal Robots UR20/30 eLearning</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Universal Robots UR20/30 eLearning</div>
+          <div class="cert-img-issuer">Universal Robots Academy</div>
+          <div class="cert-img-date">Apr 2026</div>
+        </div>
+      </div>
+      <div class="cert-img-card" onclick="openCertModal('mate-rov','MATE ROV 2026 — Pioneer Champion','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_Champion.pdf','Certifications/thumbnails/MATE_ROV_2026_Champion.png','')">
+        <div class="cert-thumb">
+          <img class="cert-preview-img" src="Certifications/thumbnails/MATE_ROV_2026_Champion.png" alt="MATE ROV 2026 — Pioneer Champion certificate preview" loading="lazy" onerror="this.style.display='none'">
+          <div class="cert-fallback"><div class="cert-fallback-mark">MATE</div><div class="cert-fallback-label">MATE ROV 2026 — Pioneer Champion</div></div>
+          <span class="cert-type-badge">PDF</span>
+          <div class="cert-overlay">View Certificate</div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">MATE ROV 2026 — Pioneer Champion</div>
+          <div class="cert-img-issuer">MATE ROV Competition</div>
+          <div class="cert-img-date">Apr 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- RESUME -->
@@ -948,7 +1435,8 @@ footer span{color:var(--accent)}
       </div>
       <div class="cert-modal-actions">
         <a href="#" id="modalOpenLink" class="cert-modal-open" download>↓ Download</a>
-        <a href="#" id="modalViewLink" class="cert-modal-view" target="_blank">⧉ Open</a>
+        <a href="#" id="modalViewLink" class="cert-modal-view" target="_blank" rel="noopener">⧉ Open</a>
+        <a href="#" id="modalVerifyLink" class="cert-modal-view" target="_blank" rel="noopener" style="display:none">✓ Verify</a>
         <button class="cert-modal-close" onclick="closeCertModal(null,true)">✕</button>
       </div>
     </div>
@@ -1040,13 +1528,18 @@ staggerEl.forEach(el=>staggerIO.observe(el));
    ============================================================ */
 const hamburger=document.getElementById('hamburger');
 const navMenu=document.getElementById('nav-links');
-hamburger.addEventListener('click',()=>{
-  const open=navMenu.classList.toggle('open');
+function setMobileMenu(open){
+  navMenu.classList.toggle('open',open);
   hamburger.classList.toggle('open',open);
+  hamburger.setAttribute('aria-expanded',String(open));
+}
+hamburger.addEventListener('click',()=>setMobileMenu(!navMenu.classList.contains('open')));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>setMobileMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&navMenu.classList.contains('open'))setMobileMenu(false);});
+window.addEventListener('resize',()=>{if(window.innerWidth>1050)setMobileMenu(false);},{passive:true});
+document.addEventListener('click',e=>{
+  if(window.innerWidth<=1050&&navMenu.classList.contains('open')&&!navMenu.contains(e.target)&&!hamburger.contains(e.target))setMobileMenu(false);
 });
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
-  navMenu.classList.remove('open');hamburger.classList.remove('open');
-}));
 
 /* ============================================================
    SLIDESHOW ENGINE (used by Awards + extensible)
@@ -1122,32 +1615,46 @@ document.querySelectorAll('.cert-filter-btn').forEach(btn=>{
 });
 
 /* ============================================================
-   CERT MODAL (full PDF iframe on click)
+   CERT MODAL (image preview + open/download/verify)
    ============================================================ */
-function openCertModal(id,title,issuer,date,src){
+function openCertModal(id,title,issuer,date,src,preview,verify){
   const modal=document.getElementById('certModal');
   document.getElementById('modalTitle').textContent=title;
   document.getElementById('modalMeta').textContent=issuer+' · '+date;
   const body=document.getElementById('modalBody');
   const dlLink=document.getElementById('modalOpenLink');
   const viewLink=document.getElementById('modalViewLink');
+  const verifyLink=document.getElementById('modalVerifyLink');
+
   if(src){
-    const isPdf=src.toLowerCase().endsWith('.pdf');
     dlLink.href=src;
     viewLink.href=src;
-    if(isPdf){
-      /* Full PDF — all pages, toolbar visible */
-      body.innerHTML='<iframe src="'+src+'#toolbar=1&navpanes=0" title="'+title+'" style="width:100%;height:72vh;border:none;"></iframe>';
-    } else {
-      body.innerHTML='<img src="'+src+'" alt="'+title+'" style="max-width:100%;max-height:72vh;object-fit:contain;margin:auto;padding:1.2rem;">';
-    }
     dlLink.style.display='';
     viewLink.style.display='';
   } else {
-    body.innerHTML='<div class="modal-placeholder"><span>📜</span><p>Add your certificate to the <strong style="color:var(--accent)">Certifications/</strong> folder and update the path in the onclick.</p></div>';
     dlLink.style.display='none';
     viewLink.style.display='none';
   }
+
+  if(verify){
+    verifyLink.href=verify;
+    verifyLink.style.display='';
+  } else {
+    verifyLink.removeAttribute('href');
+    verifyLink.style.display='none';
+  }
+
+  if(preview){
+    const safeTitle=title.replace(/"/g,'&quot;');
+    body.innerHTML='<img src="'+preview+'" alt="'+safeTitle+'" style="max-width:100%;max-height:72vh;object-fit:contain;margin:auto;padding:1.2rem;background:#fff;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';"><div class="modal-placeholder" style="display:none"><span>📜</span><p>Preview unavailable. Use <strong style="color:var(--accent)">Open</strong> to view the certificate.</p></div>';
+  } else if(src && src.toLowerCase().endsWith('.pdf')) {
+    body.innerHTML='<iframe src="'+src+'#toolbar=1&navpanes=0" title="'+title+'" style="width:100%;height:72vh;border:none;"></iframe>';
+  } else if(src) {
+    body.innerHTML='<img src="'+src+'" alt="'+title+'" style="max-width:100%;max-height:72vh;object-fit:contain;margin:auto;padding:1.2rem;background:#fff;">';
+  } else {
+    body.innerHTML='<div class="modal-placeholder"><span>📜</span><p>Certificate file has not been added to the repository yet.</p></div>';
+  }
+
   modal.classList.add('open');
   document.body.style.overflow='hidden';
 }
