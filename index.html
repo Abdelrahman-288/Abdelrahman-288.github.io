@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#05080c">
-<meta name="color-scheme" content="dark">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#05080c" name="theme-color"/>
+<meta content="dark" name="color-scheme"/>
 <title>Abdelrahman Ihab — AI · CV · Cybersecurity · Robotics</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -594,845 +595,855 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
   .project-card,.training-card,.tl-card,.skill-group,.award-card,.cert-img-card,.resume-card,.contact-link{box-shadow:none!important;transform:none!important;break-inside:avoid}
 }
 
+
+
+/* Reliable certificate previews: render PDF page 1 with PDF.js from the actual repo file. */
+.cert-preview-canvas{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;background:#fff;z-index:1;display:block;
+}
+.cert-preview-canvas[data-render-state="loading"]{opacity:.35;}
+.cert-preview-canvas[data-render-state="ready"]{opacity:1;}
+.cert-preview-canvas[data-render-state="error"]{display:none;}
 </style>
 </head>
 <body>
-
 <div id="progress"></div>
 <canvas id="ambient"></canvas>
-
 <nav id="navbar">
-  <a class="nav-logo" href="#hero"><span class="nav-logo-dot"></span>Abdelrahman</a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#training">Training</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#certifications">Certs</a></li>
-    <li><a href="#resume">Resume</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:1rem">
-    <div class="nav-status"><span class="nav-status-dot"></span><span class="ns-text">Available for internships</span></div>
-    <button class="hamburger" id="hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
-  </div>
+<a class="nav-logo" href="#hero"><span class="nav-logo-dot"></span>Abdelrahman</a>
+<ul class="nav-links" id="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#training">Training</a></li>
+<li><a href="#awards">Awards</a></li>
+<li><a href="#certifications">Certs</a></li>
+<li><a href="#resume">Resume</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:1rem">
+<div class="nav-status"><span class="nav-status-dot"></span><span class="ns-text">Available for internships</span></div>
+<button aria-controls="nav-links" aria-expanded="false" aria-label="menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</div>
 </nav>
-
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Computer Engineering · E-JUST · Alexandria, Egypt</p>
-    <h1 class="hero-name">Abdelrahman<br><em data-text="Ihab">Ihab</em></h1>
-    <p class="hero-tagline">
+<div class="hero-inner">
+<p class="hero-eyebrow">Computer Engineering · E-JUST · Alexandria, Egypt</p>
+<h1 class="hero-name">Abdelrahman<br/><em data-text="Ihab">Ihab</em></h1>
+<p class="hero-tagline">
       Building systems that <span class="hl" style="--d:1.1s">see</span>,
       <span class="hl" style="--d:1.4s">think</span>,
       <span class="hl" style="--d:1.7s">act</span> — and stay
-      <span class="hl" style="--d:2s">secure</span>.<br>
-      <strong>AI · Computer Vision · Cybersecurity · Robotics</strong>
-    </p>
-    <div class="hero-badges">
-      <span class="badge badge-r">AI Engineer</span>
-      <span class="badge badge-b">Computer Vision</span>
-      <span class="badge badge-r">Cybersecurity</span>
-      <span class="badge badge-p">Robotics</span>
-      <span class="badge badge-g">NLP / RAG</span>
-    </div>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#about">View My Work</a>
-      <a class="btn btn-outline" href="#contact">Get in Touch</a>
-    </div>
-    <div class="scroll-hint">
-      <span>Scroll to explore</span>
-      <div class="scroll-line"></div>
-    </div>
-  </div>
+      <span class="hl" style="--d:2s">secure</span>.<br/>
+<strong>AI · Computer Vision · Cybersecurity · Robotics</strong>
+</p>
+<div class="hero-badges">
+<span class="badge badge-r">AI Engineer</span>
+<span class="badge badge-b">Computer Vision</span>
+<span class="badge badge-r">Cybersecurity</span>
+<span class="badge badge-p">Robotics</span>
+<span class="badge badge-g">NLP / RAG</span>
+</div>
+<div class="hero-cta">
+<a class="btn btn-primary" href="#about">View My Work</a>
+<a class="btn btn-outline" href="#contact">Get in Touch</a>
+</div>
+<div class="scroll-hint">
+<span>Scroll to explore</span>
+<div class="scroll-line"></div>
+</div>
+</div>
 </section>
-
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">About</div>
-  <div class="about-grid">
-    <div class="about-body">
-      <h2 class="about-headline">I build intelligent systems that <em>see</em>, <em>think</em>, and <em>stay secure</em>.</h2>
-      <p>I'm a <strong>fourth-year Computer Engineering student at E-JUST</strong> specializing in <span class="hl2">AI/ML</span>, <span class="hl2">Computer Vision</span>, <span class="hl2">Cybersecurity</span>, and <span class="hl2">Robotics</span>. I develop end-to-end systems spanning deep learning, NLP, retrieval-augmented generation, real-time vision, edge AI, and security.</p>
-      <p>My experience includes <strong>5 industry internships</strong> across network administration, cybersecurity, and IT operations, plus intensive technical training with <strong>ITI, NTI/ITIDA, NVIDIA, IBM, Google, and Universal Robots Academy</strong>. I work primarily with Python, C/C++, PyTorch/TensorFlow, OpenCV, YOLO, Linux, FastAPI, FAISS, and modern LLM tooling.</p>
-      <p>In 2026, I completed two consecutive ITI summer tracks in <span class="hl2">Network &amp; Cybersecurity</span> and <span class="hl2">Applied AI</span>. My recent work includes an end-to-end RAG customer-support system and a graduation project combining <strong>TinyML + Vision-Language Models</strong> for autonomous security patrol at the edge.</p>
-    </div>
-    <div>
-      <div class="focus-box">
-        <div class="focus-title">Core Focus Areas</div>
-        <div class="focus-item">Applied AI, Deep Learning &amp; NLP</div>
-        <div class="focus-item">Computer Vision (YOLO, OpenCV)</div>
-        <div class="focus-item">RAG, LLMs &amp; Generative AI</div>
-        <div class="focus-item">Cybersecurity &amp; Network Security</div>
-        <div class="focus-item">Robotics &amp; Edge AI</div>
-      </div>
-      <div class="stats-grid" style="margin-top:1.5rem;">
-        <div class="stat"><div class="stat-n">1st</div><div class="stat-l">MATE ROV 2026 Pioneer</div></div>
-        <div class="stat"><div class="stat-n">5</div><div class="stat-l">Industry Internships</div></div>
-        <div class="stat"><div class="stat-n">24K+</div><div class="stat-l">RAG Knowledge Entries</div></div>
-        <div class="stat"><div class="stat-n">99.8%</div><div class="stat-l">Intent Classification</div></div>
-      </div>
-    </div>
-  </div>
+<div class="section-label">About</div>
+<div class="about-grid">
+<div class="about-body">
+<h2 class="about-headline">I build intelligent systems that <em>see</em>, <em>think</em>, and <em>stay secure</em>.</h2>
+<p>I'm a <strong>fourth-year Computer Engineering student at E-JUST</strong> specializing in <span class="hl2">AI/ML</span>, <span class="hl2">Computer Vision</span>, <span class="hl2">Cybersecurity</span>, and <span class="hl2">Robotics</span>. I develop end-to-end systems spanning deep learning, NLP, retrieval-augmented generation, real-time vision, edge AI, and security.</p>
+<p>My experience includes <strong>5 industry internships</strong> across network administration, cybersecurity, and IT operations, plus intensive technical training with <strong>ITI, NTI/ITIDA, NVIDIA, IBM, Google, and Universal Robots Academy</strong>. I work primarily with Python, C/C++, PyTorch/TensorFlow, OpenCV, YOLO, Linux, FastAPI, FAISS, and modern LLM tooling.</p>
+<p>In 2026, I completed two consecutive ITI summer tracks in <span class="hl2">Network &amp; Cybersecurity</span> and <span class="hl2">Applied AI</span>. My recent work includes an end-to-end RAG customer-support system and a graduation project combining <strong>TinyML + Vision-Language Models</strong> for autonomous security patrol at the edge.</p>
+</div>
+<div>
+<div class="focus-box">
+<div class="focus-title">Core Focus Areas</div>
+<div class="focus-item">Applied AI, Deep Learning &amp; NLP</div>
+<div class="focus-item">Computer Vision (YOLO, OpenCV)</div>
+<div class="focus-item">RAG, LLMs &amp; Generative AI</div>
+<div class="focus-item">Cybersecurity &amp; Network Security</div>
+<div class="focus-item">Robotics &amp; Edge AI</div>
+</div>
+<div class="stats-grid" style="margin-top:1.5rem;">
+<div class="stat"><div class="stat-n">1st</div><div class="stat-l">MATE ROV 2026 Pioneer</div></div>
+<div class="stat"><div class="stat-n">5</div><div class="stat-l">Industry Internships</div></div>
+<div class="stat"><div class="stat-n">24K+</div><div class="stat-l">RAG Knowledge Entries</div></div>
+<div class="stat"><div class="stat-n">99.8%</div><div class="stat-l">Intent Classification</div></div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- EXPERIENCE (TIMELINE) -->
 <section id="experience">
-  <div class="section-label">Experience</div>
-  <div class="timeline-wrap stagger">
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">01</div>
-      <div class="tl-header"><span class="tl-role">Computer Vision / ML Engineer</span><span class="tl-company">· Vortex Robotics</span><span class="tl-date">Jan 2026–Present</span></div>
-      <ul class="tl-bullets">
-        <li>Designed and deployed a full YOLOv8 computer vision pipeline for an underwater ROV competition, achieving over 95% trajectory continuity.</li>
-        <li>Built a European Green Crab detection system using synthetic data augmentation to overcome limited real-world data, enabling reliable biodiversity analysis in underwater environments.</li>
-        <li>Developed a 3D coral garden reconstruction model with real-world spatial calibration and accurate metric scaling for scientific reporting.</li>
-        <li>Team secured 1st Place, the Best Design Award, and the Best Presentation Award at the MATE ROV 2026 Pioneer Regional Competition, qualifying for the international competition in Canada.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">YOLOv8</span><span class="pill">OpenCV</span><span class="pill">Synthetic Data</span><span class="pill">3D Reconstruction</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">02</div>
-      <div class="tl-header"><span class="tl-role">Applied AI Program Trainee (Level 2)</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Aug–Sep 2026</span></div>
-      <ul class="tl-bullets">
-        <li>Completed an intensive Applied AI training program covering Python for AI, Computer Vision, YOLO object detection, and pretrained models.</li>
-        <li>Studied NLP, Large Language Models (LLMs), Generative AI, and Retrieval-Augmented Generation (RAG), with practical applications and model deployment.</li>
-        <li>Developed an end-to-end capstone project applying modern AI techniques across the complete development pipeline.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">Python for AI</span><span class="pill">YOLO</span><span class="pill">NLP</span><span class="pill">LLMs</span><span class="pill">RAG</span><span class="pill">GenAI</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">03</div>
-      <div class="tl-header"><span class="tl-role">Network &amp; Cybersecurity Trainee</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Jul–Aug 2026</span></div>
-      <ul class="tl-bullets">
-        <li>Completed technical training in Advanced Networking and Network Fundamentals, covering core networking concepts, technologies, and infrastructure.</li>
-        <li>Completed training in Cybersecurity Essentials and Ethical Hacking, developing practical knowledge of cybersecurity principles and security techniques.</li>
-        <li>Completed Huawei Cloud HCCDA — Tech Essentials, gaining exposure to cloud computing concepts and modern IT infrastructure.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">Advanced Networking</span><span class="pill">Cybersecurity</span><span class="pill">Ethical Hacking</span><span class="pill">Huawei Cloud</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">04</div>
-      <div class="tl-header"><span class="tl-role">Fortinet Cybersecurity Trainee</span><span class="tl-company">· National Telecom Institute (NTI) / ITIDA</span><span class="tl-date">Aug–Sep 2025</span></div>
-      <ul class="tl-bullets">
-        <li>Completed a 120-hour intensive training program (30 hours soft skills, 90 hours technical) with an overall score of 93%.</li>
-        <li>Configured FortiGate firewalls including security policies, NAT, FSSO authentication, routing protocols, and FortiManager integration.</li>
-        <li>Implemented SSL VPN, IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, and High Availability solutions.</li>
-        <li>Studied cryptography, PKI, certificate lifecycle management, and intrusion prevention in production-simulated environments.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">FortiGate</span><span class="pill">VPN</span><span class="pill">SD-WAN</span><span class="pill">IPS</span><span class="pill">PKI</span><span class="pill">FortiManager</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">05</div>
-      <div class="tl-header"><span class="tl-role">Artificial Intelligence Trainee — NVIDIA AI Program</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Sep–Oct 2025</span></div>
-      <ul class="tl-bullets">
-        <li>Completed Building LLM Applications with Prompt Engineering, covering prompt engineering, LLM optimization, and API integration for Large Language Model applications.</li>
-        <li>Completed AI for All: From Basics to Generative AI, covering AI fundamentals, model training, deep learning concepts, and Generative AI applications.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">NVIDIA</span><span class="pill">Prompt Engineering</span><span class="pill">LLM Apps</span><span class="pill">GenAI</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">06</div>
-      <div class="tl-header"><span class="tl-role">IT Internship Trainee</span><span class="tl-company">· Ezz Dekheila Steel Company (EZDK)</span><span class="tl-date">Jul–Aug 2025</span></div>
-      <ul class="tl-bullets">
-        <li>Gained enterprise IT operations experience within one of Egypt’s largest industrial organizations.</li>
-        <li>Applied networking, cybersecurity, and web development skills to real production infrastructure and IT workflows.</li>
-        <li>Observed and assisted with corporate network management, cloud computing practices, and project coordination.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">Enterprise IT</span><span class="pill">Networking</span><span class="pill">Cybersecurity</span><span class="pill">Cloud</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">07</div>
-      <div class="tl-header"><span class="tl-role">Computer Engineer Intern</span><span class="tl-company">· PETROJET</span><span class="tl-date">Aug 2025</span></div>
-      <ul class="tl-bullets">
-        <li>Diagnosed and resolved network device failures across enterprise infrastructure, maintaining system uptime and reliability.</li>
-        <li>Gained hands-on experience with SAP enterprise systems and collaborated with cross-functional IT teams.</li>
-        <li>Documented network configurations and troubleshooting procedures to support operational knowledge transfer.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">Networking</span><span class="pill">Troubleshooting</span><span class="pill">SAP</span><span class="pill">Documentation</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">08</div>
-      <div class="tl-header"><span class="tl-role">Network Administrator Intern</span><span class="tl-company">· GIECO — Gharably Integrated Engineering Company</span><span class="tl-date">Jul–Sep 2024</span></div>
-      <ul class="tl-bullets">
-        <li>Assisted in planning, configuring, installing, and maintaining enterprise network infrastructure.</li>
-        <li>Configured and maintained routers, switches, and VPN endpoints while monitoring network performance.</li>
-        <li>Supported WAN and LAN deployment across multiple office locations.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">Routers</span><span class="pill">Switches</span><span class="pill">VPN</span><span class="pill">WAN/LAN</span></div>
-    </div></div>
-
-    <div class="tl-item"><div class="tl-card"><div class="tl-num">09</div>
-      <div class="tl-header"><span class="tl-role">Cybersecurity Intern</span><span class="tl-company">· ETHYDCO</span><span class="tl-date">Jul 2024</span></div>
-      <ul class="tl-bullets">
-        <li>Identified and documented security vulnerabilities across industrial control systems and proposed mitigation measures.</li>
-        <li>Conducted vulnerability assessments and contributed to incident monitoring, threat detection, and response activities.</li>
-        <li>Assisted in implementing authentication controls and access management policies aligned with cybersecurity best practices.</li>
-      </ul>
-      <div class="tl-pills"><span class="pill">Vulnerability Assessment</span><span class="pill">Incident Monitoring</span><span class="pill">Threat Detection</span><span class="pill">Access Control</span></div>
-    </div></div>
-
-  </div>
+<div class="section-label">Experience</div>
+<div class="timeline-wrap stagger">
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">01</div>
+<div class="tl-header"><span class="tl-role">Computer Vision / ML Engineer</span><span class="tl-company">· Vortex Robotics</span><span class="tl-date">Jan 2026–Present</span></div>
+<ul class="tl-bullets">
+<li>Designed and deployed a full YOLOv8 computer vision pipeline for an underwater ROV competition, achieving over 95% trajectory continuity.</li>
+<li>Built a European Green Crab detection system using synthetic data augmentation to overcome limited real-world data, enabling reliable biodiversity analysis in underwater environments.</li>
+<li>Developed a 3D coral garden reconstruction model with real-world spatial calibration and accurate metric scaling for scientific reporting.</li>
+<li>Team secured 1st Place, the Best Design Award, and the Best Presentation Award at the MATE ROV 2026 Pioneer Regional Competition, qualifying for the international competition in Canada.</li>
+</ul>
+<div class="tl-pills"><span class="pill">YOLOv8</span><span class="pill">OpenCV</span><span class="pill">Synthetic Data</span><span class="pill">3D Reconstruction</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">02</div>
+<div class="tl-header"><span class="tl-role">Applied AI Program Trainee (Level 2)</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Aug–Sep 2026</span></div>
+<ul class="tl-bullets">
+<li>Completed an intensive Applied AI training program covering Python for AI, Computer Vision, YOLO object detection, and pretrained models.</li>
+<li>Studied NLP, Large Language Models (LLMs), Generative AI, and Retrieval-Augmented Generation (RAG), with practical applications and model deployment.</li>
+<li>Developed an end-to-end capstone project applying modern AI techniques across the complete development pipeline.</li>
+</ul>
+<div class="tl-pills"><span class="pill">Python for AI</span><span class="pill">YOLO</span><span class="pill">NLP</span><span class="pill">LLMs</span><span class="pill">RAG</span><span class="pill">GenAI</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">03</div>
+<div class="tl-header"><span class="tl-role">Network &amp; Cybersecurity Trainee</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Jul–Aug 2026</span></div>
+<ul class="tl-bullets">
+<li>Completed technical training in Advanced Networking and Network Fundamentals, covering core networking concepts, technologies, and infrastructure.</li>
+<li>Completed training in Cybersecurity Essentials and Ethical Hacking, developing practical knowledge of cybersecurity principles and security techniques.</li>
+<li>Completed Huawei Cloud HCCDA — Tech Essentials, gaining exposure to cloud computing concepts and modern IT infrastructure.</li>
+</ul>
+<div class="tl-pills"><span class="pill">Advanced Networking</span><span class="pill">Cybersecurity</span><span class="pill">Ethical Hacking</span><span class="pill">Huawei Cloud</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">04</div>
+<div class="tl-header"><span class="tl-role">Fortinet Cybersecurity Trainee</span><span class="tl-company">· National Telecom Institute (NTI) / ITIDA</span><span class="tl-date">Aug–Sep 2025</span></div>
+<ul class="tl-bullets">
+<li>Completed a 120-hour intensive training program (30 hours soft skills, 90 hours technical) with an overall score of 93%.</li>
+<li>Configured FortiGate firewalls including security policies, NAT, FSSO authentication, routing protocols, and FortiManager integration.</li>
+<li>Implemented SSL VPN, IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, and High Availability solutions.</li>
+<li>Studied cryptography, PKI, certificate lifecycle management, and intrusion prevention in production-simulated environments.</li>
+</ul>
+<div class="tl-pills"><span class="pill">FortiGate</span><span class="pill">VPN</span><span class="pill">SD-WAN</span><span class="pill">IPS</span><span class="pill">PKI</span><span class="pill">FortiManager</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">05</div>
+<div class="tl-header"><span class="tl-role">Artificial Intelligence Trainee — NVIDIA AI Program</span><span class="tl-company">· Information Technology Institute (ITI)</span><span class="tl-date">Sep–Oct 2025</span></div>
+<ul class="tl-bullets">
+<li>Completed Building LLM Applications with Prompt Engineering, covering prompt engineering, LLM optimization, and API integration for Large Language Model applications.</li>
+<li>Completed AI for All: From Basics to Generative AI, covering AI fundamentals, model training, deep learning concepts, and Generative AI applications.</li>
+</ul>
+<div class="tl-pills"><span class="pill">NVIDIA</span><span class="pill">Prompt Engineering</span><span class="pill">LLM Apps</span><span class="pill">GenAI</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">06</div>
+<div class="tl-header"><span class="tl-role">IT Internship Trainee</span><span class="tl-company">· Ezz Dekheila Steel Company (EZDK)</span><span class="tl-date">Jul–Aug 2025</span></div>
+<ul class="tl-bullets">
+<li>Gained enterprise IT operations experience within one of Egypt’s largest industrial organizations.</li>
+<li>Applied networking, cybersecurity, and web development skills to real production infrastructure and IT workflows.</li>
+<li>Observed and assisted with corporate network management, cloud computing practices, and project coordination.</li>
+</ul>
+<div class="tl-pills"><span class="pill">Enterprise IT</span><span class="pill">Networking</span><span class="pill">Cybersecurity</span><span class="pill">Cloud</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">07</div>
+<div class="tl-header"><span class="tl-role">Computer Engineer Intern</span><span class="tl-company">· PETROJET</span><span class="tl-date">Aug 2025</span></div>
+<ul class="tl-bullets">
+<li>Diagnosed and resolved network device failures across enterprise infrastructure, maintaining system uptime and reliability.</li>
+<li>Gained hands-on experience with SAP enterprise systems and collaborated with cross-functional IT teams.</li>
+<li>Documented network configurations and troubleshooting procedures to support operational knowledge transfer.</li>
+</ul>
+<div class="tl-pills"><span class="pill">Networking</span><span class="pill">Troubleshooting</span><span class="pill">SAP</span><span class="pill">Documentation</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-connector"></div><div class="tl-card"><div class="tl-num">08</div>
+<div class="tl-header"><span class="tl-role">Network Administrator Intern</span><span class="tl-company">· GIECO — Gharably Integrated Engineering Company</span><span class="tl-date">Jul–Sep 2024</span></div>
+<ul class="tl-bullets">
+<li>Assisted in planning, configuring, installing, and maintaining enterprise network infrastructure.</li>
+<li>Configured and maintained routers, switches, and VPN endpoints while monitoring network performance.</li>
+<li>Supported WAN and LAN deployment across multiple office locations.</li>
+</ul>
+<div class="tl-pills"><span class="pill">Routers</span><span class="pill">Switches</span><span class="pill">VPN</span><span class="pill">WAN/LAN</span></div>
+</div></div>
+<div class="tl-item"><div class="tl-card"><div class="tl-num">09</div>
+<div class="tl-header"><span class="tl-role">Cybersecurity Intern</span><span class="tl-company">· ETHYDCO</span><span class="tl-date">Jul 2024</span></div>
+<ul class="tl-bullets">
+<li>Identified and documented security vulnerabilities across industrial control systems and proposed mitigation measures.</li>
+<li>Conducted vulnerability assessments and contributed to incident monitoring, threat detection, and response activities.</li>
+<li>Assisted in implementing authentication controls and access management policies aligned with cybersecurity best practices.</li>
+</ul>
+<div class="tl-pills"><span class="pill">Vulnerability Assessment</span><span class="pill">Incident Monitoring</span><span class="pill">Threat Detection</span><span class="pill">Access Control</span></div>
+</div></div>
+</div>
 </section>
-
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">Skills</div>
-  <div class="skills-grid stagger">
-    <div class="skill-group"><div class="sg-title">AI / ML / NLP</div><div class="project-tech"><span class="tech-tag">PyTorch</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">Transformers</span><span class="tech-tag">DistilBERT</span><span class="tech-tag">Hugging Face</span></div></div>
-    <div class="skill-group"><div class="sg-title">Computer Vision</div><div class="project-tech"><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Object Detection</span><span class="tech-tag">Tracking</span><span class="tech-tag">Homography</span><span class="tech-tag">Keypoint Regression</span><span class="tech-tag">3D Reconstruction</span><span class="tech-tag">Synthetic Data</span></div></div>
-    <div class="skill-group"><div class="sg-title">LLM / RAG / GenAI</div><div class="project-tech"><span class="tech-tag">RAG</span><span class="tech-tag">FAISS</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">Groq API</span><span class="tech-tag">Prompt Engineering</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Pytest</span></div></div>
-    <div class="skill-group"><div class="sg-title">Cybersecurity &amp; Networking</div><div class="project-tech"><span class="tech-tag">FortiGate</span><span class="tech-tag">VPN</span><span class="tech-tag">SD-WAN</span><span class="tech-tag">IPS</span><span class="tech-tag">PKI</span><span class="tech-tag">Vulnerability Assessment</span><span class="tech-tag">Malware Analysis</span><span class="tech-tag">Ghidra</span></div></div>
-    <div class="skill-group"><div class="sg-title">Programming &amp; Systems</div><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">C / C++</span><span class="tech-tag">Linux</span><span class="tech-tag">Git / GitHub</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span><span class="tech-tag">Embedded Systems</span><span class="tech-tag">Arduino Portenta H7</span></div></div>
-    <div class="skill-group"><div class="sg-title">Robotics &amp; Edge AI</div><div class="project-tech"><span class="tech-tag">TinyML</span><span class="tech-tag">FOMO</span><span class="tech-tag">Vision-Language Models</span><span class="tech-tag">Edge-Cloud Inference</span><span class="tech-tag">Universal Robots</span><span class="tech-tag">ROS</span></div></div>
-  </div>
+<div class="section-label">Skills</div>
+<div class="skills-grid stagger">
+<div class="skill-group"><div class="sg-title">AI / ML / NLP</div><div class="project-tech"><span class="tech-tag">PyTorch</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">Transformers</span><span class="tech-tag">DistilBERT</span><span class="tech-tag">Hugging Face</span></div></div>
+<div class="skill-group"><div class="sg-title">Computer Vision</div><div class="project-tech"><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Object Detection</span><span class="tech-tag">Tracking</span><span class="tech-tag">Homography</span><span class="tech-tag">Keypoint Regression</span><span class="tech-tag">3D Reconstruction</span><span class="tech-tag">Synthetic Data</span></div></div>
+<div class="skill-group"><div class="sg-title">LLM / RAG / GenAI</div><div class="project-tech"><span class="tech-tag">RAG</span><span class="tech-tag">FAISS</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">Groq API</span><span class="tech-tag">Prompt Engineering</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Pytest</span></div></div>
+<div class="skill-group"><div class="sg-title">Cybersecurity &amp; Networking</div><div class="project-tech"><span class="tech-tag">FortiGate</span><span class="tech-tag">VPN</span><span class="tech-tag">SD-WAN</span><span class="tech-tag">IPS</span><span class="tech-tag">PKI</span><span class="tech-tag">Vulnerability Assessment</span><span class="tech-tag">Malware Analysis</span><span class="tech-tag">Ghidra</span></div></div>
+<div class="skill-group"><div class="sg-title">Programming &amp; Systems</div><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">C / C++</span><span class="tech-tag">Linux</span><span class="tech-tag">Git / GitHub</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span><span class="tech-tag">Embedded Systems</span><span class="tech-tag">Arduino Portenta H7</span></div></div>
+<div class="skill-group"><div class="sg-title">Robotics &amp; Edge AI</div><div class="project-tech"><span class="tech-tag">TinyML</span><span class="tech-tag">FOMO</span><span class="tech-tag">Vision-Language Models</span><span class="tech-tag">Edge-Cloud Inference</span><span class="tech-tag">Universal Robots</span><span class="tech-tag">ROS</span></div></div>
+</div>
 </section>
-
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">Projects</div>
-  <div class="projects-list stagger">
-
-    <!-- RAG E-COMMERCE -->
-    <div class="project-card">
-      <div class="project-header">
-        <div>
-          <span class="project-badge">🤖 NLP · RAG · LLM</span>
-          <h3 class="project-title">RAG-Based E-commerce Customer Support Chatbot</h3>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/Abdelrahman-288/Rag-Ecommerce-Customer-Support-Chatbot" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
-      </div>
-      <ul class="project-bullets">
-        <li>Designed and developed an end-to-end retrieval-augmented chatbot combining language detection, sentiment analysis, intent classification, and grounded LLM generation for e-commerce customer support.</li>
-        <li>Built a confidence- and sentiment-aware routing layer that escalates ambiguous but frustrated messages to human agents while safely refusing low-confidence noise, discovered and fixed through live adversarial testing rather than benchmark metrics alone.</li>
-        <li>Fine-tuned DistilBERT for sentiment classification (<span class="project-metric">97.7% test accuracy</span>) and trained TF-IDF + Logistic Regression classifiers for language detection (<span class="project-metric">99.5%</span>) and intent classification (<span class="project-metric">99.8%</span>), backed by a FAISS-indexed RAG pipeline over <span class="project-metric">24K+ knowledge-base entries</span> with Groq-hosted LLM generation.</li>
-      </ul>
-      <div class="project-tech">
-        <span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Hugging Face Transformers</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">FAISS</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Groq API</span><span class="tech-tag">Streamlit</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Pytest</span>
-      </div>
-    </div>
-
-    <!-- RAG DOCUMENT ASSISTANT -->
-    <div class="project-card">
-      <div class="project-header">
-        <div>
-          <span class="project-badge">📚 Local AI · RAG · Knowledge Systems</span>
-          <h3 class="project-title">RAG-Powered Document Assistant</h3>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/Abdelrahman-288/RAG-Powered-Document-Assistant" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
-      </div>
-      <ul class="project-bullets">
-        <li>Built a local-first technical-document RAG assistant that ingests PDFs page-by-page, cleans and chunks content, generates embeddings, stores them in persistent ChromaDB, and answers questions using retrieved document evidence.</li>
-        <li>Implemented two-stage retrieval using cosine vector search plus a cross-encoder reranker, with page/document citations, category-aware routing, unsupported-answer blocking, and citation validation/retry for grounded responses.</li>
-        <li>Created an incremental ingestion pipeline with deterministic SHA-256 chunk IDs and indexed <span class="project-metric">12,382 pages / 27,029 chunks</span>, using GPU-accelerated Sentence-Transformer embeddings and local Ollama inference.</li>
-        <li>Developed a FastAPI backend with a Next.js/TypeScript/React frontend for an end-to-end local document-learning and question-answering workflow.</li>
-      </ul>
-      <div class="project-tech">
-        <span class="tech-tag">Python 3.11</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Next.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">React</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">Cross-Encoder Reranking</span><span class="tech-tag">Ollama</span><span class="tech-tag">Gemma 3</span><span class="tech-tag">CUDA</span>
-      </div>
-    </div>
-
-    <!-- MATE ROV -->
-    <div class="project-card">
-      <div class="project-header">
-        <div>
-          <span class="project-badge">🏆 Computer Vision · Robotics</span>
-          <h3 class="project-title">Nautix — MATE ROV 2026</h3>
-        </div>
-        <div class="project-links"><a href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </div>
-      <ul class="project-bullets">
-        <li>Engineered a YOLOv8 object detection pipeline for European Green Crab identification using synthetic data augmentation and custom training to maximize accuracy on limited real-world data.</li>
-        <li>Implemented trajectory interpolation for occluded frame recovery, achieving <span class="project-metric">over 95% trajectory continuity</span> across underwater test dives.</li>
-        <li>Developed a 3D coral garden reconstruction system with calibrated real-world metric scaling for scientific biodiversity reporting.</li>
-        <li>Team secured <span class="project-metric">1st Place, Best Design, and Best Presentation</span> at MATE ROV 2026 Pioneer Regional Competition.</li>
-      </ul>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">NumPy</span><span class="tech-tag">Synthetic Data Generation</span><span class="tech-tag">Homography</span><span class="tech-tag">3D Reconstruction</span></div>
-    </div>
-
-    <!-- VLM SECURITY PATROL -->
-    <div class="project-card">
-      <div class="project-header">
-        <div>
-          <span class="project-badge">🛰️ Graduation Project · Edge AI · VLM</span>
-          <h3 class="project-title">VLM-Enhanced Autonomous AI Security Patrol</h3>
-        </div>
-        <div class="project-links"><a href="https://github.com/Abdelrahman-288/VLM-Enhanced-Autonomous-AI-Security-Patrol" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </div>
-      <ul class="project-bullets">
-        <li>Designed and developed an autonomous AI-powered security patrol system combining TinyML and Vision-Language Models (VLMs) for intelligent edge surveillance.</li>
-        <li>Implemented a hierarchical AI pipeline on Arduino Portenta H7 using FOMO object detection with the Groq Vision-Language API for efficient edge-cloud inference.</li>
-        <li>Optimized an INT8-quantized TinyML model achieving <span class="project-metric">86.9% detection accuracy</span> while significantly reducing memory usage and cloud inference costs.</li>
-      </ul>
-      <div class="project-tech"><span class="tech-tag">Arduino Portenta H7</span><span class="tech-tag">Portenta Vision Shield</span><span class="tech-tag">TinyML</span><span class="tech-tag">FOMO</span><span class="tech-tag">Groq Vision-Language API</span></div>
-    </div>
-
-    <!-- MALWARE -->
-    <div class="project-card">
-      <div class="project-header"><div><span class="project-badge">🛡️ AI · Cybersecurity · Deep Learning</span><h3 class="project-title">Hybrid AI Malware Classification &amp; Detection System</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/malware-classification-system" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <ul class="project-bullets">
-        <li>Architected a four-stage malware classification pipeline using binary visualization, CNN feature extraction, opcode analysis with BiLSTM, and ensemble fusion on the Microsoft BIG 2015 dataset (<span class="project-metric">10,868 malware samples across 9 families</span>).</li>
-        <li>Performed static malware analysis using PE header inspection, opcode extraction, entropy analysis, and behavioral feature engineering with pefile and Ghidra.</li>
-        <li>Integrated Grad-CAM explainability and deployed an interactive Streamlit dashboard for real-time malware prediction, visualization, and automated threat reporting.</li>
-      </ul>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">Ghidra</span><span class="tech-tag">pefile</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Grad-CAM</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span></div>
-    </div>
-
-    <!-- TENNIS -->
-    <div class="project-card">
-      <div class="project-header"><div><span class="project-badge">🎾 Computer Vision · Sports Analytics</span><h3 class="project-title">Tennis Match Analytics</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Tennis-Analysis" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <ul class="project-bullets">
-        <li>Fine-tuned YOLOv8 for player and ball detection on fixed-camera video, improving ball detection Average Precision (AP) by <span class="project-metric">18% over baseline</span>.</li>
-        <li>Applied homography-based court mapping and trajectory interpolation, achieving <span class="project-metric">93.31% accuracy</span> on computed match statistics.</li>
-        <li>Developed a custom CNN for court keypoint regression, eliminating manual calibration while generating player movement, shot direction, and rally analytics.</li>
-      </ul>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv8</span><span class="tech-tag">PyTorch</span><span class="tech-tag">OpenCV</span><span class="tech-tag">CNN</span><span class="tech-tag">Homography</span><span class="tech-tag">Keypoint Regression</span></div>
-    </div>
-
-    <!-- FACE DETECTION -->
-    <div class="project-card">
-      <div class="project-header"><div><span class="project-badge">👁️ Transfer Learning · Computer Vision</span><h3 class="project-title">Deep Face Detection System</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Deep_Face_Detection_Project" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <ul class="project-bullets">
-        <li>Built a custom face detector by fine-tuning a pretrained VGG16 backbone with bounding-box regression and binary classification heads for face localization.</li>
-        <li>Created and annotated a custom dataset using OpenCV and LabelMe with VOC and COCO export pipelines.</li>
-        <li>Deployed the trained model as an interactive Gradio web application supporting real-time image and webcam inference.</li>
-      </ul>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">VGG16</span><span class="tech-tag">OpenCV</span><span class="tech-tag">LabelMe</span><span class="tech-tag">Gradio</span></div>
-    </div>
-
-    <!-- HEART DISEASE -->
-    <div class="project-card">
-      <div class="project-header"><div><span class="project-badge">🫀 Machine Learning</span><h3 class="project-title">Heart Disease Prediction</h3></div><div class="project-links"><a href="https://github.com/Abdelrahman-288/Heart_Disease_Prediction" class="project-link" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <ul class="project-bullets">
-        <li>Developed a complete machine learning pipeline including preprocessing, exploratory data analysis, PCA, and feature selection using the UCI Heart Disease dataset.</li>
-        <li>Trained and optimized Logistic Regression, Decision Trees, Random Forest, and Support Vector Machine models using GridSearchCV and RandomizedSearchCV.</li>
-        <li>Applied unsupervised clustering to identify patient subgroups and deployed the solution through an interactive Streamlit application.</li>
-      </ul>
-      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Streamlit</span></div>
-    </div>
-
-  </div>
+<div class="section-label">Projects</div>
+<div class="projects-list stagger">
+<!-- RAG E-COMMERCE -->
+<div class="project-card">
+<div class="project-header">
+<div>
+<span class="project-badge">🤖 NLP · RAG · LLM</span>
+<h3 class="project-title">RAG-Based E-commerce Customer Support Chatbot</h3>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://github.com/Abdelrahman-288/Rag-Ecommerce-Customer-Support-Chatbot" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<ul class="project-bullets">
+<li>Designed and developed an end-to-end retrieval-augmented chatbot combining language detection, sentiment analysis, intent classification, and grounded LLM generation for e-commerce customer support.</li>
+<li>Built a confidence- and sentiment-aware routing layer that escalates ambiguous but frustrated messages to human agents while safely refusing low-confidence noise, discovered and fixed through live adversarial testing rather than benchmark metrics alone.</li>
+<li>Fine-tuned DistilBERT for sentiment classification (<span class="project-metric">97.7% test accuracy</span>) and trained TF-IDF + Logistic Regression classifiers for language detection (<span class="project-metric">99.5%</span>) and intent classification (<span class="project-metric">99.8%</span>), backed by a FAISS-indexed RAG pipeline over <span class="project-metric">24K+ knowledge-base entries</span> with Groq-hosted LLM generation.</li>
+</ul>
+<div class="project-tech">
+<span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Hugging Face Transformers</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">FAISS</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Groq API</span><span class="tech-tag">Streamlit</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Pytest</span>
+</div>
+</div>
+<!-- RAG DOCUMENT ASSISTANT -->
+<div class="project-card">
+<div class="project-header">
+<div>
+<span class="project-badge">📚 Local AI · RAG · Knowledge Systems</span>
+<h3 class="project-title">RAG-Powered Document Assistant</h3>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://github.com/Abdelrahman-288/RAG-Powered-Document-Assistant" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<ul class="project-bullets">
+<li>Built a local-first technical-document RAG assistant that ingests PDFs page-by-page, cleans and chunks content, generates embeddings, stores them in persistent ChromaDB, and answers questions using retrieved document evidence.</li>
+<li>Implemented two-stage retrieval using cosine vector search plus a cross-encoder reranker, with page/document citations, category-aware routing, unsupported-answer blocking, and citation validation/retry for grounded responses.</li>
+<li>Created an incremental ingestion pipeline with deterministic SHA-256 chunk IDs and indexed <span class="project-metric">12,382 pages / 27,029 chunks</span>, using GPU-accelerated Sentence-Transformer embeddings and local Ollama inference.</li>
+<li>Developed a FastAPI backend with a Next.js/TypeScript/React frontend for an end-to-end local document-learning and question-answering workflow.</li>
+</ul>
+<div class="project-tech">
+<span class="tech-tag">Python 3.11</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Next.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">React</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">Sentence-Transformers</span><span class="tech-tag">Cross-Encoder Reranking</span><span class="tech-tag">Ollama</span><span class="tech-tag">Gemma 3</span><span class="tech-tag">CUDA</span>
+</div>
+</div>
+<!-- MATE ROV -->
+<div class="project-card">
+<div class="project-header">
+<div>
+<span class="project-badge">🏆 Computer Vision · Robotics</span>
+<h3 class="project-title">Nautix — MATE ROV 2026</h3>
+</div>
+<div class="project-links"><a class="project-link" href="https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026" rel="noopener" target="_blank">GitHub ↗</a></div>
+</div>
+<ul class="project-bullets">
+<li>Engineered a YOLOv8 object detection pipeline for European Green Crab identification using synthetic data augmentation and custom training to maximize accuracy on limited real-world data.</li>
+<li>Implemented trajectory interpolation for occluded frame recovery, achieving <span class="project-metric">over 95% trajectory continuity</span> across underwater test dives.</li>
+<li>Developed a 3D coral garden reconstruction system with calibrated real-world metric scaling for scientific biodiversity reporting.</li>
+<li>Team secured <span class="project-metric">1st Place, Best Design, and Best Presentation</span> at MATE ROV 2026 Pioneer Regional Competition.</li>
+</ul>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv8</span><span class="tech-tag">OpenCV</span><span class="tech-tag">NumPy</span><span class="tech-tag">Synthetic Data Generation</span><span class="tech-tag">Homography</span><span class="tech-tag">3D Reconstruction</span></div>
+</div>
+<!-- VLM SECURITY PATROL -->
+<div class="project-card">
+<div class="project-header">
+<div>
+<span class="project-badge">🛰️ Graduation Project · Edge AI · VLM</span>
+<h3 class="project-title">VLM-Enhanced Autonomous AI Security Patrol</h3>
+</div>
+<div class="project-links"><a class="project-link" href="https://github.com/Abdelrahman-288/VLM-Enhanced-Autonomous-AI-Security-Patrol" rel="noopener" target="_blank">GitHub ↗</a></div>
+</div>
+<ul class="project-bullets">
+<li>Designed and developed an autonomous AI-powered security patrol system combining TinyML and Vision-Language Models (VLMs) for intelligent edge surveillance.</li>
+<li>Implemented a hierarchical AI pipeline on Arduino Portenta H7 using FOMO object detection with the Groq Vision-Language API for efficient edge-cloud inference.</li>
+<li>Optimized an INT8-quantized TinyML model achieving <span class="project-metric">86.9% detection accuracy</span> while significantly reducing memory usage and cloud inference costs.</li>
+</ul>
+<div class="project-tech"><span class="tech-tag">Arduino Portenta H7</span><span class="tech-tag">Portenta Vision Shield</span><span class="tech-tag">TinyML</span><span class="tech-tag">FOMO</span><span class="tech-tag">Groq Vision-Language API</span></div>
+</div>
+<!-- MALWARE -->
+<div class="project-card">
+<div class="project-header"><div><span class="project-badge">🛡️ AI · Cybersecurity · Deep Learning</span><h3 class="project-title">Hybrid AI Malware Classification &amp; Detection System</h3></div><div class="project-links"><a class="project-link" href="https://github.com/Abdelrahman-288/malware-classification-system" rel="noopener" target="_blank">GitHub ↗</a></div></div>
+<ul class="project-bullets">
+<li>Architected a four-stage malware classification pipeline using binary visualization, CNN feature extraction, opcode analysis with BiLSTM, and ensemble fusion on the Microsoft BIG 2015 dataset (<span class="project-metric">10,868 malware samples across 9 families</span>).</li>
+<li>Performed static malware analysis using PE header inspection, opcode extraction, entropy analysis, and behavioral feature engineering with pefile and Ghidra.</li>
+<li>Integrated Grad-CAM explainability and deployed an interactive Streamlit dashboard for real-time malware prediction, visualization, and automated threat reporting.</li>
+</ul>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">CNN</span><span class="tech-tag">BiLSTM</span><span class="tech-tag">Ghidra</span><span class="tech-tag">pefile</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Grad-CAM</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span></div>
+</div>
+<!-- TENNIS -->
+<div class="project-card">
+<div class="project-header"><div><span class="project-badge">🎾 Computer Vision · Sports Analytics</span><h3 class="project-title">Tennis Match Analytics</h3></div><div class="project-links"><a class="project-link" href="https://github.com/Abdelrahman-288/Tennis-Analysis" rel="noopener" target="_blank">GitHub ↗</a></div></div>
+<ul class="project-bullets">
+<li>Fine-tuned YOLOv8 for player and ball detection on fixed-camera video, improving ball detection Average Precision (AP) by <span class="project-metric">18% over baseline</span>.</li>
+<li>Applied homography-based court mapping and trajectory interpolation, achieving <span class="project-metric">93.31% accuracy</span> on computed match statistics.</li>
+<li>Developed a custom CNN for court keypoint regression, eliminating manual calibration while generating player movement, shot direction, and rally analytics.</li>
+</ul>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv8</span><span class="tech-tag">PyTorch</span><span class="tech-tag">OpenCV</span><span class="tech-tag">CNN</span><span class="tech-tag">Homography</span><span class="tech-tag">Keypoint Regression</span></div>
+</div>
+<!-- FACE DETECTION -->
+<div class="project-card">
+<div class="project-header"><div><span class="project-badge">👁️ Transfer Learning · Computer Vision</span><h3 class="project-title">Deep Face Detection System</h3></div><div class="project-links"><a class="project-link" href="https://github.com/Abdelrahman-288/Deep_Face_Detection_Project" rel="noopener" target="_blank">GitHub ↗</a></div></div>
+<ul class="project-bullets">
+<li>Built a custom face detector by fine-tuning a pretrained VGG16 backbone with bounding-box regression and binary classification heads for face localization.</li>
+<li>Created and annotated a custom dataset using OpenCV and LabelMe with VOC and COCO export pipelines.</li>
+<li>Deployed the trained model as an interactive Gradio web application supporting real-time image and webcam inference.</li>
+</ul>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">VGG16</span><span class="tech-tag">OpenCV</span><span class="tech-tag">LabelMe</span><span class="tech-tag">Gradio</span></div>
+</div>
+<!-- HEART DISEASE -->
+<div class="project-card">
+<div class="project-header"><div><span class="project-badge">🫀 Machine Learning</span><h3 class="project-title">Heart Disease Prediction</h3></div><div class="project-links"><a class="project-link" href="https://github.com/Abdelrahman-288/Heart_Disease_Prediction" rel="noopener" target="_blank">GitHub ↗</a></div></div>
+<ul class="project-bullets">
+<li>Developed a complete machine learning pipeline including preprocessing, exploratory data analysis, PCA, and feature selection using the UCI Heart Disease dataset.</li>
+<li>Trained and optimized Logistic Regression, Decision Trees, Random Forest, and Support Vector Machine models using GridSearchCV and RandomizedSearchCV.</li>
+<li>Applied unsupervised clustering to identify patient subgroups and deployed the solution through an interactive Streamlit application.</li>
+</ul>
+<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Streamlit</span></div>
+</div>
+</div>
 </section>
-
 <!-- TRAINING -->
 <section id="training">
-  <div class="section-label">Training &amp; Learning</div>
-  <div class="training-grid stagger">
-    <div class="training-card">
-      <div class="training-icon">🧠</div>
-      <div class="training-name">Applied AI Program Trainee — Level 2</div>
-      <div class="training-org">Information Technology Institute (ITI) · Aug–Sep 2026</div>
-      <ul class="training-bullets">
-        <li>Python for AI, Computer Vision, YOLO object detection, and pretrained models.</li>
-        <li>NLP, LLMs, Generative AI, Retrieval-Augmented Generation (RAG), practical applications, and model deployment.</li>
-        <li>End-to-end capstone project covering the complete AI development pipeline.</li>
-      </ul>
-    </div>
-    <div class="training-card">
-      <div class="training-icon">🔐</div>
-      <div class="training-name">Network &amp; Cybersecurity Trainee</div>
-      <div class="training-org">Information Technology Institute (ITI) · Jul–Aug 2026</div>
-      <ul class="training-bullets">
-        <li>Advanced Networking and Network Fundamentals.</li>
-        <li>Cybersecurity Essentials and Ethical Hacking.</li>
-        <li>Huawei Cloud HCCDA — Tech Essentials and modern cloud infrastructure concepts.</li>
-      </ul>
-    </div>
-    <div class="training-card">
-      <div class="training-icon">🛡️</div>
-      <div class="training-name">Fortinet Cybersecurity Trainee</div>
-      <div class="training-org">NTI · ITIDA · Aug–Sep 2025 · 120 hours · 93%</div>
-      <ul class="training-bullets">
-        <li>FortiGate policies, NAT, FSSO, routing protocols, and FortiManager.</li>
-        <li>SSL VPN, IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, and High Availability.</li>
-        <li>Cryptography, PKI, certificate lifecycle management, and intrusion prevention.</li>
-      </ul>
-    </div>
-    <div class="training-card">
-      <div class="training-icon">🤖</div>
-      <div class="training-name">Artificial Intelligence Trainee — NVIDIA AI Program</div>
-      <div class="training-org">Information Technology Institute (ITI) · Sep–Oct 2025</div>
-      <ul class="training-bullets">
-        <li>Building LLM Applications with Prompt Engineering: prompt engineering, LLM optimization, and API integration.</li>
-        <li>AI for All: AI fundamentals, model training, deep learning concepts, and Generative AI applications.</li>
-      </ul>
-    </div>
-    <div class="training-card">
-      <div class="training-icon">⚙️</div>
-      <div class="training-name">Universal Robots Academy</div>
-      <div class="training-org">UR20/30 eLearning · Apr 2026</div>
-      <div class="training-detail">Collaborative-robot programming, safety, motion planning, I/O integration, and application development.</div>
-    </div>
-    <div class="training-card">
-      <div class="training-icon">🐧</div>
-      <div class="training-name">Linux &amp; Cybersecurity Foundations</div>
-      <div class="training-org">IBM · Google · 2025–2026</div>
-      <div class="training-detail">Linux commands and shell scripting, cybersecurity fundamentals, security risks, networks, threats, vulnerabilities, detection, response, and job-readiness training.</div>
-    </div>
-  </div>
+<div class="section-label">Training &amp; Learning</div>
+<div class="training-grid stagger">
+<div class="training-card">
+<div class="training-icon">🧠</div>
+<div class="training-name">Applied AI Program Trainee — Level 2</div>
+<div class="training-org">Information Technology Institute (ITI) · Aug–Sep 2026</div>
+<ul class="training-bullets">
+<li>Python for AI, Computer Vision, YOLO object detection, and pretrained models.</li>
+<li>NLP, LLMs, Generative AI, Retrieval-Augmented Generation (RAG), practical applications, and model deployment.</li>
+<li>End-to-end capstone project covering the complete AI development pipeline.</li>
+</ul>
+</div>
+<div class="training-card">
+<div class="training-icon">🔐</div>
+<div class="training-name">Network &amp; Cybersecurity Trainee</div>
+<div class="training-org">Information Technology Institute (ITI) · Jul–Aug 2026</div>
+<ul class="training-bullets">
+<li>Advanced Networking and Network Fundamentals.</li>
+<li>Cybersecurity Essentials and Ethical Hacking.</li>
+<li>Huawei Cloud HCCDA — Tech Essentials and modern cloud infrastructure concepts.</li>
+</ul>
+</div>
+<div class="training-card">
+<div class="training-icon">🛡️</div>
+<div class="training-name">Fortinet Cybersecurity Trainee</div>
+<div class="training-org">NTI · ITIDA · Aug–Sep 2025 · 120 hours · 93%</div>
+<ul class="training-bullets">
+<li>FortiGate policies, NAT, FSSO, routing protocols, and FortiManager.</li>
+<li>SSL VPN, IPSec VPN, SD-WAN, Security Fabric, IPS, Antivirus, Web Filtering, and High Availability.</li>
+<li>Cryptography, PKI, certificate lifecycle management, and intrusion prevention.</li>
+</ul>
+</div>
+<div class="training-card">
+<div class="training-icon">🤖</div>
+<div class="training-name">Artificial Intelligence Trainee — NVIDIA AI Program</div>
+<div class="training-org">Information Technology Institute (ITI) · Sep–Oct 2025</div>
+<ul class="training-bullets">
+<li>Building LLM Applications with Prompt Engineering: prompt engineering, LLM optimization, and API integration.</li>
+<li>AI for All: AI fundamentals, model training, deep learning concepts, and Generative AI applications.</li>
+</ul>
+</div>
+<div class="training-card">
+<div class="training-icon">⚙️</div>
+<div class="training-name">Universal Robots Academy</div>
+<div class="training-org">UR20/30 eLearning · Apr 2026</div>
+<div class="training-detail">Collaborative-robot programming, safety, motion planning, I/O integration, and application development.</div>
+</div>
+<div class="training-card">
+<div class="training-icon">🐧</div>
+<div class="training-name">Linux &amp; Cybersecurity Foundations</div>
+<div class="training-org">IBM · Google · 2025–2026</div>
+<div class="training-detail">Linux commands and shell scripting, cybersecurity fundamentals, security risks, networks, threats, vulnerabilities, detection, response, and job-readiness training.</div>
+</div>
+</div>
 </section>
-
 <!-- AWARDS -->
 <section id="awards">
-  <div class="section-label">Awards & Achievements</div>
-  <div class="awards-grid stagger">
-
-    <!-- MATE ROV Award Card -->
-    <div class="award-card">
-      <div class="slideshow" id="rov-slideshow">
-        <div class="slide active">
-          <img src="Awards/mate_rov_competition.jpg" alt="MATE ROV Competition">
-        </div>
-        <div class="slide">
-          <img src="Awards/mate_rov_award.jpg" alt="Award Ceremony">
-        </div>
-        <div class="slide">
-          <img src="Awards/vortrex_team_members.jpg" alt="ROV Build">
-        </div>
-        <div class="slide">
-          <img src="Awards/Cert.jpg" alt="ROV Build">
-        </div>
-        <button class="slide-arrow prev" onclick="changeSlide('rov-slideshow',-1)">‹</button>
-        <button class="slide-arrow next" onclick="changeSlide('rov-slideshow',1)">›</button>
-        <div class="slide-nav" id="rov-dots"></div>
-      </div>
-      <div class="award-body">
-        <div class="award-meta">
-          <span class="award-place-badge">🏆 1st Place</span>
-          <span class="award-extra-badge">Best Design</span>
-          <span class="award-extra-badge">Best Presentation</span>
-          <span class="award-year">2026</span>
-        </div>
-        <div class="award-title">MATE ROV — Pioneer Level Champion</div>
-        <div class="award-org">MATE ROV Competition · Vortex Robotics (Team Nautix)</div>
-        <div class="award-desc">Led the Computer Vision pipeline for Team Nautix's underwater ROV. Engineered a YOLOv8 European Green Crab detection system with 3D coral reconstruction for real-time biodiversity analysis. The team swept the top awards at Pioneer Level and earned a qualification to International competition in Canada.</div>
-        <div class="award-tags">
-          <span class="award-tag">YOLOv8</span>
-          <span class="award-tag">Computer Vision</span>
-          <span class="award-tag">Underwater Robotics</span>
-          <span class="award-tag">3D Reconstruction</span>
-          <span class="award-tag">Python</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<div class="section-label">Awards &amp; Achievements</div>
+<div class="awards-grid stagger">
+<!-- MATE ROV Award Card -->
+<div class="award-card">
+<div class="slideshow" id="rov-slideshow">
+<div class="slide active">
+<img alt="MATE ROV Competition" src="Awards/mate_rov_competition.jpg"/>
+</div>
+<div class="slide">
+<img alt="Award Ceremony" src="Awards/mate_rov_award.jpg"/>
+</div>
+<div class="slide">
+<img alt="ROV Build" src="Awards/vortrex_team_members.jpg"/>
+</div>
+<div class="slide">
+<img alt="ROV Build" src="Awards/Cert.jpg"/>
+</div>
+<button class="slide-arrow prev" onclick="changeSlide('rov-slideshow',-1)">‹</button>
+<button class="slide-arrow next" onclick="changeSlide('rov-slideshow',1)">›</button>
+<div class="slide-nav" id="rov-dots"></div>
+</div>
+<div class="award-body">
+<div class="award-meta">
+<span class="award-place-badge">🏆 1st Place</span>
+<span class="award-extra-badge">Best Design</span>
+<span class="award-extra-badge">Best Presentation</span>
+<span class="award-year">2026</span>
+</div>
+<div class="award-title">MATE ROV — Pioneer Level Champion</div>
+<div class="award-org">MATE ROV Competition · Vortex Robotics (Team Nautix)</div>
+<div class="award-desc">Led the Computer Vision pipeline for Team Nautix's underwater ROV. Engineered a YOLOv8 European Green Crab detection system with 3D coral reconstruction for real-time biodiversity analysis. The team swept the top awards at Pioneer Level and earned a qualification to International competition in Canada.</div>
+<div class="award-tags">
+<span class="award-tag">YOLOv8</span>
+<span class="award-tag">Computer Vision</span>
+<span class="award-tag">Underwater Robotics</span>
+<span class="award-tag">3D Reconstruction</span>
+<span class="award-tag">Python</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- CERTIFICATIONS — complete, exact GitHub filenames; uploaded previews embedded in HTML -->
+<!-- CERTIFICATIONS — exact repo filenames; PDF previews rendered dynamically with PDF.js -->
 <section id="certifications">
-  <div class="section-label">Licenses &amp; Certifications</div>
-  <div class="cert-group-sub" style="margin:-1.7rem 0 1.3rem;">20 unique certificates shown · uploaded certificate previews are embedded directly in this page.</div>
-  <div class="cert-filters">
-    <button class="cert-filter-btn active" data-filter="all">All</button>
-    <button class="cert-filter-btn" data-filter="aiml">AI / LLM</button>
-    <button class="cert-filter-btn" data-filter="security">Cybersecurity</button>
-    <button class="cert-filter-btn" data-filter="cloud">Cloud / Linux</button>
-    <button class="cert-filter-btn" data-filter="robotics">Robotics</button>
-  </div>
+<div class="section-label">Licenses &amp; Certifications</div>
+<div class="cert-group-sub" style="margin:-1.7rem 0 1.3rem;">20 credentials shown · previews are rendered directly from the certificate files in /Certifications — no thumbnail uploads required.</div>
+<div class="cert-filters">
+<button class="cert-filter-btn active" data-filter="all">All</button>
+<button class="cert-filter-btn" data-filter="aiml">AI / LLM</button>
+<button class="cert-filter-btn" data-filter="security">Cybersecurity</button>
+<button class="cert-filter-btn" data-filter="cloud">Cloud / Linux</button>
+<button class="cert-filter-btn" data-filter="robotics">Robotics</button>
+</div>
+<div class="cert-group" data-category="aiml">
+<div class="cert-group-header">
+<div class="cert-group-label">PACKT · COURSERA</div>
+<div class="cert-group-title">DeepSeek in Practice Specialization</div>
+<div class="cert-group-sub">4 certificates · specialization + all 3 constituent courses</div>
+</div>
+<div class="cert-img-grid">
+<div class="cert-img-card cert-featured" onclick="openCertModal('deepseek-spec','DeepSeek in Practice','Packt · Coursera Specialization','Sep 2, 2026','Certifications/DeepSeek in Practice.pdf','', 'https://coursera.org/verify/specialization/2FGO2HWGZU9G')">
+<div class="cert-thumb"><canvas aria-label="DeepSeek in Practice certificate preview" class="cert-preview-canvas" data-pdf="Certifications/DeepSeek in Practice.pdf" data-render-state="pending" role="img"></canvas>
 
-  <div class="cert-group" data-category="aiml">
-    <div class="cert-group-header">
-      <div class="cert-group-label">PACKT · COURSERA</div>
-      <div class="cert-group-title">DeepSeek in Practice Specialization</div>
-      <div class="cert-group-sub">4 certificates · specialization + all 3 constituent courses</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card cert-featured" onclick="openCertModal(&#x27;deepseek-spec&#x27;,&#x27;DeepSeek in Practice&#x27;,&#x27;Packt · Coursera Specialization&#x27;,&#x27;Sep 2, 2026&#x27;,&#x27;Certifications/DeepSeek in Practice.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/specialization/2FGO2HWGZU9G&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_DeepSeek_in_Practice.png" alt="DeepSeek in Practice certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">DeepSeek in Practice</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">DeepSeek in Practice</div>
-          <div class="cert-img-issuer">Packt · Coursera Specialization</div>
-          <div class="cert-img-date">Sep 2, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;deepseek-found&#x27;,&#x27;Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting&#x27;,&#x27;Packt · Coursera&#x27;,&#x27;Aug 12, 2026&#x27;,&#x27;Certifications/Foundations of DeepSeek.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/FI1C0UGT2T91&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_DeepSeek_Foundations.png" alt="Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting</div>
-          <div class="cert-img-issuer">Packt · Coursera</div>
-          <div class="cert-img-date">Aug 12, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;deepseek-applied&#x27;,&#x27;Applied DeepSeek: Building Intelligent Systems&#x27;,&#x27;Packt · Coursera&#x27;,&#x27;Sep 2, 2026&#x27;,&#x27;Certifications/Applied DeepSeek.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/MIFTL5VV77ND&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_DeepSeek_Applied.png" alt="Applied DeepSeek: Building Intelligent Systems certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Applied DeepSeek: Building Intelligent Systems</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Applied DeepSeek: Building Intelligent Systems</div>
-          <div class="cert-img-issuer">Packt · Coursera</div>
-          <div class="cert-img-date">Sep 2, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;deepseek-advanced&#x27;,&#x27;Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment&#x27;,&#x27;Packt · Coursera&#x27;,&#x27;Sep 2, 2026&#x27;,&#x27;Certifications/Advanced DeepSeek.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/2IBLDCVZXHGA&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_DeepSeek_Advanced.png" alt="Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment</div>
-          <div class="cert-img-issuer">Packt · Coursera</div>
-          <div class="cert-img-date">Sep 2, 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">DeepSeek in Practice</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">DeepSeek in Practice</div>
+<div class="cert-img-issuer">Packt · Coursera Specialization</div>
+<div class="cert-img-date">Sep 2, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('deepseek-found','Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting','Packt · Coursera','Aug 12, 2026','Certifications/Foundations of DeepSeek.pdf','', 'https://coursera.org/verify/FI1C0UGT2T91')">
+<div class="cert-thumb"><canvas aria-label="Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Foundations of DeepSeek.pdf" data-render-state="pending" role="img"></canvas>
 
-  <div class="cert-group" data-category="aiml">
-    <div class="cert-group-header">
-      <div class="cert-group-label">NVIDIA · SPRINTS</div>
-      <div class="cert-group-title">AI &amp; Machine Learning</div>
-      <div class="cert-group-sub">Existing certificates already in your GitHub Certifications folder</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal(&#x27;nvidia-llm&#x27;,&#x27;Building LLM Applications with Prompt Engineering&#x27;,&#x27;NVIDIA · ITI AI Program&#x27;,&#x27;2025&#x27;,&#x27;Certifications/Building LLM.pdf&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          
-          <div class="cert-fallback"><div class="cert-fallback-mark">NVIDIA</div><div class="cert-fallback-label">Building LLM Applications with Prompt Engineering</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Building LLM Applications with Prompt Engineering</div>
-          <div class="cert-img-issuer">NVIDIA · ITI AI Program</div>
-          <div class="cert-img-date">2025</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;nvidia-ai4all&#x27;,&#x27;AI for All: From Basics to Generative AI&#x27;,&#x27;NVIDIA · ITI AI Program&#x27;,&#x27;2025&#x27;,&#x27;Certifications/AI for ALL.pdf&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          
-          <div class="cert-fallback"><div class="cert-fallback-mark">NVIDIA</div><div class="cert-fallback-label">AI for All: From Basics to Generative AI</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">AI for All: From Basics to Generative AI</div>
-          <div class="cert-img-issuer">NVIDIA · ITI AI Program</div>
-          <div class="cert-img-date">2025</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;sprints-ml&#x27;,&#x27;AI &amp; Machine Learning Foundations&#x27;,&#x27;Sprints · 40 hours&#x27;,&#x27;Aug 2025&#x27;,&#x27;Certifications/Sprints_AI_ML_Foundations.pdf&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          
-          <div class="cert-fallback"><div class="cert-fallback-mark">SPRINTS</div><div class="cert-fallback-label">AI &amp; Machine Learning Foundations</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">AI &amp; Machine Learning Foundations</div>
-          <div class="cert-img-issuer">Sprints · 40 hours</div>
-          <div class="cert-img-date">Aug 2025</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Foundations of DeepSeek: Architecture, Reasoning &amp; Prompting</div>
+<div class="cert-img-issuer">Packt · Coursera</div>
+<div class="cert-img-date">Aug 12, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('deepseek-applied','Applied DeepSeek: Building Intelligent Systems','Packt · Coursera','Sep 2, 2026','Certifications/Applied DeepSeek.pdf','', 'https://coursera.org/verify/MIFTL5VV77ND')">
+<div class="cert-thumb"><canvas aria-label="Applied DeepSeek: Building Intelligent Systems certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Applied DeepSeek.pdf" data-render-state="pending" role="img"></canvas>
 
-  </div>
+<div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Applied DeepSeek: Building Intelligent Systems</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Applied DeepSeek: Building Intelligent Systems</div>
+<div class="cert-img-issuer">Packt · Coursera</div>
+<div class="cert-img-date">Sep 2, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('deepseek-advanced','Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment','Packt · Coursera','Sep 2, 2026','Certifications/Advanced DeepSeek.pdf','', 'https://coursera.org/verify/2IBLDCVZXHGA')">
+<div class="cert-thumb"><canvas aria-label="Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Advanced DeepSeek.pdf" data-render-state="pending" role="img"></canvas>
 
-  <div class="cert-group" data-category="security">
-    <div class="cert-group-header">
-      <div class="cert-group-label">GOOGLE · COURSERA</div>
-      <div class="cert-group-title">Google Cybersecurity Courses</div>
-      <div class="cert-group-sub">Six verified course completions currently provided</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal(&#x27;google-sec-found&#x27;,&#x27;Foundations of Cybersecurity&#x27;,&#x27;Google · Coursera&#x27;,&#x27;Mar 7, 2026&#x27;,&#x27;Certifications/1.Foundations of Cybersecurity.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/GFZSM63NS4JW&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_Google_Foundations_of_Cybersecurity.png" alt="Foundations of Cybersecurity certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Foundations of Cybersecurity</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Foundations of Cybersecurity</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">Mar 7, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;google-sec-play&#x27;,&#x27;Play It Safe: Manage Security Risks&#x27;,&#x27;Google · Coursera&#x27;,&#x27;May 2, 2026&#x27;,&#x27;Certifications/2.Play It Safe.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/GAYFE3PS19GB&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_Google_Play_It_Safe.png" alt="Play It Safe: Manage Security Risks certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Play It Safe: Manage Security Risks</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Play It Safe: Manage Security Risks</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">May 2, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;google-sec-assets&#x27;,&#x27;Assets, Threats, and Vulnerabilities&#x27;,&#x27;Google · Coursera&#x27;,&#x27;Jun 5, 2026&#x27;,&#x27;Certifications/5.Assets, Threats, and Vulnerabilities.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/JD3GL7Y350I1&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_Google_Assets_Threats_and_Vulnerabilities.png" alt="Assets, Threats, and Vulnerabilities certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Assets, Threats, and Vulnerabilities</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Assets, Threats, and Vulnerabilities</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">Jun 5, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;google-sec-connect&#x27;,&#x27;Connect and Protect: Networks and Network Security&#x27;,&#x27;Google · Coursera&#x27;,&#x27;Aug 16, 2026&#x27;,&#x27;Certifications/3.Connect and Protect.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/BM572E48LLOS&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_Google_Connect_and_Protect.png" alt="Connect and Protect: Networks and Network Security certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Connect and Protect: Networks and Network Security</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Connect and Protect: Networks and Network Security</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">Aug 16, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;google-sec-alarm&#x27;,&#x27;Sound the Alarm: Detection and Response&#x27;,&#x27;Google · Coursera&#x27;,&#x27;Aug 20, 2026&#x27;,&#x27;Certifications/6.Sound the Alaram.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/530U2O7DLVLX&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_Google_Sound_the_Alarm.png" alt="Sound the Alarm: Detection and Response certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Sound the Alarm: Detection and Response</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Sound the Alarm: Detection and Response</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">Aug 20, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;google-sec-work&#x27;,&#x27;Put It to Work: Prepare for Cybersecurity Jobs&#x27;,&#x27;Google · Coursera&#x27;,&#x27;Aug 31, 2026&#x27;,&#x27;Certifications/8.Put It to Work.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/PL3UOT6ZQLAD&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_Google_Put_It_to_Work.png" alt="Put It to Work: Prepare for Cybersecurity Jobs certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Put It to Work: Prepare for Cybersecurity Jobs</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Put It to Work: Prepare for Cybersecurity Jobs</div>
-          <div class="cert-img-issuer">Google · Coursera</div>
-          <div class="cert-img-date">Aug 31, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;google-job-ai&#x27;,&#x27;Accelerate Your Job Search with AI&#x27;,&#x27;Google · Coursera&#x27;,&#x27;May 3, 2026&#x27;,&#x27;Certifications/9.Accelerate Your Job Search with AI.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/F4QC36OWS316&#x27;)">
-              <div class="cert-thumb">
-                <img class="cert-preview-img" src="Certifications/preview_Google_Accelerate_Your_Job_Search_with_AI.png" alt="Accelerate Your Job Search with AI certificate preview" loading="lazy">
-                <div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Accelerate Your Job Search with AI</div></div>
-                <span class="cert-type-badge">PDF</span>
-                <div class="cert-overlay">View Certificate</div>
-              </div>
-              <div class="cert-img-info">
-                <div class="cert-img-title">Accelerate Your Job Search with AI</div>
-                <div class="cert-img-issuer">Google · Coursera</div>
-                <div class="cert-img-date">May 3, 2026</div>
-              </div>
-
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="security">
-    <div class="cert-group-header">
-      <div class="cert-group-label">NTI · ITIDA · IBM</div>
-      <div class="cert-group-title">Cybersecurity Programs</div>
-      <div class="cert-group-sub">Existing certificates already in your GitHub Certifications folder</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal(&#x27;fortinet&#x27;,&#x27;Fortinet Cybersecurity Program — 93%&#x27;,&#x27;NTI · ITIDA · 120 hours&#x27;,&#x27;Sep 2025&#x27;,&#x27;Certifications/Fortinet_Cybersecurity_Program.pdf&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          
-          <div class="cert-fallback"><div class="cert-fallback-mark">FORTINET</div><div class="cert-fallback-label">Fortinet Cybersecurity Program — 93%</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Fortinet Cybersecurity Program — 93%</div>
-          <div class="cert-img-issuer">NTI · ITIDA · 120 hours</div>
-          <div class="cert-img-date">Sep 2025</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;ibm-cyber&#x27;,&#x27;IBM SkillsBuild Cybersecurity Certificate&#x27;,&#x27;IBM SkillsBuild · 60+ hours&#x27;,&#x27;Aug 2025&#x27;,&#x27;Certifications/IBM_Cyber.pdf&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          
-          <div class="cert-fallback"><div class="cert-fallback-mark">IBM</div><div class="cert-fallback-label">IBM SkillsBuild Cybersecurity Certificate</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">IBM SkillsBuild Cybersecurity Certificate</div>
-          <div class="cert-img-issuer">IBM SkillsBuild · 60+ hours</div>
-          <div class="cert-img-date">Aug 2025</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="cloud">
-    <div class="cert-group-header">
-      <div class="cert-group-label">HUAWEI · IBM</div>
-      <div class="cert-group-title">Cloud &amp; Linux</div>
-      <div class="cert-group-sub">Both certificates are backed by files included in this update</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal(&#x27;huawei-hccda&#x27;,&#x27;HCCDA-Tech Essentials Course&#x27;,&#x27;Huawei ICT Academy&#x27;,&#x27;Aug 24, 2026&#x27;,&#x27;Certifications/HCCDA-Tech Essentials Course.png&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_Huawei_HCCDA_Tech_Essentials.png" alt="HCCDA-Tech Essentials Course certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">HUAWEI</div><div class="cert-fallback-label">HCCDA-Tech Essentials Course</div></div>
-          <span class="cert-type-badge">IMAGE</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">HCCDA-Tech Essentials Course</div>
-          <div class="cert-img-issuer">Huawei ICT Academy</div>
-          <div class="cert-img-date">Aug 24, 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;ibm-linux&#x27;,&#x27;Hands-on Introduction to Linux Commands and Shell Scripting&#x27;,&#x27;IBM · Coursera&#x27;,&#x27;Feb 10, 2026&#x27;,&#x27;Certifications/Hands-on Introduction to Linux Commands and Shell Scripting.pdf&#x27;,&#x27;&#x27;, &#x27;https://coursera.org/verify/WQL2VYX5IW1V&#x27;)">
-        <div class="cert-thumb">
-          <img class="cert-preview-img" src="Certifications/preview_IBM_Linux_Commands_Shell_Scripting.png" alt="Hands-on Introduction to Linux Commands and Shell Scripting certificate preview" loading="lazy">
-          <div class="cert-fallback"><div class="cert-fallback-mark">IBM</div><div class="cert-fallback-label">Hands-on Introduction to Linux Commands and Shell Scripting</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Hands-on Introduction to Linux Commands and Shell Scripting</div>
-          <div class="cert-img-issuer">IBM · Coursera</div>
-          <div class="cert-img-date">Feb 10, 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cert-group" data-category="robotics">
-    <div class="cert-group-header">
-      <div class="cert-group-label">UNIVERSAL ROBOTS · MATE ROV</div>
-      <div class="cert-group-title">Robotics &amp; Competition</div>
-      <div class="cert-group-sub">Existing certificates already in your GitHub Certifications folder</div>
-    </div>
-    <div class="cert-img-grid">
-      <div class="cert-img-card" onclick="openCertModal(&#x27;ur-academy&#x27;,&#x27;Universal Robots UR20/30 eLearning&#x27;,&#x27;Universal Robots Academy&#x27;,&#x27;Apr 2026&#x27;,&#x27;Certifications/Universal_Robots_UR20_30.pdf&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          
-          <div class="cert-fallback"><div class="cert-fallback-mark">UR</div><div class="cert-fallback-label">Universal Robots UR20/30 eLearning</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Universal Robots UR20/30 eLearning</div>
-          <div class="cert-img-issuer">Universal Robots Academy</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-      <div class="cert-img-card" onclick="openCertModal(&#x27;mate-rov&#x27;,&#x27;MATE ROV 2026 — Pioneer Level Regional Champion&#x27;,&#x27;MATE ROV Competition&#x27;,&#x27;Apr 2026&#x27;,&#x27;Certifications/MATE_ROV_2026_Champion.pdf&#x27;,&#x27;&#x27;, &#x27;&#x27;)">
-        <div class="cert-thumb">
-          
-          <div class="cert-fallback"><div class="cert-fallback-mark">MATE ROV</div><div class="cert-fallback-label">MATE ROV 2026 — Pioneer Level Regional Champion</div></div>
-          <span class="cert-type-badge">PDF</span>
-          <div class="cert-overlay">View Certificate</div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">MATE ROV 2026 — Pioneer Level Regional Champion</div>
-          <div class="cert-img-issuer">MATE ROV Competition</div>
-          <div class="cert-img-date">Apr 2026</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESUME -->
-<section id="resume">
-  <div class="section-label">Resume</div>
-  <div class="resume-card">
-    <div class="resume-updated">Last updated: September 2026</div>
-    <div class="resume-headline">Download My Resume</div>
-    <a href="CV/Abdelrahman_General_CV.pdf" class="resume-btn" download>⬇ Download General CV</a>
-    <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;font-size:11px;color:var(--muted2);">
-      <a href="CV/Abdelrahman_AI_ML_CV.pdf" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);" download>AI/ML Version</a>
-      <a href="CV/Abdelrahman_Cybersecurity_CV.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);" download>Cybersecurity Version</a>
-      <a href="CV/Abdelrahman_Robotics_CV.pdf" style="color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);" download>Robotics Version</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Get in Touch</div>
-  <div class="contact-grid">
-    <div class="contact-text">
-      <p>I'm always interested in discussing new projects, research opportunities, and innovative challenges. Feel free to reach out via email or connect on LinkedIn. I typically respond within 24 hours.</p>
-      <p><strong style="color:var(--text);">Based in Alexandria, Egypt</strong> — available for internships, freelance work, and collaborative research.</p>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:abdelrahmanihab2882004@gmail.com" class="contact-link">
-        <span class="ci">✉</span>
-        <span>abdelrahmanihab2882004@gmail.com</span>
-      </a>
-      <a href="https://linkedin.com/in/abdelrahman-ihab" class="contact-link" target="_blank">
-        <span class="ci">in</span>
-        <span>linkedin.com/in/abdelrahman-ihab</span>
-      </a>
-      <a href="https://github.com/Abdelrahman-288" class="contact-link" target="_blank">
-        <span class="ci">◆</span>
-        <span>github.com/Abdelrahman-288</span>
-      </a>
-      <a href="https://abdelrahman-portfolio.com" class="contact-link" target="_blank">
-        <span class="ci">→</span>
-        <span>abdelrahman-portfolio.com</span>
-        <span class="cl-label">Portfolio</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CERT MODAL -->
-<div id="certModal" class="cert-modal-backdrop" onclick="closeCertModal(event)">
-  <div class="cert-modal" onclick="event.stopPropagation()">
-    <div class="cert-modal-top">
-      <div>
-        <div class="cert-modal-title" id="modalTitle">Certificate Title</div>
-        <div class="cert-modal-meta" id="modalMeta" style="font-size:9px;color:var(--muted);margin-top:2px;"></div>
-      </div>
-      <div class="cert-modal-actions">
-        <a href="#" id="modalOpenLink" class="cert-modal-open" download>↓ Download</a>
-        <a href="#" id="modalViewLink" class="cert-modal-view" target="_blank" rel="noopener">⧉ Open</a>
-        <a href="#" id="modalVerifyLink" class="cert-modal-view" target="_blank" rel="noopener" style="display:none">✓ Verify</a>
-        <button class="cert-modal-close" onclick="closeCertModal(null,true)">✕</button>
-      </div>
-    </div>
-    <div class="cert-modal-body" id="modalBody"></div>
-    <div class="cert-modal-footer">
-      <span class="cert-modal-meta">Click outside or press ESC to close</span>
-    </div>
-  </div>
+<div class="cert-fallback"><div class="cert-fallback-mark">PACKT</div><div class="cert-fallback-label">Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Advanced DeepSeek: Fine-Tuning, Optimization, and Deployment</div>
+<div class="cert-img-issuer">Packt · Coursera</div>
+<div class="cert-img-date">Sep 2, 2026</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cert-group" data-category="aiml">
+<div class="cert-group-header">
+<div class="cert-group-label">NVIDIA · SPRINTS</div>
+<div class="cert-group-title">AI &amp; Machine Learning</div>
+<div class="cert-group-sub">Existing certificates already in your GitHub Certifications folder</div>
+</div>
+<div class="cert-img-grid">
+<div class="cert-img-card" onclick="openCertModal('nvidia-llm','Building LLM Applications with Prompt Engineering','NVIDIA · ITI AI Program','2025','Certifications/Building LLM.pdf','', '')">
+<div class="cert-thumb"><canvas aria-label="Building LLM Applications with Prompt Engineering certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Building LLM.pdf" data-render-state="pending" role="img"></canvas>
+<div class="cert-fallback"><div class="cert-fallback-mark">NVIDIA</div><div class="cert-fallback-label">Building LLM Applications with Prompt Engineering</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Building LLM Applications with Prompt Engineering</div>
+<div class="cert-img-issuer">NVIDIA · ITI AI Program</div>
+<div class="cert-img-date">2025</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('nvidia-ai4all','AI for All: From Basics to Generative AI','NVIDIA · ITI AI Program','2025','Certifications/AI for ALL.pdf','', '')">
+<div class="cert-thumb"><canvas aria-label="AI for All: From Basics to Generative AI certificate preview" class="cert-preview-canvas" data-pdf="Certifications/AI for ALL.pdf" data-render-state="pending" role="img"></canvas>
+<div class="cert-fallback"><div class="cert-fallback-mark">NVIDIA</div><div class="cert-fallback-label">AI for All: From Basics to Generative AI</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">AI for All: From Basics to Generative AI</div>
+<div class="cert-img-issuer">NVIDIA · ITI AI Program</div>
+<div class="cert-img-date">2025</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('sprints-ml','AI &amp; Machine Learning Foundations','Sprints · 40 hours','Aug 2025','Certifications/Sprints_AI_ML_Foundations.pdf','', '')">
+<div class="cert-thumb"><canvas aria-label="AI &amp; Machine Learning Foundations certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Sprints_AI_ML_Foundations.pdf" data-render-state="pending" role="img"></canvas>
+<div class="cert-fallback"><div class="cert-fallback-mark">SPRINTS</div><div class="cert-fallback-label">AI &amp; Machine Learning Foundations</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">AI &amp; Machine Learning Foundations</div>
+<div class="cert-img-issuer">Sprints · 40 hours</div>
+<div class="cert-img-date">Aug 2025</div>
+</div>
+</div>
+</div>
 </div>
 
-<footer>
-  <span>◆</span> Designed & built by Abdelrahman Ihab — <span>Alexandria, Egypt</span> · <span id="year">2026</span>
-</footer>
+<div class="cert-group" data-category="security">
+<div class="cert-group-header">
+<div class="cert-group-label">GOOGLE · COURSERA</div>
+<div class="cert-group-title">Google Cybersecurity Courses</div>
+<div class="cert-group-sub">Six verified course completions currently provided · plus “Accelerate Your Job Search with AI” as a related Google career course.</div>
+</div>
+<div class="cert-img-grid">
+<div class="cert-img-card" onclick="openCertModal('google-sec-found','Foundations of Cybersecurity','Google · Coursera','Mar 7, 2026','Certifications/1.Foundations of Cybersecurity.pdf','', 'https://coursera.org/verify/GFZSM63NS4JW')">
+<div class="cert-thumb"><canvas aria-label="Foundations of Cybersecurity certificate preview" class="cert-preview-canvas" data-pdf="Certifications/1.Foundations of Cybersecurity.pdf" data-render-state="pending" role="img"></canvas>
 
-<script>
+<div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Foundations of Cybersecurity</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Foundations of Cybersecurity</div>
+<div class="cert-img-issuer">Google · Coursera</div>
+<div class="cert-img-date">Mar 7, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('google-sec-play','Play It Safe: Manage Security Risks','Google · Coursera','May 2, 2026','Certifications/2.Play It Safe.pdf','', 'https://coursera.org/verify/GAYFE3PS19GB')">
+<div class="cert-thumb"><canvas aria-label="Play It Safe: Manage Security Risks certificate preview" class="cert-preview-canvas" data-pdf="Certifications/2.Play It Safe.pdf" data-render-state="pending" role="img"></canvas>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Play It Safe: Manage Security Risks</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Play It Safe: Manage Security Risks</div>
+<div class="cert-img-issuer">Google · Coursera</div>
+<div class="cert-img-date">May 2, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('google-sec-assets','Assets, Threats, and Vulnerabilities','Google · Coursera','Jun 5, 2026','Certifications/5.Assets, Threats, and Vulnerabilities.pdf','', 'https://coursera.org/verify/JD3GL7Y350I1')">
+<div class="cert-thumb"><canvas aria-label="Assets, Threats, and Vulnerabilities certificate preview" class="cert-preview-canvas" data-pdf="Certifications/5.Assets, Threats, and Vulnerabilities.pdf" data-render-state="pending" role="img"></canvas>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Assets, Threats, and Vulnerabilities</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Assets, Threats, and Vulnerabilities</div>
+<div class="cert-img-issuer">Google · Coursera</div>
+<div class="cert-img-date">Jun 5, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('google-sec-connect','Connect and Protect: Networks and Network Security','Google · Coursera','Aug 16, 2026','Certifications/3.Connect and Protect.pdf','', 'https://coursera.org/verify/BM572E48LLOS')">
+<div class="cert-thumb"><canvas aria-label="Connect and Protect: Networks and Network Security certificate preview" class="cert-preview-canvas" data-pdf="Certifications/3.Connect and Protect.pdf" data-render-state="pending" role="img"></canvas>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Connect and Protect: Networks and Network Security</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Connect and Protect: Networks and Network Security</div>
+<div class="cert-img-issuer">Google · Coursera</div>
+<div class="cert-img-date">Aug 16, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('google-sec-alarm','Sound the Alarm: Detection and Response','Google · Coursera','Aug 20, 2026','Certifications/6.Sound the Alaram.pdf','', 'https://coursera.org/verify/530U2O7DLVLX')">
+<div class="cert-thumb"><canvas aria-label="Sound the Alarm: Detection and Response certificate preview" class="cert-preview-canvas" data-pdf="Certifications/6.Sound the Alaram.pdf" data-render-state="pending" role="img"></canvas>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Sound the Alarm: Detection and Response</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Sound the Alarm: Detection and Response</div>
+<div class="cert-img-issuer">Google · Coursera</div>
+<div class="cert-img-date">Aug 20, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('google-sec-work','Put It to Work: Prepare for Cybersecurity Jobs','Google · Coursera','Aug 31, 2026','Certifications/8.Put It to Work.pdf','', 'https://coursera.org/verify/PL3UOT6ZQLAD')">
+<div class="cert-thumb"><canvas aria-label="Put It to Work: Prepare for Cybersecurity Jobs certificate preview" class="cert-preview-canvas" data-pdf="Certifications/8.Put It to Work.pdf" data-render-state="pending" role="img"></canvas>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Put It to Work: Prepare for Cybersecurity Jobs</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Put It to Work: Prepare for Cybersecurity Jobs</div>
+<div class="cert-img-issuer">Google · Coursera</div>
+<div class="cert-img-date">Aug 31, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('google-job-ai','Accelerate Your Job Search with AI','Google · Coursera','May 3, 2026','Certifications/9.Accelerate Your Job Search with AI.pdf','', 'https://coursera.org/verify/F4QC36OWS316')">
+<div class="cert-thumb"><canvas aria-label="Accelerate Your Job Search with AI certificate preview" class="cert-preview-canvas" data-pdf="Certifications/9.Accelerate Your Job Search with AI.pdf" data-render-state="pending" role="img"></canvas>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">GOOGLE</div><div class="cert-fallback-label">Accelerate Your Job Search with AI</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Accelerate Your Job Search with AI</div>
+<div class="cert-img-issuer">Google · Coursera</div>
+<div class="cert-img-date">May 3, 2026</div>
+</div>
+</div>
+</div>
+<div class="cert-group" data-category="security">
+<div class="cert-group-header">
+<div class="cert-group-label">NTI · ITIDA · IBM</div>
+<div class="cert-group-title">Cybersecurity Programs</div>
+<div class="cert-group-sub">Existing certificates already in your GitHub Certifications folder</div>
+</div>
+<div class="cert-img-grid">
+<div class="cert-img-card" onclick="openCertModal('fortinet','Fortinet Cybersecurity Program — 93%','NTI · ITIDA · 120 hours','Sep 2025','Certifications/Fortinet_Cybersecurity_Program.pdf','', '')">
+<div class="cert-thumb"><canvas aria-label="Fortinet Cybersecurity Program — 93% certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Fortinet_Cybersecurity_Program.pdf" data-render-state="pending" role="img"></canvas>
+<div class="cert-fallback"><div class="cert-fallback-mark">FORTINET</div><div class="cert-fallback-label">Fortinet Cybersecurity Program — 93%</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Fortinet Cybersecurity Program — 93%</div>
+<div class="cert-img-issuer">NTI · ITIDA · 120 hours</div>
+<div class="cert-img-date">Sep 2025</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('ibm-cyber','IBM SkillsBuild Cybersecurity Certificate','IBM SkillsBuild · 60+ hours','Aug 2025','Certifications/IBM_Cyber.pdf','', '')">
+<div class="cert-thumb"><canvas aria-label="IBM SkillsBuild Cybersecurity Certificate certificate preview" class="cert-preview-canvas" data-pdf="Certifications/IBM_Cyber.pdf" data-render-state="pending" role="img"></canvas>
+<div class="cert-fallback"><div class="cert-fallback-mark">IBM</div><div class="cert-fallback-label">IBM SkillsBuild Cybersecurity Certificate</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">IBM SkillsBuild Cybersecurity Certificate</div>
+<div class="cert-img-issuer">IBM SkillsBuild · 60+ hours</div>
+<div class="cert-img-date">Aug 2025</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cert-group" data-category="cloud">
+<div class="cert-group-header">
+<div class="cert-group-label">HUAWEI · IBM</div>
+<div class="cert-group-title">Cloud &amp; Linux</div>
+<div class="cert-group-sub">Both certificates are backed by files included in this update</div>
+</div>
+<div class="cert-img-grid">
+<div class="cert-img-card" onclick="openCertModal('huawei-hccda','HCCDA-Tech Essentials Course','Huawei ICT Academy','Aug 24, 2026','Certifications/HCCDA-Tech Essentials Course.png','', '')">
+<div class="cert-thumb"><img alt="HCCDA-Tech Essentials Course certificate preview" class="cert-preview-img" loading="lazy" onerror="this.style.display='none'" src="Certifications/HCCDA-Tech Essentials Course.png"/>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">HUAWEI</div><div class="cert-fallback-label">HCCDA-Tech Essentials Course</div></div>
+<span class="cert-type-badge">IMAGE</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">HCCDA-Tech Essentials Course</div>
+<div class="cert-img-issuer">Huawei ICT Academy</div>
+<div class="cert-img-date">Aug 24, 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('ibm-linux','Hands-on Introduction to Linux Commands and Shell Scripting','IBM · Coursera','Feb 10, 2026','Certifications/Hands-on Introduction to Linux Commands and Shell Scripting.pdf','', 'https://coursera.org/verify/WQL2VYX5IW1V')">
+<div class="cert-thumb"><canvas aria-label="Hands-on Introduction to Linux Commands and Shell Scripting certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Hands-on Introduction to Linux Commands and Shell Scripting.pdf" data-render-state="pending" role="img"></canvas>
+
+<div class="cert-fallback"><div class="cert-fallback-mark">IBM</div><div class="cert-fallback-label">Hands-on Introduction to Linux Commands and Shell Scripting</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Hands-on Introduction to Linux Commands and Shell Scripting</div>
+<div class="cert-img-issuer">IBM · Coursera</div>
+<div class="cert-img-date">Feb 10, 2026</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cert-group" data-category="robotics">
+<div class="cert-group-header">
+<div class="cert-group-label">UNIVERSAL ROBOTS · MATE ROV</div>
+<div class="cert-group-title">Robotics &amp; Competition</div>
+<div class="cert-group-sub">Existing certificates already in your GitHub Certifications folder</div>
+</div>
+<div class="cert-img-grid">
+<div class="cert-img-card" onclick="openCertModal('ur-academy','Universal Robots UR20/30 eLearning','Universal Robots Academy','Apr 2026','Certifications/Universal_Robots_UR20_30.pdf','', '')">
+<div class="cert-thumb"><canvas aria-label="Universal Robots UR20/30 eLearning certificate preview" class="cert-preview-canvas" data-pdf="Certifications/Universal_Robots_UR20_30.pdf" data-render-state="pending" role="img"></canvas>
+<div class="cert-fallback"><div class="cert-fallback-mark">UR</div><div class="cert-fallback-label">Universal Robots UR20/30 eLearning</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">Universal Robots UR20/30 eLearning</div>
+<div class="cert-img-issuer">Universal Robots Academy</div>
+<div class="cert-img-date">Apr 2026</div>
+</div>
+</div>
+<div class="cert-img-card" onclick="openCertModal('mate-rov','MATE ROV 2026 — Pioneer Level Regional Champion','MATE ROV Competition','Apr 2026','Certifications/MATE_ROV_2026_Champion.pdf','', '')">
+<div class="cert-thumb"><canvas aria-label="MATE ROV 2026 — Pioneer Level Regional Champion certificate preview" class="cert-preview-canvas" data-pdf="Certifications/MATE_ROV_2026_Champion.pdf" data-render-state="pending" role="img"></canvas>
+<div class="cert-fallback"><div class="cert-fallback-mark">MATE ROV</div><div class="cert-fallback-label">MATE ROV 2026 — Pioneer Level Regional Champion</div></div>
+<span class="cert-type-badge">PDF</span>
+<div class="cert-overlay">View Certificate</div>
+</div>
+<div class="cert-img-info">
+<div class="cert-img-title">MATE ROV 2026 — Pioneer Level Regional Champion</div>
+<div class="cert-img-issuer">MATE ROV Competition</div>
+<div class="cert-img-date">Apr 2026</div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<!-- RESUME -->
+<section id="resume">
+<div class="section-label">Resume</div>
+<div class="resume-card">
+<div class="resume-updated">Last updated: September 2026</div>
+<div class="resume-headline">Download My Resume</div>
+<a class="resume-btn" download="" href="CV/Abdelrahman_General_CV.pdf">⬇ Download General CV</a>
+<div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;font-size:11px;color:var(--muted2);">
+<a download="" href="CV/Abdelrahman_AI_ML_CV.pdf" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">AI/ML Version</a>
+<a download="" href="CV/Abdelrahman_Cybersecurity_CV.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Cybersecurity Version</a>
+<a download="" href="CV/Abdelrahman_Robotics_CV.pdf" style="color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);">Robotics Version</a>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="section-label">Get in Touch</div>
+<div class="contact-grid">
+<div class="contact-text">
+<p>I'm always interested in discussing new projects, research opportunities, and innovative challenges. Feel free to reach out via email or connect on LinkedIn. I typically respond within 24 hours.</p>
+<p><strong style="color:var(--text);">Based in Alexandria, Egypt</strong> — available for internships, freelance work, and collaborative research.</p>
+</div>
+<div class="contact-links">
+<a class="contact-link" href="mailto:abdelrahmanihab2882004@gmail.com">
+<span class="ci">✉</span>
+<span>abdelrahmanihab2882004@gmail.com</span>
+</a>
+<a class="contact-link" href="https://linkedin.com/in/abdelrahman-ihab" target="_blank">
+<span class="ci">in</span>
+<span>linkedin.com/in/abdelrahman-ihab</span>
+</a>
+<a class="contact-link" href="https://github.com/Abdelrahman-288" target="_blank">
+<span class="ci">◆</span>
+<span>github.com/Abdelrahman-288</span>
+</a>
+<a class="contact-link" href="https://abdelrahman-portfolio.com" target="_blank">
+<span class="ci">→</span>
+<span>abdelrahman-portfolio.com</span>
+<span class="cl-label">Portfolio</span>
+</a>
+</div>
+</div>
+</section>
+<!-- CERT MODAL -->
+<div class="cert-modal-backdrop" id="certModal" onclick="closeCertModal(event)">
+<div class="cert-modal" onclick="event.stopPropagation()">
+<div class="cert-modal-top">
+<div>
+<div class="cert-modal-title" id="modalTitle">Certificate Title</div>
+<div class="cert-modal-meta" id="modalMeta" style="font-size:9px;color:var(--muted);margin-top:2px;"></div>
+</div>
+<div class="cert-modal-actions">
+<a class="cert-modal-open" download="" href="#" id="modalOpenLink">↓ Download</a>
+<a class="cert-modal-view" href="#" id="modalViewLink" rel="noopener" target="_blank">⧉ Open</a>
+<a class="cert-modal-view" href="#" id="modalVerifyLink" rel="noopener" style="display:none" target="_blank">✓ Verify</a>
+<button class="cert-modal-close" onclick="closeCertModal(null,true)">✕</button>
+</div>
+</div>
+<div class="cert-modal-body" id="modalBody"></div>
+<div class="cert-modal-footer">
+<span class="cert-modal-meta">Click outside or press ESC to close</span>
+</div>
+</div>
+</div>
+<footer>
+<span>◆</span> Designed &amp; built by Abdelrahman Ihab — <span>Alexandria, Egypt</span> · <span id="year">2026</span>
+</footer>
+<script crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script><script>
+/* Render first page of each certificate PDF directly from /Certifications.
+   This removes the need for separate preview_*.png files on GitHub Pages. */
+(function(){
+  async function renderCertificatePreviews(){
+    const canvases = Array.from(document.querySelectorAll('canvas.cert-preview-canvas[data-pdf]'));
+    if(!canvases.length) return;
+
+    if(typeof window.pdfjsLib === 'undefined'){
+      console.warn('PDF.js did not load; certificate fallbacks will remain visible.');
+      canvases.forEach(c=>c.dataset.renderState='error');
+      return;
+    }
+
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    for(const canvas of canvases){
+      const rawUrl = canvas.dataset.pdf;
+      canvas.dataset.renderState='loading';
+      try{
+        // encodeURI preserves slashes while safely encoding spaces and punctuation in filenames.
+        const pdf = await window.pdfjsLib.getDocument(encodeURI(rawUrl)).promise;
+        const page = await pdf.getPage(1);
+        const baseViewport = page.getViewport({scale:1});
+        const hostWidth = Math.max(canvas.parentElement?.clientWidth || 280, 220);
+        const cssScale = hostWidth / baseViewport.width;
+        const renderViewport = page.getViewport({scale:cssScale * dpr});
+
+        canvas.width = Math.floor(renderViewport.width);
+        canvas.height = Math.floor(renderViewport.height);
+        canvas.style.aspectRatio = `${renderViewport.width} / ${renderViewport.height}`;
+
+        const ctx = canvas.getContext('2d', {alpha:false});
+        await page.render({canvasContext:ctx, viewport:renderViewport}).promise;
+        canvas.dataset.renderState='ready';
+      }catch(err){
+        console.error('Certificate preview failed:', rawUrl, err);
+        canvas.dataset.renderState='error';
+      }
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', renderCertificatePreviews, {once:true});
+  } else {
+    renderCertificatePreviews();
+  }
+})();
+</script><script>
 /* ============================================================
    PROGRESS BAR
    ============================================================ */
