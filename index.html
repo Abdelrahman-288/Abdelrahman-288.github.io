@@ -6,6 +6,12 @@
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <meta content="#05080c" name="theme-color"/>
 <meta content="dark" name="color-scheme"/>
+<meta name="description" content="Abdelrahman Ihab — Computer Engineering student building AI, computer vision, cybersecurity, robotics, RAG, and edge-AI systems."/>
+<meta property="og:title" content="Abdelrahman Ihab — AI · Computer Vision · Cybersecurity · Robotics"/>
+<meta property="og:description" content="Explore Abdelrahman Ihab's engineering experience, AI projects, robotics work, cybersecurity background, certifications, and live GitHub activity."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://abdelrahman-288.github.io/"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <title>Abdelrahman Ihab — AI · CV · Cybersecurity · Robotics</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
@@ -610,6 +616,76 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 .cert-preview-canvas[data-render-state="loading"]{opacity:.35;}
 .cert-preview-canvas[data-render-state="ready"]{opacity:1;}
 .cert-preview-canvas[data-render-state="error"]{display:none;}
+
+
+/* ============================================================
+   INTERACTIVE PORTFOLIO FEATURES — v9
+   ============================================================ */
+button{font-family:inherit}
+.audience-mode{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:1.1rem;opacity:0;animation:fadeUp .7s .95s ease forwards}
+.audience-label{font-size:9px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-right:2px}
+.audience-btn,.project-filter,.resume-tab{border:1px solid var(--border);background:rgba(10,15,22,.8);color:var(--muted2);font-size:9.5px;letter-spacing:.06em;border-radius:20px;padding:6px 10px;cursor:pointer;transition:.22s}
+.audience-btn:hover,.audience-btn.active,.project-filter:hover,.project-filter.active,.resume-tab:hover,.resume-tab.active{border-color:rgba(255,34,51,.55);color:#fff;background:rgba(255,34,51,.10);box-shadow:0 0 18px rgba(255,34,51,.06)}
+.audience-message{font-size:9.5px;color:var(--muted);margin-top:.65rem;max-width:760px;opacity:0;animation:fadeUp .7s 1.05s ease forwards}
+
+/* 3D skills keyboard */
+.skills-3d-shell{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:22px;align-items:stretch}
+.skills-scene{perspective:1100px;min-height:430px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%,rgba(79,195,247,.055),transparent 55%),linear-gradient(180deg,rgba(15,21,32,.75),rgba(5,8,12,.4));border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative}
+.skills-scene::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(79,195,247,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,.035) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent)}
+.skill-keyboard{width:min(92%,720px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:2rem;transform:rotateX(55deg) rotateZ(-6deg);transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.skills-scene:hover .skill-keyboard{transform:rotateX(49deg) rotateZ(-3deg) translateY(-6px)}
+.skill-key{position:relative;min-height:74px;border:1px solid #253753;border-radius:9px;background:linear-gradient(180deg,#131d2a,#0b1119);box-shadow:0 8px 0 #05080c,0 11px 22px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04);color:var(--muted2);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:10px;cursor:pointer;transform:translateZ(10px);transition:transform .18s,border-color .18s,box-shadow .18s,color .18s}
+.skill-key span{font-size:8px;letter-spacing:.16em;color:var(--muted)}
+.skill-key b{font-family:var(--sans);font-size:clamp(.7rem,1.2vw,.86rem);font-weight:700;color:#dfe9f6;text-align:left}
+.skill-key.hot{border-color:rgba(255,34,51,.38);box-shadow:0 8px 0 #05080c,0 11px 22px rgba(0,0,0,.45),inset 0 0 24px rgba(255,34,51,.045)}
+.skill-key:hover,.skill-key.active{transform:translateZ(18px) translateY(-5px);border-color:var(--accent);box-shadow:0 6px 0 #05080c,0 18px 28px rgba(0,0,0,.48),0 0 22px rgba(255,34,51,.12);color:#fff}
+.skill-key.active b{color:var(--accent)}
+.skill-detail-panel{border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg,rgba(15,21,32,.95),rgba(8,12,18,.98));padding:1.5rem;position:relative;overflow:hidden}
+.skill-detail-panel::after{content:'';position:absolute;width:220px;height:220px;right:-110px;top:-110px;border-radius:50%;background:radial-gradient(circle,rgba(255,34,51,.11),transparent 70%);pointer-events:none}
+.skill-detail-kicker,.pe-kicker{font-size:8.5px;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:.65rem}
+.skill-detail-panel h3{font-family:var(--sans);font-size:1.35rem;color:#fff;margin-bottom:.75rem}.skill-detail-panel p{font-size:11px;color:var(--muted2);line-height:1.75}
+.skill-detail-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}.skill-detail-meta span{font-size:9px;padding:4px 8px;border-radius:3px;background:rgba(79,195,247,.06);border:1px solid rgba(79,195,247,.18);color:var(--blue)}
+.skill-detail-projects{margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border)}.skill-detail-projects strong{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.skill-detail-projects div{font-size:10px;color:var(--text);line-height:1.7;margin-top:.35rem}
+.skill-domain-strip{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.skill-domain-strip span{font-size:9px;color:var(--muted2);border:1px solid var(--border);border-radius:30px;padding:5px 9px;background:var(--bg2)}
+
+/* project explorer + filters */
+.project-explorer-intro,.journey-intro,.github-live-head{display:flex;justify-content:space-between;gap:2rem;align-items:flex-end;margin-bottom:1.35rem}.project-explorer-intro>p,.journey-intro>p{max-width:420px;font-size:11px;line-height:1.7;color:var(--muted2);text-align:right}
+.project-filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.1rem}.project-filter-empty{display:none;border:1px dashed var(--border2);border-radius:6px;padding:2rem;text-align:center;color:var(--muted);font-size:11px;margin-bottom:1rem}
+.project-card{transition:opacity .3s,transform .3s,border-color .35s,box-shadow .35s}.project-card.project-hidden{display:none}.project-card.project-enter{animation:projectEnter .36s ease both}@keyframes projectEnter{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:none}}
+.project-explore-btn{font-size:10px;color:#05080c;background:var(--blue);border:1px solid var(--blue);padding:3px 10px;border-radius:2px;cursor:pointer;transition:.2s;font-weight:600}.project-explore-btn:hover{box-shadow:0 0 18px rgba(79,195,247,.25);transform:translateY(-2px)}
+
+/* journey */
+.journey-track{position:relative;margin-top:1.5rem;padding-left:110px}.journey-track::before{content:'';position:absolute;left:87px;top:6px;bottom:12px;width:1px;background:linear-gradient(to bottom,var(--accent),var(--blue),var(--border))}
+.journey-year{position:relative;display:grid;gap:9px;margin-bottom:1.4rem}.journey-year-label{position:absolute;left:-110px;top:3px;font-family:var(--sans);font-weight:800;color:#fff;font-size:1rem;letter-spacing:.04em}.journey-event{position:relative;text-align:left;border:1px solid var(--border);background:linear-gradient(180deg,rgba(15,21,32,.92),rgba(8,12,18,.95));border-radius:7px;padding:1rem 1rem 1rem 1.2rem;cursor:pointer;transition:.26s;color:inherit}.journey-event:hover{border-color:rgba(255,34,51,.42);transform:translateX(5px);box-shadow:-5px 0 26px rgba(255,34,51,.08)}.journey-dot{position:absolute;left:-28px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(255,34,51,.08),0 0 16px rgba(255,34,51,.4)}.journey-dot.alt{background:var(--blue);box-shadow:0 0 0 5px rgba(79,195,247,.08),0 0 16px rgba(79,195,247,.35)}.journey-event b{display:block;font-family:var(--sans);font-size:.9rem;color:#fff;margin-bottom:.35rem}.journey-event small{display:block;color:var(--muted2);font-size:10.5px;line-height:1.65}
+
+/* GitHub live */
+.github-live-head .gh-open{flex:0 0 auto}.github-live-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.gh-profile-card,.gh-list-card,.gh-language-card{background:linear-gradient(180deg,rgba(15,21,32,.93),rgba(8,12,18,.97));border:1px solid var(--border);border-radius:8px;padding:1.2rem;min-height:170px}.gh-profile-card{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}.gh-avatar-wrap{width:64px;height:64px;border-radius:50%;border:1px solid var(--border2);overflow:hidden;background:var(--bg3)}.gh-avatar-wrap img{width:100%;height:100%;object-fit:cover}.gh-handle{font-size:9px;color:var(--accent);letter-spacing:.08em}.gh-name{font-family:var(--sans);font-weight:700;color:#fff;font-size:1rem;margin:.15rem 0}.gh-bio{font-size:10px;color:var(--muted2);line-height:1.55}.gh-metrics{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:.4rem}.gh-metrics div{padding:.7rem;background:var(--bg3);border:1px solid var(--border);border-radius:5px}.gh-metrics strong{display:block;font-family:var(--sans);font-size:1rem;color:var(--blue)}.gh-metrics span{font-size:8.5px;color:var(--muted)}.gh-card-title{font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.8rem}.gh-list{display:grid;gap:7px}.gh-item{display:flex;gap:.75rem;align-items:center;padding:.65rem;border:1px solid var(--border);border-radius:5px;background:rgba(5,8,12,.36);text-decoration:none;color:inherit;transition:.2s}.gh-item:hover{border-color:var(--border2);transform:translateX(3px)}.gh-item-icon{font-size:12px;color:var(--blue);width:18px;text-align:center}.gh-item-main{min-width:0;flex:1}.gh-item-title{font-size:10.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gh-item-meta{font-size:8.5px;color:var(--muted);margin-top:2px}.gh-lang-bars{display:grid;gap:8px}.gh-lang-row{display:grid;grid-template-columns:95px 1fr 36px;gap:8px;align-items:center;font-size:9px;color:var(--muted2)}.gh-lang-track{height:4px;background:var(--border);border-radius:4px;overflow:hidden}.gh-lang-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:4px}.gh-sync{font-size:8.5px;color:var(--muted);margin-top:1rem}.gh-skeleton{height:40px;border-radius:5px;background:linear-gradient(90deg,var(--bg3),#111c29,var(--bg3));background-size:200% 100%;animation:shimmer 1.4s infinite}@keyframes shimmer{to{background-position:-200% 0}}
+
+/* resume explorer */
+.resume-explorer{border:1px solid var(--border);border-radius:10px;background:linear-gradient(180deg,rgba(15,21,32,.95),rgba(8,12,18,.98));padding:clamp(1.2rem,4vw,2.2rem);overflow:hidden}.resume-explorer-head{display:flex;justify-content:space-between;gap:2rem;align-items:center}.resume-explorer .resume-headline{text-align:left;margin-bottom:0}.resume-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:1.4rem 0}.resume-preview{min-height:220px;border:1px solid var(--border);background:rgba(5,8,12,.5);border-radius:7px;padding:1.2rem}.resume-preview h3{font-family:var(--sans);font-size:1rem;color:#fff;margin-bottom:.75rem}.resume-preview-list{display:grid;gap:8px}.resume-preview-item{border-left:2px solid var(--accent);padding:.65rem .8rem;background:rgba(255,255,255,.015);font-size:10px;color:var(--muted2);line-height:1.55}.resume-preview-item strong{color:var(--text)}.resume-versions{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-top:1rem;font-size:9px;color:var(--muted)}.resume-versions div{display:flex;gap:1rem;flex-wrap:wrap}.resume-versions a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(79,195,247,.3)}
+
+/* overlays */
+.overlay-backdrop{position:fixed;inset:0;z-index:1200;background:rgba(2,4,7,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:flex-start;justify-content:center;padding:10vh 1rem 1rem;opacity:0;pointer-events:none;transition:opacity .2s}.overlay-backdrop.open{opacity:1;pointer-events:auto}.icon-btn{width:36px;height:36px;border:1px solid var(--border);border-radius:6px;background:var(--bg3);color:var(--muted2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}.icon-btn:hover{border-color:var(--accent);color:#fff}
+
+/* command palette */
+.command-palette{width:min(680px,100%);background:#080d14;border:1px solid var(--border2);border-radius:10px;box-shadow:0 28px 90px rgba(0,0,0,.65);overflow:hidden;transform:translateY(-10px);transition:transform .2s}.overlay-backdrop.open .command-palette{transform:none}.command-search-row{display:flex;align-items:center;gap:10px;padding:1rem;border-bottom:1px solid var(--border)}.command-search-row>span{color:var(--accent);font-size:16px}.command-search-row input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:13px;font-family:var(--mono)}kbd{font-family:var(--mono);font-size:8px;color:var(--muted);border:1px solid var(--border2);padding:3px 6px;border-radius:4px;background:var(--bg3)}.command-hint{font-size:8.5px;color:var(--muted);padding:.6rem 1rem;border-bottom:1px solid var(--border)}.command-hint code{color:var(--muted2)}.command-results{max-height:55vh;overflow:auto;padding:.5rem}.command-item{width:100%;display:flex;align-items:center;gap:.75rem;text-align:left;background:transparent;border:1px solid transparent;color:var(--text);padding:.75rem;border-radius:6px;cursor:pointer}.command-item:hover,.command-item.active{background:var(--bg3);border-color:var(--border)}.command-item .cmd-icon{width:28px;height:28px;border-radius:5px;background:rgba(255,34,51,.08);display:flex;align-items:center;justify-content:center;color:var(--accent)}.command-item b{display:block;font-size:10.5px}.command-item small{display:block;font-size:8.5px;color:var(--muted);margin-top:2px}
+
+/* AI assistant */
+.ai-fab{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:950;width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,34,51,.45);background:radial-gradient(circle at 35% 30%,#ff5360,var(--accent) 40%,#8f111b 100%);color:#fff;box-shadow:0 12px 40px rgba(255,34,51,.28);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.25s}.ai-fab:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 18px 50px rgba(255,34,51,.35)}.ai-fab span{font-family:var(--sans);font-weight:800;font-size:11px;line-height:1}.ai-fab b{font-size:7px;letter-spacing:.08em;margin-top:3px}.assistant-panel{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:88px;z-index:1000;width:min(410px,calc(100vw - 24px));height:min(620px,calc(100dvh - 120px));background:#080d14;border:1px solid var(--border2);border-radius:12px;box-shadow:0 28px 80px rgba(0,0,0,.62);display:flex;flex-direction:column;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(12px) scale(.98);transition:.22s}.assistant-panel.open{opacity:1;pointer-events:auto;transform:none}.assistant-head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;border-bottom:1px solid var(--border);background:rgba(15,21,32,.95)}.assistant-head strong{display:block;font-family:var(--sans);font-size:.9rem;color:#fff}.assistant-head small{display:block;font-size:8px;color:var(--muted);margin-top:2px}.assistant-suggestions{display:flex;gap:6px;overflow:auto;padding:.7rem;border-bottom:1px solid var(--border);scrollbar-width:none}.assistant-suggestions button{flex:0 0 auto;max-width:220px;border:1px solid var(--border);background:var(--bg3);color:var(--muted2);font-size:8.5px;padding:6px 8px;border-radius:14px;cursor:pointer}.assistant-log{flex:1;overflow:auto;padding:1rem;display:flex;flex-direction:column;gap:.8rem}.chat-msg{display:flex;gap:.6rem;align-items:flex-start}.chat-msg.user{justify-content:flex-end}.chat-avatar{width:27px;height:27px;border-radius:7px;border:1px solid rgba(255,34,51,.3);background:rgba(255,34,51,.08);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--accent);flex:0 0 auto}.chat-bubble{max-width:82%;padding:.72rem .8rem;border-radius:8px;background:var(--bg3);border:1px solid var(--border);font-size:10px;color:var(--muted2);line-height:1.65;white-space:pre-wrap}.chat-msg.user .chat-bubble{background:rgba(79,195,247,.08);border-color:rgba(79,195,247,.22);color:var(--text)}.assistant-input-row{display:flex;gap:7px;padding:.8rem;border-top:1px solid var(--border);background:rgba(15,21,32,.92)}.assistant-input-row input{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:#fff;padding:.7rem .75rem;outline:none;font-family:var(--mono);font-size:10px}.assistant-input-row input:focus{border-color:var(--blue)}.assistant-input-row button{border:1px solid var(--accent);background:var(--accent);color:#05080c;border-radius:6px;padding:0 .9rem;font-weight:700;cursor:pointer}.assistant-foot{font-size:7.5px;color:var(--muted);padding:0 .85rem .7rem;text-align:center}
+
+/* project explorer modal */
+.project-explorer-modal{width:min(980px,100%);max-height:84dvh;background:#080d14;border:1px solid var(--border2);border-radius:12px;box-shadow:0 28px 90px rgba(0,0,0,.65);overflow:hidden;display:flex;flex-direction:column}.pe-topbar{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:1.1rem 1.2rem;border-bottom:1px solid var(--border)}.pe-topbar h2{font-family:var(--sans);font-size:1.25rem;color:#fff}.pe-tabs{display:flex;gap:3px;padding:.55rem .7rem;border-bottom:1px solid var(--border);overflow:auto}.pe-tabs button{border:none;background:transparent;color:var(--muted);font-size:9px;padding:.55rem .7rem;border-radius:5px;cursor:pointer;white-space:nowrap}.pe-tabs button:hover,.pe-tabs button.active{background:var(--bg3);color:#fff}.pe-body{padding:1.2rem;overflow:auto;min-height:330px}.pe-panel-title{font-size:8.5px;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:.75rem}.pe-lead{font-size:12px;line-height:1.8;color:var(--muted2);max-width:820px}.pe-tech-grid{display:flex;flex-wrap:wrap;gap:8px}.pe-tech{font-size:9.5px;color:var(--blue);background:rgba(79,195,247,.06);border:1px solid rgba(79,195,247,.2);border-radius:4px;padding:7px 10px}.pe-result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pe-result{border:1px solid var(--border);border-radius:6px;padding:.9rem;background:var(--bg3);font-size:10px;color:var(--muted2);line-height:1.6}.pe-result strong{display:block;color:#fff;margin-bottom:.3rem}.architecture-flow{display:flex;align-items:stretch;gap:8px;overflow:auto;padding:.4rem 0 1rem}.arch-node{min-width:130px;max-width:170px;border:1px solid var(--border);border-radius:7px;background:var(--bg3);padding:.8rem;cursor:pointer;transition:.2s;text-align:left;color:inherit}.arch-node:hover,.arch-node.active{border-color:var(--blue);box-shadow:0 0 20px rgba(79,195,247,.08);transform:translateY(-3px)}.arch-node b{display:block;color:#fff;font-size:10px}.arch-node small{display:block;color:var(--muted);font-size:8px;margin-top:.3rem}.arch-arrow{flex:0 0 24px;display:flex;align-items:center;justify-content:center;color:var(--accent);animation:arrowPulse 1.6s ease-in-out infinite}@keyframes arrowPulse{50%{transform:translateX(3px);opacity:.55}}.arch-explain{border-left:2px solid var(--blue);padding:.75rem .9rem;background:rgba(79,195,247,.04);font-size:10px;color:var(--muted2);line-height:1.65}.compare-card{margin-top:1.2rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg3)}.compare-visual{position:relative;height:170px;overflow:hidden}.compare-before,.compare-after{position:absolute;inset:0;padding:1.2rem;display:flex;flex-direction:column;justify-content:center}.compare-before{background:radial-gradient(circle at 20% 50%,rgba(245,158,11,.09),transparent 50%),#0d141d}.compare-after{background:radial-gradient(circle at 80% 50%,rgba(52,211,153,.1),transparent 50%),#09151a;clip-path:inset(0 50% 0 0)}.compare-visual h4{font-family:var(--sans);color:#fff;margin-bottom:.45rem}.compare-visual p{font-size:10px;color:var(--muted2);max-width:520px}.compare-range{width:100%;accent-color:var(--accent);display:block}.compare-labels{display:flex;justify-content:space-between;font-size:8px;color:var(--muted);padding:.5rem .8rem}.pe-source-card{display:flex;justify-content:space-between;gap:1rem;align-items:center;border:1px solid var(--border);border-radius:8px;background:var(--bg3);padding:1rem}.pe-source-card a{color:var(--blue);text-decoration:none}.pe-demo-steps{display:grid;gap:8px;counter-reset:demo}.pe-demo-step{position:relative;padding:.8rem .8rem .8rem 2.6rem;border:1px solid var(--border);border-radius:6px;background:var(--bg3);font-size:10px;color:var(--muted2);counter-increment:demo}.pe-demo-step::before{content:counter(demo);position:absolute;left:.8rem;top:.7rem;width:22px;height:22px;border-radius:50%;background:rgba(255,34,51,.1);border:1px solid rgba(255,34,51,.3);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:8px}
+
+/* terminal */
+.dev-terminal{width:min(760px,100%);background:#05080c;border:1px solid #213044;border-radius:10px;box-shadow:0 28px 90px rgba(0,0,0,.7);overflow:hidden}.terminal-bar{display:flex;align-items:center;justify-content:space-between;padding:.7rem .9rem;background:#0b1119;border-bottom:1px solid var(--border);font-size:9px;color:var(--muted2)}.terminal-output{height:min(420px,55dvh);overflow:auto;padding:1rem;font-family:var(--mono);font-size:10px;color:#9ce8b4;line-height:1.7;white-space:pre-wrap}.term-dim{color:var(--muted)}.term-error{color:#ff7b86}.term-info{color:var(--blue)}.terminal-form{display:flex;gap:.55rem;align-items:center;border-top:1px solid var(--border);padding:.75rem 1rem}.term-prompt{font-size:9px;color:var(--accent);white-space:nowrap}.terminal-form input{flex:1;background:none;border:none;outline:none;color:#fff;font-family:var(--mono);font-size:10px}
+
+/* live presence backend hook (hidden until configured) */
+.live-presence{display:none}
+
+@media(max-width:900px){.skills-3d-shell{grid-template-columns:1fr}.skills-scene{min-height:380px}.github-live-grid{grid-template-columns:1fr}.resume-explorer-head{align-items:flex-start;flex-direction:column}.project-explorer-intro,.journey-intro,.github-live-head{align-items:flex-start;flex-direction:column}.project-explorer-intro>p,.journey-intro>p{text-align:left;max-width:none}}
+@media(max-width:600px){.skill-keyboard{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:1rem;transform:rotateX(38deg) rotateZ(-3deg)}.skills-scene:hover .skill-keyboard{transform:rotateX(38deg) rotateZ(-3deg)}.skill-key{min-height:62px;padding:8px}.skill-key:nth-child(n+13){grid-column:auto}.journey-track{padding-left:54px}.journey-track::before{left:40px}.journey-year-label{left:-54px;font-size:.8rem}.journey-dot{left:-20px}.pe-result-grid{grid-template-columns:1fr}.architecture-flow{padding-bottom:.7rem}.arch-node{min-width:120px}.project-explorer-modal{max-height:94dvh}.overlay-backdrop{padding-top:3vh}.assistant-panel{left:12px;right:12px;bottom:82px;width:auto}.ai-fab{width:52px;height:52px}.resume-tabs{display:grid;grid-template-columns:repeat(2,1fr)}.resume-tab:last-child{grid-column:1/-1}.resume-versions{align-items:flex-start;flex-direction:column}}
+@media(max-width:390px){.skill-keyboard{grid-template-columns:repeat(2,minmax(0,1fr))}.audience-mode{display:grid;grid-template-columns:1fr 1fr}.audience-label{grid-column:1/-1}.github-live-head .btn{width:100%;justify-content:center}.gh-profile-card{grid-template-columns:1fr}.gh-avatar-wrap{width:56px;height:56px}.gh-metrics{grid-template-columns:1fr}.command-hint{display:none}}
+
 </style>
 </head>
 <body>
@@ -622,6 +698,8 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 <li><a href="#experience">Experience</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
+<li><a href="#journey">Journey</a></li>
+<li><a href="#github-live">GitHub</a></li>
 <li><a href="#awards">Awards</a></li>
 <li><a href="#certifications">Certs</a></li>
 <li><a href="#resume">Resume</a></li>
@@ -653,8 +731,19 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 </div>
 <div class="hero-cta">
 <a class="btn btn-primary" href="#about">View My Work</a>
+<button class="btn btn-outline" id="hero-ai-btn" type="button">💬 Ask My AI</button>
+<button class="btn btn-outline" id="hero-command-btn" type="button">⌘ Command Palette</button>
 <a class="btn btn-outline" href="#contact">Get in Touch</a>
 </div>
+<div class="audience-mode" aria-label="Personalize portfolio view">
+  <span class="audience-label">Personalize view</span>
+  <button class="audience-btn active" data-audience="general" type="button">General</button>
+  <button class="audience-btn" data-audience="recruiter" type="button">👔 Recruiter</button>
+  <button class="audience-btn" data-audience="developer" type="button">👨‍💻 Developer</button>
+  <button class="audience-btn" data-audience="researcher" type="button">🎓 Researcher</button>
+  <button class="audience-btn" data-audience="collaborator" type="button">🤝 Collaborator</button>
+</div>
+<div class="audience-message" id="audience-message">Explore the full engineering portfolio, or choose a visitor mode to prioritize what matters to you.</div>
 <div class="scroll-hint">
 <span>Scroll to explore</span>
 <div class="scroll-line"></div>
@@ -782,90 +871,60 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 <div class="section-label">Skills</div>
 <div class="skills-intro fade-up">
   <div>
-    <div class="skills-kicker">Technical toolkit</div>
-    <h2 class="skills-headline">Capabilities I use to build end-to-end systems.</h2>
+    <div class="skills-kicker">Interactive technical environment</div>
+    <h2 class="skills-headline">A 3D keyboard of the tools I build with.</h2>
   </div>
-  <p class="skills-copy">Grouped by the work I actually do — from model development and computer vision to security, deployment, robotics, and edge AI.</p>
+  <p class="skills-copy">Click a key to see where I use that technology, the kind of work it supports, and related projects.</p>
 </div>
-<div class="skills-grid stagger">
-
-  <article class="skill-card">
-    <div class="skill-card-head">
-      <div class="skill-icon">AI</div>
-      <div class="skill-title-wrap"><h3 class="skill-title">AI / Machine Learning / NLP</h3><p class="skill-desc">Training, evaluation, classical ML, deep learning, and NLP pipelines.</p></div>
+<div class="skills-3d-shell fade-up">
+  <div class="skills-scene" aria-label="Interactive skills keyboard">
+    <div class="skill-keyboard" id="skill-keyboard">
+      <button class="skill-key hot" data-skill="Python"><span>PY</span><b>Python</b></button>
+      <button class="skill-key" data-skill="C++"><span>C++</span><b>C++</b></button>
+      <button class="skill-key" data-skill="ROS 2"><span>ROS</span><b>ROS 2</b></button>
+      <button class="skill-key hot" data-skill="PyTorch"><span>PT</span><b>PyTorch</b></button>
+      <button class="skill-key" data-skill="Linux"><span>LIN</span><b>Linux</b></button>
+      <button class="skill-key" data-skill="AWS / Cloud"><span>CLD</span><b>Cloud</b></button>
+      <button class="skill-key hot" data-skill="YOLO"><span>YOLO</span><b>YOLO</b></button>
+      <button class="skill-key" data-skill="Docker"><span>DKR</span><b>Docker</b></button>
+      <button class="skill-key" data-skill="Git"><span>GIT</span><b>Git</b></button>
+      <button class="skill-key" data-skill="SQL"><span>SQL</span><b>SQL</b></button>
+      <button class="skill-key" data-skill="Networking"><span>NET</span><b>Cisco / Net</b></button>
+      <button class="skill-key hot" data-skill="OpenCV"><span>CV</span><b>OpenCV</b></button>
+      <button class="skill-key" data-skill="FastAPI"><span>API</span><b>FastAPI</b></button>
+      <button class="skill-key" data-skill="RAG / LLM"><span>RAG</span><b>RAG / LLM</b></button>
+      <button class="skill-key" data-skill="Cybersecurity"><span>SEC</span><b>Security</b></button>
+      <button class="skill-key" data-skill="TinyML"><span>EDGE</span><b>TinyML</b></button>
     </div>
-    <div class="skill-label">Core stack</div>
-    <div class="skill-chips">
-      <span class="skill-chip core">PyTorch</span><span class="skill-chip core">TensorFlow</span><span class="skill-chip core">Scikit-learn</span><span class="skill-chip">Transformers</span><span class="skill-chip">DistilBERT</span><span class="skill-chip">CNN</span><span class="skill-chip">BiLSTM</span><span class="skill-chip">Hugging Face</span>
-    </div>
-    <div class="skill-proof"><strong>Applied in:</strong> sentiment &amp; intent classification, malware classification, healthcare ML.</div>
-  </article>
-
-  <article class="skill-card">
-    <div class="skill-card-head">
-      <div class="skill-icon">CV</div>
-      <div class="skill-title-wrap"><h3 class="skill-title">Computer Vision</h3><p class="skill-desc">Detection, tracking, calibration, reconstruction, and real-time visual analytics.</p></div>
-    </div>
-    <div class="skill-label">Core stack</div>
-    <div class="skill-chips">
-      <span class="skill-chip core">YOLOv8</span><span class="skill-chip core">OpenCV</span><span class="skill-chip">Object Detection</span><span class="skill-chip">Tracking</span><span class="skill-chip">Homography</span><span class="skill-chip">Keypoint Regression</span><span class="skill-chip">3D Reconstruction</span><span class="skill-chip">Synthetic Data</span>
-    </div>
-    <div class="skill-proof"><strong>Applied in:</strong> MATE ROV, tennis analytics, face detection, edge surveillance.</div>
-  </article>
-
-  <article class="skill-card">
-    <div class="skill-card-head">
-      <div class="skill-icon">RAG</div>
-      <div class="skill-title-wrap"><h3 class="skill-title">LLM / RAG / Generative AI</h3><p class="skill-desc">Grounded generation, retrieval, reranking, prompt design, and AI application APIs.</p></div>
-    </div>
-    <div class="skill-label">Core stack</div>
-    <div class="skill-chips">
-      <span class="skill-chip core">RAG</span><span class="skill-chip core">FAISS</span><span class="skill-chip core">Sentence-Transformers</span><span class="skill-chip">ChromaDB</span><span class="skill-chip">Groq API</span><span class="skill-chip">Ollama</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">FastAPI</span>
-    </div>
-    <div class="skill-proof"><strong>Applied in:</strong> e-commerce support RAG and local document-assistant systems.</div>
-  </article>
-
-  <article class="skill-card">
-    <div class="skill-card-head">
-      <div class="skill-icon">SEC</div>
-      <div class="skill-title-wrap"><h3 class="skill-title">Cybersecurity &amp; Networking</h3><p class="skill-desc">Network defense, enterprise firewalls, secure connectivity, and malware analysis.</p></div>
-    </div>
-    <div class="skill-label">Core stack</div>
-    <div class="skill-chips">
-      <span class="skill-chip core">FortiGate</span><span class="skill-chip core">Network Security</span><span class="skill-chip">VPN</span><span class="skill-chip">SD-WAN</span><span class="skill-chip">IPS</span><span class="skill-chip">PKI</span><span class="skill-chip">Vulnerability Assessment</span><span class="skill-chip">Ghidra</span>
-    </div>
-    <div class="skill-proof"><strong>Applied in:</strong> Fortinet training, ETHYDCO security work, hybrid malware analysis.</div>
-  </article>
-
-  <article class="skill-card">
-    <div class="skill-card-head">
-      <div class="skill-icon">DEV</div>
-      <div class="skill-title-wrap"><h3 class="skill-title">Programming &amp; Systems</h3><p class="skill-desc">Software foundations, Linux workflows, data tooling, APIs, and version control.</p></div>
-    </div>
-    <div class="skill-label">Core stack</div>
-    <div class="skill-chips">
-      <span class="skill-chip core">Python</span><span class="skill-chip core">C / C++</span><span class="skill-chip core">Linux</span><span class="skill-chip">Git / GitHub</span><span class="skill-chip">NumPy</span><span class="skill-chip">Pandas</span><span class="skill-chip">FastAPI</span><span class="skill-chip">Pytest</span>
-    </div>
-    <div class="skill-proof"><strong>Applied in:</strong> production-style AI pipelines, APIs, automation, and embedded development.</div>
-  </article>
-
-  <article class="skill-card">
-    <div class="skill-card-head">
-      <div class="skill-icon">ROB</div>
-      <div class="skill-title-wrap"><h3 class="skill-title">Robotics &amp; Edge AI</h3><p class="skill-desc">On-device inference, robotics integration, embedded vision, and edge-cloud AI.</p></div>
-    </div>
-    <div class="skill-label">Core stack</div>
-    <div class="skill-chips">
-      <span class="skill-chip core">ROS 2</span><span class="skill-chip core">TinyML</span><span class="skill-chip">FOMO</span><span class="skill-chip">Vision-Language Models</span><span class="skill-chip">Edge-Cloud Inference</span><span class="skill-chip">Arduino Portenta H7</span><span class="skill-chip">Universal Robots</span>
-    </div>
-    <div class="skill-proof"><strong>Applied in:</strong> autonomous security patrol, ROV systems, and robotics research preparation.</div>
-  </article>
-
+  </div>
+  <aside class="skill-detail-panel" id="skill-detail-panel" aria-live="polite">
+    <div class="skill-detail-kicker">Selected capability</div>
+    <h3 id="skill-detail-title">Python</h3>
+    <p id="skill-detail-copy">Primary language for AI/ML, computer vision, RAG, automation, security tooling, and backend services.</p>
+    <div class="skill-detail-meta" id="skill-detail-meta"></div>
+    <div class="skill-detail-projects" id="skill-detail-projects"></div>
+  </aside>
+</div>
+<div class="skill-domain-strip fade-up">
+  <span>AI / ML</span><span>Computer Vision</span><span>RAG / LLM</span><span>Cybersecurity</span><span>Networking</span><span>Robotics</span><span>Edge AI</span><span>Backend</span>
 </div>
 </section>
 <!-- PROJECTS -->
 <section id="projects">
 <div class="section-label">Projects</div>
+<div class="project-explorer-intro fade-up">
+  <div><div class="skills-kicker">Interactive project explorer</div><h2 class="skills-headline">Open a project to explore the problem, architecture, demo flow, results, and source.</h2></div>
+  <p>Use the filters to focus on a domain. Every project can be opened as a technical walkthrough.</p>
+</div>
+<div class="project-filters" id="project-filters" role="group" aria-label="Project filters">
+  <button class="project-filter active" data-project-filter="all" type="button">All</button>
+  <button class="project-filter" data-project-filter="ai" type="button">AI</button>
+  <button class="project-filter" data-project-filter="cybersecurity" type="button">Cybersecurity</button>
+  <button class="project-filter" data-project-filter="robotics" type="button">Robotics</button>
+  <button class="project-filter" data-project-filter="web" type="button">Web</button>
+  <button class="project-filter" data-project-filter="networking" type="button">Networking</button>
+</div>
+<div class="project-filter-empty" id="project-filter-empty">No projects in this category yet.</div>
 <div class="projects-list stagger">
 <!-- RAG E-COMMERCE -->
 <div class="project-card">
@@ -983,6 +1042,61 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 </div>
 </div>
 </section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="section-label">My Journey</div>
+  <div class="journey-intro fade-up">
+    <div><div class="skills-kicker">Education · internships · research · projects</div><h2 class="skills-headline">A timeline of the work that shaped my engineering path.</h2></div>
+    <p>Click an event to jump to the related experience, project, award, or certification.</p>
+  </div>
+  <div class="journey-track" id="journey-track">
+    <article class="journey-year" data-year="2022">
+      <div class="journey-year-label">2022</div>
+      <button class="journey-event" data-scroll-target="about" type="button"><span class="journey-dot"></span><b>Started Computer Engineering at E-JUST</b><small>Foundation in algorithms, systems, networks, embedded computing, AI, and robotics.</small></button>
+    </article>
+    <article class="journey-year" data-year="2024">
+      <div class="journey-year-label">2024</div>
+      <button class="journey-event" data-scroll-target="experience" type="button"><span class="journey-dot"></span><b>Cybersecurity & Network Administration Internships</b><small>ETHYDCO and GIECO — industrial security, vulnerability assessment, WAN/LAN, routers, switches, and VPNs.</small></button>
+    </article>
+    <article class="journey-year" data-year="2025">
+      <div class="journey-year-label">2025</div>
+      <button class="journey-event" data-scroll-target="experience" type="button"><span class="journey-dot"></span><b>Fortinet + NVIDIA AI + Industry IT</b><small>120-hour Fortinet program (93%), NVIDIA LLM training, Ezz Steel, PETROJET, and expanded AI/security work.</small></button>
+      <button class="journey-event" data-project-open="malware" type="button"><span class="journey-dot alt"></span><b>AI + Cybersecurity Projects</b><small>Malware classification, computer vision, ML pipelines, and explainable AI.</small></button>
+    </article>
+    <article class="journey-year" data-year="2026">
+      <div class="journey-year-label">2026</div>
+      <button class="journey-event" data-project-open="nautix" type="button"><span class="journey-dot"></span><b>MATE ROV Pioneer Champion</b><small>Computer vision pipeline, 3D coral reconstruction, 1st Place, Best Design, and Best Presentation.</small></button>
+      <button class="journey-event" data-scroll-target="experience" type="button"><span class="journey-dot alt"></span><b>ITI Applied AI + Network & Cybersecurity</b><small>RAG, LLMs, computer vision, YOLO, advanced networking, ethical hacking, and Huawei Cloud.</small></button>
+      <button class="journey-event" data-project-open="rag-ecommerce" type="button"><span class="journey-dot"></span><b>RAG & LLM Systems</b><small>Customer-support RAG and local document-learning assistant with retrieval, reranking, grounding, and deployment.</small></button>
+      <button class="journey-event" data-project-open="urdf2dt" type="button"><span class="journey-dot alt"></span><b>URDF2DT</b><small>URDF → validated Standard-DH → interactive editing → FK equivalence → standalone Windows executable.</small></button>
+    </article>
+  </div>
+</section>
+
+<!-- GITHUB LIVE -->
+<section id="github-live">
+  <div class="section-label">GitHub Live</div>
+  <div class="github-live-head fade-up">
+    <div><div class="skills-kicker">Live from GitHub</div><h2 class="skills-headline">Current engineering activity, fetched automatically.</h2></div>
+    <a class="btn btn-outline gh-open" href="https://github.com/Abdelrahman-288" target="_blank" rel="noopener">Open GitHub ↗</a>
+  </div>
+  <div class="github-live-grid fade-up">
+    <article class="gh-profile-card">
+      <div class="gh-avatar-wrap"><img id="gh-avatar" alt="Abdelrahman Ihab GitHub avatar"/></div>
+      <div><div class="gh-handle">@Abdelrahman-288</div><div class="gh-name" id="gh-name">Loading GitHub…</div><div class="gh-bio" id="gh-bio">Fetching the latest public profile data.</div></div>
+      <div class="gh-metrics">
+        <div><strong id="gh-repos">—</strong><span>Public repos</span></div>
+        <div><strong id="gh-followers">—</strong><span>Followers</span></div>
+        <div><strong id="gh-following">—</strong><span>Following</span></div>
+      </div>
+    </article>
+    <article class="gh-list-card"><div class="gh-card-title">Recently updated</div><div id="gh-recent-repos" class="gh-list"><div class="gh-skeleton"></div><div class="gh-skeleton"></div><div class="gh-skeleton"></div></div></article>
+    <article class="gh-list-card"><div class="gh-card-title">Recent public activity</div><div id="gh-events" class="gh-list"><div class="gh-skeleton"></div><div class="gh-skeleton"></div><div class="gh-skeleton"></div></div></article>
+    <article class="gh-language-card"><div class="gh-card-title">Languages across recent repositories</div><div id="gh-languages" class="gh-lang-bars"><div class="gh-skeleton"></div></div><div class="gh-sync" id="gh-sync">Waiting to sync…</div></article>
+  </div>
+</section>
+
 <!-- AWARDS -->
 <section id="awards">
 <div class="section-label">Awards &amp; Achievements</div>
@@ -1349,16 +1463,28 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 </div></section>
 <!-- RESUME -->
 <section id="resume">
-<div class="section-label">Resume</div>
-<div class="resume-card">
-<div class="resume-updated">Last updated: September 2026</div>
-<div class="resume-headline">Download My Resume</div>
-<a class="resume-btn" download="" href="CV/Abdelrahman_General_CV.pdf">⬇ Download General CV</a>
-<div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;font-size:11px;color:var(--muted2);">
-<a download="" href="CV/Abdelrahman_AI_ML_CV.pdf" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">AI/ML Version</a>
-<a download="" href="CV/Abdelrahman_Cybersecurity_CV.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Cybersecurity Version</a>
-<a download="" href="CV/Abdelrahman_Robotics_CV.pdf" style="color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);">Robotics Version</a>
-</div>
+<div class="section-label">Interactive Resume</div>
+<div class="resume-explorer fade-up">
+  <div class="resume-explorer-head">
+    <div><div class="skills-kicker">Explore before downloading</div><h2 class="resume-headline">Navigate my resume as an interactive profile.</h2></div>
+    <a class="resume-btn" download href="CV/Abdelrahman_General_CV.pdf">⬇ Download General CV</a>
+  </div>
+  <div class="resume-tabs" role="tablist" aria-label="Resume sections">
+    <button class="resume-tab active" data-resume-tab="education" type="button">Education</button>
+    <button class="resume-tab" data-resume-tab="experience" type="button">Experience</button>
+    <button class="resume-tab" data-resume-tab="projects" type="button">Projects</button>
+    <button class="resume-tab" data-resume-tab="certifications" type="button">Certifications</button>
+    <button class="resume-tab" data-resume-tab="skills" type="button">Skills</button>
+  </div>
+  <div class="resume-preview" id="resume-preview" aria-live="polite"></div>
+  <div class="resume-versions">
+    <span>Last updated: September 2026</span>
+    <div>
+      <a download href="CV/Abdelrahman_AI_ML_CV.pdf">AI/ML Version</a>
+      <a download href="CV/Abdelrahman_Cybersecurity_CV.pdf">Cybersecurity Version</a>
+      <a download href="CV/Abdelrahman_Robotics_CV.pdf">Robotics Version</a>
+    </div>
+  </div>
 </div>
 </section>
 <!-- CONTACT -->
@@ -1382,14 +1508,61 @@ nav{padding-left:max(clamp(1rem,4vw,2.5rem),env(safe-area-inset-left));padding-r
 <span class="ci">◆</span>
 <span>github.com/Abdelrahman-288</span>
 </a>
-<a class="contact-link" href="https://abdelrahman-portfolio.com" target="_blank">
+<a class="contact-link" href="https://abdelrahman-288.github.io" target="_blank">
 <span class="ci">→</span>
-<span>abdelrahman-portfolio.com</span>
+<span>abdelrahman-288.github.io</span>
 <span class="cl-label">Portfolio</span>
 </a>
 </div>
 </div>
 </section>
+
+<!-- PORTFOLIO AI -->
+<button class="ai-fab" id="ai-fab" type="button" aria-label="Open Ask Abdelrahman's AI"><span>AI</span><b>Ask</b></button>
+<div class="assistant-panel" id="assistant-panel" aria-hidden="true">
+  <div class="assistant-head"><div><strong>💬 Ask Abdelrahman's AI</strong><small id="assistant-mode-label">Portfolio retrieval mode</small></div><button class="icon-btn" id="assistant-close" type="button" aria-label="Close AI assistant">✕</button></div>
+  <div class="assistant-suggestions" id="assistant-suggestions">
+    <button type="button">What are his strongest AI projects?</button>
+    <button type="button">What cybersecurity experience does he have?</button>
+    <button type="button">Explain his URDF2DT project.</button>
+    <button type="button">Which projects use computer vision?</button>
+  </div>
+  <div class="assistant-log" id="assistant-log" aria-live="polite">
+    <div class="chat-msg bot"><div class="chat-avatar">AI</div><div class="chat-bubble">Ask me about Abdelrahman's projects, experience, skills, certifications, robotics, cybersecurity, RAG work, or URDF2DT.</div></div>
+  </div>
+  <form class="assistant-input-row" id="assistant-form"><input id="assistant-input" autocomplete="off" placeholder="Ask about the portfolio…"/><button type="submit">Send</button></form>
+  <div class="assistant-foot">Uses portfolio retrieval locally. A server-side LLM endpoint can be connected later without exposing API keys.</div>
+</div>
+
+<!-- COMMAND PALETTE -->
+<div class="overlay-backdrop" id="command-backdrop" aria-hidden="true">
+  <div class="command-palette" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="command-search-row"><span>⌘</span><input id="command-input" placeholder="Search portfolio or type a command…" autocomplete="off"/><kbd>ESC</kbd></div>
+    <div class="command-hint">Ctrl / Cmd + K · Try <code>sudo hire abdelrahman</code> or <code>rm -rf /</code></div>
+    <div class="command-results" id="command-results"></div>
+  </div>
+</div>
+
+<!-- PROJECT EXPLORER -->
+<div class="overlay-backdrop" id="project-explorer-backdrop" aria-hidden="true">
+  <div class="project-explorer-modal" role="dialog" aria-modal="true" aria-labelledby="project-explorer-title">
+    <div class="pe-topbar"><div><div class="pe-kicker" id="project-explorer-kicker">Project explorer</div><h2 id="project-explorer-title">Project</h2></div><button class="icon-btn" id="project-explorer-close" type="button">✕</button></div>
+    <div class="pe-tabs" id="pe-tabs">
+      <button class="active" data-pe-tab="problem" type="button">Problem</button><button data-pe-tab="architecture" type="button">Architecture</button><button data-pe-tab="technologies" type="button">Technologies</button><button data-pe-tab="demo" type="button">Demo</button><button data-pe-tab="results" type="button">Results</button><button data-pe-tab="source" type="button">GitHub</button>
+    </div>
+    <div class="pe-body" id="pe-body"></div>
+  </div>
+</div>
+
+<!-- DEVELOPER TERMINAL -->
+<div class="overlay-backdrop" id="terminal-backdrop" aria-hidden="true">
+  <div class="dev-terminal" role="dialog" aria-modal="true" aria-label="Developer terminal">
+    <div class="terminal-bar"><span>portfolio-terminal — zsh</span><button class="icon-btn" id="terminal-close" type="button">✕</button></div>
+    <div class="terminal-output" id="terminal-output"><div><span class="term-dim">Welcome. Try:</span> help</div></div>
+    <form class="terminal-form" id="terminal-form"><span class="term-prompt">abdelrahman@portfolio:~$</span><input id="terminal-input" autocomplete="off" spellcheck="false"/></form>
+  </div>
+</div>
+
 <!-- CERT MODAL -->
 <div class="cert-modal-backdrop" id="certModal" onclick="closeCertModal(event)">
 <div class="cert-modal" onclick="event.stopPropagation()">
@@ -1683,5 +1856,385 @@ function closeCertModal(e,force){
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCertModal(null,true);});
 </script>
+
+<script>
+/* ============================================================
+   INTERACTIVE PORTFOLIO FEATURE LAYER — v9
+   Static-host friendly. No secret API keys are embedded.
+   ============================================================ */
+(() => {
+  const $ = (s, root=document) => root.querySelector(s);
+  const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
+  const esc = (s='') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+
+  /* -------------------- PROJECT DATA -------------------- */
+  const projectDetails = {
+    'rag-ecommerce': {
+      title:'RAG-Based E-commerce Customer Support Chatbot', kicker:'NLP · RAG · LLM', categories:['ai','web'],
+      problem:'Build a customer-support system that can understand multilingual messages, detect sentiment and intent, retrieve grounded knowledge, and route uncertain or frustrated cases safely instead of relying on a single generative model.',
+      architecture:[
+        ['User Message','Incoming customer request.'],['Language Detection','TF-IDF + Logistic Regression identifies the language.'],['Sentiment','Fine-tuned DistilBERT estimates customer sentiment.'],['Intent','Classifier predicts the support intent.'],['Routing','Confidence and sentiment decide whether to answer, refuse, or escalate.'],['FAISS Retrieval','Semantic search retrieves relevant evidence from 24K+ knowledge-base entries.'],['LLM','Groq-hosted generation produces a grounded response.'],['Response','Answer is returned through the application layer.']
+      ],
+      technologies:['Python','PyTorch','Hugging Face Transformers','Sentence-Transformers','FAISS','Scikit-learn','Groq API','FastAPI','Streamlit','Pytest'],
+      demo:['Enter a customer message.','Detect language, sentiment, and intent.','Evaluate confidence and escalation conditions.','Retrieve relevant knowledge-base entries with FAISS.','Generate a grounded response or escalate safely.'],
+      results:['97.7% test accuracy for DistilBERT sentiment classification.','99.5% language detection accuracy.','99.8% intent classification accuracy.','24K+ knowledge-base entries indexed for retrieval.'],
+      before:['Raw support request','Unstructured message with unknown language, intent, sentiment, and no grounded context.'], after:['Grounded support answer','Classified, routed, retrieved, and generated response with confidence-aware behavior.'],
+      github:'https://github.com/Abdelrahman-288/Rag-Ecommerce-Customer-Support-Chatbot'
+    },
+    'rag-document': {
+      title:'RAG-Powered Document Assistant', kicker:'Local AI · RAG · Knowledge Systems', categories:['ai','web'],
+      problem:'Turn large technical PDF collections into a local-first learning and question-answering system that retrieves evidence, reranks it, cites pages, and blocks unsupported answers.',
+      architecture:[['Documents','PDFs are ingested page by page.'],['Clean + Chunk','Content is normalized and split into deterministic chunks.'],['Embeddings','Sentence-Transformer embeddings are generated with GPU acceleration.'],['ChromaDB','Persistent vector storage indexes the document chunks.'],['Retriever','Cosine similarity retrieves candidate evidence.'],['Reranker','A cross-encoder reranks retrieved candidates.'],['Local LLM','Ollama / Gemma 3 generates the answer from evidence.'],['Citations','Page/document citations are validated and returned.']],
+      technologies:['Python 3.11','FastAPI','Next.js','TypeScript','React','ChromaDB','Sentence-Transformers','Cross-Encoder Reranking','Ollama','Gemma 3','CUDA'],
+      demo:['Add technical PDF references.','Run incremental ingestion using SHA-256 chunk IDs.','Ask a question in the web interface.','Retrieve and rerank evidence.','Generate a local answer with page/document citations.'],
+      results:['12,382 pages indexed.','27,029 chunks stored.','Two-stage retrieval with vector search + cross-encoder reranking.','Local-first inference with grounding and citation validation.'],
+      before:['Raw technical PDFs','Thousands of pages that are hard to search and study manually.'], after:['Local knowledge assistant','Searchable, grounded document Q&A with reranking and citations.'],
+      github:'https://github.com/Abdelrahman-288/RAG-Powered-Document-Assistant'
+    },
+    'urdf2dt': {
+      title:'URDF2DT — URDF to Validated Digital Twin / DH Workflow', kicker:'Robotics · Kinematics · Digital Twin', categories:['robotics','ai'],
+      problem:'Make URDF-to-DH conversion usable for engineers and non-programmers while preserving kinematic correctness. The tool must derive Standard-DH parameters, allow only geometrically legal frame edits, prove URDF↔DH forward-kinematics equivalence, and finish as a standalone Windows application.',
+      architecture:[['URDF Input','User selects a .urdf robot description.'],['Validator / Parser','URDF is validated and converted into an internal kinematic chain.'],['DH Solver','Automatic Standard-DH parameters are derived from joint geometry.'],['Geometry Cases','Parallel, intersecting, and skew joint-axis cases are handled explicitly.'],['3D Scene','URDF frames, DH frames, axes, links, visual/collision geometry, meshes, colors, and materials are visualized.'],['Guided DH Editor','Constraint-aware editing allows legal frame modifications with cascade invalidation.'],['FK Validator','URDF forward kinematics is compared against DH forward kinematics.'],['Export / EXE','Validated output, edit history, reports, and the required URDF2DT.exe are produced.']],
+      technologies:['Python','NumPy','CasADi','PyVista','URDF Parsing','Standard DH','Forward Kinematics','pytest','PyInstaller','STL / DAE mesh support'],
+      demo:['Select a URDF file.','Validate and parse the robot chain.','Generate the initial Standard-DH model automatically.','Inspect the robot and frames in 3D.','Edit DH frames within geometric constraints.','Run local and global FK validation.','Export the validated model and package as URDF2DT.exe.'],
+      results:['Modular architecture separates kinematics, visual, collision, inertial, material, mesh, and joint extraction.','DH generation remains independent from mesh/inertial data.','Global validation proves URDF ↔ DH forward-kinematics equivalence.','Standalone Windows executable is a mandatory final deliverable.'],
+      before:['Raw URDF','Robot XML with joints, transforms, links, visuals, collision geometry, meshes, inertial data, and no DH table.'], after:['Validated digital-twin workflow','Standard-DH model + 3D visualization + legal frame editing + FK equivalence report + export / EXE.'],
+      github:'https://github.com/Abdelrahman-288/URDF2DT'
+    },
+    'nautix': {
+      title:'Nautix — MATE ROV 2026', kicker:'Computer Vision · Robotics', categories:['ai','robotics'],
+      problem:'Perform reliable underwater biodiversity analysis and spatial reconstruction despite limited real-world training data, occlusion, and underwater visibility challenges.',
+      architecture:[['Underwater Video','ROV camera provides the visual stream.'],['YOLOv8','Detects European Green Crabs and relevant objects.'],['Synthetic Data','Augmentation expands limited real-world training data.'],['Tracking','Detections are associated across frames.'],['Interpolation','Occluded trajectories are recovered.'],['Calibration','Homography / spatial calibration converts image measurements to real-world scale.'],['3D Reconstruction','Coral garden geometry is reconstructed for reporting.']],
+      technologies:['Python','YOLOv8','OpenCV','NumPy','Synthetic Data Generation','Homography','3D Reconstruction'],
+      demo:['Capture underwater footage.','Run object detection and tracking.','Recover occluded trajectories.','Calibrate image coordinates to real-world metric scale.','Generate biodiversity analytics and 3D reconstruction.'],
+      results:['95%+ trajectory continuity across underwater test dives.','1st Place — MATE ROV 2026 Pioneer Regional.','Best Design Award.','Best Presentation Award.'],
+      before:['Raw underwater footage','Noisy underwater video with limited visibility and intermittent occlusion.'], after:['Analyzed ROV mission','Detected crabs, continuous trajectories, calibrated measurements, and 3D coral reporting.'],
+      github:'https://github.com/Abdelrahman-288/Mate-ROV-Pioneer-2026'
+    },
+    'vlm-patrol': {
+      title:'VLM-Enhanced Autonomous AI Security Patrol', kicker:'Edge AI · VLM · Security', categories:['ai','robotics','cybersecurity'],
+      problem:'Build an autonomous security system that can detect events efficiently on edge hardware and use higher-level vision-language reasoning only when needed.',
+      architecture:[['Camera','Portenta Vision Shield captures frames.'],['TinyML / FOMO','Low-cost edge detection filters routine frames.'],['Decision Layer','Only relevant events are escalated.'],['Groq Vision','Vision-language reasoning interprets higher-level scenes.'],['Security Action','System produces context-aware security output.']],
+      technologies:['Arduino Portenta H7','Portenta Vision Shield','TinyML','FOMO','Groq Vision-Language API','INT8 Quantization'],
+      demo:['Capture a scene on embedded hardware.','Run FOMO object detection locally.','Gate cloud calls based on detected relevance.','Use VLM reasoning for richer interpretation.','Return a security assessment.'],
+      results:['86.9% detection accuracy for the INT8-quantized TinyML model.','Reduced memory requirements through quantization.','Reduced unnecessary cloud inference through hierarchical edge-cloud design.'],
+      before:['Raw security camera frame','Every frame would otherwise require expensive cloud interpretation.'], after:['Hierarchical security intelligence','Edge detection filters events; VLM reasoning is invoked only when useful.'],
+      github:'https://github.com/Abdelrahman-288/VLM-Enhanced-Autonomous-AI-Security-Patrol'
+    },
+    'malware': {
+      title:'Hybrid AI Malware Classification & Detection System', kicker:'AI · Cybersecurity · Deep Learning', categories:['ai','cybersecurity'],
+      problem:'Classify malware families using complementary representations while preserving security-analysis context and explainability.',
+      architecture:[['Malware Sample','Microsoft BIG 2015 sample enters the analysis pipeline.'],['Binary Visualization','Binary data is transformed into image-like representations.'],['CNN','Image features are extracted.'],['Opcode Extraction','Static analysis extracts opcode sequences.'],['BiLSTM','Opcode sequence behavior is modeled.'],['Fusion','CNN and sequence evidence are combined.'],['Explainability','Grad-CAM highlights influential regions.'],['Dashboard','Streamlit presents predictions and threat reports.']],
+      technologies:['Python','TensorFlow','CNN','BiLSTM','Ghidra','pefile','Streamlit','Grad-CAM','NumPy','Pandas'],
+      demo:['Load a malware sample / dataset item.','Inspect PE headers, entropy, and opcodes.','Run binary-image CNN and opcode BiLSTM branches.','Fuse model evidence.','Visualize prediction and Grad-CAM explanation.'],
+      results:['10,868 malware samples across 9 families in the Microsoft BIG 2015 dataset.','Four-stage hybrid classification pipeline.','Explainable predictions using Grad-CAM.','Interactive Streamlit threat-analysis dashboard.'],
+      before:['Raw malware binary','Opaque executable content that is difficult to interpret directly.'], after:['Explainable malware classification','Family prediction + static-analysis features + visual explanation + threat report.'],
+      github:'https://github.com/Abdelrahman-288/malware-classification-system'
+    },
+    'tennis': {
+      title:'Tennis Match Analytics', kicker:'Computer Vision · Sports Analytics', categories:['ai'],
+      problem:'Automatically convert fixed-camera tennis footage into player, ball, court, movement, and rally analytics without manual calibration.',
+      architecture:[['Match Video','Fixed-camera tennis footage.'],['YOLOv8','Player and ball detection.'],['Keypoint CNN','Court keypoints are regressed automatically.'],['Homography','Image coordinates map to the court plane.'],['Interpolation','Ball / player trajectories are repaired through missed detections.'],['Analytics','Speed, shot direction, movement, rally, and coverage metrics are computed.']],
+      technologies:['Python','YOLOv8','PyTorch','OpenCV','CNN','Homography','Keypoint Regression'],
+      demo:['Load fixed-camera match video.','Detect players and the ball.','Regress court keypoints.','Map positions through homography.','Interpolate trajectories and compute statistics.'],
+      results:['18% improvement in ball-detection AP over baseline.','93.31% accuracy on computed match statistics.','Custom CNN removes manual court calibration.'],
+      before:['Raw tennis video','Pixels with no structured player, ball, court, or rally information.'], after:['Structured match analytics','Tracked movement, speed, shots, rallies, directions, and court statistics.'],
+      github:'https://github.com/Abdelrahman-288/Tennis-Analysis'
+    },
+    'face': {
+      title:'Deep Face Detection System', kicker:'Transfer Learning · Computer Vision', categories:['ai','web'],
+      problem:'Build a custom face detector from dataset creation through deployment, using transfer learning for localization and classification.',
+      architecture:[['Images','Custom images are collected.'],['LabelMe','Faces are annotated with bounding boxes.'],['VGG16 Backbone','Pretrained features are reused.'],['Dual Heads','Classification and bounding-box regression are trained.'],['Inference','Faces are localized on images / webcam frames.'],['Gradio','Interactive application exposes the detector.']],
+      technologies:['Python','TensorFlow','VGG16','OpenCV','LabelMe','Gradio'],
+      demo:['Create / annotate the dataset.','Train VGG16-based detector.','Upload an image or use webcam input.','Return face bounding boxes and confidence.'],
+      results:['Custom annotated dataset pipeline.','VOC and COCO export support.','Interactive image + webcam Gradio deployment.'],
+      before:['Unannotated image','No face location or classification output.'], after:['Localized faces','Predicted bounding boxes and face classification in an interactive app.'],
+      github:'https://github.com/Abdelrahman-288/Deep_Face_Detection_Project'
+    },
+    'heart': {
+      title:'Heart Disease Prediction', kicker:'Machine Learning · Healthcare AI', categories:['ai','web'],
+      problem:'Create a complete classical machine-learning workflow for heart-disease prediction, comparison, tuning, subgroup analysis, and interactive use.',
+      architecture:[['Clinical Data','UCI Heart Disease features.'],['Preprocessing','Cleaning and transformation.'],['EDA / PCA','Feature structure and dimensionality are analyzed.'],['Model Benchmarks','LR, DT, RF, and SVM are trained.'],['Optimization','GridSearchCV / RandomizedSearchCV tune models.'],['Clustering','Unsupervised methods explore patient subgroups.'],['Streamlit','Interactive application exposes predictions.']],
+      technologies:['Python','Scikit-learn','Pandas','NumPy','Matplotlib','Seaborn','Streamlit'],
+      demo:['Load clinical dataset.','Preprocess and analyze features.','Train and compare multiple ML models.','Tune hyperparameters.','Explore clusters and deploy prediction UI.'],
+      results:['Complete supervised + unsupervised ML workflow.','Multiple model families benchmarked and tuned.','Interactive Streamlit deployment.'],
+      before:['Raw clinical table','Unprocessed features with no prediction pipeline.'], after:['Interactive ML workflow','Processed data, tuned models, subgroup analysis, and prediction UI.'],
+      github:'https://github.com/Abdelrahman-288/Heart_Disease_Prediction'
+    }
+  };
+  window.projectDetails = projectDetails;
+
+  const titleToId = {
+    'RAG-Based E-commerce Customer Support Chatbot':'rag-ecommerce',
+    'RAG-Powered Document Assistant':'rag-document',
+    'Nautix — MATE ROV 2026':'nautix',
+    'VLM-Enhanced Autonomous AI Security Patrol':'vlm-patrol',
+    'Hybrid AI Malware Classification & Detection System':'malware',
+    'Tennis Match Analytics':'tennis',
+    'Deep Face Detection System':'face',
+    'Heart Disease Prediction':'heart'
+  };
+
+  function makeUrdfCard(){
+    const wrap = $('#projects .projects-list');
+    if(!wrap || $('[data-project-id="urdf2dt"]',wrap)) return;
+    const card = document.createElement('div');
+    card.className='project-card'; card.dataset.projectId='urdf2dt'; card.dataset.projectCategories='robotics ai';
+    card.innerHTML = `<div class="project-header"><div><span class="project-badge">🦾 Robotics · Kinematics · Digital Twin</span><h3 class="project-title">URDF2DT — URDF to Validated Digital Twin / DH Workflow</h3></div><div class="project-links"><button class="project-explore-btn" type="button">Explore →</button><a class="project-link" href="https://github.com/Abdelrahman-288/URDF2DT" target="_blank" rel="noopener">GitHub ↗</a></div></div><ul class="project-bullets"><li>Converts a user-selected URDF into an automatically derived Standard-DH model with guided, constraint-aware frame editing.</li><li>Uses modular parsing, geometry-case handling, 3D visualization, visual/collision/mesh handling, and independent kinematic/inertial extraction.</li><li>Validates URDF forward kinematics against DH forward kinematics and targets a standalone Windows <span class="project-metric">URDF2DT.exe</span> for non-programmers.</li></ul><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Standard DH</span><span class="tech-tag">Forward Kinematics</span><span class="tech-tag">PyVista</span><span class="tech-tag">NumPy</span><span class="tech-tag">CasADi</span><span class="tech-tag">PyInstaller</span></div>`;
+    wrap.appendChild(card);
+  }
+
+  function enhanceProjects(){
+    makeUrdfCard();
+    $$('#projects .project-card').forEach(card => {
+      const title = $('.project-title',card)?.textContent.trim();
+      const id = card.dataset.projectId || titleToId[title];
+      if(!id || !projectDetails[id]) return;
+      card.dataset.projectId=id;
+      card.dataset.projectCategories=(projectDetails[id].categories||[]).join(' ');
+      const links=$('.project-links',card);
+      if(links && !$('.project-explore-btn',links)){
+        const b=document.createElement('button'); b.type='button'; b.className='project-explore-btn'; b.textContent='Explore →'; links.prepend(b);
+      }
+      $('.project-explore-btn',card)?.addEventListener('click',()=>openProjectExplorer(id));
+    });
+  }
+
+  /* -------------------- PROJECT FILTER -------------------- */
+  function initProjectFilters(){
+    const buttons=$$('.project-filter');
+    buttons.forEach(btn=>btn.addEventListener('click',()=>{
+      buttons.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+      const filter=btn.dataset.projectFilter; let shown=0;
+      $$('#projects .project-card').forEach(card=>{
+        const cats=(card.dataset.projectCategories||'').split(/\s+/);
+        const show=filter==='all'||cats.includes(filter);
+        card.classList.toggle('project-hidden',!show);
+        if(show){shown++;card.classList.remove('project-enter');void card.offsetWidth;card.classList.add('project-enter');}
+      });
+      const empty=$('#project-filter-empty'); if(empty) empty.style.display=shown?'none':'block';
+    }));
+  }
+
+  /* -------------------- PROJECT EXPLORER -------------------- */
+  let currentProjectId='rag-ecommerce', currentProjectTab='problem';
+  function openProjectExplorer(id, tab='problem'){
+    if(!projectDetails[id]) return; currentProjectId=id; currentProjectTab=tab;
+    $('#project-explorer-title').textContent=projectDetails[id].title;
+    $('#project-explorer-kicker').textContent=projectDetails[id].kicker;
+    $$('#pe-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.peTab===tab));
+    renderProjectTab();
+    $('#project-explorer-backdrop').classList.add('open'); $('#project-explorer-backdrop').setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  }
+  window.openProjectExplorer=openProjectExplorer;
+  function closeProjectExplorer(){const b=$('#project-explorer-backdrop');b.classList.remove('open');b.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  function architectureHTML(p){
+    const nodes=p.architecture.map((n,i)=>`<button class="arch-node ${i===0?'active':''}" data-arch-index="${i}" type="button"><b>${esc(n[0])}</b><small>Click to explain</small></button>${i<p.architecture.length-1?'<div class="arch-arrow">→</div>':''}`).join('');
+    return `<div class="pe-panel-title">Interactive architecture</div><div class="architecture-flow">${nodes}</div><div class="arch-explain" id="arch-explain"><strong>${esc(p.architecture[0][0])}:</strong> ${esc(p.architecture[0][1])}</div>${compareHTML(p)}`;
+  }
+  function compareHTML(p){return `<div class="compare-card"><div class="compare-visual"><div class="compare-before"><h4>${esc(p.before[0])}</h4><p>${esc(p.before[1])}</p></div><div class="compare-after" id="compare-after"><h4>${esc(p.after[0])}</h4><p>${esc(p.after[1])}</p></div></div><input class="compare-range" id="compare-range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison"/><div class="compare-labels"><span>Before / input</span><span>After / output</span></div></div>`}
+  function renderProjectTab(){
+    const p=projectDetails[currentProjectId], body=$('#pe-body'); if(!p||!body)return;
+    const t=currentProjectTab;
+    if(t==='problem') body.innerHTML=`<div class="pe-panel-title">Problem</div><p class="pe-lead">${esc(p.problem)}</p>${compareHTML(p)}`;
+    if(t==='architecture') body.innerHTML=architectureHTML(p);
+    if(t==='technologies') body.innerHTML=`<div class="pe-panel-title">Technologies</div><div class="pe-tech-grid">${p.technologies.map(x=>`<span class="pe-tech">${esc(x)}</span>`).join('')}</div>`;
+    if(t==='demo') body.innerHTML=`<div class="pe-panel-title">Demo flow</div><div class="pe-demo-steps">${p.demo.map(x=>`<div class="pe-demo-step">${esc(x)}</div>`).join('')}</div>`;
+    if(t==='results') body.innerHTML=`<div class="pe-panel-title">Results</div><div class="pe-result-grid">${p.results.map((x,i)=>`<div class="pe-result"><strong>${String(i+1).padStart(2,'0')}</strong>${esc(x)}</div>`).join('')}</div>`;
+    if(t==='source') body.innerHTML=`<div class="pe-panel-title">Source</div><div class="pe-source-card"><div><strong style="color:#fff">${esc(p.title)}</strong><div style="font-size:9px;color:var(--muted);margin-top:.3rem">Open the repository to inspect code, commits, documentation, and implementation details.</div></div><a class="btn btn-outline" href="${esc(p.github)}" target="_blank" rel="noopener">GitHub ↗</a></div>`;
+    $$('.arch-node',body).forEach(n=>n.addEventListener('click',()=>{ $$('.arch-node',body).forEach(x=>x.classList.remove('active'));n.classList.add('active');const info=p.architecture[+n.dataset.archIndex];$('#arch-explain').innerHTML=`<strong>${esc(info[0])}:</strong> ${esc(info[1])}`;}));
+    const r=$('#compare-range',body), a=$('#compare-after',body); if(r&&a) r.addEventListener('input',()=>a.style.clipPath=`inset(0 ${100-r.value}% 0 0)`);
+  }
+  $$('#pe-tabs button').forEach(b=>b.addEventListener('click',()=>{currentProjectTab=b.dataset.peTab;$$('#pe-tabs button').forEach(x=>x.classList.toggle('active',x===b));renderProjectTab();}));
+  $('#project-explorer-close')?.addEventListener('click',closeProjectExplorer); $('#project-explorer-backdrop')?.addEventListener('click',e=>{if(e.target===e.currentTarget)closeProjectExplorer();});
+
+  /* -------------------- SKILLS 3D -------------------- */
+  const skillData={
+    'Python':{copy:'Primary language for AI/ML, computer vision, RAG, automation, security tooling, and backend services.',meta:['AI/ML','RAG','CV','Automation','FastAPI'],projects:['RAG Customer Support','RAG Document Assistant','Nautix','Malware Classification','Tennis Analytics','URDF2DT']},
+    'C++':{copy:'Systems and robotics programming foundation used for performance-sensitive and embedded engineering work.',meta:['Systems','Embedded','Robotics'],projects:['Embedded / robotics coursework','ROS 2 workflows']},
+    'ROS 2':{copy:'Robotics middleware for modular nodes, topics, services, sensors, simulation, and autonomous-system integration.',meta:['Robotics','Nodes','Sensors','Simulation'],projects:['Robotics research direction','URDF2DT ecosystem']},
+    'PyTorch':{copy:'Deep-learning framework used for model training, experimentation, computer vision, NLP, and GPU workflows.',meta:['Deep Learning','GPU','NLP','Vision'],projects:['RAG Customer Support','Tennis Analytics']},
+    'Linux':{copy:'Daily engineering environment for development, robotics, shell scripting, containers, networking, and security work.',meta:['Ubuntu','Shell','DevOps','Security'],projects:['ROS 2 setup','Local AI / Ollama','Cybersecurity labs']},
+    'AWS / Cloud':{copy:'Cloud and infrastructure concepts spanning deployment, cloud security, services, and modern IT infrastructure.',meta:['Cloud','Infrastructure','Security'],projects:['Huawei HCCDA training','Cloud-security learning']},
+    'YOLO':{copy:'Real-time object detection and tracking for underwater robotics, sports analytics, and computer-vision systems.',meta:['Detection','Tracking','Real-time CV'],projects:['Nautix','Tennis Match Analytics']},
+    'Docker':{copy:'Containerization for reproducible development environments and deployment-oriented workflows.',meta:['Containers','Reproducibility','Deployment'],projects:['Engineering toolchain','Backend workflows']},
+    'Git':{copy:'Version control for multi-file engineering projects, experiments, branches, releases, and collaboration.',meta:['Version Control','GitHub','Collaboration'],projects:['All major projects']},
+    'SQL':{copy:'Relational data querying and structured-data concepts for application and analytics workflows.',meta:['Data','Queries','Relational DB'],projects:['Data / application coursework']},
+    'Networking':{copy:'Networking background covering routing, switching, WAN/LAN, VPNs, FortiGate, SD-WAN, packet analysis, and security.',meta:['Cisco','WAN/LAN','VPN','FortiGate'],projects:['GIECO internship','ITI Network & Cybersecurity','Fortinet program']},
+    'OpenCV':{copy:'Core computer-vision library for image/video processing, tracking, geometry, calibration, and visualization.',meta:['Image Processing','Video','Geometry','Calibration'],projects:['Nautix','Tennis Analytics','Face Detection']},
+    'FastAPI':{copy:'Backend API framework used to expose AI and RAG systems cleanly to front-end applications.',meta:['REST','Backend','Python'],projects:['RAG Customer Support','RAG Document Assistant']},
+    'RAG / LLM':{copy:'Retrieval, embeddings, vector databases, reranking, grounding, LLM generation, and citation-aware knowledge systems.',meta:['FAISS','ChromaDB','Embeddings','Reranking','LLMs'],projects:['RAG Customer Support','RAG Document Assistant']},
+    'Cybersecurity':{copy:'Hands-on security background across malware analysis, network security, vulnerability assessment, FortiGate, VPNs, incident response, and threat detection.',meta:['Malware','Network Security','IR','FortiGate'],projects:['Malware Classification','ETHYDCO','NTI / ITIDA Fortinet']},
+    'TinyML':{copy:'Quantized edge-AI inference on constrained embedded hardware, combined with cloud/VLM escalation when useful.',meta:['Edge AI','INT8','FOMO','Embedded'],projects:['VLM-Enhanced Security Patrol']}
+  };
+  function selectSkill(name){const d=skillData[name];if(!d)return;$$('.skill-key').forEach(k=>k.classList.toggle('active',k.dataset.skill===name));$('#skill-detail-title').textContent=name;$('#skill-detail-copy').textContent=d.copy;$('#skill-detail-meta').innerHTML=d.meta.map(x=>`<span>${esc(x)}</span>`).join('');$('#skill-detail-projects').innerHTML=`<strong>Applied in</strong><div>${d.projects.map(esc).join(' · ')}</div>`;}
+  $$('.skill-key').forEach(k=>k.addEventListener('click',()=>selectSkill(k.dataset.skill))); selectSkill('Python');
+
+  /* -------------------- JOURNEY -------------------- */
+  $$('.journey-event').forEach(e=>e.addEventListener('click',()=>{const target=e.dataset.scrollTarget, pid=e.dataset.projectOpen;if(pid)return openProjectExplorer(pid);if(target)document.getElementById(target)?.scrollIntoView({behavior:'smooth'});}));
+
+  /* -------------------- GITHUB LIVE -------------------- */
+  async function loadGitHubLive(){
+    const user='Abdelrahman-288';
+    try{
+      const [profileRes,reposRes,eventsRes]=await Promise.all([
+        fetch(`https://api.github.com/users/${user}`,{headers:{Accept:'application/vnd.github+json'}}),
+        fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`,{headers:{Accept:'application/vnd.github+json'}}),
+        fetch(`https://api.github.com/users/${user}/events/public?per_page=20`,{headers:{Accept:'application/vnd.github+json'}})
+      ]);
+      if(!profileRes.ok||!reposRes.ok) throw new Error('GitHub API unavailable or rate-limited');
+      const profile=await profileRes.json(), repos=await reposRes.json(), events=eventsRes.ok?await eventsRes.json():[];
+      $('#gh-name').textContent=profile.name||user; $('#gh-bio').textContent=profile.bio||'Computer Engineering · AI · CV · Cybersecurity · Robotics'; $('#gh-repos').textContent=profile.public_repos??'—'; $('#gh-followers').textContent=profile.followers??'—'; $('#gh-following').textContent=profile.following??'—'; if(profile.avatar_url)$('#gh-avatar').src=profile.avatar_url;
+      $('#gh-recent-repos').innerHTML=repos.slice(0,5).map(r=>`<a class="gh-item" href="${esc(r.html_url)}" target="_blank" rel="noopener"><span class="gh-item-icon">◆</span><span class="gh-item-main"><span class="gh-item-title">${esc(r.name)}</span><span class="gh-item-meta">${esc(r.language||'Repository')} · updated ${new Date(r.updated_at).toLocaleDateString()}</span></span><span style="font-size:9px;color:var(--muted)">↗</span></a>`).join('');
+      const eventRows=events.slice(0,5).map(ev=>{let label=ev.type.replace('Event','');let detail=ev.repo?.name||'';if(ev.type==='PushEvent')detail=`${ev.payload?.commits?.length||0} commit(s) · ${detail}`;return `<div class="gh-item"><span class="gh-item-icon">●</span><span class="gh-item-main"><span class="gh-item-title">${esc(label)}</span><span class="gh-item-meta">${esc(detail)} · ${new Date(ev.created_at).toLocaleDateString()}</span></span></div>`;}).join('');
+      $('#gh-events').innerHTML=eventRows||'<div class="gh-item"><span class="gh-item-main"><span class="gh-item-title">No recent public events returned</span></span></div>';
+      const langs={}; repos.slice(0,30).forEach(r=>{if(r.language)langs[r.language]=(langs[r.language]||0)+1;}); const sorted=Object.entries(langs).sort((a,b)=>b[1]-a[1]).slice(0,6); const max=Math.max(1,...sorted.map(x=>x[1])); $('#gh-languages').innerHTML=sorted.map(([l,n])=>`<div class="gh-lang-row"><span>${esc(l)}</span><div class="gh-lang-track"><div class="gh-lang-fill" style="width:${Math.round(n/max*100)}%"></div></div><span>${n}</span></div>`).join('')||'<div style="font-size:10px;color:var(--muted)">No language data returned.</div>';
+      $('#gh-sync').textContent=`Synced from the public GitHub API · ${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}`;
+    }catch(err){
+      $('#gh-name').textContent='GitHub data unavailable'; $('#gh-bio').textContent='The public GitHub API may be rate-limited. Open the profile directly for the latest activity.'; $('#gh-recent-repos').innerHTML='<a class="gh-item" href="https://github.com/Abdelrahman-288" target="_blank"><span class="gh-item-main"><span class="gh-item-title">Open @Abdelrahman-288 on GitHub ↗</span></span></a>'; $('#gh-events').innerHTML='<div class="gh-item"><span class="gh-item-main"><span class="gh-item-title">Live activity could not be loaded.</span></span></div>'; $('#gh-languages').innerHTML='<div style="font-size:10px;color:var(--muted)">Refresh later or open GitHub directly.</div>'; $('#gh-sync').textContent=err.message;
+    }
+  }
+  loadGitHubLive();
+
+  /* -------------------- INTERACTIVE RESUME -------------------- */
+  const resumeData={
+    education:[['E-JUST — B.Sc. Computer Engineering','Oct 2022 – Present · AI & Intelligent Systems · Security & Systems · Algorithms · Networks · Robotics'],['Alexandria International School','IGCSE · 99.5%']],
+    experience:[['Vortex Robotics — Computer Vision / ML Engineer','YOLOv8 underwater ROV vision, synthetic data, trajectory continuity, 3D coral reconstruction.'],['ITI — Applied AI Program Level 2','Python for AI, computer vision, YOLO, NLP, LLMs, Generative AI, RAG, deployment.'],['ITI — Network & Cybersecurity','Advanced networking, cybersecurity essentials, ethical hacking, Huawei Cloud HCCDA.'],['NTI / ITIDA — Fortinet Cybersecurity','120-hour program · 93% · FortiGate, NAT, FSSO, routing, VPN, SD-WAN, IPS, HA, PKI.'],['Industry Internships','Ezz Steel · PETROJET · GIECO · ETHYDCO']],
+    projects:Object.values(projectDetails).map(p=>[p.title,p.kicker]),
+    certifications:[['Google Cybersecurity Courses','Six verified course completions currently provided, including Accelerate Your Job Search with AI.'],['DeepSeek in Practice','Specialization + Foundations, Applied, and Advanced DeepSeek.'],['Fortinet Cybersecurity','NTI / ITIDA · 120 hours · 93%.'],['NVIDIA AI Programs','Building LLM Applications with Prompt Engineering · AI for All.'],['Huawei HCCDA','Tech Essentials.'],['IBM','SkillsBuild Cybersecurity · Linux Commands & Shell Scripting.'],['Robotics','MATE ROV 2026 Champion · Universal Robots Academy.']],
+    skills:[['AI / ML / NLP','PyTorch · TensorFlow · Scikit-learn · Transformers · DistilBERT · CNN · BiLSTM'],['Computer Vision','YOLO · OpenCV · Homography · Tracking · Keypoint Regression · 3D Reconstruction'],['RAG / LLM','FAISS · ChromaDB · Sentence-Transformers · Reranking · Groq · Ollama'],['Cybersecurity & Networking','FortiGate · VPN · SD-WAN · Malware Analysis · Wireshark · Incident Response'],['Robotics / Edge AI','ROS 2 · TinyML · Arduino Portenta H7 · FOMO · URDF / DH · Embedded Systems'],['Software','Python · C · C++ · FastAPI · Next.js · React · Git · Linux · Docker']]
+  };
+  function renderResumeTab(key){const rows=resumeData[key]||[];$('#resume-preview').innerHTML=`<h3>${key.charAt(0).toUpperCase()+key.slice(1)}</h3><div class="resume-preview-list">${rows.map(r=>`<div class="resume-preview-item"><strong>${esc(r[0])}</strong><br>${esc(r[1])}</div>`).join('')}</div>`;$$('.resume-tab').forEach(b=>b.classList.toggle('active',b.dataset.resumeTab===key));}
+  $$('.resume-tab').forEach(b=>b.addEventListener('click',()=>renderResumeTab(b.dataset.resumeTab))); renderResumeTab('education');
+
+  /* -------------------- PERSONALIZED VISITOR MODE -------------------- */
+  const audienceOrders={
+    general:['about','experience','skills','projects','journey','github-live','awards','certifications','resume','contact'],
+    recruiter:['about','experience','skills','projects','awards','resume','certifications','github-live','journey','contact'],
+    developer:['about','skills','projects','github-live','experience','journey','certifications','awards','resume','contact'],
+    researcher:['about','projects','journey','skills','experience','awards','certifications','github-live','resume','contact'],
+    collaborator:['about','projects','skills','github-live','experience','journey','awards','certifications','resume','contact']
+  };
+  const audienceMessages={general:'Explore the full engineering portfolio, or choose a visitor mode to prioritize what matters to you.',recruiter:'Recruiter mode prioritizes experience, skills, strongest projects, awards, and the interactive resume.',developer:'Developer mode prioritizes technical skills, source-backed project architecture, and live GitHub activity.',researcher:'Researcher mode prioritizes technical projects, engineering journey, methods, validation, and research-oriented work.',collaborator:'Collaborator mode prioritizes projects, capabilities, live development activity, and relevant experience.'};
+  function applyAudience(mode){mode=audienceOrders[mode]?mode:'general';const footer=document.querySelector('footer');audienceOrders[mode].forEach(id=>{const s=document.getElementById(id);if(s&&footer)footer.parentNode.insertBefore(s,footer);});$$('.audience-btn').forEach(b=>b.classList.toggle('active',b.dataset.audience===mode));$('#audience-message').textContent=audienceMessages[mode];document.body.dataset.audience=mode;localStorage.setItem('portfolioAudience',mode);}
+  $$('.audience-btn').forEach(b=>b.addEventListener('click',()=>applyAudience(b.dataset.audience))); applyAudience(localStorage.getItem('portfolioAudience')||'general');
+
+  /* -------------------- COMMAND PALETTE -------------------- */
+  const commands=[
+    {icon:'🤖',label:'View AI Projects',desc:'Filter projects to AI / ML / RAG',run:()=>{document.getElementById('projects')?.scrollIntoView({behavior:'smooth'});setTimeout(()=>$('.project-filter[data-project-filter="ai"]')?.click(),450)}},
+    {icon:'🛡',label:'View Cybersecurity',desc:'Security projects and experience',run:()=>{document.getElementById('projects')?.scrollIntoView({behavior:'smooth'});setTimeout(()=>$('.project-filter[data-project-filter="cybersecurity"]')?.click(),450)}},
+    {icon:'🦾',label:'View Robotics',desc:'Robotics, ROV, edge AI, and URDF2DT',run:()=>{document.getElementById('projects')?.scrollIntoView({behavior:'smooth'});setTimeout(()=>$('.project-filter[data-project-filter="robotics"]')?.click(),450)}},
+    {icon:'💬',label:"Ask Abdelrahman's AI",desc:'Open the portfolio-aware assistant',run:()=>openAssistant()},
+    {icon:'🧭',label:'Open My Journey',desc:'Education, internships, projects, and milestones',run:()=>document.getElementById('journey')?.scrollIntoView({behavior:'smooth'})},
+    {icon:'◆',label:'View Live GitHub',desc:'Repositories and recent public activity',run:()=>document.getElementById('github-live')?.scrollIntoView({behavior:'smooth'})},
+    {icon:'📄',label:'Interactive Resume',desc:'Explore or download the CV',run:()=>document.getElementById('resume')?.scrollIntoView({behavior:'smooth'})},
+    {icon:'↓',label:'Download CV',desc:'Download General CV PDF',run:()=>{const a=document.createElement('a');a.href='CV/Abdelrahman_General_CV.pdf';a.download='';a.click()}},
+    {icon:'↗',label:'Open GitHub',desc:'github.com/Abdelrahman-288',run:()=>window.open('https://github.com/Abdelrahman-288','_blank')},
+    {icon:'✉',label:'Contact Me',desc:'Jump to contact options',run:()=>document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})},
+    {icon:'>_',label:'Developer Terminal',desc:'Open the hidden portfolio terminal',run:()=>openTerminal()}
+  ];
+  const cb=$('#command-backdrop'), ci=$('#command-input'), cr=$('#command-results');
+  function renderCommands(q=''){q=q.toLowerCase().trim();const filtered=commands.filter(c=>(c.label+' '+c.desc).toLowerCase().includes(q));cr.innerHTML=filtered.map((c,i)=>`<button class="command-item ${i===0?'active':''}" data-cmd-index="${commands.indexOf(c)}" type="button"><span class="cmd-icon">${c.icon}</span><span><b>${esc(c.label)}</b><small>${esc(c.desc)}</small></span></button>`).join('')||`<div style="padding:1rem;color:var(--muted);font-size:10px">No matching action. Press Enter to run a terminal-style command.</div>`;$$('.command-item',cr).forEach(b=>b.addEventListener('click',()=>{closeCommand();commands[+b.dataset.cmdIndex].run();}));}
+  function openCommand(){cb.classList.add('open');cb.setAttribute('aria-hidden','false');ci.value='';renderCommands();setTimeout(()=>ci.focus(),20)}
+  function closeCommand(){cb.classList.remove('open');cb.setAttribute('aria-hidden','true')}
+  function runTypedCommand(v){const q=v.trim().toLowerCase();if(q==='sudo hire abdelrahman'){closeCommand();openTerminal();terminalPrint('> Permission granted.\n> Opening contact page…','term-info');setTimeout(()=>document.getElementById('contact')?.scrollIntoView({behavior:'smooth'}),900);return true}if(q==='rm -rf /'){closeCommand();openTerminal();terminalPrint('Nice try 😏\nThe portfolio filesystem is read-only.','term-error');return true}if(q==='open urdf2dt'||q==='urdf2dt'){closeCommand();openProjectExplorer('urdf2dt');return true}return false}
+  ci?.addEventListener('input',()=>renderCommands(ci.value));ci?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(runTypedCommand(ci.value))return;const active=$('.command-item.active',cr)||$('.command-item',cr);active?.click();}});cb?.addEventListener('click',e=>{if(e.target===cb)closeCommand()});
+  $('#hero-command-btn')?.addEventListener('click',openCommand);
+  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cb.classList.contains('open')?closeCommand():openCommand();}if((e.ctrlKey||e.metaKey)&&e.key==='`'){e.preventDefault();openTerminal();}if(e.key==='Escape'){closeCommand();closeProjectExplorer();closeAssistant();closeTerminal();}});
+
+  /* -------------------- DEV TERMINAL + EASTER EGGS -------------------- */
+  const tb=$('#terminal-backdrop'), tout=$('#terminal-output'), tin=$('#terminal-input');
+  function openTerminal(){tb.classList.add('open');tb.setAttribute('aria-hidden','false');setTimeout(()=>tin.focus(),20)} window.openTerminal=openTerminal;
+  function closeTerminal(){tb.classList.remove('open');tb.setAttribute('aria-hidden','true')}
+  function terminalPrint(text,cls=''){const d=document.createElement('div');if(cls)d.className=cls;d.textContent=text;tout.appendChild(d);tout.scrollTop=tout.scrollHeight;}
+  function terminalCommand(cmd){terminalPrint(`abdelrahman@portfolio:~$ ${cmd}`);const q=cmd.trim().toLowerCase();if(!q)return;if(q==='help')terminalPrint('Commands: help · whoami · projects · skills · github · clear · sudo hire abdelrahman · rm -rf /','term-info');else if(q==='whoami')terminalPrint('Abdelrahman Ihab — Computer Engineering · AI · Computer Vision · Cybersecurity · Robotics');else if(q==='projects')terminalPrint(Object.values(projectDetails).map(p=>'• '+p.title).join('\n'));else if(q==='skills')terminalPrint('Python · PyTorch · TensorFlow · YOLO · OpenCV · RAG/LLM · FastAPI · Linux · Networking · Cybersecurity · ROS 2 · TinyML');else if(q==='github'){terminalPrint('Opening GitHub…','term-info');window.open('https://github.com/Abdelrahman-288','_blank')}else if(q==='sudo hire abdelrahman'){terminalPrint('Permission granted. Opening contact page…','term-info');setTimeout(()=>document.getElementById('contact')?.scrollIntoView({behavior:'smooth'}),650)}else if(q==='rm -rf /')terminalPrint('Nice try 😏\nNo production systems were harmed.','term-error');else if(q==='clear')tout.innerHTML='';else if(q.startsWith('open ')){const term=q.slice(5);const match=Object.entries(projectDetails).find(([id,p])=>(id+' '+p.title).toLowerCase().includes(term));if(match){closeTerminal();openProjectExplorer(match[0])}else terminalPrint(`Project not found: ${term}`,'term-error')}else terminalPrint(`command not found: ${cmd}\nTry: help`,'term-error')}
+  $('#terminal-form')?.addEventListener('submit',e=>{e.preventDefault();const v=tin.value;tin.value='';terminalCommand(v)});$('#terminal-close')?.addEventListener('click',closeTerminal);tb?.addEventListener('click',e=>{if(e.target===tb)closeTerminal()});
+
+  /* -------------------- PORTFOLIO AI / LOCAL RETRIEVAL -------------------- */
+  const aiPanel=$('#assistant-panel'), aiLog=$('#assistant-log'), aiInput=$('#assistant-input');
+  const AI_ENDPOINT=window.PORTFOLIO_AI_ENDPOINT||''; // optional server endpoint. Never put secret keys in this static file.
+  function openAssistant(){aiPanel.classList.add('open');aiPanel.setAttribute('aria-hidden','false');hydrateKnowledgeSources();setTimeout(()=>aiInput.focus(),50)}
+  function closeAssistant(){aiPanel.classList.remove('open');aiPanel.setAttribute('aria-hidden','true')}
+  $('#ai-fab')?.addEventListener('click',()=>aiPanel.classList.contains('open')?closeAssistant():openAssistant());$('#hero-ai-btn')?.addEventListener('click',openAssistant);$('#assistant-close')?.addEventListener('click',closeAssistant);$$('#assistant-suggestions button').forEach(b=>b.addEventListener('click',()=>{openAssistant();aiInput.value=b.textContent;$('#assistant-form').requestSubmit();}));
+  function addChat(role,text){const m=document.createElement('div');m.className='chat-msg '+role;m.innerHTML=role==='user'?`<div class="chat-bubble">${esc(text)}</div>`:`<div class="chat-avatar">AI</div><div class="chat-bubble">${esc(text)}</div>`;aiLog.appendChild(m);aiLog.scrollTop=aiLog.scrollHeight;return m}
+  function tokenize(s){return (s.toLowerCase().match(/[a-z0-9+#.]+/g)||[]).filter(x=>x.length>2)}
+  const externalKnowledge=[];
+  let knowledgeHydrationStarted=false;
+  async function hydrateKnowledgeSources(){
+    if(knowledgeHydrationStarted) return;
+    knowledgeHydrationStarted=true;
+    $('#assistant-mode-label').textContent='Loading portfolio sources…';
+
+    // Certificate metadata already present in the page.
+    $$('.cert-img-card').forEach(card=>{
+      const title=$('.cert-img-title',card)?.textContent?.trim();
+      const issuer=$('.cert-img-issuer',card)?.textContent?.trim();
+      const date=$('.cert-img-date',card)?.textContent?.trim();
+      if(title) externalKnowledge.push({title:`Certificate — ${title}`,text:[title,issuer,date].filter(Boolean).join(' · ')});
+    });
+
+    // General CV: extract text client-side with the PDF.js library already used by the certificate previews.
+    try{
+      if(window.pdfjsLib){
+        const pdf=await window.pdfjsLib.getDocument(encodeURI('CV/Abdelrahman_General_CV.pdf')).promise;
+        const pages=[];
+        for(let i=1;i<=Math.min(pdf.numPages,8);i++){
+          const page=await pdf.getPage(i);
+          const content=await page.getTextContent();
+          pages.push(content.items.map(x=>x.str).join(' '));
+        }
+        const cvText=pages.join(' ').replace(/\s+/g,' ').trim();
+        if(cvText) externalKnowledge.push({title:'General CV',text:cvText});
+      }
+    }catch(err){ console.debug('CV knowledge source unavailable',err); }
+
+    // Project READMEs: loaded from public GitHub repositories when available.
+    const repoSources=[...new Set(Object.values(projectDetails).map(p=>p.github).filter(Boolean))];
+    await Promise.all(repoSources.map(async url=>{
+      try{
+        const parts=new URL(url).pathname.split('/').filter(Boolean);
+        if(parts.length<2) return;
+        const [owner,repo]=parts;
+        let response=await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/README.md`);
+        if(!response.ok) response=await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/master/README.md`);
+        if(!response.ok) return;
+        const text=(await response.text()).replace(/<[^>]*>/g,' ').replace(/[#*_`>|~-]/g,' ').replace(/\s+/g,' ').trim();
+        if(text) externalKnowledge.push({title:`GitHub README — ${repo}`,text:text.slice(0,24000)});
+      }catch(err){ console.debug('README knowledge source unavailable',url,err); }
+    }));
+
+    $('#assistant-mode-label').textContent=`Portfolio retrieval · ${externalKnowledge.length + Object.keys(projectDetails).length} sources`;
+  }
+  function buildKnowledge(){
+    const chunks=[];
+    ['about','experience','certifications','awards'].forEach(id=>{const e=document.getElementById(id);if(e)chunks.push({title:id,text:e.innerText.replace(/\s+/g,' ').trim()})});
+    Object.entries(projectDetails).forEach(([id,p])=>chunks.push({title:p.title,text:[p.problem,...p.technologies,...p.results,...p.architecture.flat()].join(' '),id}));
+    return chunks.concat(externalKnowledge);
+  }
+  function retrieve(q,k=4){const terms=tokenize(q);return buildKnowledge().map(ch=>{const t=ch.text.toLowerCase();let score=0;terms.forEach(term=>{if(t.includes(term))score+=term.length>6?3:1});if(ch.title.toLowerCase().includes(q.toLowerCase()))score+=10;return {...ch,score}}).sort((a,b)=>b.score-a.score).filter(x=>x.score>0).slice(0,k)}
+  function localAnswer(q){const s=q.toLowerCase();
+    if(/urdf|digital twin|dh parameter/.test(s)){const p=projectDetails.urdf2dt;return `URDF2DT is a robotics tool that takes a user-selected URDF, validates and parses the robot chain, automatically derives a Standard-DH model, visualizes URDF/DH frames in 3D, allows constraint-aware DH frame editing, and validates URDF forward kinematics against DH forward kinematics. Its architecture keeps kinematics independent from visual/collision/inertial/mesh extraction, and the required final deliverable is a standalone Windows URDF2DT.exe. GitHub: ${p.github}`}
+    if(/strongest.*ai|best.*ai|ai projects/.test(s))return `The strongest AI-focused projects in this portfolio are: (1) the RAG-Based E-commerce Customer Support Chatbot — 97.7% sentiment, 99.5% language, 99.8% intent, and 24K+ RAG entries; (2) the RAG-Powered Document Assistant — 12,382 pages / 27,029 chunks with retrieval + cross-encoder reranking; (3) Nautix — YOLOv8 underwater computer vision and 3D reconstruction; (4) the Hybrid AI Malware Classification system; and (5) the VLM-Enhanced Autonomous AI Security Patrol.`
+    if(/cyber|security|fortinet|malware/.test(s))return `His cybersecurity background spans ETHYDCO cybersecurity work, ITI Network & Cybersecurity training, a 120-hour NTI/ITIDA Fortinet program completed with 93%, IBM SkillsBuild cybersecurity, Google cybersecurity coursework, and technical work including malware analysis, FortiGate, NAT, FSSO, VPN, SD-WAN, IPS, PKI, incident response, and threat detection. The Hybrid AI Malware Classification project combines CNN, BiLSTM, static PE/opcode analysis, Ghidra, pefile, and Grad-CAM.`
+    if(/computer vision|opencv|yolo|vision project/.test(s))return `Computer-vision projects include Nautix / MATE ROV (YOLOv8, synthetic data, tracking, homography, 3D reconstruction), Tennis Match Analytics (YOLOv8, court-keypoint CNN, homography, trajectory interpolation), Deep Face Detection (VGG16 + bounding-box regression), and the VLM-Enhanced Security Patrol (TinyML/FOMO + vision-language reasoning).`;
+    if(/technolog|stack|skills|know/.test(s))return `Core technologies include Python, C/C++, PyTorch, TensorFlow, Scikit-learn, Hugging Face, YOLO, OpenCV, FAISS, ChromaDB, Sentence-Transformers, FastAPI, Streamlit, Next.js/React/TypeScript, Linux, Git, Docker, networking/FortiGate tooling, ROS 2, TinyML, Arduino Portenta H7, and robotics kinematics / URDF workflows.`;
+    if(/rag|llm|document/.test(s))return `He has two major RAG systems. The e-commerce support chatbot combines language, sentiment, intent, confidence-aware routing, FAISS retrieval, and Groq-hosted LLM generation. The local document assistant ingests PDFs into ChromaDB, retrieves with vector search, reranks with a cross-encoder, validates citations, and uses local Ollama / Gemma 3 inference through a FastAPI + Next.js stack.`;
+    if(/mate|rov|nautix/.test(s))return `For Nautix / MATE ROV 2026, he engineered YOLOv8-based European Green Crab detection with synthetic-data augmentation, trajectory interpolation that achieved over 95% continuity, and calibrated 3D coral reconstruction. The team won 1st Place, Best Design, and Best Presentation at the Pioneer Regional competition.`;
+    const hits=retrieve(q); if(!hits.length)return `I couldn't find a strong match in the portfolio knowledge base. Try asking about AI projects, cybersecurity, RAG, computer vision, robotics, URDF2DT, experience, certifications, or technologies.`;
+    return `The most relevant portfolio evidence is:\n\n${hits.map((h,i)=>`${i+1}. ${h.title}: ${h.text.slice(0,420)}${h.text.length>420?'…':''}`).join('\n\n')}`;
+  }
+  async function answerPortfolioAI(q){const hits=retrieve(q,5);if(AI_ENDPOINT){try{$('#assistant-mode-label').textContent='Connected AI + portfolio retrieval';const r=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,context:hits.map(h=>({title:h.title,text:h.text}))})});if(r.ok){const data=await r.json();return data.answer||data.message||localAnswer(q)}}catch(e){console.warn('Portfolio AI endpoint failed; using local retrieval.',e)}}$('#assistant-mode-label').textContent='Portfolio retrieval mode';return localAnswer(q)}
+  $('#assistant-form')?.addEventListener('submit',async e=>{e.preventDefault();const q=aiInput.value.trim();if(!q)return;aiInput.value='';addChat('user',q);const pending=addChat('bot','Searching the portfolio…');const ans=await answerPortfolioAI(q);pending.querySelector('.chat-bubble').textContent=ans;aiLog.scrollTop=aiLog.scrollHeight;});
+
+  /* -------------------- OPTIONAL LIVE PRESENCE HOOK --------------------
+     GitHub Pages cannot provide true realtime visitor counts by itself.
+     If you later set window.PORTFOLIO_PRESENCE_ENDPOINT to a backend/Supabase/Firebase
+     endpoint, this static page can be wired to it without faking visitor numbers.
+  --------------------------------------------------------- */
+
+  enhanceProjects(); initProjectFilters();
+})();
+</script>
+
 </body>
 </html>
